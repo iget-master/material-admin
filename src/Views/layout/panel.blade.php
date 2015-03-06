@@ -34,7 +34,7 @@
                 <div class="arrow-up"></div>
                 <span class="name">{{ Auth::user()->name}}</span>
                 <span class="email">{{ Auth::user()->email }}</span>
-                {{ link_to_route('admin.logout', 'Logout') }}
+                {{ link_to_route('materialadmin.logout', 'Logout') }}
             </div>
         </div>
     </div>
