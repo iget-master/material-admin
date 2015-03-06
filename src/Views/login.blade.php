@@ -8,38 +8,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- CSS are placed here -->
-    {{ HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,700,400') }}
-    {{ HTML::style('packages/iget-master/materialadmin/css/bootstrap.css') }}
-    {{ HTML::style('packages/iget-master/materialadmin/css/material-design-iconic-font.min.css') }}
-	{{ HTML::style('packages/iget-master/materialadmin/css/admin.css') }}
-	{{ HTML::style('css/app.css') }}
+    {!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,700,400') !!}
+    {!! HTML::style('packages/iget-master/materialadmin/css/bootstrap.css') !!}
+    {!! HTML::style('packages/iget-master/materialadmin/css/material-design-iconic-font.min.css') !!}
+	{!! HTML::style('packages/iget-master/materialadmin/css/admin.css') !!}
+	{!! HTML::style('css/app.css') !!}
 </head>
 <body>
 	<div class="container-fluid">
 		<div id="login-container" class="col-md-4 col-md-offset-4">
 				@if (Session::get('alert'))
-					<div class="alert alert-{{ Session::get('alert')["type"] }}">
-						{{ Session::get('alert')["message"] }}
+					<div class="alert alert-{!! Session::get('alert')["type"] !!}">
+						{!! Session::get('alert')["message"] !!}
 					</div>
 				@endif
 
-				{{ Form::open(array('route' => 'admin.authenticate')) }}
+				{!! Form::open(array('route' => 'materialadmin.authenticate')) !!}
 					<div class="form-group">
-						{{ Form::label('email', 'Email:') }}
-						{{ Form::text('email', null, array('class' => 'form-control')) }}
+						{!! Form::label('email', 'Email:') !!}
+						{!! Form::text('email', null, array('class' => 'form-control')) !!}
 					</div>
 					<div class="form-group">
-						{{ Form::label('password', 'Senha:') }}
-						{{ Form::password('password', array('class' => 'form-control')) }}
+						{!! Form::label('password', 'Senha:') !!}
+						{!! Form::password('password', array('class' => 'form-control')) !!}
 					</div>
-					{{ Form::button('<i class="md md-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-primary pull-right')) }}
-				{{ Form::close() }}
+					{!! Form::button('<i class="md md-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-primary pull-right')) !!}
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
 
 	<!-- Scripts are placed here -->
-    {{ HTML::script('//code.jquery.com/jquery-2.1.1.min.js') }}
-    {{ HTML::script('packages/iget-master/materialadmin/js/bootstrap.min.js') }}
+    {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
+    {!! HTML::script('packages/iget-master/materialadmin/js/bootstrap.min.js') !!}
 </body>
 </html>
