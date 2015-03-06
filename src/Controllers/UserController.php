@@ -1,6 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
-use Illuminate\Routing\Controller as BaseController
+use Illuminate\Routing\Controller as BaseController;
 
 class UserController extends BaseController {
 
