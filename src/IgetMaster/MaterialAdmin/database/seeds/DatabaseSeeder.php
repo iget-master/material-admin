@@ -1,9 +1,9 @@
-<?php namespace IgetMaster\MaterialAdmin;
+<?php
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class DatabaseSeeder extends Seeder {
+class MaterialAdminSeeder extends Seeder {
 
 	/**
 	 * Run the database seeds.
