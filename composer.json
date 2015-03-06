@@ -20,6 +20,6 @@
         "post-update-cmd": [
             "php artisan vendor:publish  --provider=\"IgetMaster\MaterialAdmin\MaterialAdminServiceProvicer\" --tag=public --force"
         ]
-    }
+    },
     "minimum-stability": "stable"
 }
