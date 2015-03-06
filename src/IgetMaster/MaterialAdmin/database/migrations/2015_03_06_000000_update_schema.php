@@ -1,4 +1,4 @@
-<?php namespace IgetMaster\MaterialAdmin;
+<?php
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,7 +16,7 @@ class UpdateSchema extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->timestamps();
-		})
+		});
 
 		Schema::table('users', function(Blueprint $table)
 		{

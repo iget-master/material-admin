@@ -23,7 +23,7 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 
     	// Publish migrations
 		$this->publishes([
-		    __DIR__.'/../database/migrations/' => base_path('/database/migrations')
+		    __DIR__.'/database/migrations/' => base_path('/database/migrations')
 		], 'migrations');
     }
 
