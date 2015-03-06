@@ -1,4 +1,4 @@
-<?php namespace IgetMaster\MaterialAdmin;
+<?php namespace IgetMaster\MaterialAdmin\Models;
 
 use \Eloquent;
 
