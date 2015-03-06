@@ -1,0 +1,20 @@
+{
+    "name": "iget-master/material-admin",
+    "description": "",
+    "authors": [
+        {
+            "name": "Elias Soares",
+            "email": "esoares@iget.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "IgetMaster\\MaterialAdmin": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
