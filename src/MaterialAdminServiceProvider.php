@@ -37,6 +37,11 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 		], 'public');
 
 		$this->loadViewsFrom(__DIR__.'/views', 'materialadmin');
+
+		// Publish configs
+		$this->mergeConfigFrom(
+		    __DIR__.'/Config/materialadmin.php', 'materialadmin'
+		);
     }
 
 	/**

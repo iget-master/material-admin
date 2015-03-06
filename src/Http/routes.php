@@ -25,7 +25,7 @@ Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'befor
 	*/
 
 	Route::resource('user', "UserController",  array('except' => array('show')));
-	Route::delete('/multiple_destroy', array('as' => 'user.multiple_destroy', 'uses' => 'UserController@multiple_destroy'));
+	Route::delete('/user/multiple_destroy', array('as' => 'user.multiple_destroy', 'uses' => 'UserController@multiple_destroy'));
 });
 
 Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'before' => array('materialadmin.guest')), function()

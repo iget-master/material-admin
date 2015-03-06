@@ -20,7 +20,7 @@ class SessionController extends \BaseController {
 	public function store()
 	{
 		if (\Auth::attempt(\Input::only('email', 'password'))) {
-			return \Redirect::intended(route(\Config::get('materialadmin::home_route')))->with('alert', Array('type'=>'success', 'message'=>'Seja bem vindo.'));
+			return \Redirect::intended(route(\Config::get('materialadmin.home_route')))->with('alert', Array('type'=>'success', 'message'=>'Seja bem vindo.'));
 		}
 
 		return \Redirect::back()->withInput()->with('alert', Array('type'=>'danger', 'message'=>'Usuário e/ou senha incorretos.'));
