@@ -27,26 +27,24 @@ return array(
 		)
 	),
 
-	'permissions' => array(
-		/*
-		|--------------------------------------------------------------------------
-		| Routes Permission Level
-		|--------------------------------------------------------------------------
-		*/
+	/*
+	|--------------------------------------------------------------------------
+	| Routes Permission Level
+	|--------------------------------------------------------------------------
+	*/
 
-		'routes' => array(
-			'materialadmin.empty' => 1,
-			'user.index' => 2,
-			'user.edit' => 2,
-			'user.store' => 2,
-			'user.update' => 2,
-			'user.create' => 2,
-			'user.destroy' => 2,
-			'user.multiple_destroy' => 2,
+	'route_permission' => array(
+		'materialadmin.empty' => 1,
+		'user.index' => 2,
+		'user.edit' => 2,
+		'user.store' => 2,
+		'user.update' => 2,
+		'user.create' => 2,
+		'user.destroy' => 2,
+		'user.multiple_destroy' => 2,
 
-		),
-
-		'default' => 1
 	),
+
+	'default_permission' => 1
 
 );

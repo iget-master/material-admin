@@ -14,9 +14,9 @@
 Route::filter('materialadmin.auth', function($route)
 {
 	if (array_key_exists($route->getName(), \Config::get('admin::permissions.routes'))) {
-		$route_permission = \Config::get('materialadmin.permissions.routes')[$route->getName()];
+		$route_permission = \Config::get('materialadmin.route_permission')[$route->getName()];
 	} else {
-		$route_permission = \Config::get('materialadmin.permissions.default');
+		$route_permission = \Config::get('materialadmin.default_permission');
 	}
 	
 	if (Auth::guest())

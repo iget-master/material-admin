@@ -1,8 +1,8 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
-use \Illuminate\Support\MessageBag;
+use Illuminate\Routing\Controller as BaseController
 
-class UserController extends \BaseController {
+class UserController extends BaseController {
 
 	public function __construct()
     {

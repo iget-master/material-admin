@@ -1,6 +1,8 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
-class SessionController extends \BaseController {
+use Illuminate\Routing\Controller as BaseController
+
+class SessionController extends BaseController {
 	/**
 	 * Show the form for creating a new resource.
 	 *
