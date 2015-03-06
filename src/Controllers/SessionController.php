@@ -38,7 +38,7 @@ class SessionController extends BaseController {
 	{
 		\Auth::logout();
 
-		return \Redirect::route('admin.login');
+		return \Redirect::route('materialadmin.login');
 	}
 
 

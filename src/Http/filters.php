@@ -27,7 +27,7 @@ Route::filter('materialadmin.auth', function($route)
 		}
 		return Redirect::guest('login');
 	} else if (Auth::user()->level < $route_permission) {
-		return Response::make('Unauthorized', 401);
+		//return Response::make('Unauthorized', 401);
 	}
 });
 
