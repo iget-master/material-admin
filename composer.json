@@ -12,9 +12,14 @@
         "illuminate/support": "5.0.*"
     },
     "autoload": {
-        "psr-0": {
-            "IgetMaster\\MaterialAdmin": "src/"
+        "psr-4": {
+            "IgetMaster\\MaterialAdmin\\": "src/"
         }
     },
+    "scripts": {
+        "post-update-cmd": [
+            "php artisan vendor:publish  --provider=\"IgetMaster\MaterialAdmin\MaterialAdminServiceProvicer\" --tag=public --force"
+        ]
+    }
     "minimum-stability": "stable"
 }

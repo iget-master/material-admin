@@ -23,13 +23,20 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 
     	// Publish migrations
 		$this->publishes([
-		    __DIR__.'/database/migrations/' => base_path('/database/migrations')
+		    __DIR__.'/Database/migrations/' => base_path('/database/migrations')
 		], 'migrations');
 
 		// Publish seeds
 		$this->publishes([
-		    __DIR__.'/database/seeds/' => base_path('/database/seeds')
+		    __DIR__.'/Database/seeds/' => base_path('/database/seeds')
 		], 'seeds');
+
+		// Publish assets
+		$this->publishes([
+		    __DIR__.'/../Assets' => public_path('iget-master/material-admin'),
+		], 'public');
+
+		$this->loadViewsFrom(__DIR__.'/views', 'materialadmin');
     }
 
 	/**
