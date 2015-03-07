@@ -48,7 +48,7 @@ class UserController extends BaseController {
 				'surname' => 'required',
 				'email' => 'required|email|unique:users',
 				'password' => 'required|confirmed|min:6',
-				'permission_group_id' => 'required|integer|level_check',
+				'permission_group_id' => 'required|integer',
 				'dob' => 'date_format:d/m/Y',
 				'language' => 'required'
 			)
@@ -117,7 +117,7 @@ class UserController extends BaseController {
 				'surname' => 'required',
 				'email' => 'required|email|unique:users',
 				'password' => 'confirmed|min:6',
-				'permission_group_id' => 'required|integer|level_check',
+				'permission_group_id' => 'required|integer',
 				'dob' => 'date_format:d/m/Y',
 				'language' => 'required'
 			)
