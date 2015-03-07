@@ -16,4 +16,9 @@ class Helper {
 
 		return true;
 	}
+
+	static public function getLanguagesSelectOptions()
+	{
+		return \Config::get('materialadmin.languages');
+	}
 }

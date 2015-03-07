@@ -47,4 +47,16 @@ return array(
 
 	'default_permission' => 1
 
+	/*
+	|--------------------------------------------------------------------------
+	| System Languages
+	|--------------------------------------------------------------------------
+	*/
+
+	'languages' => array(
+		'pt_BR' => "Português Brasileiro",
+		'en' 	=> "English",
+		'it' 	=> "Italiano",
+	),
+
 );
