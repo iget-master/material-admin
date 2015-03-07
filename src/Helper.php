@@ -8,10 +8,12 @@ class Helper {
 			$route_permission = \Config::get('materialadmin.default_permission');
 		}
 
-		if (\Auth::check()) {
-			return (\Auth::user()->level >= $route_permission);
-		} else {
-			return ($route_permission == 0);
-		}
+		// if (\Auth::check()) {
+		// 	return (\Auth::user()->level >= $route_permission);
+		// } else {
+		// 	return ($route_permission == 0);
+		// }
+
+		return true;
 	}
 }
