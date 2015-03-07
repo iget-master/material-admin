@@ -17,5 +17,22 @@
             "IgetMaster\\MaterialAdmin\\": "src/"
         }
     },
+    "scripts": {
+        "pre-install-cmd": [
+            "php artisan vendor:publish --provider=\"IgetMaster\\MaterialAdmin\\MaterialAdminServiceProvider\" --tag=public --force"
+        ],
+        "post-install-cmd": [
+            "php artisan optimize"
+        ],
+        "pre-update-cmd": [
+            "php artisan clear-compiled"
+        ],
+        "post-update-cmd": [
+            "php artisan optimize"
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
+    },
     "minimum-stability": "stable"
 }
