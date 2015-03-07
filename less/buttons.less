@@ -1,0 +1,37 @@
+.btn {
+	border-radius: 0;
+	&.btn-transparent {
+		border: none;
+		background: none;
+		color: #FFF;
+		opacity: 0.9;
+		box-shadow: none;
+		padding: 0;
+
+		i {
+			height: 43px;
+			width: 43px;
+			line-height: 43px;
+			border-radius: 50%;
+		}
+		&:hover {
+			opacity: 1;
+		}
+		&:focus {
+			i {
+				background: rgba(0,0,0,0.1);
+			}
+			outline: none;
+		}
+		&:active {
+			i {
+				background: rgba(0,0,0,0.3);
+			}
+		}
+
+	}
+
+	&.btn-round {
+		border-radius: 50%
+	}
+}
