@@ -115,7 +115,6 @@ class UserController extends BaseController {
 			Array(
 				'name' => 'required',
 				'surname' => 'required',
-				'email' => 'required|email|unique:users',
 				'password' => 'confirmed|min:6',
 				'permission_group_id' => 'required|integer',
 				'dob' => 'date_format:d/m/Y',

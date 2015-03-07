@@ -41,7 +41,7 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						{!! Form::label('email', 'Email:') !!}
-						{!! Form::text('email', null, array('class' => 'form-control')) !!}
+						{!! Form::text('email', null, array('class' => 'form-control', 'disabled'=>'true')) !!}
 						@if ($errors->has('email'))
 							{!! $errors->first('email') !!}	
 						@endif
