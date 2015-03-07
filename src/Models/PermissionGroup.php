@@ -14,4 +14,14 @@ class PermissionGroup extends Eloquent {
 	public function users() {
 		return $this->hasMany('User');
 	}
+
+	static public function getSelectOptions() 
+	{
+		$options = [];
+		foreach( PermissionGroup::all() as $permission_group) {
+			$options[$permission_group->id] = $permission_group->name;
+		}
+
+		return $options;
+	}
 }

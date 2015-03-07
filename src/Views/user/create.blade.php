@@ -40,10 +40,10 @@
 					</div>
 					<div class="col-md-5">
 						<div class="form-group">
-							{!! Form::label('level', 'Email:') !!}
-							{!! Form::select('level', array('1' => 'Funcionário', '2' => 'Gerente'), null, array('class' => 'form-control')) !!}
-							@if ($errors->has('level'))
-								{!! $errors->first('level') !!}	
+							{!! Form::label('permission_group_id', 'Email:') !!}
+							{!! Form::select('permission_group_id', $permission_groups, null, array('class' => 'form-control')) !!}
+							@if ($errors->has('permission_group_id'))
+								{!! $errors->first('permission_group_id') !!}	
 							@endif
 						</div>
 					</div>

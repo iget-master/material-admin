@@ -1,6 +1,7 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use \Eloquent;
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -16,6 +17,18 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	 * @var string
 	 */
 	protected $table = 'users';
+
+	protected $dates = ['dob'];
+
+	public function getDateFormat()
+    {
+        return 'd/m/Y';
+    }
+
+    public function setDobAttribute($value)
+    {
+    	$this->attributes['dob'] = Carbon::createFromFormat('d/m/Y', $value);
+    }
 
 	/**
 	 * The attributes excluded from the model's JSON form.

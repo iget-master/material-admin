@@ -1,6 +1,8 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use IgetMaster\MaterialAdmin\Models\User;
+use IgetMaster\MaterialAdmin\Models\PermissionGroup;
 
 class UserController extends BaseController {
 
@@ -16,7 +18,7 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-		$users = User::paginate(15);
+		$users = User::with('permission_group')->paginate(15);
 		return \View::make('admin::user.index')->with('users', $users);
 	}
 
@@ -28,7 +30,7 @@ class UserController extends BaseController {
 	 */
 	public function create()
 	{
-		return \View::make('admin::user.create');
+		return \View::make('admin::user.create')->with('permission_groups', PermissionGroup::getSelectOptions());
 	}
 
 
@@ -46,7 +48,9 @@ class UserController extends BaseController {
 				'surname' => 'required',
 				'email' => 'required|email|unique:users',
 				'password' => 'required|confirmed|min:6',
-				'level' => 'required|integer|level_check'
+				'permission_group_id' => 'required|integer|level_check',
+				'dob' => 'date_format:d/m/Y',
+				'language' => 'required'
 			)
 		);
 
@@ -61,8 +65,10 @@ class UserController extends BaseController {
 				'name' => \Input::get('name'),
 				'surname' => \Input::get('surname'),
 				'email' => \Input::get('email'),
-				'level' => \Input::get('level'),
-				'password' => \Hash::make(\Input::get('password'))
+				'permission_group_id' => \Input::get('permission_group_id'),
+				'password' => \Hash::make(\Input::get('password')),
+				'dob' => \Input::get('dob'),
+				'language' => \Input::get('language'),
 			)
 		);
 
@@ -88,8 +94,8 @@ class UserController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$user = User::findOrFail($id);
-		$response = \View::make('admin::user.edit')->with('user', $user);
+		$user = User::with('permission_group')->findOrFail($id);
+		$response = \View::make('admin::user.edit')->with('user', $user)->with('permission_groups', PermissionGroup::getSelectOptions());
 		return $response; 
 
 	}
@@ -109,8 +115,11 @@ class UserController extends BaseController {
 			Array(
 				'name' => 'required',
 				'surname' => 'required',
+				'email' => 'required|email|unique:users',
 				'password' => 'confirmed|min:6',
-				'level' => 'required|integer|level_check'
+				'permission_group_id' => 'required|integer|level_check',
+				'dob' => 'date_format:d/m/Y',
+				'language' => 'required'
 			)
 		);
 
@@ -121,7 +130,9 @@ class UserController extends BaseController {
 
 		$user->name = \Input::get('name');
 		$user->surname = \Input::get('surname');
-		$user->level = \Input::get('level');
+		$user->permission_group_id = \Input::get('permission_group_id');
+		$user->dob = \Input::get('dob');
+		$user->language = \Input::get('language');
 
 		if (strlen(\Input::get('password'))) {
 			$user->password = \Hash::make(\Input::get('password'));
