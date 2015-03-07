@@ -1,4 +1,4 @@
-@extends((Request::ajax())?"admin::layout.ajax":"admin::layout.panel")
+@extends((Request::ajax())?"materialadmin::layout.ajax":"materialadmin::layout.panel")
 
 @section('content')
 	@include('materialadmin::panel.alerts')

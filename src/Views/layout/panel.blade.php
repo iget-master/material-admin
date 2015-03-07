@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    @include('admin::panel.menu');
+    @include('materialadmin::panel.menu');
 
     <div class="container" id="content">
         @yield('content')
