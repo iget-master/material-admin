@@ -19,7 +19,7 @@ class UserController extends BaseController {
 	public function index()
 	{
 		$users = User::with('permission_group')->paginate(15);
-		return \View::make('admin::user.index')->with('users', $users);
+		return \View::make('materialadmin::user.index')->with('users', $users);
 	}
 
 
@@ -30,7 +30,7 @@ class UserController extends BaseController {
 	 */
 	public function create()
 	{
-		return \View::make('admin::user.create')->with('permission_groups', PermissionGroup::getSelectOptions());
+		return \View::make('materialadmin::user.create')->with('permission_groups', PermissionGroup::getSelectOptions());
 	}
 
 
@@ -95,7 +95,7 @@ class UserController extends BaseController {
 	public function edit($id)
 	{
 		$user = User::with('permission_group')->findOrFail($id);
-		$response = \View::make('admin::user.edit')->with('user', $user)->with('permission_groups', PermissionGroup::getSelectOptions());
+		$response = \View::make('materialadmin::user.edit')->with('user', $user)->with('permission_groups', PermissionGroup::getSelectOptions());
 		return $response; 
 
 	}

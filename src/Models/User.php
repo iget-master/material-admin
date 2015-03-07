@@ -38,7 +38,7 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	protected $hidden = array('password', 'remember_token');
 
 	public function permission_group() {
-		return $this->belongsTo('PermissionGroup');
+		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\PermissionGroup');
 	}
 
 }

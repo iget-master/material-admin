@@ -12,7 +12,7 @@ class PermissionGroup extends Eloquent {
 	protected $table = 'permission_groups';
 
 	public function users() {
-		return $this->hasMany('User');
+		return $this->hasMany('IgetMaster\MaterialAdmin\Models\User');
 	}
 
 	static public function getSelectOptions() 
