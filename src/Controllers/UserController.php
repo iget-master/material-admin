@@ -1,6 +1,7 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\MessageBag;
 use IgetMaster\MaterialAdmin\Models\User;
 use IgetMaster\MaterialAdmin\Models\PermissionGroup;
 
