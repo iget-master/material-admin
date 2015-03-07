@@ -20,6 +20,7 @@ class MaterialAdminServiceProvider extends ServiceProvider {
     {
     	require __DIR__.'/Http/routes.php';
     	require __DIR__.'/Http/filters.php';
+    	require __DIR__.'helpers.php';
 
     	// Publish migrations
 		$this->publishes([
