@@ -30,7 +30,7 @@
 				<div class="col-md-2">
 					<div class="form-group">
 						{!! Form::label('dob', 'Nascimento:') !!}
-						{!! Form::text('dob', null, array('class' => 'form-control')) !!}
+						{!! Form::text('dob', getFormatedDate($user->dob), array('class' => 'form-control')) !!}
 						@if ($errors->has('dob'))
 							{!! $errors->first('dob') !!}	
 						@endif

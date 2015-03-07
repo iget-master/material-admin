@@ -1,4 +1,5 @@
 <?php namespace IgetMaster\MaterialAdmin;
+use Carbon\Carbon;
 
 class Helper {
 	static public function checkRoutePermission($route) {
@@ -20,5 +21,14 @@ class Helper {
 	static public function getLanguagesSelectOptions()
 	{
 		return \Config::get('materialadmin.languages');
+	}
+}
+
+
+function getFormatedDate($date) {
+	if ($date instanceof Carbon) {
+		return $date->format('d/m/Y');
+	} else {
+		return '';
 	}
 }
