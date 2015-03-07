@@ -9,9 +9,9 @@
 
     <!-- CSS are placed here -->
     {!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,700,400') !!}
-    {!! HTML::style('packages/iget-master/material-admin/css/bootstrap.css') !!}
-    {!! HTML::style('packages/iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
-	{!! HTML::style('packages/iget-master/material-admin/css/admin.css') !!}
+    {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
+    {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
+	{!! HTML::style('iget-master/material-admin/css/admin.css') !!}
 	{!! HTML::style('css/app.css') !!}
 </head>
 <body>
@@ -40,6 +40,6 @@
 
 	<!-- Scripts are placed here -->
     {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-    {!! HTML::script('packages/iget-master/material-admin/js/bootstrap.min.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/bootstrap.min.js') !!}
 </body>
 </html>
