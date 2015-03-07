@@ -26,7 +26,7 @@
 			</tbody>
 		</table>
 	</div>
-	{!! $users->links() !!}
+	{!! $users->render() !!}
 @stop
 
 @section('title')

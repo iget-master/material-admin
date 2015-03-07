@@ -5,7 +5,7 @@
 	<div class="content-wrapper">
 			
 	{!! Form::open(array('route' => 'user.store', 'id' => 'user')) !!}
-		<div class='container'>
+		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">

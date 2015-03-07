@@ -5,7 +5,7 @@
 	<div class="content-wrapper">
 			
 	{!! Form::model($user, ['method'=>'PATCH', 'route'=>['user.update', $user->id], 'id'=>'user']) !!}
-		<div class="row">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
@@ -51,13 +51,13 @@
 				<div class="col-md-3">
 					<div class="form-group">
 						{!! Form::label('permission_group_id', 'Grupo de permissões:') !!}
-						{!! Form::select('permission_group_id', $permission_group, null, array('class' => 'form-control')) !!}
+						{!! Form::select('permission_group_id', $permission_groups, null, array('class' => 'form-control')) !!}
 						@if ($errors->has('permission_group_id'))
 							{!! $errors->first('permission_group_id') !!}	
 						@endif
 					</div>
 				</div>
-				
+
 				<div class="col-md-3">
 					<div class="form-group">
 						{!! Form::label('language', 'Língua padrão:') !!}
