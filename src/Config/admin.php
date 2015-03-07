@@ -1,7 +1,6 @@
 <?php
 
-return array(
-
+return [
 	/*
 	|--------------------------------------------------------------------------
 	| Admin Home Settings
@@ -16,47 +15,53 @@ return array(
 	|--------------------------------------------------------------------------
 	*/
 
-	'menu_options' => array(
-		'Home' => array(
-			'route' => 'materialadmin.empty',
-			'icon' => 'md md-home'
-		),
-		'Usuários' => array(
-			'route' => 'user.index',
-			'icon' => 'md md-people'
-		)
-	),
+	'menu' => [
+		'options' => [
+				'Home' => [
+					'route' => 'materialadmin.empty',
+					'icon' => 'md md-home'
+				],
+			'Usuários' => [
+				'route' => 'user.index',
+				'icon' => 'md md-people'
+			]
+		],
+	],
 
 	/*
 	|--------------------------------------------------------------------------
-	| Routes Permission Level
+	| Permission rules
 	|--------------------------------------------------------------------------
+	|
+	| Define here all permission rules that may be used by your application.
+	| 
+	| * Permission middleware will automatically find for rules named with
+	|   route name.
+	|
 	*/
 
-	'route_permission' => array(
-		'materialadmin.empty' => 1,
-		'user.index' => 2,
-		'user.edit' => 2,
-		'user.store' => 2,
-		'user.update' => 2,
-		'user.create' => 2,
-		'user.destroy' => 2,
-		'user.multiple_destroy' => 2,
+	'rules' => [
+		'user.index',
+		'user.edit',
+		'user.store',
+		'user.update',
+		'user.create',
+		'user.destroy',
+		'user.multiple_destroy'
+	],
 
-	),
-
-	'default_permission' => 1,
+	'default_rule' => null,
 
 	/*
 	|--------------------------------------------------------------------------
-	| System Languages
+	| Allowed system languages
 	|--------------------------------------------------------------------------
 	*/
 
-	'languages' => array(
+	'languages' => [
 		'pt_BR' => "Português Brasileiro",
 		'en' 	=> "English",
 		'it' 	=> "Italiano",
-	),
+	],
 
-);
+];

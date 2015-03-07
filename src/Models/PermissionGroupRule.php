@@ -2,21 +2,17 @@
 
 use \Eloquent;
 
-class PermissionGroup extends Eloquent {
+class PermissionGroupRule extends Eloquent {
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'permission_groups';
+	protected $table = 'permission_group_rules';
 
-	public function users() {
-		return $this->hasMany('IgetMaster\MaterialAdmin\Models\User');
-	}
-
-	public function rules() {
-		return $this->hasMany('IgetMaster\MaterialAdmin\Models\PermissionGroupRule');
+	public function groups() {
+		return $this->hasMany('IgetMaster\MaterialAdmin\Models\PermissionGroup');
 	}
 
 	static public function getSelectOptions() 
@@ -28,6 +24,4 @@ class PermissionGroup extends Eloquent {
 
 		return $options;
 	}
-
-	public function 
 }

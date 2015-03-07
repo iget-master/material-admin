@@ -2,10 +2,10 @@
 
 class Helper {
 	static public function checkRoutePermission($route) {
-		if (array_key_exists($route, \Config::get('materialadmin.route_permission'))) {
-			$route_permission = \Config::get('materialadmin.route_permission')[$route];
+		if (array_key_exists($route, \Config::get('admin.route_permission'))) {
+			$route_permission = \Config::get('admin.route_permission')[$route];
 		} else {
-			$route_permission = \Config::get('materialadmin.default_permission');
+			$route_permission = \Config::get('admin.default_permission');
 		}
 
 		// if (\Auth::check()) {
@@ -19,6 +19,6 @@ class Helper {
 
 	static public function getLanguagesSelectOptions()
 	{
-		return \Config::get('materialadmin.languages');
+		return \Config::get('admin.languages');
 	}
 }

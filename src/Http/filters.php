@@ -13,10 +13,10 @@
 
 Route::filter('materialadmin.auth', function($route)
 {
-	if (array_key_exists($route->getName(), \Config::get('materialadmin.route_permission'))) {
-		$route_permission = \Config::get('materialadmin.route_permission')[$route->getName()];
+	if (array_key_exists($route->getName(), \Config::get('admin.route_permission'))) {
+		$route_permission = \Config::get('admin.route_permission')[$route->getName()];
 	} else {
-		$route_permission = \Config::get('materialadmin.default_permission');
+		$route_permission = \Config::get('admin.default_permission');
 	}
 	
 	if (Auth::guest())
@@ -34,5 +34,5 @@ Route::filter('materialadmin.auth', function($route)
 
 Route::filter('materialadmin.guest', function()
 {
-	if (Auth::check()) return Redirect::route(\Config::get('materialadmin.home_route'));
+	if (Auth::check()) return Redirect::route(\Config::get('admin.home_route'));
 });

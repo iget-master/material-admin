@@ -41,7 +41,7 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 
 		// Publish configs
 		$this->mergeConfigFrom(
-		    __DIR__.'/Config/materialadmin.php', 'materialadmin'
+		    __DIR__.'/Config/admin.php', 'admin'
 		);
     }
 
