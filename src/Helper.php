@@ -1,5 +1,4 @@
 <?php namespace IgetMaster\MaterialAdmin;
-use Carbon\Carbon;
 
 class Helper {
 	static public function checkRoutePermission($route) {
