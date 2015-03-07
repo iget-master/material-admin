@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- CSS are placed here -->
-    {!! HTML::style('packages/iget-master/material-admin/css/bootstrap.css') !!}
-    {!! HTML::style('packages/iget-master/material-admin/css/bootstrap-theme.css') !!}
+    {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
+    {!! HTML::style('iget-master/material-admin/css/bootstrap-theme.css') !!}
     {!! HTML::style('css/app.css') !!}
 </head>
 <body>
@@ -35,6 +35,6 @@
 
 	<!-- Scripts are placed here -->
     {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-    {!! HTML::script('packages/iget-master/material-admin/js/bootstrap.min.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/bootstrap.min.js') !!}
 </body>
 </html>
