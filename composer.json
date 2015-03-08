@@ -19,19 +19,18 @@
     },
     "scripts": {
         "pre-install-cmd": [
-            "php artisan vendor:publish --provider=\"IgetMaster\\MaterialAdmin\\MaterialAdminServiceProvider\" --tag=public --force"
         ],
         "post-install-cmd": [
-            "php artisan optimize"
         ],
         "pre-update-cmd": [
-            "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize"
+            "php artisan vendor:publish --provider=\"IgetMaster\\MaterialAdmin\\MaterialAdminServiceProvider\" --tag=public --force",
+            "php artisan vendor:publish --provider=\"IgetMaster\\MaterialAdmin\\MaterialAdminServiceProvider\" --tag=migrations --force",
+            "php artisan vendor:publish --provider=\"IgetMaster\\MaterialAdmin\\MaterialAdminServiceProvider\" --tag=seeds --force",
+            "php artisan migrate"
         ],
         "post-create-project-cmd": [
-            "php artisan key:generate"
         ]
     },
     "minimum-stability": "stable"

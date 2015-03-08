@@ -15,8 +15,8 @@ class PermissionGroup extends Eloquent {
 		return $this->hasMany('IgetMaster\MaterialAdmin\Models\User');
 	}
 
-	public function rules() {
-		return $this->hasMany('IgetMaster\MaterialAdmin\Models\PermissionGroupRule');
+	public function roles() {
+		return $this->belongsToMany('IgetMaster\MaterialAdmin\Models\Role');
 	}
 
 	static public function getSelectOptions() 
