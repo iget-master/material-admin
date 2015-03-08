@@ -9,9 +9,11 @@ class Role extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'permission_group_rules';
+	protected $table = 'roles';
 
 	public function groups() {
 		return $this->belongsToMany('IgetMaster\MaterialAdmin\Models\PermissionGroup');
 	}
+
+	protected $fillable = array('name');
 }

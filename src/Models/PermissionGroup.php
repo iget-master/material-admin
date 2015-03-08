@@ -11,6 +11,8 @@ class PermissionGroup extends Eloquent {
 	 */
 	protected $table = 'permission_groups';
 
+	protected $fillable = array('name');
+
 	public function users() {
 		return $this->hasMany('IgetMaster\MaterialAdmin\Models\User');
 	}

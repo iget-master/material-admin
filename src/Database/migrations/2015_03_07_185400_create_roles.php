@@ -14,7 +14,7 @@ class CreateRoles extends Migration {
 	{
 		Schema::create('roles', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('name');
+			$table->string('name')->unique();
 		});
 
 		Schema::create('permission_group_role', function(Blueprint $table) {
