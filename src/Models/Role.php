@@ -11,6 +11,8 @@ class Role extends Eloquent {
 	 */
 	protected $table = 'roles';
 
+	public $timestamps = false;
+
 	public function groups() {
 		return $this->belongsToMany('IgetMaster\MaterialAdmin\Models\PermissionGroup');
 	}

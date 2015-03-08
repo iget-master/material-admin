@@ -46,9 +46,5 @@ class MaterialAdminSeeder extends Seeder {
 			$role = Role::create([ 'name'=>$role_name ]);
 			$administrator->roles()->attach($role->id);
 		}
-
-		foreach(User::with('permission_group.roles')->first()->permission_group->roles as $role_name) {
-			echo "$role_name->name\n";
-		}
 	}
 }
