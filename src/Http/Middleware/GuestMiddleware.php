@@ -8,7 +8,7 @@ class GuestMiddleware implements Middleware {
     public function handle($request, Closure $next)
     {
     	if (\Auth::check()) {
-    		return redirect()->guest(\Config::get('admin.home_route'));
+    		return redirect()->route(\Config::get('admin.home_route'));
     	}
 
         return $next($request);

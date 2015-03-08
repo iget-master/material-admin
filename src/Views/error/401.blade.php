@@ -5,7 +5,7 @@
 @stop
 
 @section('description')
-	<p>An HTTP Error 401 ocurred.</p>
+	<p class="title">An HTTP Error 401 ocurred.</p>
 	
-	<p>This error may occours if you are not logged-in.</p>
+	<p class="description">This error may occours if you are not logged-in.</p>
 @stop

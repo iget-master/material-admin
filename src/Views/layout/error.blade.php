@@ -7,10 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- CSS are placed here -->
+        <!-- CSS are placed here -->
+    {!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,700,400') !!}
     {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
-    {!! HTML::style('iget-master/material-admin/css/bootstrap-theme.css') !!}
-    {!! HTML::style('css/app.css') !!}
+    {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
+	{!! HTML::style('iget-master/material-admin/css/admin.css') !!}
+	{!! HTML::style('css/app.css') !!}
 </head>
 <body>
 	<div class="container-fluid">
