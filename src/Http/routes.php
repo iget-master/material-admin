@@ -28,7 +28,7 @@ Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middl
 	Route::delete('/user/multiple_destroy', array('as' => 'user.multiple_destroy', 'uses' => 'UserController@multiple_destroy'));
 });
 
-Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'before' => array('materialadmin.guest')), function()
+Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'guest'), function()
 {
 	Route::get('/login', array('as' => 'materialadmin.login', 'uses' => 'SessionController@create'));
 	Route::post('/login', array('as' => 'materialadmin.authenticate', 'uses' => 'SessionController@store'));
