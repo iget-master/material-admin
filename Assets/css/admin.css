@@ -268,7 +268,7 @@ body {
   margin: 0;
 }
 #error-container div.body {
-  padding: 30px;
+  padding: 15px 30px;
   width: 100%;
 }
 #error-container div.body p.title {
