@@ -16,7 +16,7 @@ class PermissionMiddleware implements Middleware {
 	    		return redirect()->guest('login');
 	    	} else if (!\Auth::user()->hasRole($route)) {
 	    		// Show Permission denied
-	    		return response('Permission denied', 401);
+                return view('materialadmin::error.403');
 	    	}
     	}
 

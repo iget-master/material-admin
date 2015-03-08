@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div id="login-container" class="col-md-4 col-md-offset-4">
+		<div id="login-container" class="paper col-md-4 col-md-offset-4">
 				@if (Session::get('alert'))
 					<div class="alert alert-{!! Session::get('alert')["type"] !!}">
 						{!! Session::get('alert')["message"] !!}
