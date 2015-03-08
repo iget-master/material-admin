@@ -5,7 +5,7 @@
 @stop
 
 @section('description')
-	<p>An HTTP Error 403 ocurred.</p>
+	<p class="title">An HTTP Error 403 ocurred.</p>
 	
-	<p>This error occours because you don't have permission to access this page or service.</p>
+	<p class="description">This error occours because you don't have permission to access this page or service.</p>
 @stop
