@@ -1,4 +1,4 @@
-<?php namespace IgetMaster\MaterialAdmin\Http\Middlewares;
+<?php namespace IgetMaster\MaterialAdmin\Http\Middleware;
 
 class PermissionMiddleware implements Middleware {
 
