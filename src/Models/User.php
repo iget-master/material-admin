@@ -18,17 +18,6 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	 */
 	protected $table = 'users';
 
-	protected $dates = ['dob'];
-
-	public function getDateFormat()
-    {
-        return 'd/m/Y';
-    }
-
-    public function setDobAttribute($value)
-    {
-    	$this->attributes['dob'] = Carbon::createFromFormat('d/m/Y', $value);
-    }
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -39,8 +28,36 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 
 	protected $fillable = array('name', 'surname', 'dob', 'email', 'password', 'permission_group_id', 'language');
 
+	public function getDateFormat()
+    {
+        return 'd/m/Y';
+    }
+
+	/**
+	 * Model relationships definitions
+	 */
+
 	public function permission_group() {
 		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\PermissionGroup');
 	}
+
+	/**
+	 * Model mutators definitions
+	 */
+	protected $dates = ['dob'];
+
+    public function setDobAttribute($value)
+    {
+    	$this->attributes['dob'] = Carbon::createFromFormat('d/m/Y', $value);
+    }
+
+    public function hasRole($role)
+    {
+    	if ($this->permission_group()->roles()->where('name', '=', $role)->count()) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
 
 }

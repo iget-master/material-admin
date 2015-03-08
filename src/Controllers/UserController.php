@@ -19,6 +19,9 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
+		if (Auth::user()->hasRole('user.index')) {
+			dd('Tem a role user.index');
+		}
 		$users = User::with('permission_group')->paginate(15);
 		return \View::make('materialadmin::user.index')->with('users', $users);
 	}
