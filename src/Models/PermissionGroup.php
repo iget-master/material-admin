@@ -28,6 +28,4 @@ class PermissionGroup extends Eloquent {
 
 		return $options;
 	}
-
-	public function 
 }

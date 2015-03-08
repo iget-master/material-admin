@@ -30,17 +30,17 @@ return [
 
 	/*
 	|--------------------------------------------------------------------------
-	| Permission rules
+	| Permission roles
 	|--------------------------------------------------------------------------
 	|
-	| Define here all permission rules that may be used by your application.
+	| Define here all permission roles that may be used by your application.
 	| 
-	| * Permission middleware will automatically find for rules named with
+	| * Permission middleware will automatically find for roles named with
 	|   route name.
 	|
 	*/
 
-	'rules' => [
+	'roles' => [
 		'user.index',
 		'user.edit',
 		'user.store',
@@ -50,7 +50,7 @@ return [
 		'user.multiple_destroy'
 	],
 
-	'default_rule' => null,
+	'default_role' => null,
 
 	/*
 	|--------------------------------------------------------------------------
