@@ -53,7 +53,11 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 
     public function hasRole($role)
     {
-    	if ($this->permission_group()->roles()->where('name', '=', $role)->count()) {
+    	$count = $this->permission_group->roles->filter(function($item) use ($role) {
+    		return $item->name == $role;
+    	})->count();
+
+    	if ($count) {
     		return true;
     	} else {
     		return false;
