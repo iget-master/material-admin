@@ -64,4 +64,30 @@ return [
 		'it' 	=> "Italiano",
 	],
 
+	/*
+	|--------------------------------------------------------------------------
+	| Settings page
+	|--------------------------------------------------------------------------
+	*/
+
+	'settings_groups' => [
+		[
+			'name' 				=> 'security',
+			'translation_key' 	=> 'materialadmin::admin.security',
+			'icon' 				=> 'md-security',
+			'order'				=> 0,
+		]
+	],
+
+	'settings_items' => [
+		[
+			'name'				=> 'permission_groups',
+			'translation_key' 	=> 'materialadmin::admin.permission_groups',
+			'group' 			=> 'security',
+			'order'				=> 0,
+			'item'				=> 'materialadmin::settings.item.permission_groups',
+			'edit'				=> 'materialadmin::settings.edit.permission_groups',
+		]
+	]
+
 ];

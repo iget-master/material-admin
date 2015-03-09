@@ -38,11 +38,7 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 		], 'public');
 
 		$this->loadViewsFrom(__DIR__.'/views', 'materialadmin');
-
-		// Publish configs
-		$this->mergeConfigFrom(
-		    __DIR__.'/Config/admin.php', 'admin'
-		);
+		$this->loadTranslationsFrom(__DIR__.'/lang', 'materialadmin');
     }
 
 	/**
@@ -52,7 +48,10 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		// Publish configs
+		$this->mergeConfigFrom(
+		    __DIR__.'/Config/admin.php', 'admin'
+		);
 	}
 
 	/**
