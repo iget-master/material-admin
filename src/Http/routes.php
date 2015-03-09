@@ -28,7 +28,7 @@ Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middl
 	Route::delete('/user/multiple_destroy', array('as' => 'user.multiple_destroy', 'uses' => 'UserController@multiple_destroy'));
 
 	route::get('/settings', function() {
-		return view('materialadmin::setting');
+		return view('materialadmin::settings');
 	});
 });
 
