@@ -12,7 +12,7 @@
 				</span>
 			</div>
 			@foreach(\Config::get('admin.settings_items') as $item)
-			<div id="settings-item">
+			<div class="settings-item">
 				@include($item['item'])
 			</div>
 			@endforeach

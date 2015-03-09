@@ -373,6 +373,7 @@ div.alert:hover button.close:hover {
   padding: 10px 15px;
 }
 #settings-groups .settings-group .group-title i {
+  padding-right: 5px;
   font-size: 24px;
   line-height: 24px;
   vertical-align: top;
