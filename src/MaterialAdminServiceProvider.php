@@ -38,7 +38,7 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 		], 'public');
 
 		$this->loadViewsFrom(__DIR__.'/views', 'materialadmin');
-		$this->loadTranslationsFrom(__DIR__.'/lang', 'materialadmin');
+		$this->loadTranslationsFrom(__DIR__.'/../lang', 'materialadmin');
     }
 
 	/**

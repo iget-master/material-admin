@@ -3,11 +3,13 @@
 @section('content')
 	@include('materialadmin::panel.alerts')
 	@foreach(\Config::get('admin.settings_groups') as $group)
-	<div id="settings-group" class="paper">
-		<h1>
+	<div id="settings-group" class="paper clearfix">
+		<div class="group-title">
 			<i class="md md-lg {!! $group['icon'] !!}"></i>
-			{!! trans($group['translation_key']) !!}
-		</h1>
+			<h1>
+				{!! trans($group['translation_key']) !!}
+			</h1>
+		</div>
 		@foreach(\Config::get('admin.settings_items') as $item)
 		<div id="settings-item">
 			@include($item['item'])
