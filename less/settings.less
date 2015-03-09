@@ -1,7 +1,7 @@
 #settings-groups {
 	.settings-group {
 		.group-title {
-			border-bottom: 1px solid @md-grey-100;
+			border-bottom: 1px solid @md-grey-200;
 			padding: 10px 15px;
 			i {
 				padding-right: 5px;
@@ -28,14 +28,21 @@
 				font-weight: 100;
 
 				ul {
-					border-top: 1px solid @md-grey-100;
+					padding: 0;
+					border-top: 1px solid @md-grey-200;
 					list-style: none;
 					margin-top: 10px;
 					li {
-						padding: 2px;
-						border-bottom: 1px solid @md-grey-100;
+						cursor: pointer;
+						font-size: 16px;
+						padding: 2px 10px;
+						border-bottom: 1px solid @md-grey-200;
 						i {
 							float: right;
+						}
+
+						&:hover {
+							background-color: @md-grey-100;
 						}
 					}
 				}
