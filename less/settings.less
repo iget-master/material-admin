@@ -40,10 +40,18 @@
 						a {
 							float: right;
 							&.remove {
-								color: @md-red-900;
+								color: @md-red-600;
 							}
 							&.modify {
-								color: @accent-500;
+								color: @md-blue-600;
+							}
+							&:hover {
+								&.remove {
+									color: @md-red-500;
+								}
+								&.modify {
+									color: @md-blue-500;
+								}
 							}
 						}
 
