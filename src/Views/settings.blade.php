@@ -2,7 +2,7 @@
 
 @section('content')
 	@include('materialadmin::panel.alerts')
-	<div id="setting-groups">
+	<div id="settings-groups">
 		@foreach(\Config::get('admin.settings_groups') as $group)
 		<div class="settings-group paper clearfix">
 			<div class="group-title">
