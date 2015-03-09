@@ -406,8 +406,14 @@ div.alert:hover button.close:hover {
   padding: 2px 10px;
   border-bottom: 1px solid #eeeeee;
 }
-#settings-groups .settings-group .settings-item .content ul li i {
+#settings-groups .settings-group .settings-item .content ul li a {
   float: right;
+}
+#settings-groups .settings-group .settings-item .content ul li a.remove {
+  color: #b71c1c;
+}
+#settings-groups .settings-group .settings-item .content ul li a.modify {
+  color: #f44336;
 }
 #settings-groups .settings-group .settings-item .content ul li:hover {
   background-color: #f5f5f5;
