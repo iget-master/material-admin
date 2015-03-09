@@ -3,7 +3,7 @@
 use Closure;
 use Illuminate\Contracts\Routing\Middleware;
 
-class PermissionMiddleware implements Middleware {
+class AuthMiddleware implements Middleware {
 
     public function handle($request, Closure $next)
     {
