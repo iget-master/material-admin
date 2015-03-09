@@ -4,12 +4,12 @@
 ?>
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-3 label">
 		{!! trans('materialadmin::admin.permission_groups') !!}
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-9 content">
 		{!! trans_choice('materialadmin::admin.permission_groups_count', $permission_groups->count()) !!}
-		<ul>
+		<ul class="col-md-6">
 		@foreach ($permission_groups as $permission_group)
 			<li data-id="{!! $permission_group->id !!}">
 				<span class="name">
