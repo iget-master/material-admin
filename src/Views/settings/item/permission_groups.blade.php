@@ -4,7 +4,7 @@
 ?>
 
 <div class="row">
-	<div class="col-md-3 label">
+	<div class="col-md-3 title">
 		{!! trans('materialadmin::admin.permission_groups') !!}
 	</div>
 	<div class="col-md-9 content">

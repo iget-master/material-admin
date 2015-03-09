@@ -387,7 +387,7 @@ div.alert:hover button.close:hover {
 #settings-groups .settings-group .settings-item {
   padding: 10px 15px;
 }
-#settings-groups .settings-group .settings-item .label {
+#settings-groups .settings-group .settings-item .title {
   font-weight: 100;
   font-size: 20px;
 }
