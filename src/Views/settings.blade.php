@@ -8,8 +8,11 @@
 			<div class="group-title">
 				<span>
 					<i class="md md-lg {!! $group['icon'] !!}"></i>
-					{!! trans($group['translation_key']) !!}
+					{!! trans($group['translation']['name']) !!}
 				</span>
+				<p class="help">
+					{!! trans($group['translation']['help']) !!}
+				</p>
 			</div>
 			@foreach(\Config::get('admin.settings_items') as $item)
 			<div class="settings-item">

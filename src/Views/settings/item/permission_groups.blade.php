@@ -15,8 +15,8 @@
 				<span class="name">
 					{!! $permission_group->name !!}
 				</span>
-				<a class="remove"><i class="md md-delete"></i></a>
-				<a class="modify"><i class="md md-edit"></i></a>
+				<a href="#" class="remove"><i class="md md-delete"></i></a>
+				<a href="#" class="modify"><i class="md md-edit"></i></a>
 			</li>
 		@endforeach
 		</ul>

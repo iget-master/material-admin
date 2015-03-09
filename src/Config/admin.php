@@ -72,10 +72,13 @@ return [
 
 	'settings_groups' => [
 		[
-			'name' 				=> 'security',
-			'translation_key' 	=> 'materialadmin::admin.security',
-			'icon' 				=> 'md-security',
-			'order'				=> 0,
+			'name' 			=> 'security',
+			'translation' 	=> [
+				"name" => 'materialadmin::admin.security',
+				"help" => 'materialadmin::admin.security_help',
+			],
+			'icon' 			=> 'md-security',
+			'order'			=> 0,
 		]
 	],
 

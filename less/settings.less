@@ -33,24 +33,29 @@
 					list-style: none;
 					margin-top: 10px;
 					li {
-						cursor: pointer;
+						.name {
+							cursor: pointer;
+						}
 						font-size: 16px;
 						padding: 2px 10px;
 						border-bottom: 1px solid @md-grey-200;
 						a {
+							-webkit-transition: color 200ms ease-in-out;
+							-moz-transition: color 200ms ease-in-out;
+							-ms-transition: color 200ms ease-in-out;
+							-o-transition: color 200ms ease-in-out;
+							transition: color 200ms ease-in-out;
+							margin-left: 5px;
 							float: right;
-							&.remove {
-								color: @md-red-600;
-							}
-							&.modify {
-								color: @md-blue-600;
-							}
-							&:hover {
+							color: @md-grey-500;
+						}
+						&:hover {
+							a {
 								&.remove {
-									color: @md-red-500;
+									color: @md-red-700;
 								}
 								&.modify {
-									color: @md-blue-500;
+									color: @md-blue-700;
 								}
 							}
 						}
