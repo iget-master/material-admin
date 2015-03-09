@@ -1,6 +1,6 @@
 <?php
 
-Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'permission'), function()
+Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'auth'), function()
 {
 	/*
 	|--------------------------------------------------------------------------
