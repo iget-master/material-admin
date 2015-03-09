@@ -368,11 +368,9 @@ div.alert:hover button.close {
 div.alert:hover button.close:hover {
   opacity: 0.7;
 }
-#settings-groups .settings-group {
-  padding: 10px 15px;
-}
 #settings-groups .settings-group .group-title {
   border-bottom: 1px solid #f5f5f5;
+  padding: 10px 15px;
 }
 #settings-groups .settings-group .group-title i {
   padding-right: 5px;
