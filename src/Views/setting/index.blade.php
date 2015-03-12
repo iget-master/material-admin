@@ -14,8 +14,8 @@
 					{!! trans($group['translation']['help']) !!}
 				</p>
 			</div>
-			@foreach(\Config::get('admin.settings_items') as $item)
-			<div class="settings-item">
+			@foreach(\Config::get('admin.settings_items') as $item_name => $item)
+			<div class="settings-item" data-setting-name="{!! $item_name !!}">
 				@include($item['item'])
 			</div>
 			@endforeach

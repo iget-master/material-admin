@@ -17,11 +17,15 @@ return [
 
 	'menu' => [
 		'options' => [
-				'Home' => [
-					'route' => 'materialadmin.empty',
-					'icon' => 'md md-home'
-				],
+			'Home' => [
+				'route' => 'materialadmin.empty',
+				'icon' => 'md md-home'
+			],
 			'Usuários' => [
+				'route' => 'user.index',
+				'icon' => 'md md-people'
+			],
+			'Configurações' => [
 				'route' => 'user.index',
 				'icon' => 'md md-people'
 			]
@@ -83,13 +87,13 @@ return [
 	],
 
 	'settings_items' => [
-		[
-			'name'				=> 'permission_groups',
+		'permission_groups' => [
 			'translation_key' 	=> 'materialadmin::admin.permission_groups',
 			'group' 			=> 'security',
 			'order'				=> 0,
-			'item'				=> 'materialadmin::settings.item.permission_groups',
-			'edit'				=> 'materialadmin::settings.edit.permission_groups',
+			'item'				=> 'materialadmin::setting.item.permission_groups',
+			'edit'				=> 'materialadmin::setting.edit.permission_groups',
+			'model'				=> 'IgetMaster\MaterialAdmin\Models\PermissionGroup',
 		]
 	]
 
