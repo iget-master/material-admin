@@ -65,14 +65,17 @@ class SettingController extends BaseController {
 	 */
 	public function edit($name, $id)
 	{
-		$settings_items = Config::get('admin.settings_items')
+		$settings_items = Config::get('admin.settings_items');
 		if (!array_key_exists($name, $settings_items)) {
 			App::abort(404);
 		}
 
 		$setting = $settings_items[$name];
+		$model = $setting['model'];
 
-		return view($setting['edit']);
+		$setting = $model::findOrFail($id);
+
+		return view($setting['edit'])->withSetting($setting);
 	}
 
 	/**

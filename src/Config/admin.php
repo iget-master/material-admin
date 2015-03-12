@@ -26,8 +26,8 @@ return [
 				'icon' => 'md md-people'
 			],
 			'Configurações' => [
-				'route' => 'user.index',
-				'icon' => 'md md-people'
+				'route' => 'setting.index',
+				'icon' => 'md md-settings'
 			]
 		],
 	],

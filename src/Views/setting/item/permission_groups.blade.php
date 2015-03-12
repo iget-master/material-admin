@@ -11,7 +11,7 @@
 		{!! trans_choice('materialadmin::admin.permission_groups_count', $permission_groups->count()) !!}
 		<ul>
 		@foreach ($permission_groups as $permission_group)
-			<li data-id="{!! $permission_group->id !!}" data-edit="{!! route('setting.edit', 'permission_groups', $permission_group->id) !!}">
+			<li data-id="{!! $permission_group->id !!}" data-edit="{!! route('setting.edit', ['permission_groups', $permission_group->id]) !!}">
 				<span class="name">
 					{!! $permission_group->name !!}
 				</span>
