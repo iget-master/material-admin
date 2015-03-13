@@ -54,5 +54,7 @@
     {!! HTML::script('iget-master/material-admin/js/app/panel.js') !!}
     {!! HTML::script('iget-master/material-admin/js/bootstrap.min.js') !!}
     @yield('script')
+
+    @include('materialadmin::panel.modal');
 </body>
 </html>

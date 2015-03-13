@@ -1,3 +1,18 @@
+'use strict';
+
+function ModalForm(url) {
+	$("#form-modal").addClass('loading');
+	$("#form-modal .modal-loading").show();
+	$("#form-modal .modal-header").hide();
+	$("#form-modal .modal-body").html('').load(url, function() {
+		$("#form-modal .modal-loading").hide();
+		$("#form-modal .modal-header .title").html($("#form-modal .modal-body span.title").html());
+		$("#form-modal .modal-header").show();
+		$("#form-modal").removeClass('loading');
+	});
+	$("#form-modal").modal('show');
+}
+
 +function ($) {
 	'use strict';
 
@@ -12,7 +27,7 @@
 	});
 
 	// Form submit button
-	$('#content-toolbar').on('click', '[role="submit"]', function(e) {
+	$(document).on('click', '[role="submit"]', function(e) {
 		var form = $($(e.currentTarget).data('form'));
 		form.submit();
 	});

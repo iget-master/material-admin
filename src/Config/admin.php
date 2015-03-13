@@ -94,6 +94,13 @@ return [
 			'item'				=> 'materialadmin::setting.item.permission_groups',
 			'edit'				=> 'materialadmin::setting.edit.permission_groups',
 			'model'				=> 'IgetMaster\MaterialAdmin\Models\PermissionGroup',
+			'relationships'     => [
+				[
+					"name" => "roles",
+					"model" => "IgetMaster\MaterialAdmin\Models\Role",
+					"relation" => "many-to-many",
+				]
+			]
 		]
 	]
 

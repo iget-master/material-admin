@@ -1,3 +1,5 @@
+'use strict';
+
 +function ($) {
 	'use strict';
 
@@ -12,5 +14,5 @@
 				$($target.data('target')).addClass('hide');
 			}
 		}
-	})
+	});
 } (jQuery)

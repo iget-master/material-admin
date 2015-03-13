@@ -1,0 +1,33 @@
+div.modal {
+	&.loading {
+		div.modal-content {
+			background-color: @md-grey-200;
+		}
+	}
+	div.modal-backdrop.in {
+		filter: alpha(opacity=30);
+  		opacity: .3;
+	}
+	div.modal-content {
+		border: 1px solid transparent;
+		border-radius: 4px;
+
+		-webkit-box-shadow: 0 5px 10px 0 #777;
+  		box-shadow: 0 5px 10px 0 #777;
+
+		div.modal-header {
+			font-weight: 100;
+			button.close {
+				position: absolute;
+				top: 28px;
+				right: 15px;
+			}
+		}
+
+		div.modal-loading {
+			margin-top: -30px;
+			padding: 200px 0;
+			text-align: center;
+		}
+	}
+}
