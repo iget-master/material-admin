@@ -37,7 +37,7 @@ class MaterialAdminServiceProvider extends ServiceProvider {
 		    __DIR__.'/../Assets' => public_path('iget-master/material-admin'),
 		], 'public');
 
-		$this->loadViewsFrom(__DIR__.'/views', 'materialadmin');
+		$this->loadViewsFrom(__DIR__.'/Views', 'materialadmin');
 		$this->loadTranslationsFrom(__DIR__.'/../lang', 'materialadmin');
     }
 
