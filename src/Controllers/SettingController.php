@@ -1,7 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
-use \Config;
-use \Input;
+use \Config, \Input, \App;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
 use IgetMaster\MaterialAdmin\Models\User;
@@ -72,7 +71,7 @@ class SettingController extends BaseController {
 
 		$model->fill(Input::all())->save();
 
-		$this->fill_settings_relationships($setting, $model);
+		$this->fill_setting_relationships($setting, $model);
 
 		return \Redirect::route('setting.index');
 	}
@@ -105,7 +104,12 @@ class SettingController extends BaseController {
 		$setting = $settings_items[$name];
 		$model_class = $setting['model'];
 
-		$model = $model_class::with('roles')->findOrFail($id);
+		$relationships = [];
+		foreach($setting['relationships'] as $relationship) {
+			$relationships[] = $relationship['name'];
+		}
+
+		$model = $model_class::with($relationships)->findOrFail($id);
 		return view($setting['edit'])->withSetting($setting)->withModel($model)->withName($name);
 	}
 
@@ -139,7 +143,7 @@ class SettingController extends BaseController {
 
 		$model->fill(Input::all())->save();
 
-		$this->fill_settings_relationships($setting, $model);
+		$this->fill_setting_relationships($setting, $model);
 
 		return \Redirect::route('setting.index');
 	}
@@ -206,7 +210,7 @@ class SettingController extends BaseController {
 
 	}
 
-	private function fill_settings_relationships($setting, $model)
+	private function fill_setting_relationships($setting, $model)
 	{
 		foreach ($setting['relationships'] as $relationship) {
 			if ($relationship["relation"] == 'many-to-many') {

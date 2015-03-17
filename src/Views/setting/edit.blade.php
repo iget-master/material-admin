@@ -14,9 +14,12 @@
 @section('toolbar')
 	<a role="submit" data-form="#model" class="btn btn-round primary"><i class="md md-check"></i></a>
 	{{-- <a href="/user/create" class="btn btn-round primary"><i class="md md-add"></i></a> --}}
-	{!! Form::open(array('method'=>'DELETE', 'route'=>['setting.update', $name, $model->id])) !!}
-		<button type="submit" class="btn btn-round btn-sm danger"><i class="md md-delete"></i></button>
-	{!! Form::close() !!}
+	<a href="{{ route('setting.index') }}" class="btn btn-round btn-sm warning"><i class="md md-arrow-back"></i></a>
+	@if (isset($model))
+		{!! Form::open(array('method'=>'DELETE', 'route'=>['setting.update', $name, $model->id])) !!}
+			<button type="submit" class="btn btn-round btn-sm danger"><i class="md md-delete"></i></button>
+		{!! Form::close() !!}
+	@endif
 @stop
 
 @section('script')
