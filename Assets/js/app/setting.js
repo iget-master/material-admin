@@ -2,17 +2,13 @@
 	'use strict';
 
 	// Bind edit and delete actions for each Setting Item <li>
-	$('#settings-groups').on('click', '.editable a, li.editable', function(e) {
+	$('#settings-groups').on('click', '.editable a, li.editable, tr.editable', function(e) {
 		var $target = $(e.currentTarget);
 
-		console.log($target);
-
 		if ($target.hasClass('edit') || $target.hasClass('editable')) {
-			new ModalForm($target.closest('li').data('edit'));
-			//window.location.href = $target.closest('li').data('edit');
+			window.location.href = $target.closest('.editable').data('edit');
 		} else if ($target.hasClass('delete')) {
-			new ModalForm($target.closest('li').data('delete'));
-			//window.location.href = $target.closest('li').data('delete');
+			window.location.href = $target.closest('.editable').data('delete');
 		}
 		e.stopPropagation();
 	});
