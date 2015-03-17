@@ -15,9 +15,11 @@
 				</p>
 			</div>
 			@foreach(\Config::get('admin.settings_items') as $item_name => $item)
-			<div class="settings-item" data-setting-name="{!! $item_name !!}" data-create="{!! route('setting.create', [$item_name]) !!}">
-				@include($item['item'])
-			</div>
+			@if ($item['group'] == $group['name'])
+				<div class="settings-item" data-setting-name="{!! $item_name !!}" data-create="{!! route('setting.create', [$item_name]) !!}">
+					@include($item['item'])
+				</div>
+			@endif
 			@endforeach
 		</div>
 		@endforeach
