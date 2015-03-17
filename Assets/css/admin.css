@@ -436,6 +436,7 @@ div.modal div.modal-content div.modal-loading {
 #settings-groups .settings-group .settings-item .content table {
   width: 100%;
   font-size: 16px;
+  margin-top: 10px;
 }
 #settings-groups .settings-group .settings-item .content table tbody {
   border-top: 1px solid #eeeeee;
