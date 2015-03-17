@@ -1,9 +1,29 @@
 @extends((Request::ajax())?"materialadmin::layout.ajax":"materialadmin::layout.panel")
 
+<?php 
+	$groups = \Config::get('admin.settings_groups');
+
+	$order = array();
+	foreach ($groups as $key => $row)
+	{
+	    $order[$key] = $row['order'];
+	}
+	array_multisort($order, SORT_DESC, $groups);
+
+	$items = \Config::get('admin.settings_items');
+
+	$order = array();
+	foreach ($items as $key => $row)
+	{
+	    $order[$key] = $row['order'];
+	}
+	array_multisort($order, SORT_DESC, $items);
+?>
+
 @section('content')
 	@include('materialadmin::panel.alerts')
 	<div id="settings-groups">
-		@foreach(\Config::get('admin.settings_groups') as $group)
+		@foreach($groups as $group)
 		<div class="settings-group paper clearfix">
 			<div class="group-title">
 				<span>
@@ -14,7 +34,7 @@
 					{!! trans($group['translation']['help']) !!}
 				</p>
 			</div>
-			@foreach(\Config::get('admin.settings_items') as $item_name => $item)
+			@foreach($items as $item_name => $item)
 			@if ($item['group'] == $group['name'])
 				<div class="settings-item" data-setting-name="{!! $item_name !!}" data-create="{!! route('setting.create', [$item_name]) !!}">
 					@include($item['item'])
