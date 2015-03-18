@@ -1,5 +1,8 @@
-# material-admin
+# Material Admin [BETA]
 Material Design based administration interface for Laravel 5
+
+**THIS PACKAGE ISN'T READY.**
+**The full documentation should be provided only in a few months**
 
 
 # Installation
