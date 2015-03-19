@@ -7,8 +7,8 @@
 			<thead>
 				<th><input type="checkbox"></th>
 				<th>ID</th>
-				<th>Nome</th>
-				<th>Email</th>
+				<th>@lang('materialadmin::user.name')</th>
+				<th>@lang('materialadmin::user.email')</th>
 				<th></th>
 			</thead>
 			<tbody>
@@ -19,7 +19,7 @@
 					<td>{!! $user->name !!}</td>
 					<td>{!! $user->email !!}</td>
 					<td class="actions">
-						{!! link_to_route('user.edit', 'Modificar', [$user->id], ['role'=>'edit']) !!}
+						{!! link_to_route('user.edit', trans('materialadmin::user.edit'), [$user->id], ['role'=>'edit']) !!}
 					</td>
 				</tr>
 			@endforeach
@@ -30,7 +30,7 @@
 @stop
 
 @section('title')
-	Usuários
+	@lang('materialadmin::user.title')
 @stop
 
 @section('toolbar')

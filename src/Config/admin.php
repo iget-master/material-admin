@@ -17,15 +17,15 @@ return [
 
 	'menu' => [
 		'options' => [
-			'Home' => [
+			'home' => [
 				'route' => 'materialadmin.empty',
 				'icon' => 'md md-home'
 			],
-			'Usuários' => [
+			'users' => [
 				'route' => 'user.index',
 				'icon' => 'md md-people'
 			],
-			'Configurações' => [
+			'settings' => [
 				'route' => 'setting.index',
 				'icon' => 'md md-settings'
 			]

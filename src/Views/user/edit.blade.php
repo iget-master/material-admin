@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
-						{!! Form::label('name', 'Nome:') !!}
+						{!! Form::label('name', trans('materialadmin::user.name')) !!}
 						{!! Form::text('name', null, array('class' => 'form-control')) !!}
 						@if ($errors->has('name'))
 							{!! $errors->first('name') !!}	
@@ -19,7 +19,7 @@
 
 				<div class="col-md-4">
 					<div class="form-group">
-						{!! Form::label('surname', 'Sobrenome:') !!}
+						{!! Form::label('surname', trans('materialadmin::user.surname')) !!}
 						{!! Form::text('surname', null, array('class' => 'form-control')) !!}
 						@if ($errors->has('surname'))
 							{!! $errors->first('surname') !!}	
@@ -29,7 +29,7 @@
 
 				<div class="col-md-2">
 					<div class="form-group">
-						{!! Form::label('dob', 'Nascimento:') !!}
+						{!! Form::label('dob', trans('materialadmin::user.dob')) !!}
 						{!! Form::text('dob', getFormatedDate($user->dob), array('class' => 'form-control')) !!}
 						@if ($errors->has('dob'))
 							{!! $errors->first('dob') !!}	
@@ -40,7 +40,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="form-group">
-						{!! Form::label('email', 'Email:') !!}
+						{!! Form::label('email', trans('materialadmin::user.email')) !!}
 						{!! Form::text('email', null, array('class' => 'form-control', 'disabled'=>'true')) !!}
 						@if ($errors->has('email'))
 							{!! $errors->first('email') !!}	
@@ -50,7 +50,7 @@
 
 				<div class="col-md-3">
 					<div class="form-group">
-						{!! Form::label('permission_group_id', 'Grupo de permissões:') !!}
+						{!! Form::label('permission_group_id', trans('materialadmin::user.permission_group')) !!}
 						{!! Form::select('permission_group_id', $permission_groups, null, array('class' => 'form-control')) !!}
 						@if ($errors->has('permission_group_id'))
 							{!! $errors->first('permission_group_id') !!}	
@@ -60,7 +60,7 @@
 
 				<div class="col-md-3">
 					<div class="form-group">
-						{!! Form::label('language', 'Língua padrão:') !!}
+						{!! Form::label('language', trans('materialadmin::user.default_language')) !!}
 						{!! Form::select('language', IgetMaster\MaterialAdmin\Helper::getLanguagesSelectOptions(), null, array('class' => 'form-control')) !!}
 						@if ($errors->has('language'))
 							{!! $errors->first('language') !!}	
@@ -72,7 +72,7 @@
 				<div class="col-md-4">
 					<div class="checkbox">
 					    <label>
-							<input type="checkbox" role="toggle" data-target="#password-container"> Alterar senha
+							<input type="checkbox" role="toggle" data-target="#password-container"> trans('materialadmin::user.change_password')
 					    </label>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							{!! Form::label('password', 'Senha:') !!}
+							{!! Form::label('password', trans('materialadmin::user.password')) !!}
 							{!! Form::password('password', array('class' => 'form-control')) !!}
 							@if ($errors->has('password'))
 								{!! $errors->first('password') !!}	
@@ -92,7 +92,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							{!! Form::label('password_confirmation', 'Confirme a senha:') !!}
+							{!! Form::label('password_confirmation', trans('materialadmin::user.password_confirmation')) !!}
 							{!! Form::password('password_confirmation', array('class' => 'form-control')) !!}
 							@if ($errors->has('password_confirmation'))
 								{!! $errors->first('password_confirmation') !!}	
@@ -107,7 +107,7 @@
 @stop
 
 @section('title')
-	Modificar usuário
+	trans('materialadmin::user.edit_title')
 @stop
 
 @section('toolbar')

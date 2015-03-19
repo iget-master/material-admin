@@ -52,7 +52,9 @@
     {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
     {!! HTML::script('iget-master/material-admin/js/app/app.js') !!}
     {!! HTML::script('iget-master/material-admin/js/app/panel.js') !!}
-    {!! HTML::script('iget-master/material-admin/js/bootstrap.min.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap.min.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/vendor/bloodhound.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/vendor/typeahead.js') !!}
     @yield('script')
 
     @include('materialadmin::panel.modal');

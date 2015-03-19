@@ -28,6 +28,6 @@
 
 	<!-- Scripts are placed here -->
     {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-    {!! HTML::script('iget-master/material-admin/js/bootstrap.min.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap.min.js') !!}
 </body>
 </html>

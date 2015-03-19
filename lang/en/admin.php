@@ -2,7 +2,6 @@
 
 return [
 	
-
 	'create' => 'Create new',
 	'settings' => 'Settings',
 	'security' => 'Security',
