@@ -91,6 +91,10 @@ class SettingController extends BaseController {
 
 		$setting = $settings_items[$name];
 
+		if (!array_key_exists('show', $setting)) {
+			App::abort(404);
+		}
+
 		return view($setting['show'])->withSetting($setting)->withName($name);
 	}
 
