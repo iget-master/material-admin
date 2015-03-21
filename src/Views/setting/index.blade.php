@@ -36,7 +36,7 @@
 			</div>
 			@foreach($items as $item_name => $item)
 			@if ($item['group'] == $group['name'])
-				<div class="settings-item" data-setting-name="{!! $item_name !!}" data-create="{!! route('setting.create', [$item_name]) !!}">
+				<div class="settings-item" data-setting-name="{!! $item_name !!}" data-create="{!! route('setting.create', [$item_name]) !!}" data-show="{!! route('setting.show', [$item_name]) !!}">
 					@include($item['item'])
 				</div>
 			@endif
