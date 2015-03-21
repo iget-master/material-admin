@@ -82,9 +82,16 @@ class SettingController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($name)
 	{
+		$settings_items = Config::get('admin.settings_items');
+		if (!array_key_exists($name, $settings_items)) {
+			App::abort(404);
+		}
 
+		$setting = $settings_items[$name];
+
+		return view($setting['show'])->withSetting($setting)->withName($name);
 	}
 
 
