@@ -63,4 +63,14 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
     		return false;
     	}
     }
+
+    public function messages()
+    {
+    	return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','to_user_id');
+    }
+
+    public function sentMessages()
+    {
+    	return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','from_user_id');
+    }
 }
