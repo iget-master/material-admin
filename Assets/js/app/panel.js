@@ -26,6 +26,7 @@ function ModalForm(url) {
 		$("#header .user-dropdown").toggleClass('open');
 	});
 
+
 	// Form submit button
 	$(document).on('click', '[role="submit"]', function(e) {
 		var form = $($(e.currentTarget).data('form'));
