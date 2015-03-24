@@ -3,7 +3,6 @@
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
 use IgetMaster\MaterialAdmin\Models\Message;
-// use IgetMaster\MaterialAdmin\Models\PermissionGroup;
 
 class MessageController extends BaseController {
 
@@ -18,7 +17,7 @@ class MessageController extends BaseController {
 	 */
 	public function index()
 	{
-		return view('materialadmin::message.index')->with('messages', Message::where('to_user_id', \Auth::id())->paginate(15));
+		return view('materialadmin::message.index')->with('messages', Message::where('to_user_id', \Auth::id())->orderBy('created_at')->paginate(15));
 	}
 
 
@@ -50,15 +49,23 @@ class MessageController extends BaseController {
 			return \Redirect::back()->withInput()->withErrors($validator);
 		}
 
-		$message = Message::create([
-			"to_user_id" => \Input::get('to_user_id'),
-			"from_user_id" => \Auth::id(),
-			"subject" => \Input::get('subject'),
-			"message" => \Input::get('message'),
-			"read" => "0",
-			"created_at" => date('Y-m-d G:i:s'),
-			"updated_at" => ""
-		]);
+		// $message = Message::create([
+		// 	"to_user_id" => \Input::get('to_user_id'),
+		// 	"from_user_id" => \Auth::id(),
+		// 	"subject" => \Input::get('subject'),
+		// 	"message" => \Input::get('message'),
+		// 	"read" => "0",
+		// 	"created_at" => date('Y-m-d G:i:s'),
+		// 	"updated_at" => ""
+		// ]);
+
+		$message = new Message;
+		$message->to_user_id = \Input::get('to_user)id');
+		$message->from_user_id = \Auth::id();
+		$message->subject = \Input::get('subject');
+		$message->message = \Input::get('message');
+		$message->created_at = date('Y-m-d G:i:s');
+		$message->save();
 
 		return \Redirect::route('message.index');
 	}
@@ -105,7 +112,17 @@ class MessageController extends BaseController {
 	 */
 	public function destroy($id)
 	{
+		$message = Message::findOrFail($id);
+		$messages = new MessageBag();
 
+		if ($message->delete()) {
+			$messages->add('success', 'Mensagem excluída com sucesso!');
+			return \Redirect::route('message.index')->with('messages', $messages);
+		} else {
+			$messages->add('danger', 'Não foi possível excluir a mensagem!');
+		}
+
+		return \Redirect::back()->withInput()->with('messages', $messages);
 	}
 
 	/**
@@ -115,7 +132,60 @@ class MessageController extends BaseController {
 	 */
 	public function multiple_destroy()
 	{
+		$ids = \Input::get('id');
+		dd($ids);
+		$success = [];
+		$error = [];
+		$denied = [];
+		$messages = new MessageBag();
 		
+		foreach ($ids as $id) {
+			$message = Message::findOrFail($id);
+
+			if (\Auth::user()->level >= $message->level) {
+				if ($message->delete()) {
+					$success[] = $id;
+				} else {
+					$error[] = $id;
+				}
+			} else {
+				$denied[] = $id;
+			}
+		}
+
+		/*
+			Agrupa mensagens de sucesso 
+		*/
+			
+		if (count($success) > 0) {
+			$message = "";
+			foreach ($success as $id) {
+				$message .= $id . ", ";
+			}
+			$message = substr($message, 0, -2);
+			if (count($success) == 1) {
+				$message = "Mensagem #" . $message . " excluída com sucesso.";
+			} else if (count($success) > 1) {
+				$message = "Mensagens #" . $message . " excluídas com sucesso.";
+			}
+			$messages->add('success', $message);
+		}
+
+		if (count($error) > 0) {
+			$message = "";
+			foreach ($error as $id) {
+				$message .= $id . ", ";
+			}
+			$message = substr($message, 0, -2);
+			if (count($error) == 1) {
+				$message = "Não foi possível excluir a mensagem #" . $message . ".";
+			} else if (count($error) > 1) {
+				$message = "Não foi possível excluir as mensagens #" . $message . ".";
+			}
+			$messages->add('danger', $message);
+		}	
+
+		return \Redirect::back()->withInput()->with('messages', $messages);
 	}
 
 }

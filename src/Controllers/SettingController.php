@@ -189,26 +189,6 @@ class SettingController extends BaseController {
 		}
 
 		return \Redirect::route('setting.index');
-
-		// $user = User::findOrFail($id);
-		// $messages = new MessageBag();
-
-		// if (\Auth::user()->id == $user->id) {
-		// 	$messages->add('danger', 'Você não pode excluir o próprio usuário.');
-		// } else {
-		// 	if (\Auth::user()->level >= $user->level) {
-		// 		if ($user->delete()) {
-		// 			$messages->add('success', 'Usuário excluído com sucesso!');
-		// 			return \Redirect::route('user.index')->with('messages', $messages);
-		// 		} else {
-		// 			$messages->add('danger', 'Não foi possível excluir usuário!');
-		// 		}
-		// 	} else {
-		// 		$messages->add('danger', 'Você não possui permissão para excluir esse usuário.');
-		// 	}
-		// }
-
-		// return \Redirect::back()->withInput()->with('messages', $messages);
 	}
 
 	/**
