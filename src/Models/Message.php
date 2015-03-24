@@ -25,5 +25,13 @@ class Message extends Eloquent {
 	{
 		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'from_user_id');
 	}
+	static public function getUsers() {
+		$users = User::all();
+		$options = [];
+		foreach ($users as $key => $user) {
+			$options[$user->id] = $user->name;
+		}
+		return $options;
+	}
 
 }

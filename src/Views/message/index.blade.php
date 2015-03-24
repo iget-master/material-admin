@@ -6,14 +6,25 @@
 		<table id="users_table" class="index-table table table-condensed" >
 			<thead>
 				<th><input type="checkbox"></th>
-				<th>Remetente</th>
-				<th>Assunto</th>
-				<th>Data</th>
+				<th>
+					@lang('materialadmin::message.sender')
+				</th>
+				<th>
+					@lang('materialadmin::message.subject')
+				</th>
+				<th>
+					@lang('materialadmin::message.date')
+				</th>
 				<th></th>
 			</thead>
 			<tbody>
 			@foreach ($messages as $message)
-				<tr data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
+				@if($message->read == 0)
+					<tr class='unread' data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
+				@else
+					<tr data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
+				@endif
+
 					<td><input type="checkbox"></td>
 					@if(is_null($message->from_user_id))
 						<td>Mensagem do Sistema</td>
@@ -22,7 +33,7 @@
 					@endif
 					<td>{!! $message->subject !!}</td>
 					<td>{!! date('d/m/Y', strtotime($message->created_at)) !!}</td>
-					<td class="actions">{!! link_to_route('message.show', "Abrir", [$message->id], ['role'=>'edit']) !!}</td>
+					<td class="actions">{!! link_to_route('message.show', trans('materialadmin::message.open'), [$message->id], ['role'=>'edit']) !!}</td>
 				</tr>
 
 			@endforeach
@@ -33,11 +44,11 @@
 @stop
 
 @section('title')
-	Messages
+	@lang('materialadmin::message.title')
 @stop
 
 @section('toolbar')
-	<a href="/message/create" class="btn btn-round primary"><i class="md md-add"></i></a>
+	<a href="/message/create" class="btn btn-round primary"><i class="md md-send"></i></a>
     {!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.multiple_destroy'])) !!}
 		<button type="submit" class="btn btn-round btn-sm btn-bulk danger"><i class="md md-delete"></i></button>
 	{!! Form::close() !!}

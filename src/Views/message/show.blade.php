@@ -4,25 +4,38 @@
 	@include('materialadmin::panel.alerts')
 	<div class="content-wrapper">
 			
-		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
 				<div class="form-group">
-					<strong>Remetente</strong>
+					<strong>
+						@lang('materialadmin::message.sender')
+					</strong>
 					{!! Form::text('form_user', $message->sender->name, ['class'=>'form-control', 'disabled']) !!}
 				</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 				<div class="form-group">
-					<strong>Horário</strong>
-					{!! Form::text('form_user', date('d/m/Y G:i:s', strtotime($message->created_at)), ['class'=>'form-control', 'disabled']) !!}
+					<strong>
+						@lang('materialadmin::message.date')
+					</strong>
+					{!! Form::text('form_user', date('d/m/Y', strtotime($message->created_at)), ['class'=>'form-control', 'disabled']) !!}
+				</div>
+				</div>
+				<div class="col-md-3">
+				<div class="form-group">
+					<strong>
+						@lang('materialadmin::message.time')
+					</strong>
+					{!! Form::text('form_user', date('G:i:s', strtotime($message->created_at)), ['class'=>'form-control', 'disabled']) !!}
 				</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
 				<div class="form-group">
-					<strong>Assunto</strong>
+					<strong>
+						@lang('materialadmin::message.subject')
+					</strong>
 					{!! Form::text('subject', $message->subject, ['class'=>'form-control', 'disabled']) !!}
 				</div>
 				</div>
@@ -30,17 +43,18 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="form-group">
-						<strong>Mensagem</strong>
+						<strong>
+							@lang('materialadmin::message.message')
+						</strong>
 						{!! Form::textarea('message', $message->message, ['class'=>'form-control', 'rows'=>'5', 'disabled']) !!}
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 @stop
 
 @section('title')
-	Messages
+	@lang('materialadmin::message.show_title')
 @stop
 
 @section('toolbar')

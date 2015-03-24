@@ -28,7 +28,7 @@
         <div class="toolbar">
             <a href="/message/">
             <button type='submit' class="btn btn-lg btn-transparent">
-                <i class="md md-message md-lg"></i>
+                <i class="md md-mail md-lg"></i>
             </button></a>
 
             <button role="user-toggle" class="btn btn-lg btn-transparent">
