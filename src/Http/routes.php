@@ -30,7 +30,6 @@ Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middl
 	Route::resource('message', "MessageController",  array('except' => array('show')));
 	Route::delete('/message/multiple_destroy', array('as' => 'message.multiple_destroy', 'uses' => 'MessageController@multiple_destroy'));
 
-
 	Route::get('/setting', array('as' => 'setting.index', 'uses' => 'SettingController@index'));
 	Route::get('/setting/{setting}', array('as' => 'setting.show', 'uses' => 'SettingController@show'));
 	Route::get('/setting/{setting}/edit/{id}', array('as' => 'setting.edit', 'uses' => 'SettingController@edit'));

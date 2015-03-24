@@ -40,7 +40,7 @@ class MessageController extends BaseController {
 	public function store()
 	{
 		$validator = \Validator::make(\Input::all(),[
-			'to_user_id' => 'required|exists:user,id',
+			'to_user_id' => 'required|exists:users,id',
 			'subject' => 'required',
 			'message' => 'required'
 		]);
@@ -49,23 +49,13 @@ class MessageController extends BaseController {
 			return \Redirect::back()->withInput()->withErrors($validator);
 		}
 
-		// $message = Message::create([
-		// 	"to_user_id" => \Input::get('to_user_id'),
-		// 	"from_user_id" => \Auth::id(),
-		// 	"subject" => \Input::get('subject'),
-		// 	"message" => \Input::get('message'),
-		// 	"read" => "0",
-		// 	"created_at" => date('Y-m-d G:i:s'),
-		// 	"updated_at" => ""
-		// ]);
-
-		$message = new Message;
-		$message->to_user_id = \Input::get('to_user)id');
-		$message->from_user_id = \Auth::id();
-		$message->subject = \Input::get('subject');
-		$message->message = \Input::get('message');
-		$message->created_at = date('Y-m-d G:i:s');
-		$message->save();
+		$message = Message::create([
+			"to_user_id" => \Input::get('to_user_id'),
+			"from_user_id" => \Auth::id(),
+			"subject" => \Input::get('subject'),
+			"message" => \Input::get('message'),
+			"created_at" => date('Y-m-d G:i:s')
+		]);
 
 		return \Redirect::route('message.index');
 	}
@@ -112,28 +102,8 @@ class MessageController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$message = Message::findOrFail($id);
-		$messages = new MessageBag();
 
-		if ($message->delete()) {
-			$messages->add('success', 'Mensagem excluída com sucesso!');
-			return \Redirect::route('message.index')->with('messages', $messages);
-		} else {
-			$messages->add('danger', 'Não foi possível excluir a mensagem!');
-		}
-
-		return \Redirect::back()->withInput()->with('messages', $messages);
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @return Response
-	 */
-	public function multiple_destroy()
-	{
 		$ids = \Input::get('id');
-		dd($ids);
 		$success = [];
 		$error = [];
 		$denied = [];

@@ -26,7 +26,7 @@
             <span>@yield('title')</span>
         </div>
         <div class="toolbar">
-        {{-- {!! Form::open(['route'=>'message.index']) !!} --}}
+        {!! Form::open(['route'=>'message.index']) !!}
             <button role="messages" type='submit' class="btn btn-lg btn-transparent">
                 <i class="md md-message md-lg"></i>
             </button>

@@ -21,4 +21,9 @@ class Message extends Eloquent {
 		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'from_user_id');
 	}
 
+	public function user()
+	{
+		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'from_user_id');
+	}
+
 }

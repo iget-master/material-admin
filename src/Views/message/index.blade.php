@@ -17,7 +17,7 @@
 					@if(is_null($message->from_user_id))
 						<td>Mensagem do Sistema</td>
 					@else
-						<td>{!! $message->from_user_id !!}</td>
+						<td>{!! $message->user->name !!}</td>
 					@endif
 					<td>{!! $message->subject !!}</td>
 					<td>{!! date('d/m/Y', strtotime($message->created_at)) !!}</td>
@@ -36,7 +36,7 @@
 
 @section('toolbar')
 	<a href="message/create" class="btn btn-round primary"><i class="md md-add"></i></a>
-    {!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => array('message.multiple_destroy'))) !!}
+    {!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.destroy'])) !!}
 		<button type="submit" class="btn btn-round btn-sm btn-bulk danger"><i class="md md-delete"></i></button>
 	{!! Form::close() !!}
 @stop
