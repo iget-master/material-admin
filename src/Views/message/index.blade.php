@@ -37,7 +37,7 @@
 @stop
 
 @section('toolbar')
-	<a href="message/create" class="btn btn-round primary"><i class="md md-add"></i></a>
+	<a href="/message/create" class="btn btn-round primary"><i class="md md-add"></i></a>
     {!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.multiple_destroy'])) !!}
 		<button type="submit" class="btn btn-round btn-sm btn-bulk danger"><i class="md md-delete"></i></button>
 	{!! Form::close() !!}
