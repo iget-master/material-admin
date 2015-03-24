@@ -102,58 +102,16 @@ class MessageController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-
-		$ids = \Input::get('id');
-		$success = [];
-		$error = [];
-		$denied = [];
+		$message = Message::findOrFail($id);
 		$messages = new MessageBag();
+
+		if ($message->delete()) {
+			$messages->add('success', 'Mensagem excluída com sucesso!');
+			return \Redirect::route('message.index')->with('messages', $messages);
+		} else {
+			$messages->add('danger', 'Não foi possível excluir a mensagem!');
+		}
 		
-		foreach ($ids as $id) {
-			$message = Message::findOrFail($id);
-
-			if (\Auth::user()->level >= $message->level) {
-				if ($message->delete()) {
-					$success[] = $id;
-				} else {
-					$error[] = $id;
-				}
-			} else {
-				$denied[] = $id;
-			}
-		}
-
-		/*
-			Agrupa mensagens de sucesso 
-		*/
-			
-		if (count($success) > 0) {
-			$message = "";
-			foreach ($success as $id) {
-				$message .= $id . ", ";
-			}
-			$message = substr($message, 0, -2);
-			if (count($success) == 1) {
-				$message = "Mensagem #" . $message . " excluída com sucesso.";
-			} else if (count($success) > 1) {
-				$message = "Mensagens #" . $message . " excluídas com sucesso.";
-			}
-			$messages->add('success', $message);
-		}
-
-		if (count($error) > 0) {
-			$message = "";
-			foreach ($error as $id) {
-				$message .= $id . ", ";
-			}
-			$message = substr($message, 0, -2);
-			if (count($error) == 1) {
-				$message = "Não foi possível excluir a mensagem #" . $message . ".";
-			} else if (count($error) > 1) {
-				$message = "Não foi possível excluir as mensagens #" . $message . ".";
-			}
-			$messages->add('danger', $message);
-		}	
 
 		return \Redirect::back()->withInput()->with('messages', $messages);
 	}

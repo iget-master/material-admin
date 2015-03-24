@@ -45,4 +45,7 @@
 
 @section('toolbar')
 	<a href="/message" class="btn btn-round primary warning"><i class="md md-arrow-back"></i></a>
+	{!! Form::open(array('method'=>'DELETE', 'route' => array('message.destroy', $message->id))) !!}
+		<button type="submit" class="btn btn-round btn-sm danger"><i class="md md-delete"></i></button>
+	{!! Form::close() !!}
 @stop

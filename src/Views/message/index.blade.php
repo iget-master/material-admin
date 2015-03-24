@@ -13,7 +13,7 @@
 			</thead>
 			<tbody>
 			@foreach ($messages as $message)
-				<tr data-id="{!! $message->id !!}" data-delete-url="{!! route('message.multiple_destroy', [$message->id], false) !!}">
+				<tr data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
 					<td><input type="checkbox"></td>
 					@if(is_null($message->from_user_id))
 						<td>Mensagem do Sistema</td>
