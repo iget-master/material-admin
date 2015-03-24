@@ -9,18 +9,20 @@
 				<th>Remetente</th>
 				<th>Assunto</th>
 				<th>Data</th>
+				<th></th>
 			</thead>
 			<tbody>
 			@foreach ($messages as $message)
-				<tr data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
+				<tr data-id="{!! $message->id !!}" data-delete-url="{!! route('message.multiple_destroy', [$message->id], false) !!}">
 					<td><input type="checkbox"></td>
 					@if(is_null($message->from_user_id))
 						<td>Mensagem do Sistema</td>
 					@else
-						<td>{!! $message->user->name !!}</td>
+						<td>{!! $message->sender->name !!}</td>
 					@endif
 					<td>{!! $message->subject !!}</td>
 					<td>{!! date('d/m/Y', strtotime($message->created_at)) !!}</td>
+					<td class="actions">{!! link_to_route('message.show', "Abrir", [$message->id], ['role'=>'edit']) !!}</td>
 				</tr>
 
 			@endforeach
@@ -36,7 +38,7 @@
 
 @section('toolbar')
 	<a href="message/create" class="btn btn-round primary"><i class="md md-add"></i></a>
-    {!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.destroy'])) !!}
+    {!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.multiple_destroy'])) !!}
 		<button type="submit" class="btn btn-round btn-sm btn-bulk danger"><i class="md md-delete"></i></button>
 	{!! Form::close() !!}
 @stop

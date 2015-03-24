@@ -30,7 +30,7 @@
             <button role="messages" type='submit' class="btn btn-lg btn-transparent">
                 <i class="md md-message md-lg"></i>
             </button>
-        {{-- {!! Form::close() !!} --}}
+        {!! Form::close() !!}
             <button role="user-toggle" class="btn btn-lg btn-transparent">
                 <i class="md md-person md-lg"></i>
             </button>

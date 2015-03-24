@@ -21,7 +21,7 @@ class Message extends Eloquent {
 		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'from_user_id');
 	}
 
-	public function user()
+	public function sender()
 	{
 		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'from_user_id');
 	}

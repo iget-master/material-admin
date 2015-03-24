@@ -68,6 +68,7 @@ class MessageController extends BaseController {
 	 */
 	public function show($id)
 	{
+		return view('materialadmin::message.show')->with('message', Message::findOrFail($id));
 	}
 
 
@@ -79,7 +80,6 @@ class MessageController extends BaseController {
 	 */
 	public function edit($id)
 	{
-
 	}
 
 	/**
@@ -103,6 +103,69 @@ class MessageController extends BaseController {
 	public function destroy($id)
 	{
 
+		$ids = \Input::get('id');
+		$success = [];
+		$error = [];
+		$denied = [];
+		$messages = new MessageBag();
+		
+		foreach ($ids as $id) {
+			$message = Message::findOrFail($id);
+
+			if (\Auth::user()->level >= $message->level) {
+				if ($message->delete()) {
+					$success[] = $id;
+				} else {
+					$error[] = $id;
+				}
+			} else {
+				$denied[] = $id;
+			}
+		}
+
+		/*
+			Agrupa mensagens de sucesso 
+		*/
+			
+		if (count($success) > 0) {
+			$message = "";
+			foreach ($success as $id) {
+				$message .= $id . ", ";
+			}
+			$message = substr($message, 0, -2);
+			if (count($success) == 1) {
+				$message = "Mensagem #" . $message . " excluída com sucesso.";
+			} else if (count($success) > 1) {
+				$message = "Mensagens #" . $message . " excluídas com sucesso.";
+			}
+			$messages->add('success', $message);
+		}
+
+		if (count($error) > 0) {
+			$message = "";
+			foreach ($error as $id) {
+				$message .= $id . ", ";
+			}
+			$message = substr($message, 0, -2);
+			if (count($error) == 1) {
+				$message = "Não foi possível excluir a mensagem #" . $message . ".";
+			} else if (count($error) > 1) {
+				$message = "Não foi possível excluir as mensagens #" . $message . ".";
+			}
+			$messages->add('danger', $message);
+		}	
+
+		return \Redirect::back()->withInput()->with('messages', $messages);
+	}
+
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @return Response
+	 */
+	public function multiple_destroy()
+	{
 		$ids = \Input::get('id');
 		$success = [];
 		$error = [];
