@@ -68,11 +68,13 @@ class MessageController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$msg = Message::findOrFail($id);
-		$msg->read = 1;
-		$msg->save();
+		$message = Message::findOrFail($id);
+		if ($message->read == 0) {
+			$message->read = 1;
+			$message->save();
+		}
 
-		return view('materialadmin::message.show')->with('message', Message::findOrFail($id));
+		return view('materialadmin::message.show')->with('message', $message);
 	}
 
 

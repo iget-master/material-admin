@@ -19,11 +19,8 @@
 			</thead>
 			<tbody>
 			@foreach ($messages as $message)
-				@if($message->read == 0)
-					<tr class='unread' data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
-				@else
-					<tr data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
-				@endif
+				
+					<tr class='{!! ($message->read == 0)?'unread':null !!}' data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
 
 					<td><input type="checkbox"></td>
 					@if(is_null($message->from_user_id))
