@@ -74,7 +74,7 @@ class SettingController extends BaseController {
 		$this->fill_setting_relationships($setting, $model);
 
 		if (Input::has('redirect_back_to')) {
-			return \Redirect::url(Input::get('redirect_back_to'));
+			return redirect(Input::get('redirect_back_to'));
 		} else {
 			return \Redirect::route('setting.index');
 		}
@@ -161,7 +161,7 @@ class SettingController extends BaseController {
 		$this->fill_setting_relationships($setting, $model);
 
 		if (Input::has('redirect_back_to')) {
-			return \Redirect::url(Input::get('redirect_back_to'));
+			return redirect(Input::get('redirect_back_to'));
 		} else {
 			return \Redirect::route('setting.index');
 		}
@@ -196,7 +196,11 @@ class SettingController extends BaseController {
 			}
 		}
 
-		return \Redirect::route('setting.index');
+		if (Input::has('redirect_back')) {
+			return \Redirect::back();
+		} else {
+			return \Redirect::route('setting.index');
+		}
 	}
 
 	/**
