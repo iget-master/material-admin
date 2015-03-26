@@ -18,20 +18,12 @@
 					<strong>
 						@lang('materialadmin::message.date')
 					</strong>
-					{!! Form::text('form_user', date('d/m/Y', strtotime($message->created_at)), ['class'=>'form-control', 'disabled']) !!}
-				</div>
-				</div>
-				<div class="col-md-3">
-				<div class="form-group">
-					<strong>
-						@lang('materialadmin::message.time')
-					</strong>
-					{!! Form::text('form_user', date('G:i:s', strtotime($message->created_at)), ['class'=>'form-control', 'disabled']) !!}
+					{!! Form::text('form_user', getFormatedDateTime($message->created_at), ['class'=>'form-control', 'disabled']) !!}
 				</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 				<div class="form-group">
 					<strong>
 						@lang('materialadmin::message.subject')
@@ -41,7 +33,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-12">
 					<div class="form-group">
 						<strong>
 							@lang('materialadmin::message.message')
