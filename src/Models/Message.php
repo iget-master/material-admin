@@ -1,8 +1,11 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use \Eloquent;
+use Carbon\Carbon;
 
 class Message extends Eloquent {
+
+
 
 	/**
 	 * The database table used by the model.
@@ -10,6 +13,8 @@ class Message extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'messages';
+
+	public $timestamps = true;
 
 	protected $fillable = array('to_user_id', 'from_user_id', 'subject', 'message', 'read', 'created_at', 'updated_at');
 

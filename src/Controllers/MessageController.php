@@ -69,6 +69,7 @@ class MessageController extends BaseController {
 	public function show($id)
 	{
 		$message = Message::findOrFail($id);
+
 		if ($message->read == 0) {
 			$message->read = 1;
 			$message->save();

@@ -29,7 +29,7 @@
 						<td>{!! $message->sender->name !!}</td>
 					@endif
 					<td>{!! $message->subject !!}</td>
-					<td>{!! date('d/m/Y', strtotime($message->created_at)) !!}</td>
+					<td>{!! getFormatedDateTime($message->created_at) !!}</td>
 					<td class="actions">{!! link_to_route('message.show', trans('materialadmin::message.open'), [$message->id], ['role'=>'edit']) !!}</td>
 				</tr>
 

@@ -8,9 +8,9 @@ return [
 	'to_user' => 'Destination',
 	'subject' => 'Subject',
 	'message' => 'Message',
-	'date' => 'Date',
+	'date' => 'Sent at',
 	'time' => 'Time',
-	'sender' => 'Sender',
+	'sender' => 'Sent by',
 	'open' => 'Open'
 	
 ];
