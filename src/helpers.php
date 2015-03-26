@@ -9,3 +9,11 @@ function getFormatedDate($date) {
 		return '';
 	}
 }
+
+function getFormatedDateTime($date) {
+	if ($date instanceof Carbon) {
+		return $date->format('d/m/Y G:i:s');
+	} else {
+		return '';
+	}
+}

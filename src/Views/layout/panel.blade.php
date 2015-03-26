@@ -13,7 +13,6 @@
     {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
     {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
     {!! HTML::style('iget-master/material-admin/css/admin.css') !!}
-    {!! HTML::style('css/app.css') !!}
 </head>
 <body>
     <!-- Panel Header bar -->
@@ -27,6 +26,13 @@
             <span>@yield('title')</span>
         </div>
         <div class="toolbar">
+            <a href="/message/" id="user-messages" class="btn btn-lg btn-transparent">
+                <i class="md md-mail md-lg"></i>
+                @if ($unread_count = Auth::user()->unreadMessages->count())
+                    <span class="count">{!! $unread_count !!}</span>
+                @endif
+            </a>
+
             <button role="user-toggle" class="btn btn-lg btn-transparent">
                 <i class="md md-person md-lg"></i>
             </button>
