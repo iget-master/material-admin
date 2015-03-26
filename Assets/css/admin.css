@@ -165,6 +165,21 @@ body {
 #header div.toolbar {
   float: right;
 }
+#header div.toolbar #user-messages {
+  position: relative;
+}
+#header div.toolbar #user-messages span.count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 18px;
+  width: 18px;
+  font-size: 10px;
+  line-height: 18px;
+  border-radius: 50%;
+  background-color: #d50000;
+  padding-left: 1px;
+}
 #header span {
   line-height: 43px;
 }
@@ -504,4 +519,7 @@ div.modal div.modal-content div.modal-loading {
 }
 #settings-groups .settings-group .settings-item .content ul li:hover {
   background-color: #f5f5f5;
+}
+#messages-table tr.unread td:not(.actions) {
+  font-weight: 600;
 }

@@ -17,7 +17,7 @@ class MessageController extends BaseController {
 	 */
 	public function index()
 	{
-		return view('materialadmin::message.index')->with('messages', Message::where('to_user_id', \Auth::id())->orderBy('created_at')->paginate(15));
+		return view('materialadmin::message.index')->with('messages', Message::where('to_user_id', \Auth::id())->orderBy('created_at', 'desc')->paginate(15));
 	}
 
 

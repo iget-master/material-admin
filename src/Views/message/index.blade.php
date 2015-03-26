@@ -3,7 +3,7 @@
 @section('content')
 	@include('materialadmin::panel.alerts')
 	<div class="table-wrapper">
-		<table id="users_table" class="index-table table table-condensed" >
+		<table id="messages-table" class="index-table table table-condensed" >
 			<thead>
 				<th><input type="checkbox"></th>
 				<th>
