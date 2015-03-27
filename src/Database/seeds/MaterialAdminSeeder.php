@@ -15,18 +15,6 @@ class MaterialAdminSeeder extends Seeder {
 	 */
 	public function run()
 	{	
-		/* For security reasons, ask for user confirmation before do this seeding */
-		echo "Do you want to truncate your tables before seed? (Type \"yes\" to confirm): ";
-		$stdin = trim(fgets(STDIN));
-		if (strtolower($stdin) == 'yes') {
-			DB::statement("SET foreign_key_checks=0");
-			DB::table('users')->truncate();
-			DB::table('roles')->truncate();
-			DB::table('permission_groups')->truncate();
-			DB::table('permission_group_role')->truncate();
-			DB::statement("SET foreign_key_checks=1");
-		}
-
 		$administrator = PermissionGroup::create([
 				'name'=>'Administrator'
 			]);
