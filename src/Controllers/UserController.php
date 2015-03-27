@@ -5,7 +5,20 @@ use Illuminate\Support\MessageBag;
 use IgetMaster\MaterialAdmin\Models\User;
 use IgetMaster\MaterialAdmin\Models\PermissionGroup;
 
-class UserController extends BaseController {
+class UserController extends RestController {
+	/**
+	 * The model class name used by the controller.
+	 *
+	 * @var string
+	 */
+	public $model = "IgetMaster\MaterialAdmin\Models\User";
+
+	/**
+	 * The resource name used in routes
+	 *
+	 * @var string
+	 */
+	public $resource = "user";
 
 	public function __construct()
     {
@@ -174,85 +187,4 @@ class UserController extends BaseController {
 
 		return \Redirect::back()->withInput()->with('messages', $messages);
 	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @return Response
-	 */
-	public function multiple_destroy()
-	{
-		$ids = \Input::get('id');
-		$success = [];
-		$error = [];
-		$denied = [];
-		$messages = new MessageBag();
-		
-		foreach ($ids as $id) {
-			$user = User::findOrFail($id);
-
-			if (\Auth::user()->id == $user->id) {
-				$messages->add('danger', 'Você não pode excluir o próprio usuário.');
-			} else {
-				if (\Auth::user()->level >= $user->level) {
-					if ($user->delete()) {
-						$success[] = $id;
-					} else {
-						$error[] = $id;
-					}
-				} else {
-					$denied[] = $id;
-				}
-			}
-		}
-
-		/*
-			Agrupa mensagens de sucesso 
-		*/
-			
-		if (count($success) > 0) {
-			$message = "";
-			foreach ($success as $id) {
-				$message .= $id . ", ";
-			}
-			$message = substr($message, 0, -2);
-			if (count($success) == 1) {
-				$message = "Usuário #" . $message . " excluído com sucesso.";
-			} else if (count($success) > 1) {
-				$message = "Usuários #" . $message . " excluídos com sucesso.";
-			}
-			$messages->add('success', $message);
-		}
-
-		if (count($error) > 0) {
-			$message = "";
-			foreach ($error as $id) {
-				$message .= $id . ", ";
-			}
-			$message = substr($message, 0, -2);
-			if (count($error) == 1) {
-				$message = "Não foi possível excluir o usuário #" . $message . ".";
-			} else if (count($error) > 1) {
-				$message = "Não foi possível excluir os usuários #" . $message . ".";
-			}
-			$messages->add('danger', $message);
-		}
-
-		if (count($denied) > 0) {
-			$message = "";
-			foreach ($denied as $id) {
-				$message .= $id . ", ";
-			}
-			$message = substr($message, 0, -2);
-			if (count($denied) == 1) {
-				$message = "Você não possui permissão para excluir o usuário #" . $message . ".";
-			} else if (count($denied) > 1) {
-				$message = "Você não possui permissão para excluir os usuários #" . $message . ".";
-			}
-			$messages->add('danger', $message);
-		}
-
-		return \Redirect::back()->withInput()->with('messages', $messages);
-	}
-
 }

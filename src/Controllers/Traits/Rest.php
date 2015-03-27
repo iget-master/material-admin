@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Traits;
+<?php namespace IgetMaster\MaterialAdmin\Controllers\Traits;
 
 use Illuminate\Support\MessageBag;
 
