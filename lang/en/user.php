@@ -14,7 +14,8 @@ return [
 	'change_password' => 'Change password',
 	'password' => 'Password',
 	'password_confirmation' => 'Password confirmation',
-	'' => '',
-	'' => '',
-	'email' => 'Email'
+	'email' => 'Email',
+
+	'destroy_success' => 'User removed successfully.|Users removed successfully.',
+	'destroy_error' => 'Could not remove user.|Could not remove users.'
 ];

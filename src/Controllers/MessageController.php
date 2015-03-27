@@ -19,6 +19,13 @@ class MessageController extends RestController {
 	 */
 	public $resource = "message";
 
+	/**
+	 * Translation namespace
+	 *
+	 * @var string
+	 */
+	public $translation_namespace = "materialadmin::message";
+
 	public function __construct()
     {
     }

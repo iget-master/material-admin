@@ -11,6 +11,8 @@ return [
 	'date' => 'Sent at',
 	'time' => 'Time',
 	'sender' => 'Sent by',
-	'open' => 'Open'
+	'open' => 'Open',
 	
+	'destroy_success' => 'Message removed successfully.|Messages removed successfully.',
+	'destroy_error' => 'Could not remove message.|Could not remove messages.'
 ];
