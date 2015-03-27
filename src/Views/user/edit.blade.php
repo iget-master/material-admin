@@ -72,7 +72,8 @@
 				<div class="col-md-4">
 					<div class="checkbox">
 					    <label>
-							<input type="checkbox" role="toggle" data-target="#password-container"> trans('materialadmin::user.change_password')
+							<input type="checkbox" role="toggle" data-target="#password-container"> 
+							@lang('materialadmin::user.change_password')
 					    </label>
 					</div>
 				</div>
@@ -107,7 +108,7 @@
 @stop
 
 @section('title')
-	trans('materialadmin::user.edit_title')
+	@lang('materialadmin::user.edit_title')
 @stop
 
 @section('toolbar')
