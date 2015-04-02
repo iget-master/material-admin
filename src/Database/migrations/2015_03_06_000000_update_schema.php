@@ -39,7 +39,7 @@ class UpdateSchema extends Migration {
 		{
 			$table->dropForeign('users_permission_group_id_foreign');
 			$table->dropColumn('surname');
-			$table->dropColumn('permission_group');
+			$table->dropColumn('permission_group_id');
 			$table->dropColumn('dob');
 			$table->dropColumn('language');
 		});
