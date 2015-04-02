@@ -1,9 +1,10 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use \Eloquent;
+use IgetMaster\MaterialAdmin\Models\Traits\SelectableTrait;
 
 class PermissionGroup extends Eloquent {
-
+	use SelectableTrait;
 	/**
 	 * The database table used by the model.
 	 *
@@ -25,13 +26,13 @@ class PermissionGroup extends Eloquent {
 		return $this->belongsToMany('IgetMaster\MaterialAdmin\Models\Role');
 	}
 
-	static public function getSelectOptions() 
-	{
-		$options = [];
-		foreach( PermissionGroup::all() as $permission_group) {
-			$options[$permission_group->id] = $permission_group->name;
-		}
+	// static public function getSelectOptions() 
+	// {
+	// 	$options = [];
+	// 	foreach( PermissionGroup::all() as $permission_group) {
+	// 		$options[$permission_group->id] = $permission_group->name;
+	// 	}
 
-		return $options;
-	}
+	// 	return $options;
+	// }
 }
