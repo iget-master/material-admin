@@ -13,6 +13,7 @@
     {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
     {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
     {!! HTML::style('iget-master/material-admin/css/admin.css') !!}
+    {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
     {!! HTML::style('css/app.css') !!}
 </head>
 <body>
@@ -60,6 +61,7 @@
     {!! HTML::script('iget-master/material-admin/js/app/app.js') !!}
     {!! HTML::script('iget-master/material-admin/js/app/panel.js') !!}
     {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap.min.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap-datetimepicker.min') !!}
     {!! HTML::script('iget-master/material-admin/js/vendor/bloodhound.js') !!}
     {!! HTML::script('iget-master/material-admin/js/vendor/typeahead.js') !!}
     @yield('script')
