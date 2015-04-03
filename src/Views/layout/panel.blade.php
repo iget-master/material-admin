@@ -61,7 +61,7 @@
     {!! HTML::script('iget-master/material-admin/js/app/app.js') !!}
     {!! HTML::script('iget-master/material-admin/js/app/panel.js') !!}
     {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap.min.js') !!}
-    {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap-datetimepicker.min') !!}
+    {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap-datetimepicker.min.js') !!}
     {!! HTML::script('iget-master/material-admin/js/vendor/bloodhound.js') !!}
     {!! HTML::script('iget-master/material-admin/js/vendor/typeahead.js') !!}
     @yield('script')
