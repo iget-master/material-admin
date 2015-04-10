@@ -1,7 +1,90 @@
-#messages-table {
-	tr.unread {
-		td:not(.actions) {
-			font-weight: 600;
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+#messages-wrapper {
+	height: 100%;
+	padding: 50px 0;
+	overflow-y: scroll;
+	.date {
+		margin-bottom: 30px;
+		h5 {
+			color: @md-grey-600;
+			margin: 0 0 15px 25px;
+		}
+	}
+	.card {
+		margin-bottom: 30px;
+		background-color: @md-white;
+		.md-shadow-100;
+		.message {
+			position: relative;
+			padding: 10px 20px;
+			border-bottom: 1px solid @md-grey-300;
+			cursor: pointer;
+			.clearfix();
+			.from {
+				float: left;
+				width: 25%;
+				overflow: hidden;
+				.sender {
+					margin-left: 20px;
+				}
+			}
+			.content {
+				float: left;
+				width: 75%;
+				margin-top: 10px;
+				white-space: nowrap;
+				overflow: hidden;
+				.subject {
+					color: @md-black;
+				}
+				.text {
+					color: @md-grey-500;
+				}
+			}
+			.actions {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				padding-right: 15px; 
+				background-color: @md-white;
+				opacity: 0;
+				transition: opacity 0.15s cubic-bezier(.4,0,.2,1);
+				form {
+					display: inline-block;
+				}
+				.btn {
+					padding: 16px 5px; 
+					background-color: transparent;
+					font-size: 2rem;
+					color: @md-grey-400;
+					transition: color 0.3s cubic-bezier(.4,0,.2,1);
+					&:hover {
+						color: @md-black;
+					}
+				}
+			}
+			&.unread {
+				.from {
+					.sender {
+						font-weight: @bold-font-weight;
+					}
+				}
+				.content {
+					.subject {
+						font-weight: @bold-font-weight;	
+					}
+				}
+			}
+			&:hover {
+				.actions {
+					opacity: 1;
+				}
+			}
 		}
 	}
 }

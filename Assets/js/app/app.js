@@ -15,4 +15,11 @@
 			}
 		}
 	});
+
+	/* Enable Save Button */
+
+	$('form').on('input', function() {
+		$('#save').removeAttr('disabled');
+	});
+
 } (jQuery)

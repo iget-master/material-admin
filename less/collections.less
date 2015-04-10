@@ -1,0 +1,91 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+#collection-wrapper {
+	height: 100%;
+	padding: 0;
+	background-color: @md-white;
+	.row {
+		height: 100%;
+		margin: 0;
+		.filters {
+			margin-left: -16.66666667%;
+			height: 100%;
+			padding: 0;
+			background-color: @md-grey-100;
+			transition: all cubic-bezier(.4,0,.2,1) .15s;
+			opacity: 0;
+			overflow-y: scroll;
+			.title {
+				color: @md-grey-600;
+				margin-bottom: 20px;
+				padding: 20px 25px 21px 25px;
+				border-bottom: 1px solid @md-grey-300;
+			}
+			&.open {
+				margin-left: 0;
+				opacity: 1;
+			}
+		}
+		.items {
+			height: 100%;
+			padding: 0;
+			overflow-y: scroll;
+			transition: all cubic-bezier(.4,0,.2,1) .15s;
+			table {
+				margin-bottom: 0;
+				thead {
+					th {
+						padding: 20px;
+						font-weight: @medium-font-weight;
+						border-bottom: 1px solid @md-grey-300;
+						&:first-child {
+							padding-left: 30px;
+						}
+					}
+				}
+				tbody {
+					tr {
+						cursor: pointer;
+						&:hover {
+							td {
+								background-color: @md-grey-200;
+							}
+						}
+						td {
+							padding: 20px;
+							&.row-check {
+								padding-left: 30px;
+								cursor: default;
+							}
+							&.actions {
+								padding: 16px 28px;
+								text-align: right;
+								a.dropdown-toggle {
+									font-size: 2rem;
+									color: inherit;
+								}
+								.dropdown-menu {
+									li {
+										button {
+											background-color: transparent;
+											font-size: 1.3rem;
+											font-weight: @light-font-weight;
+											color: @md-black;
+											text-transform: none;
+											border: none;
+											box-shadow: none;
+											outline: none;										
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

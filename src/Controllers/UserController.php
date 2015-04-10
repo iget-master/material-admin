@@ -39,7 +39,7 @@ class UserController extends RestController {
 	 */
 	public function index()
 	{
-		$users = User::with('permission_group')->paginate(15);
+		$users = User::with('permission_group')->get();
 		return \View::make('materialadmin::user.index')->with('users', $users);
 	}
 

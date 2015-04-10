@@ -7,6 +7,7 @@
 @stop
 
 @section('title')
+	<span>Home</span>
 @stop
 
 @section('toolbar')

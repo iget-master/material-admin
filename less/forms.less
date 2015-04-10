@@ -1,0 +1,73 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+.form-group {
+	label {
+		margin-bottom: 0;
+		color: @md-grey-600;
+		font-weight: @light-font-weight;
+		&.required {
+			&:after {
+				position: absolute;
+				top: 1px;
+				margin-left: 3px;
+				content: '*';
+				color: @md-red-500;
+				font-size: 1rem;
+			}
+		}
+	}
+	input {
+		height: 28px;
+		padding: 0;
+		font-size: 1.3rem;
+		border: 0;
+		border-bottom: 1px solid @md-grey-400;
+		border-radius: 0;
+		background-color: transparent;
+		box-shadow: none;
+		transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		&[type="date"] {
+			cursor: pointer;
+		}
+		&:focus {
+			padding-top: 1px;
+			outline: none;
+			box-shadow: none;
+			border-bottom: 2px solid @md-blue-500;
+			-webkit-animation: input-highlight 0.5s forward;
+		}
+		&[disabled] {
+			background-color: transparent;
+			color: @md-grey-500;
+		}
+	}
+	select {
+		height: 28px;
+		padding: 0;
+		font-size: 1.3rem;
+		border: 0;
+		border-bottom: 1px solid @md-grey-400;
+		border-radius: 0;
+		background-color: transparent;
+		background-image: url('../imgs/arrow.png');
+		background-repeat: no-repeat;
+		background-position: calc(100% - 3px) calc(100% - 50px);
+		box-shadow: none;
+		-webkit-appearance: none;
+		cursor: pointer;
+		&:focus {
+			padding-top: 1px;
+			outline: none;
+			box-shadow: none;
+			border-bottom: 2px solid @md-blue-500;
+			background-position: calc(100% - 3px) calc(100% - 45px);
+
+		}
+	}
+}
+
+::-webkit-calendar-picker-indicator { padding: 0 3px; }
+::-webkit-inner-spin-button { display: none; }

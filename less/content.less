@@ -1,0 +1,76 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+#content-wrapper {
+	height: 100%;
+	padding-top: 130px;
+	background-color: @md-grey-300;
+}
+
+#card-wrapper {
+	height: 100%;
+	overflow-y: scroll;
+	.card {
+		margin-top: 50px;
+		margin-bottom: 50px;
+		background-color: @md-white;
+		.md-shadow-100();
+		.header,
+		.body,
+		.footer {
+			margin-left: -15px;
+			margin-right: -15px;
+		}
+		.header {
+			background-color: @md-blue-500;
+			padding: 15px;
+			.clearfix();
+			.info {
+				float: left;
+				width: 70%;
+				padding: 35px 0 35px 35px;
+				color: @md-white;
+				overflow: hidden;
+			}
+			.action {
+				float: left;
+				width: 30%;
+				text-align: right;
+				.btn {
+					padding: 5px; 
+					background-color: transparent;
+					font-size: 2rem;
+					color: rgba(255, 255, 255, 0.8);
+					transition: color 0.3s cubic-bezier(.4,0,.2,1);
+					&:hover {
+						color: rgba(255, 255, 255, 1);
+					}
+				}
+			}
+		}
+		.body {
+			padding: 50px 25px 25px 25px;
+			form {
+				.row {
+					margin-bottom: 25px;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+		.footer {
+			position: relative;
+			padding: 15px;
+			border-top: 1px solid @md-grey-300;
+			text-align: right;
+			.btn {
+				&:not(:first-child) {
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+#drawer-wrapper {
+	position: absolute;
+	z-index: 999;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	.drawer {
+		display: inline-block;
+		width: 320px;
+		height: 100%;
+		margin-left: -320px;
+		background-color: @md-white;
+		transition: margin cubic-bezier(.4,0,.2,1) .15s;
+		&.open {
+			margin-left: 0;
+		}
+		.header {
+			height: 150px;
+			padding: 16px 25px;
+			.user-info {
+				float: left;
+				display: inline-block;
+				img {
+					margin: 29px 25px 0 0;
+				}
+				span {
+					display: block;
+					&:first-child {
+						margin-top: 53px;
+					}
+				}
+			}
+		}
+		.menu {
+			ul {
+				margin: 0;
+				padding: 0;
+				font-size: 1.4rem;
+				list-style: none;
+				li {
+					a {
+						display: block;
+						height: 47px;
+						padding: 14px 25px ;
+						font-weight: @medium-font-weight;
+						color: @md-grey-700;
+						i {
+							margin-right: 25px;
+							font-size: 2rem;
+							line-height: 2rem;
+							color: @md-black;
+						}
+						&:hover {
+							background-color: @md-grey-100;
+						}
+					}
+				}
+			}
+		}
+	}
+}
