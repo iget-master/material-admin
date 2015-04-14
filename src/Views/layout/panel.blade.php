@@ -13,7 +13,7 @@
     {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
     {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
     {!! HTML::style('iget-master/material-admin/css/admin.css') !!}
-    {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
+    {!! HTML::style('iget-master/material-admin/css/bootstrap-datetimepicker.min.css') !!}
     {!! HTML::style('css/app.css') !!}
 </head>
 <body>
