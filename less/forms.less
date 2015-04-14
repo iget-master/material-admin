@@ -3,6 +3,25 @@
 // MIT License
 // Release Date: 06/04/2015
 
+.card {
+	legend {
+		margin-bottom: 25px;
+		font-size: 1.8rem;
+		font-weight: @medium-font-weight;
+		border-bottom: 0;
+		.actions {
+			float: right;
+			margin-right: 25px;
+			a {
+				color: @md-grey-400;
+				&:hover {
+					color: @md-black;
+				}
+			}
+		}
+	}
+}
+
 .form-group {
 	label {
 		margin-bottom: 0;
@@ -65,6 +84,57 @@
 			border-bottom: 2px solid @md-blue-500;
 			background-position: calc(100% - 3px) calc(100% - 45px);
 
+		}
+		&:disabled {
+			background-color: transparent;
+			color: @md-grey-500;
+		}
+	}
+	textarea {
+		border-radius: 0;
+		box-shadow: none;
+		background-color: transparent;
+		&:focus {
+			outline: none;
+			box-shadow: none;
+			border: 2px solid @md-blue-500;
+		}
+		&:disabled {
+			background-color: transparent;
+			color: @md-grey-500;
+		}
+	}
+	&.option {
+		label {
+			display: block;
+		}
+		input[type="checkbox"],
+		input[type="radio"], {
+			display: inline-block;
+			cursor: pointer;
+		}
+		.text {
+			display: inline-block;
+			position: relative;
+			top: -7px;
+			left: 5px;
+			font-size: 1.3rem;
+		}
+	}
+}
+
+.input-group {
+	.input-group-addon {
+		padding: 0 3px 0 0;
+		font-size: 1.3rem;
+		background-color: transparent;
+		border-radius: 0;
+		border: 0;
+	}
+	&.has-error {
+		.input-group-addon {
+			padding: 0 0 0 3px;
+			color: @md-red-500;
 		}
 	}
 }

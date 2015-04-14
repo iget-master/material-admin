@@ -1,7 +1,7 @@
 <div class="drawer">
 	<div class="header">
 		<div class="user-info">
-			<img src="http://placehold.it/60x60" alt="{!! Auth::user()->name!!}">
+			<img class="img-circle" src="http://placehold.it/60x60" alt="{!! Auth::user()->name!!}">
 		</div>
 		<div class="user-info">
 			<span>{!! Auth::user()->name!!}</span>

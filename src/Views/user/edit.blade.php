@@ -1,6 +1,8 @@
 @extends((Request::ajax())?"materialadmin::layout.ajax":"materialadmin::layout.panel")
 
 @section('title')
+	<a href="/user" class="">@lang('materialadmin::user.title')</a>
+	<i class="md md-navigate-next"></i>
 	@lang('materialadmin::user.edit_title')
 @stop
 
@@ -11,6 +13,7 @@
 				<div class="col-md-offset-2 col-md-8 card">
 					<div class="header">
 						<div class="info">
+							<h6 class="helper">@lang('admin.now_editing')</h6>
 							<h1>{!! $user->name !!} {!! $user->surname !!}</h1>
 							<h4>{!! $user->email !!}</h4>
 						</div>
@@ -26,62 +29,40 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-										{!! Form::label('name', trans('materialadmin::user.name'), array('class' => 'required')) !!}
-										{!! Form::text('name', null, array('class' => 'form-control')) !!}
-										@if ($errors->has('name'))
-											{!! $errors->first('name') !!}	
-										@endif
+										{!! Form::label('permission_group_id', trans('materialadmin::user.permission_group'), array('class' => 'required')) !!}
+										{!! Form::select('permission_group_id', $permission_groups, null, array('class' => 'form-control')) !!}
 									</div>
 								</div>
-
+								<div class="col-md-4">
+									<div class="form-group">
+										{!! Form::label('name', trans('materialadmin::user.name'), array('class' => 'required')) !!}
+										{!! Form::text('name', null, array('class' => 'form-control')) !!}
+									</div>
+								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										{!! Form::label('surname', trans('materialadmin::user.surname'), array('class' => 'required')) !!}
 										{!! Form::text('surname', null, array('class' => 'form-control')) !!}
-										@if ($errors->has('surname'))
-											{!! $errors->first('surname') !!}	
-										@endif
-									</div>
-								</div>
-
-								<div class="col-md-2">
-									<div class="form-group">
-										{!! Form::label('dob', trans('materialadmin::user.dob')) !!}
-										{!! Form::text('dob', getFormatedDate($user->dob), array('class' => 'form-control')) !!}
-										@if ($errors->has('dob'))
-											{!! $errors->first('dob') !!}	
-										@endif
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-4">
-									<div class="form-group">
-										{!! Form::label('email', trans('materialadmin::user.email'), array('class' => 'required')) !!}
-										{!! Form::text('email', null, array('class' => 'form-control', 'disabled'=>'true')) !!}
-										@if ($errors->has('email'))
-											{!! $errors->first('email') !!}	
-										@endif
-									</div>
-								</div>
-
 								<div class="col-md-3">
 									<div class="form-group">
-										{!! Form::label('permission_group_id', trans('materialadmin::user.permission_group'), array('class' => 'required')) !!}
-										{!! Form::select('permission_group_id', $permission_groups, null, array('class' => 'form-control')) !!}
-										@if ($errors->has('permission_group_id'))
-											{!! $errors->first('permission_group_id') !!}	
-										@endif
+										{!! Form::label('dob', trans('materialadmin::user.dob')) !!}
+										{!! Form::text('dob', getFormatedDate($user->dob), array('class' => 'form-control')) !!}
 									</div>
 								</div>
-
 								<div class="col-md-3">
 									<div class="form-group">
 										{!! Form::label('language', trans('materialadmin::user.default_language'), array('class' => 'required')) !!}
 										{!! Form::select('language', IgetMaster\MaterialAdmin\Helper::getLanguagesSelectOptions(), null, array('class' => 'form-control')) !!}
-										@if ($errors->has('language'))
-											{!! $errors->first('language') !!}	
-										@endif
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										{!! Form::label('email', trans('materialadmin::user.email'), array('class' => 'required')) !!}
+										{!! Form::text('email', null, array('class' => 'form-control', 'disabled'=>'true')) !!}
 									</div>
 								</div>
 							</div>
