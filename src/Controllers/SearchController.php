@@ -9,6 +9,7 @@ class SearchController extends BaseController {
 
     public function __construct() {
         $this->aliases = \Config::get('admin.search.aliases');
+        $this->relations = \Config::get('admin.search.relations');
     }
 
     /**
@@ -16,11 +17,18 @@ class SearchController extends BaseController {
      * @param $query
      * @return Array
      */
-    public function search($model, $query) {
-        if (array_key_exists($model, $this->aliases)) {
-            $model = $this->aliases[$model];
+    public function search($model_alias, $query) {
+        if (array_key_exists($model_alias, $this->aliases)) {
+            $model = $this->aliases[$model_alias];
         }
-        return response()->json($model::search($query)->take(5)->get());
+
+        if (array_key_exists($model_alias, $this->relations)) {
+            $search = call_user_func_array("$model::with", $this->relations);
+        } else {
+            $search = new $model;
+        }
+
+        return response()->json($search->search($query)->take(5)->get());
     }
 
     /**

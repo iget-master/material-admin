@@ -113,7 +113,12 @@ return [
     'search' => [
         'aliases' => [
             'user' => 'IgetMaster\MaterialAdmin\Models\User'
-        ]
+        ],
+        'relations' => [
+            'user' => [
+                'permission_group'
+            ],
+        ],
     ],
 
 ];
