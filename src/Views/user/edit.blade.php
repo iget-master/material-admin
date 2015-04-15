@@ -13,7 +13,7 @@
 				<div class="col-md-offset-2 col-md-8 card">
 					<div class="header">
 						<div class="info">
-							<h6 class="helper">@lang('admin.now_editing')</h6>
+							<h6 class="helper">@lang('materialadmin::admin.now_editing')</h6>
 							<h1>{!! $user->name !!} {!! $user->surname !!}</h1>
 							<h4>{!! $user->email !!}</h4>
 						</div>
@@ -101,8 +101,8 @@
 						{!! Form::close() !!}
 					</div>
 					<div class="footer">
-						<a href="/user" class="btn btn-flat">@lang('materialadmin::user.discart')</a>
-						<a id="save" role="submit" data-form="#user" class="btn btn-flat action" disabled>@lang('materialadmin::user.save')</a>
+						<a href="/user" class="btn btn-flat">@lang('materialadmin::admin.action_discard')</a>
+						<a id="save" role="submit" data-form="#user" class="btn btn-flat action" disabled>@lang('materialadmin::admin.action_save')</a>
 					</div>
 				</div>
 			</div>

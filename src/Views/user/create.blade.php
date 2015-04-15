@@ -79,8 +79,8 @@
 						{!! Form::close() !!}
 					</div>
 					<div class="footer">
-						<a href="/user" class="btn btn-flat">@lang('materialadmin::user.cancel')</a>
-						<a id="save" role="submit" data-form="#user" class="btn btn-flat action" disabled>@lang('materialadmin::user.create')</a>
+						<a href="/user" class="btn btn-flat">@lang('materialadmin::admin.action_cancel')</a>
+						<a id="save" role="submit" data-form="#user" class="btn btn-flat action" disabled>@lang('materialadmin::admin.action_create')</a>
 					</div>
 				</div>
 			</div>

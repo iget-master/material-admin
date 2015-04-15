@@ -18,10 +18,6 @@ return [
 	'password' => 'New Password',
 	'password_confirmation' => 'Password Confirmation',
 	'email' => 'Email',
-	'discart' => 'Discart Changes',
-	'save' => 'Save Changes',
-	'create' => 'Create',
-	'cancel' => 'Cancel',
 	'tooltip_create' => 'Create New User',
 
 	'destroy_success' => 'User successfully removed.|Users successfully removed.',

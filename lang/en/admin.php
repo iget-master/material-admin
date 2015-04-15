@@ -14,4 +14,11 @@ return [
 
 	'loading' => 'Loading...',
 
+	'action_discard' => 'Discard Changes',
+	'action_save' => 'Save Changes',
+	'action_create' => 'Create',
+	'action_cancel' => 'Cancel',
+
+	'now_editing' => 'Now Editing',
+
 ];
