@@ -23,7 +23,13 @@
 						background-color: @md-grey-100;
 					}
 				}
-			}	
+			}
+			&.typeahead-empty,
+			&.typeahead-searching {
+				a {
+					cursor: default;
+				}
+			}
 		}
 	}
 }
