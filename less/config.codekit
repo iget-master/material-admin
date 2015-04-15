@@ -296,7 +296,7 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/panel.less",
-		"outputAbbreviatedPath": "\/Users\/isaias\/Code\/cdtsys\/vendor\/iget-master\/material-admin\/Assets\/css\/panel.min.css",
+		"outputAbbreviatedPath": "\/Users\/isaias\/Code\/package\/packages\/iget-master\/material-admin\/Assets\/css\/panel.min.css",
 		"outputPathIsOutsideProject": 1,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 2,
@@ -395,7 +395,7 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "CDTSys",
+	"displayValue": "Material Admin",
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "pencil_darkGray"
 	},
