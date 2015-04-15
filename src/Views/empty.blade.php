@@ -2,9 +2,35 @@
 
 @section('content')
 	@include('materialadmin::panel.alerts')
-	<div class="content-wrapper">
-        <input id="typeahead" name="user_id" type="text" class="form-control"/>
-	</div>
+
+    <div id="card-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 card">
+                    <div class="header">
+                        <div class="info">
+                            <h1>@lang('materialadmin::user.new_user')</h1>
+                        </div>
+                        <div class="action">
+
+                        </div>  
+                    </div>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Usuários</label>
+                                    <div class="content-wrapper">
+                                        <input id="typeahead" name="user_id" type="text" class="form-control"/>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('title')
