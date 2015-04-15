@@ -28,6 +28,8 @@ class UpdateSchema extends Migration {
 			$table->string('color');
 			$table->string('img_url')->nullable();
 		});
+
+        DB::statement('ALTER TABLE `users` ADD FULLTEXT `search_name` (name, surname)');
 	}
 
 	/**
@@ -39,6 +41,7 @@ class UpdateSchema extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
+            $table->dropIndex('search_name');
 			$table->dropForeign('users_permission_group_id_foreign');
 			$table->dropColumn('surname');
 			$table->dropColumn('permission_group_id');

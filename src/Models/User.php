@@ -1,6 +1,7 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use \Eloquent;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -8,8 +9,20 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Eloquent implements AuthenticatableContract, CanResetPasswordContract {
-
 	use Authenticatable, CanResetPassword;
+    use SearchableTrait;
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        'columns' => [
+            'name' => 10,
+            'surname' => 10,
+        ]
+    ];
 
 	/**
 	 * The database table used by the model.
@@ -28,11 +41,6 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 
 	protected $fillable = array('name', 'surname', 'dob', 'email', 'password', 'permission_group_id', 'language');
 
-	public function getDateFormat()
-    {
-        return 'd/m/Y';
-    }
-
 	/**
 	 * Model relationships definitions
 	 */
@@ -45,11 +53,6 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	 * Model mutators definitions
 	 */
 	protected $dates = ['dob'];
-
-    public function setDobAttribute($value)
-    {
-    	$this->attributes['dob'] = Carbon::createFromFormat('d/m/Y', $value);
-    }
 
     public function hasRole($role)
     {
