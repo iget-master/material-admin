@@ -8,7 +8,7 @@ trait SelectableTrait {
 
     static public function getSelectOptions() {
         $items = self::all();
-        $options = [];
+        $options = [""=>""];
         foreach ($items as $item) {
             $options[$item->id] = $item->getLabelColumn();
         }
