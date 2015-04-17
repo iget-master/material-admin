@@ -2,6 +2,7 @@
 
 use \Eloquent;
 use Carbon\Carbon;
+use IgetMaster\MaterialAdmin\Models\Traits\SelectableTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -9,7 +10,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Eloquent implements AuthenticatableContract, CanResetPasswordContract {
 
-	use Authenticatable, CanResetPassword;
+	use Authenticatable, CanResetPassword, SelectableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -31,6 +32,13 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	public function getDateFormat()
     {
         return 'd/m/Y';
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabelColumn() {
+        return $this->name . " " . $this->surname;
     }
 
 	/**
