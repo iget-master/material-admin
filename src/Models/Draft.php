@@ -1,6 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
-use \Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Draft extends Eloquent {
     /**

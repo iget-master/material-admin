@@ -1,16 +1,12 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
-use IgetMaster\MaterialAdmin\Filters\DateFilter;
-use  IgetMaster\MaterialAdmin\Filters\StringFilter;
-use \Eloquent;
 use Carbon\Carbon;
-use IgetMaster\MaterialAdmin\Interfaces\DraftableInterface;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use IgetMaster\MaterialAdmin\Filters\DateFilter;
+use IgetMaster\MaterialAdmin\Filters\StringFilter;
 use IgetMaster\MaterialAdmin\Interfaces\FiltrableInterface;
-use IgetMaster\MaterialAdmin\Traits\DraftableTrait;
 use IgetMaster\MaterialAdmin\Traits\FiltrableTrait;
 use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
 
 class User extends Eloquent implements FiltrableInterface {
 

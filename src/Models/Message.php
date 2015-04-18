@@ -1,7 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
-use \Eloquent;
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Message extends Eloquent {
 
