@@ -1,5 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
+use IgetMaster\MaterialAdmin\Http\Requests\UserFilterRequest;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
 use IgetMaster\MaterialAdmin\Models\User;
@@ -27,20 +28,16 @@ class UserController extends RestController {
 	 */
 	public $translation_namespace = "materialadmin::user";
 
-	public function __construct()
-    {
-        $this->beforeFilter('auth');
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(UserFilterRequest $request)
 	{
-		$users = User::with('permission_group')->get();
-		return \View::make('materialadmin::user.index')->with('users', $users);
+		$users = User::with('permission_group')->filter($request->filters())->get();;
+
+        return view('materialadmin::user.index')->withUsers($users);
 	}
 
 

@@ -1,5 +1,5 @@
 <?php
-namespace IgetMaster\MaterialAdmin\Models\Traits;
+namespace IgetMaster\MaterialAdmin\Traits;
 
 trait SelectableTrait {
     public function getLabelColumn() {

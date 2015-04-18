@@ -1,7 +1,7 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use \Eloquent;
-use IgetMaster\MaterialAdmin\Models\Traits\SelectableTrait;
+use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 
 class PermissionGroup extends Eloquent {
 	use SelectableTrait;

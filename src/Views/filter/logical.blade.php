@@ -1,15 +1,18 @@
+<?php
+    $operators = [
+        '=' => trans('materialadmin::filter.equals'),
+        '!=' => trans('materialadmin::filter.not_equal'),
+        '>' => trans('materialadmin::filter.greater'),
+        '>=' => trans('materialadmin::filter.greater_than'),
+        '<' => trans('materialadmin::filter.less'),
+        '<=' => trans('materialadmin::filter.less_than'),
+    ];
+?>
 <div class="form-group col-sm-6">
 	<label class="control-label">@lang('materialadmin::filter.condition')</label>
-	<select class="form-control">
-	  <option>@lang('materialadmin::filter.equals')</option>
-	  <option>@lang('materialadmin::filter.not_equal')</option>
-	  <option>@lang('materialadmin::filter.greater')</option>
-	  <option>@lang('materialadmin::filter.greater_than')</option>
-	  <option>@lang('materialadmin::filter.less')</option>
-	  <option>@lang('materialadmin::filter.less_than')</option>
-	</select>
+    {!! Form::select($filter . '_operator', $operators, \Request::get($filter . "_operator"), array('class' => 'form-control')) !!}
 </div>
 <div class="form-group col-sm-6">
 	<label class="control-label">@lang('materialadmin::filter.value')</label>
-	<input type="number" class="form-control" id="end-date" placeholder="">
-</div>	
+    {!! Form::input('number', $filter, \Request::get($filter), array('class' => 'form-control')) !!}
+</div>

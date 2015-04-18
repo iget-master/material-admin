@@ -1,16 +1,20 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
+use IgetMaster\MaterialAdmin\Filters\DateFilter;
+use  IgetMaster\MaterialAdmin\Filters\StringFilter;
 use \Eloquent;
 use Carbon\Carbon;
-use IgetMaster\MaterialAdmin\Models\Traits\SelectableTrait;
+use IgetMaster\MaterialAdmin\Interfaces\DraftableInterface;
+use IgetMaster\MaterialAdmin\Interfaces\FiltrableInterface;
+use IgetMaster\MaterialAdmin\Traits\DraftableTrait;
+use IgetMaster\MaterialAdmin\Traits\FiltrableTrait;
+use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends Eloquent implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Eloquent implements FiltrableInterface {
 
-	use Authenticatable, CanResetPassword, SelectableTrait;
+	use SelectableTrait, FiltrableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -85,5 +89,21 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
     public function sentMessages()
     {
     	return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','from_user_id');
+    }
+
+    public function filterName($query, $value) {
+        return StringFilter::contains(\DB::raw("CONCAT(name, ' ', surname)"), $value)->filter($query);
+    }
+
+    public function filterEmail($query, $value) {
+        return StringFilter::contains('email', $value)->filter($query);
+    }
+
+    public function filterDob($query, $start = null, $end = null) {
+        return DateFilter::between('dob', $start, $end)->filter($query);
+    }
+
+    public function filterId($query, $operator, $value) {
+        return $query->where('id', $operator, $value);
     }
 }

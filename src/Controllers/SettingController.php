@@ -8,10 +8,6 @@ use IgetMaster\MaterialAdmin\Models\PermissionGroup;
 
 class SettingController extends BaseController {
 
-	public function __construct()
-    {
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *

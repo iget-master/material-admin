@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'filter' => 'Filter',
 	'filter_by' => 'Filter By',
 	'search_for' => 'Search For',
 	'from' => 'From',
