@@ -1,6 +1,8 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use Carbon\Carbon;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use IgetMaster\MaterialAdmin\Filters\DateFilter;
 use IgetMaster\MaterialAdmin\Filters\StringFilter;
@@ -8,9 +10,9 @@ use IgetMaster\MaterialAdmin\Interfaces\FiltrableInterface;
 use IgetMaster\MaterialAdmin\Traits\FiltrableTrait;
 use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 
-class User extends Eloquent implements FiltrableInterface {
+class User extends Eloquent implements FiltrableInterface, AuthenticatableContract {
 
-	use SelectableTrait, FiltrableTrait;
+	use Authenticatable, SelectableTrait, FiltrableTrait;
 
 	/**
 	 * The database table used by the model.
