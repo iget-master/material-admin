@@ -46,7 +46,7 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										{!! Form::label('dob', trans('materialadmin::user.dob')) !!}
-										{!! Form::text('dob', null, array('class' => 'form-control')) !!}
+										{!! Form::input('date', 'dob', null, array('class' => 'form-control')) !!}
 									</div>
 								</div>
 								<div class="col-md-3">
