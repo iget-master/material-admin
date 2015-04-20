@@ -88,7 +88,7 @@ trait RestTrait {
                     if ($new) {
                         $new_ids["[new][${id}]"] = $class::create($data)->id;
                     } else {
-                        $class::findOrFail($id)->fill($data);
+                        $class::findOrFail($id)->fill($data)->save();
                     }
                 }
             }
