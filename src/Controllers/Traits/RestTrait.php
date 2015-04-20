@@ -1,5 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers\Traits;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
 trait RestTrait {
