@@ -17,7 +17,7 @@ trait FiltrableTrait {
                 $query = $filter->filter($query);
             } else {
                 array_unshift($filter, $query);
-                $query = call_user_func_array(array($this, "filter" . $index), $filter);
+                $query = call_user_func_array(array($this, "filter" . str_replace('_', '', $index)), $filter);
             }
         }
 

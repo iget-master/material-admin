@@ -24,8 +24,7 @@ abstract class FilterRequest extends FormRequest {
             $hasExpected = true;
             $hasSomething = false;
             $parameters = [];
-            foreach ($filterExpects as $index=>$input)
-            {
+            foreach ($filterExpects as $index=>$input) {
                 if ($this->has($input)) {
                     $hasSomething = true;
                 }
@@ -38,12 +37,19 @@ abstract class FilterRequest extends FormRequest {
 
             }
 
-            if ($filterType == 'date' && $hasSomething)
-            {
+            if ($filterType == 'date' && $hasSomething) {
                 if (!array_key_exists(0, $parameters)) {
                     array_unshift($parameters, null);
                 }
                 $filters[$filterName] = $parameters;
+            } else if ($filterType == 'logical' && $hasSomething)
+            {
+                if (!array_key_exists(0, $parameters)) {
+                    array_unshift($parameters, '=');
+                }
+                if (array_key_exists(1, $parameters)) {
+                    $filters[$filterName] = $parameters;
+                }
             } else if ($hasExpected)
             {
                 $filters[$filterName] = $parameters;
@@ -51,7 +57,6 @@ abstract class FilterRequest extends FormRequest {
 
 
         }
-
         return $filters;
     }
 
