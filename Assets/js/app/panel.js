@@ -64,8 +64,7 @@ function ModalForm(url) {
 		form.submit();
 	});
 
-
-	/*
+   	/*
 	 * Table related code
 	 */
 
@@ -74,7 +73,6 @@ function ModalForm(url) {
 		var $target = $(e.currentTarget);
 		$target.closest('table').find('input[type="checkbox"]').prop('checked', $target.prop('checked'));
 		$target.closest('table').trigger('selection-change');
-
 	});
 
 	// Table check row

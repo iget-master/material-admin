@@ -25,7 +25,7 @@
 					@endif
 					<div class="card">
 					@foreach ($messages as $message)
-						<div class='message {!! ($message->read == 0)?'unread':null !!}' data-id="{!! $message->id !!}" data-delete-url="{!! route('message.destroy', [$message->id], false) !!}">
+						<div class="message {!! ($message->read)?'read':'unread' !!}" data-id="{!! $message->id !!}" data-href="{!! route('message.show', $message->id) !!}">
 							<div class="from">
 								@if(is_null($message->sender))
 									<img class="img-circle" src="http://placehold.it/40x40">
@@ -47,14 +47,21 @@
 								<span class="subject">{!! $message->subject !!}</span> - <span class="text">{!! $message->message !!}</span>
 							</div>
 							<div class="actions">
-								{!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.destroy'])) !!}
-								<button class="btn btn-flat">
-									<i class="md md-delete"></i>
-								</button>
+								{!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.destroy', $message->id])) !!}
+                                    <button class="btn btn-flat">
+                                        <i class="md md-delete"></i>
+                                    </button>
 								{!! Form::close() !!}
-								<button class="btn btn-flat">
-									<i class="md md-check"></i>
-								</button>
+                                @if ($message->read)
+                                    <a href="{!! route('message.markunread', $message->id) !!}" class="btn btn-flat">
+                                        <i class="md md-markunread"></i>
+                                    </a>
+                                @else
+                                    <a href="{!! route('message.markread', $message->id) !!}" class="btn btn-flat">
+                                        <i class="md md-drafts"></i>
+                                    </a>
+                                @endif
+
 							</div>
 						</div>
 					@endforeach
@@ -73,4 +80,8 @@
             <a class="btn btn-floating" href="/message/create"><i class="md md-add default"></i><i class="md md-message hover"></i></a>
         </li>
     </ul>
+@stop
+
+@section('script')
+    {!! HTML::script('iget-master/material-admin/js/app/message.js') !!}
 @stop
