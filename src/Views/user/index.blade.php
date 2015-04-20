@@ -9,16 +9,17 @@
         <i class="md md-filter-list"></i>
     </button>
 	<div class="dropdown">
-		<button class="btn btn-flat dropdown-toggle" data-toggle="dropdown">
+        {!! Form::open(array('id'=>'bulk-destroy', 'method'=>'DELETE', 'route' => array('user.destroy'))) !!}
+        {!! Form::close() !!}
+		<button id="bulk-actions-toggle" class="btn btn-flat dropdown-toggle" data-toggle="dropdown">
 			<i class="md md-more-vert"></i>
 		</button>
 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
 			<li>
-				<a href="#" role="menuitem">@lang('materialadmin::user.destroy_title')</a>
+				<a id="do-bulk-destroy" href="#">@lang('materialadmin::user.destroy_title')</a>
 			</li>
 		</ul>
 	</div>
-
 @stop
 
 @section('content')

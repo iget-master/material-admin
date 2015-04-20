@@ -67,7 +67,7 @@ class UserController extends RestController {
 				'email' => 'required|email|unique:users',
 				'password' => 'required|confirmed|min:6',
 				'permission_group_id' => 'required|integer',
-				'dob' => 'date_format:d/m/Y',
+				'dob' => 'date',
 				'language' => 'required'
 			)
 		);
@@ -135,7 +135,7 @@ class UserController extends RestController {
 				'surname' => 'required',
 				'password' => 'confirmed|min:6',
 				'permission_group_id' => 'required|integer',
-				'dob' => 'date_format:d/m/Y',
+				'dob' => 'date',
 				'language' => 'required'
 			)
 		);

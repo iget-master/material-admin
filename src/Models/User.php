@@ -31,11 +31,6 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
 
 	protected $fillable = array('name', 'surname', 'dob', 'email', 'password', 'permission_group_id', 'language');
 
-	public function getDateFormat()
-    {
-        return 'd/m/Y';
-    }
-
     /**
      * @return string
      */
@@ -55,11 +50,6 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
 	 * Model mutators definitions
 	 */
 	protected $dates = ['dob'];
-
-    public function setDobAttribute($value)
-    {
-    	$this->attributes['dob'] = Carbon::createFromFormat('d/m/Y', $value);
-    }
 
     public function hasRole($role)
     {
