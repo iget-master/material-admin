@@ -20,5 +20,6 @@ return [
 	'action_cancel' => 'Cancel',
 
 	'now_editing' => 'Now Editing',
+	'select_default' => 'Choose an option',
 
 ];
