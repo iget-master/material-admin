@@ -106,6 +106,6 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
     }
 
     public function filterPermissionGroupId($query, $operator, $value) {
-        return $query->where('id', $operator, $value);
+        return $query->where('permission_group_id', $operator, $value);
     }
 }
