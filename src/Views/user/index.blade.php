@@ -8,9 +8,17 @@
 	<button id="filter-toogler" class="btn btn-flat">
         <i class="md md-filter-list"></i>
     </button>
-    <button class="btn btn-flat">
-        <i class="md md-more-vert"></i>
-    </button>
+	<div class="dropdown">
+		<button class="btn btn-flat dropdown-toggle" data-toggle="dropdown">
+			<i class="md md-more-vert"></i>
+		</button>
+		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+			<li>
+				<a href="#" role="menuitem">@lang('materialadmin::user.destroy_title')</a>
+			</li>
+		</ul>
+	</div>
+
 @stop
 
 @section('content')
