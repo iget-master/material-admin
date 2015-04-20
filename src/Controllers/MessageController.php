@@ -94,6 +94,30 @@ class MessageController extends RestController {
 		return view('materialadmin::message.show')->with('message', $message);
 	}
 
+    /**
+     * @param $id
+     */
+    public function markAsRead($id)
+    {
+        $message = Message::findOrFail($id);
+        $message->read = 1;
+        $message->save();
+
+        return \Redirect::route('message.index');
+    }
+
+    /**
+     * @param $id
+     */
+    public function markAsUnread($id)
+    {
+        $message = Message::findOrFail($id);
+        $message->read = 0;
+        $message->save();
+
+        return \Redirect::route('message.index');
+    }
+
 
 	/**
 	 * Show the form for editing the specified resource.

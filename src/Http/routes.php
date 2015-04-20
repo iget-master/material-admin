@@ -27,6 +27,8 @@ Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middl
 	Route::resource('user', "UserController",  array('except' => array('show')));
 
 	Route::resource('message', "MessageController");
+    Route::get('/message/{id}/mark/read', array('as' => 'message.markread', 'uses' => 'MessageController@markAsRead'));
+    Route::get('/message/{id}/mark/unread', array('as' => 'message.markunread', 'uses' => 'MessageController@markAsUnread'));
 
 	Route::get('/setting', array('as' => 'setting.index', 'uses' => 'SettingController@index'));
 	Route::get('/setting/{setting}', array('as' => 'setting.show', 'uses' => 'SettingController@show'));
