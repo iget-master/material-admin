@@ -18,3 +18,36 @@
 		}
 	}
 }
+
+.tooltip {
+  	&.top {
+		.tooltip-arrow {
+		  	border-top-color: @md-grey-700;
+		}
+	}
+  	&.right {
+		.tooltip-arrow {
+		 	border-right-color: @md-grey-700;
+		}
+	}
+  	&.bottom {
+		.tooltip-arrow {
+		  	border-bottom-color: @md-grey-700;
+		}
+	}
+	&.left {
+		.tooltip-arrow {
+		  	border-left-color: @md-grey-700;
+		}
+	}
+}
+
+
+.tooltip-inner {
+	padding: 0.5rem;
+	font-size: 1.1rem;
+	font-weight: @light-font-weight;
+	letter-spacing: 0.5px;
+	color: @md-white;
+	background-color: @md-grey-700;
+}
