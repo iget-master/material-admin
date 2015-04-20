@@ -20,7 +20,7 @@ class MaterialAdminSeeder extends Seeder {
 			]);
 
 		User::create([
-			'email'=>'asasasasas@domain.com',
+			'email'=>'test@domain.com',
 			'password'=>\Hash::make('12345678'),
 			'name'=>'Admin',
 			'surname'=>'Test',
