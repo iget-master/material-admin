@@ -5,62 +5,62 @@ use Illuminate\Support\MessageBag;
 
 trait RestTrait {
 
-	/**
-	 * The model class name used by the controller.
-	 *
-	 * @var string
-	 */
-	public $model;
+    /**
+     * The model class name used by the controller.
+     *
+     * @var string
+     */
+    public $model;
 
-	/**
-	 * The resource name used in routes
-	 *
-	 * @var string
-	 */
-	public $resource;
+    /**
+     * The resource name used in routes
+     *
+     * @var string
+     */
+    public $resource;
 
-	/**
-	 * Translation namespace
-	 * Use it to override default namespace.
-	 *
-	 * @var string
-	 */
-	public $translation_namespace = null;
-	/**
-	 * Default destroy method for an RESTful controller.
-	 * Destroy one or multiple models by id.
-	 *
-	 * @param  unsigned int $id
-	 * @return Response
-	 */
+    /**
+     * Translation namespace
+     * Use it to override default namespace.
+     *
+     * @var string
+     */
+    public $translation_namespace = null;
+    /**
+     * Default destroy method for an RESTful controller.
+     * Destroy one or multiple models by id.
+     *
+     * @param  unsigned int $id
+     * @return Response
+     */
 
-	public function getTranslationNamespace()
-	{
-		if (is_null($this->translation_namespace)) {
-			return $this->resource;
-		}
-		return $this->translation_namespace;
-	}
+    public function getTranslationNamespace()
+    {
+        if (is_null($this->translation_namespace)) {
+            return $this->resource;
+        }
+        return $this->translation_namespace;
+    }
 
-	public function destroy($id)
-	{
-		$count = 1;
-		$messages = new MessageBag();
-		$class = $this->model;
+    public function destroy($id)
+    {
+        $count = 1;
+        $messages = new MessageBag();
+        $class = $this->model;
 
-		if (\Input::has('id')) {
-			$id = \Input::get('id');
-			$count = count($id);
-		}
+        if (\Input::has('id')) {
+            $id = \Input::get('id');
+            $count = count($id);
+        }
 
-		if ($class::destroy($id)) {
-			$messages->add('success', trans_choice($this->getTranslationNamespace() . '.destroy_success', $count));
-			return \Redirect::route($this->resource . '.index')->with('messages', $messages);
-		} else {
-			$messages->add('danger', trans_choice($this->getTranslationNamespace() . '.destroy_error', $count));
-			return \Redirect::back()->withInput()->with('messages', $messages);
-		}
-	}
+        if ($class::destroy($id)) {
+            $messages->add('success', trans_choice($this->getTranslationNamespace() . '.destroy_success', $count));
+            return \Redirect::route($this->resource . '.index')->with('messages', $messages);
+        } else {
+            $messages->add('danger', trans_choice($this->getTranslationNamespace() . '.destroy_error', $count));
+            return \Redirect::back()->withInput()->with('messages', $messages);
+        }
+    }
 
     public function fillRelationalModel($class, $external_fields, $replace_new_ids, Request $request) {
         $new_ids = [];
@@ -69,7 +69,7 @@ trait RestTrait {
             $class = "App\\Models\\${class}";
             foreach($request_items as $index=>$item) {
                 $new = true;
-                if (!is_array($item)) {
+                if ($index !== 'new') {
                     $item = [$index=>$item];
                     $new = false;
                 }
@@ -89,7 +89,11 @@ trait RestTrait {
                     if ($new) {
                         $new_ids["[new][${id}]"] = $class::create($data)->id;
                     } else {
-                        $class::findOrFail($id)->fill($data)->save();
+                        if ($data['remove'] == "true") {
+                            $class::destroy($id);
+                        } else {
+                            $class::findOrFail($id)->fill($data)->save();
+                        }
                     }
                 }
             }
