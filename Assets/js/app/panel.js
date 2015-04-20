@@ -16,6 +16,11 @@ function ModalForm(url) {
 +function ($) {
 	'use strict';
 
+	// Close Alerts
+	$(".alert").fadeTo(6000, 500).slideUp(500, function(){
+		$(".alert").alert('close');
+	});
+
 	// Toogle Filter
 	$('#filter-toogler').on('click', function(){
 		$('#collection-wrapper .filters').toggleClass('open');

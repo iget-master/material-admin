@@ -95,6 +95,7 @@
 		box-shadow: none;
 		background-color: transparent;
 		&:focus {
+		  padding: 1px;
 			outline: none;
 			box-shadow: none;
 			border: 2px solid @md-blue-500;
@@ -132,9 +133,14 @@
 		border: 0;
 	}
 	&.has-error {
+	  	input {
+		  padding: 1px;
+		  border-bottom: 2px solid @md-red-500;
+		}
 		.input-group-addon {
 			padding: 0 0 0 3px;
 			color: @md-red-500;
+		  	font-size: 1.5rem;
 		}
 	}
 }
