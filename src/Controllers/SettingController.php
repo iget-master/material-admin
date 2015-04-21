@@ -34,7 +34,7 @@ class SettingController extends BaseController {
 		$setting = $settings_items[$name];
 		$model_class = $setting['model'];
 
-		return view($setting['edit'])->withSetting($setting)->withName($name);
+		return view($setting['edit'])->withSetting($setting)->withName($name)->withAction('create');
 	}
 
 
@@ -121,7 +121,7 @@ class SettingController extends BaseController {
 		}
 
 		$model = $model_class::with($relationships)->findOrFail($id);
-		return view($setting['edit'])->withSetting($setting)->withModel($model)->withName($name);
+		return view($setting['edit'])->withSetting($setting)->withModel($model)->withName($name)->withAction('edit');
 	}
 
 	/**
