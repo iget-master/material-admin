@@ -48,7 +48,7 @@
                         @include('materialadmin::panel.alerts')
 
                         <div id="settings-groups" class="tab-content body">
-                            @foreach($groups as $group)
+                            @foreach($groups as $index=>$group)
                                 <div class="tab-pane @if($index == 0) active @endif" id="group-{!! $index !!}">
                                     @foreach($items as $item_name => $item)
                                         @if ($item['group'] == $group['name'])
