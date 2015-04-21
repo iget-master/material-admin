@@ -4,102 +4,102 @@
 // Release Date: 06/04/2015
 
 #content-wrapper {
-  height: 100%;
-  padding-top: 130px;
-  background-color: @md-grey-300;
+	height: 100%;
+	padding-top: 130px;
+	background-color: @md-grey-300;
 }
 
 #card-wrapper {
-  height: 100%;
-  overflow-y: auto;
-  .card {
-	margin-top: 50px;
-	margin-bottom: 50px;
-	background-color: @md-white;
-	.md-shadow-100();
-	.header,
-	.body,
-	.footer {
-	  margin-left: -15px;
-	  margin-right: -15px;
-	}
-	>.header {
-	  background-color: @md-blue-500;
-	  padding: 15px;
-	  .clearfix();
-	  .helper {
-		margin-bottom: 10px;
-		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.8);
-	  }
-	  .info {
-		float: left;
-		width: 70%;
-		padding: 35px 0 35px 35px;
-		color: @md-white;
-		overflow: hidden;
-		h1 {
-		  margin-bottom: 5px;
+	height: 100%;
+	overflow-y: auto;
+	.card {
+		margin-top: 50px;
+		margin-bottom: 50px;
+		background-color: @md-white;
+		.md-shadow-100();
+		.header,
+		.body,
+		.footer {
+			margin-left: -15px;
+			margin-right: -15px;
 		}
-	  }
-	  .action {
-		float: left;
-		width: 30%;
-		text-align: right;
-		.btn {
-		  padding: 5px;
-		  background-color: transparent;
-		  font-size: 2rem;
-		  color: rgba(255, 255, 255, 0.8);
-		  transition: color 0.3s cubic-bezier(.4,0,.2,1);
-		  &:hover {
-			color: rgba(255, 255, 255, 1);
-		  }
-		}
-	  }
-	}
-	.body {
-	  padding: 50px 25px 25px 25px;
-	  form {
-		.row {
-		  margin-bottom: 25px;
-		}
-	  }
-	  .relational {
-		margin: 0 -15px;
-		tbody {
-		  tr {
-			td {
-			  padding: 0;
-			  border: 0;
-			  .action {
-				text-align: right;
-				vertical-align: middle;
-				.btn {
-				  font-size: 1.6rem;
-				  color: @md-grey-500;
-				  background-color: transparent;
-				  transition: all cubic-bezier(.4,0,.2,1) .15s;
-				  &:hover {
-					color: @md-black;
-				  }
-				}
-			  }
+		>.header {
+			background-color: @md-blue-500;
+			padding: 15px;
+			.clearfix();
+			.helper {
+				margin-bottom: 10px;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.8);
 			}
-		  }
+			.info {
+				float: left;
+				width: 70%;
+				padding: 35px 0 35px 35px;
+				color: @md-white;
+				overflow: hidden;
+				h1 {
+					margin-bottom: 5px;
+				}
+			}
+			.action {
+				float: left;
+				width: 30%;
+				text-align: right;
+				.btn {
+					padding: 5px;
+					background-color: transparent;
+					font-size: 2rem;
+					color: rgba(255, 255, 255, 0.8);
+					transition: color 0.3s cubic-bezier(.4,0,.2,1);
+					&:hover {
+						color: rgba(255, 255, 255, 1);
+					}
+				}
+			}
 		}
-	  }
-	}
-	.footer {
-	  position: relative;
-	  padding: 15px;
-	  border-top: 1px solid @md-grey-300;
-	  text-align: right;
-	  .btn {
-		&:not(:first-child) {
-		  margin-left: 10px;
+		.body {
+			padding: 50px 25px 25px 25px;
+			form {
+				.row {
+					margin-bottom: 25px;
+				}
+			}
+			.relational {
+				margin: 0 -15px;
+				tbody {
+					tr {
+						td {
+							padding: 0;
+							border: 0;
+							&.action {
+								text-align: right;
+								vertical-align: middle;
+								.btn {
+									font-size: 1.6rem;
+									color: @md-grey-500;
+									background-color: transparent;
+									transition: all cubic-bezier(.4,0,.2,1) .15s;
+									&:hover {
+										color: @md-black;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
-	  }
+		.footer {
+			position: relative;
+			padding: 15px;
+			border-top: 1px solid @md-grey-300;
+			text-align: right;
+			.btn {
+				&:not(:first-child) {
+					margin-left: 10px;
+				}
+			}
+		}
 	}
-  }
 }
