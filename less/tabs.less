@@ -5,6 +5,9 @@
 
 .card {
     .header-tab {
+        .nav-tabs {
+            border-bottom: 1px solid @md-grey-200;
+        }
         .nav.nav-tabs {
             position: absolute;
             left: 0;
@@ -14,19 +17,21 @@
                 &.active {
                     a {
                         border: none;
-                        border-bottom: 3px solid @md-blue-500;
+                        border-bottom: 2px solid @md-blue-500;
                     }
                 }
                 a {
+                    padding: 16px;
                     font-size: 1.2rem;
-                    font-weight: @bold-font-weight;
+                    font-weight: @medium-font-weight;
                     color: @md-black;
-                    text-transform: uppercase;
+                    text-transform: capitalize;
                     transition: border cubic-bezier(.4,0,.2,1) .15s;
                     &:hover {
-                        padding-top: 3px;
+                        padding-top: 18px;
                         background-color: transparent;
-                        border-bottom: 1px solid @md-blue-500;
+                        border: none;
+                        border-bottom: 2px solid @md-blue-500;
                     }
                 }
             }
