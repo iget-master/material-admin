@@ -1,0 +1,35 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+.card {
+    .header-tab {
+        .nav.nav-tabs {
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 0 30px;
+            li {
+                &.active {
+                    a {
+                        border: none;
+                        border-bottom: 3px solid @md-blue-500;
+                    }
+                }
+                a {
+                    font-size: 1.2rem;
+                    font-weight: @bold-font-weight;
+                    color: @md-black;
+                    text-transform: uppercase;
+                    transition: border cubic-bezier(.4,0,.2,1) .15s;
+                    &:hover {
+                        padding-top: 3px;
+                        background-color: transparent;
+                        border-bottom: 1px solid @md-blue-500;
+                    }
+                }
+            }
+        }
+    }
+}
