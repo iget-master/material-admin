@@ -65,28 +65,30 @@
 					margin-bottom: 25px;
 				}
 			}
-			.relational {
-				margin: 0 -15px;
-				tbody {
-					tr {
-						td {
-							padding: 0;
-							border: 0;
-							.action {
-								text-align: right;
-								vertical-align: middle;
-								.btn {
-									font-size: 1.6rem;
-									color: @md-grey-500;
-									background-color: transparent;
-									transition: all cubic-bezier(.4,0,.2,1) .15s;
-									&:hover {
-										color: @md-black;
+			.relational-wrapper	{
+			  	margin: 0 -15px;
+				.relational {
+					tbody {
+						tr {
+							td {
+							  padding: 0;
+							  border: 0;
+								.action {
+								  text-align: right;
+								  vertical-align: middle;
+									.btn {
+									  font-size: 1.6rem;
+									  color: @md-grey-500;
+									  background-color: transparent;
+									  transition: all cubic-bezier(.4,0,.2,1) .15s;
+										&:hover {
+										  color: @md-black;
+										}
 									}
 								}
 							}
-						}
-					}
+					  	}
+				  	}
 				}
 			}
 		}
