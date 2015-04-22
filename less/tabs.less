@@ -26,12 +26,14 @@
                     font-weight: @medium-font-weight;
                     color: @md-black;
                     text-transform: capitalize;
+                    border: none;
                     transition: border cubic-bezier(.4,0,.2,1) .15s;
                     &:hover {
-                        padding-top: 18px;
                         background-color: transparent;
-                        border: none;
                         border-bottom: 2px solid @md-blue-500;
+                    }
+                    &:focus {
+                        background-color: transparent;
                     }
                 }
             }
