@@ -35,7 +35,7 @@
 			.info {
 				float: left;
 				width: 70%;
-				padding: 35px 0 35px 35px;
+				padding: 35px 0 35px 15px;
 				color: @md-white;
 				overflow: hidden;
 				h1 {
@@ -68,15 +68,17 @@
 			.relational-wrapper	{
 			  	margin: 0 -15px;
 				.relational {
+				  	margin-bottom: 0;
 					tbody {
 						tr {
 							td {
-							  padding: 0;
-							  border: 0;
+								padding: 0;
+								border: 0;
 								.action {
 								  text-align: right;
 								  vertical-align: middle;
 									.btn {
+									  padding-top: 3px;
 									  font-size: 1.6rem;
 									  color: @md-grey-500;
 									  background-color: transparent;
@@ -84,6 +86,27 @@
 										&:hover {
 										  color: @md-black;
 										}
+									}
+								}
+							}
+						  	&:not(:first-child) {
+							  	label {
+								  	display: none;
+								}
+							}
+							&:first-of-type {
+								td {
+									.action {
+										.btn {
+										  padding-top: 20px;
+										}
+									}
+								}
+							}
+						  	&.new-row {
+							  	&:not(:nth-child(2)) {
+							  		td {
+									  	padding-top: 20px;
 									}
 								}
 							}
