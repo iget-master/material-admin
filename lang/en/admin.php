@@ -18,6 +18,7 @@ return [
 	'action_save' => 'Save Changes',
 	'action_create' => 'Create',
 	'action_cancel' => 'Cancel',
+	'action_close' => 'Close',
 
 	'now_editing' => 'Now Editing',
 	'select_default' => 'Choose an option',

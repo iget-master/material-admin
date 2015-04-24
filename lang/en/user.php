@@ -2,9 +2,8 @@
 
 return [
 	'title' => 'Users',
-	'edit_title' => 'Modifying User',
-	'create_title' => 'Creating User',
-	'destroy_title' => 'Delete User',
+	'edit_title' => 'Modify User',
+	'create_title' => 'Add New User',
 	'destroy_title' => 'Delete User',
 	'new_user' => 'New User',
 	'edit' => 'Edit',

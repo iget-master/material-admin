@@ -1,11 +1,12 @@
 <?php
 
 return [
-	'title' => 'Inbox',
-	'show_title' => 'Show Message',
-	'create_title' => 'Creating Message',
+	'title' => 'Messages',
+	'show_title' => 'View Message',
+	'create_title' => 'Compose New Message',
+	'new_message' => 'New Message',
 
-	'to_user' => 'Destination',
+	'to_user' => 'Send to',
 	'subject' => 'Subject',
 	'message' => 'Message',
 	'date' => 'Sent at',
@@ -18,7 +19,8 @@ return [
 	'open' => 'Open',
 	'system_message' => 'System Message',
 	'tootip_compose' => 'Compose Message',
+	'from_user' => 'Sent by',
 	
-	'destroy_success' => 'Message removed successfully.|Messages removed successfully.',
-	'destroy_error' => 'Could not remove message.|Could not remove messages.'
+	'destroy_success' => 'Message successfully removed.|Messages successfully removed.',
+	'destroy_error' => 'Could not remove message.|Could not remove messages.',
 ];

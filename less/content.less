@@ -69,11 +69,14 @@
 			  	margin: 0 -15px;
 				.relational {
 				  	margin-bottom: 0;
-					tbody {
-						tr {
-							td {
+					> tbody {
+						> tr {
+							> td {
 								padding: 0;
 								border: 0;
+							  	label {
+								  	display: none;
+								}
 								.action {
 								  text-align: right;
 								  vertical-align: middle;
@@ -89,24 +92,45 @@
 									}
 								}
 							}
-						  	&:not(:first-child) {
-							  	label {
-								  	display: none;
-								}
-							}
+						  	//&:not(:first-child) {
+							//  	label {
+							//	  	display: none;
+							//	}
+							//}
 							&:first-of-type {
-								td {
-									.action {
+								> td {
+									> .action {
 										.btn {
-										  padding-top: 20px;
+											padding-top: 20px;
 										}
+									}
+									label {
+									  	display: block;
 									}
 								}
 							}
-						  	&.new-row {
-							  	&:not(:nth-child(2)) {
-							  		td {
-									  	padding-top: 20px;
+						  	&.room {
+							  	.new-row {
+								  	[role="room-name"] {
+									  	display: none;
+									  	margin: 0;
+									}
+								  	.btn {
+									  	margin: 15px 0 50px 0;
+									}
+								  	&.empty {
+									  	[role="room-name"] {
+										  	display: block;
+										  	margin: 10px;
+										}
+										//&:not(:nth-child(1)) {
+										//	[role="room-name"] {
+										//	  	margin-top: 30px;
+										//	}
+										//}
+										.btn {
+										  	margin: 10px 0 30px 0;
+										}
 									}
 								}
 							}

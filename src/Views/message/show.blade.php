@@ -1,5 +1,11 @@
 @extends((Request::ajax())?"materialadmin::layout.ajax":"materialadmin::layout.panel")
 
+@section('title')
+    <a href="/message" class="">@lang('materialadmin::message.title')</a>
+    <i class="md md-navigate-next"></i>
+    @lang('materialadmin::message.show_title')
+@stop
+
 @section('content')
 	@include('materialadmin::panel.alerts')
     <div id="card-wrapper">
@@ -8,7 +14,7 @@
                 <div class="col-md-offset-2 col-md-8 card">
                     <div class="header">
                         <div class="info">
-                            <h1>@lang('materialadmin::message.new_message')</h1>
+                            <h1>{!! $message->subject !!}</h1>
                         </div>
                         <div class="action">
                             {!! Form::open(array('method'=>'DELETE', 'route' => array('message.destroy', $message->id))) !!}
@@ -42,16 +48,12 @@
                         </div>
                     </div>
                     <div class="footer">
-                        <a href="/message" class="btn btn-flat">@lang('materialadmin::message.close')</a>
+                        <a href="/message" class="btn btn-flat">@lang('materialadmin::admin.action_close')</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@stop
-
-@section('title')
-	@lang('materialadmin::message.show_title')
 @stop
 
 @section('toolbar')

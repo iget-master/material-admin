@@ -1,5 +1,11 @@
 @extends((Request::ajax())?"materialadmin::layout.ajax":"materialadmin::layout.panel")
 
+@section('title')
+    <a href="/message" class="">@lang('materialadmin::message.title')</a>
+    <i class="md md-navigate-next"></i>
+    @lang('materialadmin::message.create_title')
+@stop
+
 @section('content')
 	@include('materialadmin::panel.alerts')
     <div id="card-wrapper">
@@ -50,22 +56,13 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="footer">
-                        <a href="/message" class="btn btn-flat">@lang('materialadmin::message.discard')</a>
-                        <a id="save" role="submit" data-form="#new-message" class="btn btn-flat action" disabled>@lang('materialadmin::message.submit')</a>
+                        <a href="/message" class="btn btn-flat">@lang('materialadmin::admin.action_cancel')</a>
+                        <a id="save" role="submit" data-form="#new-message" class="btn btn-flat action" disabled>@lang('materialadmin::admin.action_create')</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@stop
-
-@section('title')
-	@lang('materialadmin::message.create_title')
-@stop
-
-@section('toolbar')
-	<a role="submit" data-form="#form_message" class="btn btn-round primary"><i class="md md-send"></i></a>
-	<a href="/message" class="btn btn-round btn-sm warning"><i class="md md-arrow-back"></i></a>
 @stop
 
 @section('script')
