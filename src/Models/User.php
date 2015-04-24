@@ -1,15 +1,18 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
-use \Eloquent;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use IgetMaster\MaterialAdmin\Filters\DateFilter;
+use IgetMaster\MaterialAdmin\Filters\StringFilter;
+use IgetMaster\MaterialAdmin\Interfaces\FiltrableInterface;
+use IgetMaster\MaterialAdmin\Traits\FiltrableTrait;
+use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 
-class User extends Eloquent implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Eloquent implements FiltrableInterface, AuthenticatableContract {
 
-	use Authenticatable, CanResetPassword;
+	use Authenticatable, SelectableTrait, FiltrableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -28,9 +31,11 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 
 	protected $fillable = array('name', 'surname', 'dob', 'email', 'password', 'permission_group_id', 'language');
 
-	public function getDateFormat()
-    {
-        return 'd/m/Y';
+    /**
+     * @return string
+     */
+    public function getLabelColumn() {
+        return $this->name . " " . $this->surname;
     }
 
 	/**
@@ -45,11 +50,6 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
 	 * Model mutators definitions
 	 */
 	protected $dates = ['dob'];
-
-    public function setDobAttribute($value)
-    {
-    	$this->attributes['dob'] = Carbon::createFromFormat('d/m/Y', $value);
-    }
 
     public function hasRole($role)
     {
@@ -77,5 +77,25 @@ class User extends Eloquent implements AuthenticatableContract, CanResetPassword
     public function sentMessages()
     {
     	return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','from_user_id');
+    }
+
+    public function filterName($query, $value) {
+        return StringFilter::contains(\DB::raw("CONCAT(name, ' ', surname)"), $value)->filter($query);
+    }
+
+    public function filterEmail($query, $value) {
+        return StringFilter::contains('email', $value)->filter($query);
+    }
+
+    public function filterDob($query, $start = null, $end = null) {
+        return DateFilter::between('dob', $start, $end)->filter($query);
+    }
+
+    public function filterId($query, $operator, $value) {
+        return $query->where('id', $operator, $value);
+    }
+
+    public function filterPermissionGroupId($query, $operator, $value) {
+        return $query->where('permission_group_id', $operator, $value);
     }
 }

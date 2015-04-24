@@ -26,10 +26,6 @@ class MessageController extends RestController {
 	 */
 	public $translation_namespace = "materialadmin::message";
 
-	public function __construct()
-    {
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -97,6 +93,30 @@ class MessageController extends RestController {
 
 		return view('materialadmin::message.show')->with('message', $message);
 	}
+
+    /**
+     * @param $id
+     */
+    public function markAsRead($id)
+    {
+        $message = Message::findOrFail($id);
+        $message->read = 1;
+        $message->save();
+
+        return \Redirect::route('message.index');
+    }
+
+    /**
+     * @param $id
+     */
+    public function markAsUnread($id)
+    {
+        $message = Message::findOrFail($id);
+        $message->read = 0;
+        $message->save();
+
+        return \Redirect::route('message.index');
+    }
 
 
 	/**

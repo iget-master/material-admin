@@ -1,5 +1,5 @@
 <?php
-namespace IgetMaster\MaterialAdmin\Models\Traits;
+namespace IgetMaster\MaterialAdmin\Traits;
 
 trait SelectableTrait {
     public function getLabelColumn() {
@@ -8,7 +8,7 @@ trait SelectableTrait {
 
     static public function getSelectOptions() {
         $items = self::all();
-        $options = [];
+        $options = [""=>trans('materialadmin::admin.select_default')];
         foreach ($items as $item) {
             $options[$item->id] = $item->getLabelColumn();
         }

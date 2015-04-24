@@ -1,0 +1,87 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+.card {
+    .header-tab {
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding-left: 15px;
+        border-bottom: 1px solid @md-grey-200;
+        li {
+            &.active {
+                a {
+                    border: none;
+                    border-bottom: 2px solid @md-blue-500;
+                }
+            }
+            a {
+                padding: 16px;
+                font-size: 1.2rem;
+                font-weight: @medium-font-weight;
+                color: @md-black;
+                border: none;
+                transition: border cubic-bezier(.4,0,.2,1) .15s;
+                &:hover {
+                    background-color: transparent;
+                    border-bottom: 2px solid @md-blue-500;
+                }
+                &:focus {
+                    background-color: transparent;
+                }
+            }
+        }
+        +.tab-content {
+            padding-top: 25px;
+        }
+    }
+}
+
+.card {
+    .panel-group {
+        .panel {
+            border-radius: 0;
+            box-shadow: none;
+        }
+    }
+    .panel-default {
+        border-color: @md-grey-200;
+        &>.panel-heading {
+            position: relative;
+            padding: 0;
+            .title {
+                display: block;
+                padding: 10px 15px;
+                color: @md-black;
+                font-weight: @medium-font-weight;
+                &:hover {
+                    color: @md-black;
+                }
+            }
+            [role="remove"] {
+                position: absolute;
+                top: 7.5px;
+                right: 10px;
+                i {
+                    font-size: 1.8rem;
+                    color: @md-grey-400;
+                }
+                &:hover {
+                    i {
+                        color: @md-black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.panel-group .panel-heading+.panel-collapse>.panel-body, .panel-group .panel-heading+.panel-collapse>.list-group {
+    border-color: @md-grey-200;
+}
+
+.nav-tabs>li>a {
+    margin-right: 0;
+}

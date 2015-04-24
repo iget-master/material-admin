@@ -1,24 +1,54 @@
-div.alert {
-    border-radius: 1px;
-    &.alert-danger, &.alert-success {
-        border-color: transparent;
-        box-shadow: 0 5px 10px -5px #999;
-    }
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
 
-    button.close {
-        -webkit-transition: all 200ms ease-in-out;
-        -moz-transition: all 200ms ease-in-out;
-        -ms-transition: all 200ms ease-in-out;
-        -o-transition: all 200ms ease-in-out;
-        transition: all 200ms ease-in-out;
-    }
+.alert {
+  	padding: 15px 25px;
+	border-radius: 0;
+  &.close {
+		font-size: 1.8rem;
+  	}
+}
 
-    &:hover {
-        button.close {
-            opacity: 0.5;
-            &:hover {
-                opacity: 0.7;
-            }
-        }
-    }
+#collection-wrapper {
+	.items {
+		.alert {
+		  	margin-bottom: 0;
+		}
+	}
+}
+
+.tooltip {
+  	&.top {
+		.tooltip-arrow {
+		  	border-top-color: @md-grey-700;
+		}
+	}
+  	&.right {
+		.tooltip-arrow {
+		 	border-right-color: @md-grey-700;
+		}
+	}
+  	&.bottom {
+		.tooltip-arrow {
+		  	border-bottom-color: @md-grey-700;
+		}
+	}
+	&.left {
+		.tooltip-arrow {
+		  	border-left-color: @md-grey-700;
+		}
+	}
+}
+
+
+.tooltip-inner {
+	padding: 0.5rem;
+	font-size: 1.1rem;
+	font-weight: @light-font-weight;
+	letter-spacing: 0.5px;
+	color: @md-white;
+  	border-radius: 2px;
+	background-color: @md-grey-700;
 }

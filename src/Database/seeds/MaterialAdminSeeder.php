@@ -25,7 +25,39 @@ class MaterialAdminSeeder extends Seeder {
 			'name'=>'Admin',
 			'surname'=>'Test',
 			'permission_group_id'=>$administrator->id,
-			'dob'=>'11/06/1990',
+			'dob'=>'1990-11-11',
+			'language'=>'pt-BR'
+		]);User::create([
+			'email'=>'asasas@domain.com',
+			'password'=>\Hash::make('12345678'),
+			'name'=>'Admin',
+			'surname'=>'Test',
+			'permission_group_id'=>$administrator->id,
+            'dob'=>'1990-11-11',
+			'language'=>'pt-BR'
+		]);User::create([
+			'email'=>'dsaasdasd@domain.com',
+			'password'=>\Hash::make('12345678'),
+			'name'=>'Admin',
+			'surname'=>'Test',
+			'permission_group_id'=>$administrator->id,
+            'dob'=>'1990-11-11',
+			'language'=>'pt-BR'
+		]);User::create([
+			'email'=>'retertert@domain.com',
+			'password'=>\Hash::make('12345678'),
+			'name'=>'Admin',
+			'surname'=>'Test',
+			'permission_group_id'=>$administrator->id,
+            'dob'=>'1990-11-11',
+			'language'=>'pt-BR'
+		]);User::create([
+			'email'=>'fdgdfgdfgh@domain.com',
+			'password'=>\Hash::make('12345678'),
+			'name'=>'Admin',
+			'surname'=>'Test',
+			'permission_group_id'=>$administrator->id,
+            'dob'=>'1990-11-11',
 			'language'=>'pt-BR'
 		]);
 

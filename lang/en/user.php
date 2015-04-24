@@ -2,20 +2,23 @@
 
 return [
 	'title' => 'Users',
-	'edit_title' => 'Modifying User',
-	'create_title' => 'Creating User',
+	'edit_title' => 'Modify User',
+	'create_title' => 'Add New User',
+	'destroy_title' => 'Delete User',
+	'new_user' => 'New User',
 	'edit' => 'Edit',
 
-	'name' => 'Name',
-	'surname' => 'Surname',
-	'dob' => 'Birth date',
-	'permission_group' => 'Permission group',
-	'default_language' => 'Default language',
-	'change_password' => 'Change password',
-	'password' => 'Password',
-	'password_confirmation' => 'Password confirmation',
+	'name' => 'First Name',
+	'surname' => 'Last Name',
+	'dob' => 'Birth Date',
+	'permission_group' => 'Permission Group',
+	'default_language' => 'Default Language',
+	'change_password' => 'Change Password',
+	'password' => 'New Password',
+	'password_confirmation' => 'Password Confirmation',
 	'email' => 'Email',
+	'tooltip_create' => 'Create New User',
 
-	'destroy_success' => 'User removed successfully.|Users removed successfully.',
-	'destroy_error' => 'Could not remove user.|Could not remove users.'
+	'destroy_success' => 'User successfully removed.|Users successfully removed.',
+	'destroy_error' => 'Could not remove user.|Could not remove users.',
 ];
