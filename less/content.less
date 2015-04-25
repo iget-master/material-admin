@@ -74,14 +74,11 @@
 							> td {
 								padding: 0;
 								border: 0;
-							  	label {
-								  	display: none;
-								}
 								.action {
-								  text-align: right;
-								  vertical-align: middle;
+									text-align: right;
+									vertical-align: middle;
 									.btn {
-									  padding-top: 3px;
+									  padding-top: 20px;
 									  font-size: 1.6rem;
 									  color: @md-grey-500;
 									  background-color: transparent;
@@ -92,22 +89,23 @@
 									}
 								}
 							}
-						  	//&:not(:first-child) {
-							//  	label {
-							//	  	display: none;
-							//	}
-							//}
-							&:first-of-type {
+							&:not(:first-of-type) {
 								> td {
-									> .action {
-										.btn {
-											padding-top: 20px;
+								  	> [class*="col-"] {
+									  > .form-group {
+										label {
+										  display: none;
 										}
-									}
-									label {
-									  	display: block;
+									  }
+
+									  &.action {
+										.btn {
+										  padding-top: 3px;
+										}
+									  }
 									}
 								}
+
 							}
 						  	&.room {
 							  	.new-row {
@@ -123,11 +121,6 @@
 										  	display: block;
 										  	margin: 10px;
 										}
-										//&:not(:nth-child(1)) {
-										//	[role="room-name"] {
-										//	  	margin-top: 30px;
-										//	}
-										//}
 										.btn {
 										  	margin: 10px 0 30px 0;
 										}
