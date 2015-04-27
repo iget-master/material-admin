@@ -54,7 +54,7 @@ Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middl
 	|---------------
 	*/
 
-    Route::get('/search/{model}/{query}', array('as' => 'search', 'uses' => 'SearchController@search'));
+    Route::get('/search/{model}/{query}/{scope0?}/{scope1?}/{scope2?}/{scope3?}/{scope4?}', array('as' => 'search', 'uses' => 'SearchController@search'));
 
 });
 

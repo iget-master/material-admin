@@ -119,6 +119,7 @@ return [
                 'permission_group'
             ],
         ],
+        'scopes' => []
     ],
 
 ];
