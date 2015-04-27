@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+{!! var_dump($errors->toArray()) !!}
 	<div id="card-wrapper">
 		<div class="container">
 			<div class="row">

@@ -1,5 +1,7 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
+use \Eloquent;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -10,9 +12,22 @@ use IgetMaster\MaterialAdmin\Interfaces\FiltrableInterface;
 use IgetMaster\MaterialAdmin\Traits\FiltrableTrait;
 use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 
+
 class User extends Eloquent implements FiltrableInterface, AuthenticatableContract {
 
-	use Authenticatable, SelectableTrait, FiltrableTrait;
+	use Authenticatable, SelectableTrait, FiltrableTrait, SearchableTrait;
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        'columns' => [
+            'name' => 10,
+            'surname' => 10,
+        ]
+    ];
 
 	/**
 	 * The database table used by the model.

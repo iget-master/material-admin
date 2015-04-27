@@ -1,6 +1,15 @@
 <?php
 
-Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'auth'), function()
+Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'auth'), /**
+ *
+ */
+    /**
+     *
+     */
+    /**
+     *
+     */
+    function()
 {
 	/*
 	|--------------------------------------------------------------------------
@@ -38,6 +47,14 @@ Route::group(array('namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middl
 	Route::patch('/setting/{setting}/update/{id}', array('as' => 'setting.update', 'uses' => 'SettingController@update'));
 	Route::post('/setting/{setting}/store', array('as' => 'setting.store', 'uses' => 'SettingController@store'));
 	Route::delete('/setting/{setting}/update/{id}', array('as' => 'setting.destroy', 'uses' => 'SettingController@destroy'));
+
+    /*
+	|---------------
+	| Search Engine
+	|---------------
+	*/
+
+    Route::get('/search/{model}/{query}', array('as' => 'search', 'uses' => 'SearchController@search'));
 
 });
 
