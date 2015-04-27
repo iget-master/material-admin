@@ -1,6 +1,5 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
-use \Eloquent;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
