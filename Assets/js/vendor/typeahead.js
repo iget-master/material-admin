@@ -37,7 +37,7 @@
 			$field.data('typeahead', settings)
 			.addClass('typeahead')
 			.attr({
-				autocomplete: "off",
+				autocomplete: Math.random().toString(36).substr(2, 10),
                 spellcheck: "false"
 			})
 			.after('<ul class="dropdown-menu typeahead-box"></ul>')
