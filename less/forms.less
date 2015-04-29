@@ -3,26 +3,28 @@
 // MIT License
 // Release Date: 06/04/2015
 
-.card {
-	legend {
-		margin-bottom: 25px;
-		font-size: 1.8rem;
-		font-weight: @medium-font-weight;
-		border-bottom: 0;
-		.actions {
-			float: right;
-			margin-right: 25px;
-			a {
-				color: @md-grey-400;
-				&:hover {
-					color: @md-black;
-				}
+
+legend {
+	margin-bottom: 25px;
+	font-size: 1.8rem;
+	font-weight: @medium-font-weight;
+	border-bottom: 0;
+	.actions {
+		float: right;
+		margin-right: 25px;
+		a {
+			color: @md-grey-400;
+			&:hover {
+				color: @md-black;
 			}
 		}
 	}
 }
 
 .form-group {
+  	.form-control {
+	  	color: @md-black;
+	}
 	label {
 		margin-bottom: 0;
 		color: @md-grey-600;
@@ -61,6 +63,10 @@
 		&[disabled] {
 			background-color: transparent;
 			color: @md-grey-500;
+		}
+		&.error {
+			padding-top: 1px;
+			border-bottom: 2px solid @md-red-500;
 		}
 	}
 	select {
@@ -163,7 +169,7 @@
 
 ::-webkit-calendar-picker-indicator { padding: 0 3px; }
 
-//::-webkit-inner-spin-button { display: none; }
+::-webkit-inner-spin-button { display: none; }
 
 //input:-webkit-autofill,
 //textarea:-webkit-autofill,

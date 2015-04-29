@@ -16,8 +16,21 @@
 		}
 	});
 
-	/* Enable Save Button */
+	/* Toogle Disbaled in Form Rows */
+	$(document).on('click', 'input[type="checkbox"][role="enable"]', function(event) {
+		var $target = $(event.currentTarget);
 
+		if (typeof $target.data('target') !== 'undefined') {
+			if ($target.prop('checked')) {
+				$($target.data('target')).removeClass('disabled');
+			} else {
+				$($target.data('target')).addClass('disabled');
+			}
+		}
+	});
+
+
+	/* Enable Save Button */
 	$('form').on('input', function() {
 		$('#save').removeAttr('disabled');
 	});

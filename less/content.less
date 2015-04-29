@@ -41,6 +41,17 @@
 				h1 {
 					margin-bottom: 5px;
 				}
+			  	.label {
+				  	position: relative;
+				  	top: -2px;
+				  	left: 3px;
+				  	font-size: 0.9rem;
+				  	font-weight: @medium-font-weight;
+				  	text-transform: uppercase;
+				  	.label-danger {
+					  	background-color: @md-red-500;
+					}
+				}
 			}
 			.action {
 				float: left;
@@ -56,6 +67,9 @@
 						color: rgba(255, 255, 255, 1);
 					}
 				}
+			  	form {
+				  	display: inline-block;
+				}
 			}
 		}
 		.body {
@@ -63,6 +77,23 @@
 			form {
 				.row {
 					margin-bottom: 25px;
+					&.disabled {
+					  	input,
+						select,
+						textarea,
+						.input-group-addon {
+						  	pointer-events: none;
+						  	color: @md-grey-200;
+						  	border-bottom-color: @md-grey-200;
+						  	cursor: not-allowed;
+						}
+					  	label {
+						  	color: @md-grey-200;
+						}
+					}
+					&.enable {
+					  	margin-bottom: 0;
+					}
 				}
 			}
 			.relational-wrapper	{
@@ -91,18 +122,18 @@
 							}
 							&:not(:first-of-type) {
 								> td {
-								  	> [class*="col-"] {
-									  > .form-group {
-										label {
-										  display: none;
+									  > [class*="col-"] {
+										  > .form-group {
+											  label {
+												  display: none;
+											  }
 										}
-									  }
 
-									  &.action {
-										.btn {
-										  padding-top: 3px;
+										&.action {
+											.btn {
+											  	padding-top: 3px;
+											}
 										}
-									  }
 									}
 								}
 
