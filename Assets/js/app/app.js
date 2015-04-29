@@ -31,7 +31,7 @@
 
 
 	/* Enable Save Button */
-	$('form').on('input', function() {
+	$('form').on('input change', function() {
 		$('#save').removeAttr('disabled');
 	});
 
