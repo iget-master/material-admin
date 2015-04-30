@@ -30,8 +30,13 @@
 	});
 
 
-	/* Enable Save Button */
+	/* Enable Save Button When Form is Edited*/
 	$('form').on('input change', function() {
+		$('#save').removeAttr('disabled');
+	});
+
+	/* Enable Save Button When relational Table is Updated */
+	$('.relational').on('update', function() {
 		$('#save').removeAttr('disabled');
 	});
 
