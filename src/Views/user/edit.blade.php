@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-{!! var_dump($errors->toArray()) !!}
 	<div id="card-wrapper">
 		<div class="container">
 			<div class="row">
@@ -67,35 +66,31 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="checkbox">
-									    <label>
-											<input type="checkbox" role="toggle" data-target="#password-container"> 
-											@lang('materialadmin::user.change_password')
-									    </label>
+							<div class="row enable">
+								<div class="col-md-12">
+									<div class="form-group option">
+										<input type="checkbox" name="enable-paid" role="enable" data-target="#password-container">
+										<span class="text">@lang('materialadmin::user.change_password')</span>
 									</div>
 								</div>
 							</div>
-							<div id="password-container" class="hide">
-								<div class="row">
-									<div class="col-md-3">
-										<div class="form-group">
-											{!! Form::label('password', trans('materialadmin::user.password'), array('class' => 'required')) !!}
-											{!! Form::password('password', array('class' => 'form-control')) !!}
-											@if ($errors->has('password'))
-												{!! $errors->first('password') !!}	
-											@endif
-										</div>
+							<div id="password-container" class="row disabled">
+								<div class="col-md-3">
+									<div class="form-group">
+										{!! Form::label('password', trans('materialadmin::user.password'), array('class' => 'required')) !!}
+										{!! Form::password('password', array('class' => 'form-control')) !!}
+										@if ($errors->has('password'))
+											{!! $errors->first('password') !!}
+										@endif
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											{!! Form::label('password_confirmation', trans('materialadmin::user.password_confirmation'), array('class' => 'required')) !!}
-											{!! Form::password('password_confirmation', array('class' => 'form-control')) !!}
-											@if ($errors->has('password_confirmation'))
-												{!! $errors->first('password_confirmation') !!}	
-											@endif
-										</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										{!! Form::label('password_confirmation', trans('materialadmin::user.password_confirmation'), array('class' => 'required')) !!}
+										{!! Form::password('password_confirmation', array('class' => 'form-control')) !!}
+										@if ($errors->has('password_confirmation'))
+											{!! $errors->first('password_confirmation') !!}
+										@endif
 									</div>
 								</div>
 							</div>

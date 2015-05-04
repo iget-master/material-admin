@@ -55,7 +55,7 @@
 							<td>{!! $user->name !!} {!! $user->surname !!}</td>
 							<td>{!! getFormatedDate($user->dob) !!}</td>
 							<td>{!! $user->permission_group->name !!}</td>
-							<td>//Esperando função ser criada//</td>
+							<td>{!! $user->getLanguageLabel() !!}</td>
 							<td>{!! $user->email !!}</td>
 							<td class="actions">
 								<div class="dropdown">

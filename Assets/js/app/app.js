@@ -36,7 +36,7 @@
 	});
 
 	/* Enable Save Button When relational Table is Updated */
-	$('.relational').on('update', function() {
+	$('.relational').on('updated', function() {
 		$('#save').removeAttr('disabled');
 	});
 

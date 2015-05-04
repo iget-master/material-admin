@@ -78,6 +78,21 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
     	}
     }
 
+    public function getLanguageLabel()
+    {
+        $availableLanguages = \Config::get('admin.languages');
+
+        if(array_key_exists($this->language, $availableLanguages) ) {
+
+            return $availableLanguages[$this->language];
+
+        } else {
+
+            return $this->language;
+
+        }
+    }
+
     public function unreadMessages()
     {
         return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','to_user_id')->where('read', 0);
