@@ -67,4 +67,11 @@
 
 @section('script')
     {!! HTML::script('js/app/message.js') !!}
+    {!! HTML::script('js/errors.js') !!}
+
+    @if ($errors->any())
+        <script>
+            $('form#new-message').formErrorParser({}, {!! $errors->toJson(); !!});
+        </script>
+    @endif
 @stop

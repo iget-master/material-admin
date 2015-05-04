@@ -74,26 +74,24 @@
 		}
 		.body {
 			padding: 50px 25px 25px 25px;
-			form {
-				.row {
-					margin-bottom: 25px;
-					&.disabled {
-					  	input,
-						select,
-						textarea,
-						.input-group-addon {
-						  	pointer-events: none;
-						  	color: @md-grey-200;
-						  	border-bottom-color: @md-grey-200;
-						  	cursor: not-allowed;
-						}
-					  	label {
-						  	color: @md-grey-200;
-						}
+			.row {
+				margin-bottom: 25px;
+				&.disabled {
+					input,
+					select,
+					textarea,
+					.input-group-addon {
+						pointer-events: none;
+						color: @md-grey-200;
+						border-bottom-color: @md-grey-200;
+						cursor: not-allowed;
 					}
-					&.enable {
-					  	margin-bottom: 0;
+					label {
+						color: @md-grey-200;
 					}
+				}
+				&.enable {
+					margin-bottom: 0;
 				}
 			}
 			.relational-wrapper	{
@@ -105,6 +103,10 @@
 							> td {
 								padding: 0;
 								border: 0;
+							  	.row {
+								  	margin-left: 0;
+								  	margin-right: 0;
+								}
 								.action {
 									text-align: right;
 									vertical-align: middle;

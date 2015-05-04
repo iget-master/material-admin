@@ -90,4 +90,11 @@
 
 @section('script')
 	{!! HTML::script('js/app/users.js') !!}
+	{!! HTML::script('js/errors.js') !!}
+
+	@if ($errors->any())
+		<script>
+			$('form#user').formErrorParser({}, {!! $errors->toJson(); !!});
+		</script>
+	@endif
 @stop
