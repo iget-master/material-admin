@@ -2,9 +2,13 @@
 
 use Carbon\Carbon;
 
-function getFormatedDate($date) {
+function getFormatedDate($date, $raw = false) {
 	if ($date instanceof Carbon) {
-		return $date->format('d/m/Y');
+        if ($raw) {
+            return $date->toDateString();
+        } else {
+            return $date->format('d/m/Y');
+        }
 	} else {
 		return '';
 	}

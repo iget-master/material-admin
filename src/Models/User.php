@@ -93,6 +93,15 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
         }
     }
 
+    public function setDobAttribute($value)
+    {
+        if (strlen($value) == 0) {
+            $value = null;
+        }
+
+        $this->attributes['dob'] = $value;
+    }
+
     public function unreadMessages()
     {
         return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','to_user_id')->where('read', 0);
