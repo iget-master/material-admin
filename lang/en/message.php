@@ -20,6 +20,7 @@ return [
 	'system_message' => 'System Message',
 	'tootip_compose' => 'Compose Message',
 	'from_user' => 'Sent by',
+	'view' => 'View your Messages',
 	
 	'destroy_success' => 'Message successfully removed.|Messages successfully removed.',
 	'destroy_error' => 'Could not remove message.|Could not remove messages.',

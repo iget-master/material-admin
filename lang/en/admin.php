@@ -22,5 +22,6 @@ return [
 
 	'now_editing' => 'Now Editing',
 	'select_default' => 'Choose an option',
+	'logout' => 'Logout',
 
 ];
