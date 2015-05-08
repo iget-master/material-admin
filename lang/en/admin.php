@@ -23,5 +23,7 @@ return [
 	'now_editing' => 'Now Editing',
 	'select_default' => 'Choose an option',
 	'logout' => 'Logout',
+	'tooltip_filter' => 'Show/Hide Filter Options',
+
 
 ];

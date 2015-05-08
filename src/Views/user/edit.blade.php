@@ -19,7 +19,7 @@
 						</div>
 						<div class="action">
 							{!! Form::open(array('method'=>'DELETE', 'route' => array('user.destroy', $user->id))) !!}
-								<button type="submit" class="btn btn-flat"><i class="md md-delete"></i></button>
+								<button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang('materialadmin::user.delete_this_title')"><i class="md md-delete"></i></button>
 							{!! Form::close() !!}
 						</div>	
 					</div>
