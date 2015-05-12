@@ -34,10 +34,11 @@
     var typeahead = {
         init: function($field, settings)
         {
+            var rand = Math.random().toString(36).substr(2, 10);
             $field.data('typeahead', settings)
                 .addClass('typeahead')
                 .attr({
-                    autocomplete: Math.random().toString(36).substr(2, 10),
+                    autocomplete: rand,
                     spellcheck: "false"
                 })
                 .after('<ul class="dropdown-menu typeahead-box"></ul>')
@@ -50,7 +51,7 @@
 
             $field.siblings('.typeahead-box').on('mouseenter', '.typeahead-suggestion', typeahead.suggestionBox.handleSuggestionMouseenter);
 
-            if (typeof settings.selected_datum !== 'undefined')
+            if (typeof settings.selected_datum == 'object')
             {
                 typeahead.field.set($field, settings.selected_datum);
             }
@@ -61,7 +62,7 @@
         {
             var keyCode = event.keyCode || event.which;
             var $field = $(this);
-            var $typeaheadBox = $(this).siblings('.typeahead-box');
+            var $typeaheadBox = $(this).closest('.dropdown').find('.typeahead-box');
             var suggestionsCount = $typeaheadBox.find('li.typeahead-suggestion').length;
             var $currentSelection = $typeaheadBox.find('li.active');
 
@@ -151,7 +152,7 @@
         suggestionBox: {
             add: function($field, suggestions) {
                 fieldSettings = $field.data('typeahead');
-                $suggestionBox = $field.siblings('.typeahead-box');
+                $suggestionBox = $field.closest('.dropdown').find('.typeahead-box');
                 $.each(suggestions, function(index, value) {
                     var suggestionHtml = fieldSettings.template.suggestion(value);
                     if (suggestionHtml)
@@ -173,43 +174,47 @@
                 return this;
             },
             clear: function ($field) {
-                $field.siblings('.typeahead-box').html('');
+                $field.closest('.dropdown').find('.typeahead-box').html('');
                 return this;
             },
             open: function ($field)
             {
+                console.log('open do field', $field);
+                $suggestionBox = $field.closest('.dropdown').find('.typeahead-box');
+                console.log('suggestion-box', $suggestionBox);
                 if ($field.is(":focus"))
                 {
                     $field.trigger('typeahead-box-open');
 
-                    $field.parent().removeClass('open').addClass('open');
-                    if (($field.siblings('.typeahead-box').find('li.typeahead-suggestion').length > 0) && ($field.siblings('.typeahead-box').find('li.typeahead-suggestion.active').length == 0))
+                    $field.closest('.dropdown').removeClass('open').addClass('open');
+                    if (($suggestionBox.find('li.typeahead-suggestion').length > 0) && ($suggestionBox.find('li.typeahead-suggestion.active').length == 0))
                     {
-                        $field.siblings('.typeahead-box').find('li.typeahead-suggestion').first().addClass('active');
+                        $suggestionBox.find('li.typeahead-suggestion').first().addClass('active');
                     }
                 }
                 return this;
             },
             close: function ($field)
             {
-                $field.parent().removeClass('open');
+                $field.closest('.dropdown').removeClass('open');
                 return this;
             },
             empty: function ($field)
             {
                 fieldSettings = $field.data('typeahead');
-                $suggestionBox = $field.siblings('.typeahead-box').html('<li class="typeahead-empty"><a>' + fieldSettings.template.empty($field.val()) + '</a></li>');
+                $suggestionBox = $field.closest('.dropdown').find('.typeahead-box').html('<li class="typeahead-empty"><a>' + fieldSettings.template.empty($field.val()) + '</a></li>');
                 typeahead.suggestionBox.open($field);
             },
             searching: function ($field)
             {
+                console.log($field);
                 fieldSettings = $field.data('typeahead');
-                $suggestionBox = $field.siblings('.typeahead-box').html('<li class="typeahead-searching"><a>' + fieldSettings.template.searching($field.val()) + '</a></li>');
+                $suggestionBox = $field.closest('.dropdown').find('.typeahead-box').html('<li class="typeahead-searching"><a>' + fieldSettings.template.searching($field.val()) + '</a></li>');
                 typeahead.suggestionBox.open($field);
             },
             handleSuggestionClick: function (event)
             {
-                var $field = $(event.target).closest('ul.typeahead-box').siblings('input.typeahead')
+                var $field = $(event.target).closest('.dropdown').find('input.typeahead');
                 typeahead.field.set($field, $(event.target).closest('li.typeahead-suggestion').data('datum'));
                 typeahead.suggestionBox.close($field).clear($field);
                 event.preventDefault();
@@ -224,6 +229,7 @@
         field: {
             set: function ($field, datum)
             {
+                console.log($field);
                 fieldSettings = $field.data('typeahead');
                 $field.data('selected-datum', datum)
                     .val(fieldSettings.displayKey(datum))
@@ -239,7 +245,7 @@
             fieldSettings = $field.data('typeahead');
 
             fieldSettings.source.get(fieldSettings.formatQuery($field).trim(), function(s){
-                $field.parent().find('ul.typeahead-box').html('');
+                $field.closest('.dropdown').find('ul.typeahead-box').html('');
 
                 if (s.length > 0)
                 {
@@ -254,4 +260,17 @@
             return this;
         }
     }
+
+    // Create fake inputs for typeahead before form submitting
+    $(document).on('submit', function(event) {
+        $('.typeahead').each(function() {
+            var $field = $(this);
+            var selected = $field.data('selected-datum');
+            var $fake = $('<input type="hidden" role="typeahead-fake"/>').attr('name', $field.attr('name')).insertBefore($field);
+            if (typeof selected !== 'undefined') {
+                $fake.val(selected.id)
+            }
+            $field.removeAttr('name');
+        })
+    });
 }( jQuery ))
