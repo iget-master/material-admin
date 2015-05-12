@@ -68,6 +68,9 @@ legend {
 			padding-top: 1px;
 			border-bottom: 2px solid @md-red-500;
 		}
+		&[readonly] {
+		  	background-color: transparent;
+		}
 	}
 	select {
 		height: 28px;
@@ -91,9 +94,12 @@ legend {
 			background-position: calc(100% - 3px) calc(100% - 45px);
 
 		}
-		&:disabled {
+		&[disabled] {
 			background-color: transparent;
 			color: @md-grey-500;
+		}
+		&[readonly] {
+  			background-color: transparent;
 		}
 	}
 	textarea {
@@ -106,9 +112,12 @@ legend {
 			box-shadow: none;
 			border: 2px solid @md-blue-500;
 		}
-		&:disabled {
+		&[disabled] {
 			background-color: transparent;
 			color: @md-grey-500;
+		}
+		&[readonly] {
+		  	background-color: transparent;
 		}
 	}
 	&.option {
