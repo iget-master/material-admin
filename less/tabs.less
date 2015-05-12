@@ -15,6 +15,31 @@
                 a {
                     border: none;
                     border-bottom: 2px solid @md-blue-500;
+                    &:hover {
+                        color: @md-black;
+                    }
+                }
+            }
+            &.has-error {
+                a {
+                    border: none;
+                    border-bottom: 2px solid @md-red-500;
+                    &:hover {
+                        border-bottom: 2px solid @md-red-500;
+                    }
+                }
+            }
+            &.disabled {
+                a {
+                    color: @md-grey-300;
+                    border: none;
+                    border-bottom: 2px solid @md-grey-300;
+                    pointer-events: none;
+                    cursor: not-allowed;
+                    &:hover {
+                        color: @md-grey-300;
+                        border-bottom: 2px solid @md-grey-300;
+                    }
                 }
             }
             a {
@@ -80,6 +105,10 @@
 
 .panel-group .panel-heading+.panel-collapse>.panel-body, .panel-group .panel-heading+.panel-collapse>.list-group {
     border-color: @md-grey-200;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: @md-black;
 }
 
 .nav-tabs>li>a {
