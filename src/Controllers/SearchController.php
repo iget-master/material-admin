@@ -50,7 +50,7 @@ class SearchController extends BaseController {
             }
         }
 
-        return response()->json($search->search($query)->take(5)->get());
+        return response()->json($search->search($query, null, true)->take(5)->get());
     }
 
     /**
