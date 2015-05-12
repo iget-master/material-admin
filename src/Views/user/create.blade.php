@@ -3,7 +3,7 @@
 @section('title')
 	<a href="/user" class="">@lang('materialadmin::user.title')</a>
 	<i class="md md-navigate-next"></i>
-	@lang('materialadmin::user.create_title')
+	@lang('materialadmin::user.add_title')
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
 				<div class="col-md-offset-2 col-md-8 card">
 					<div class="header">
 						<div class="info">
-							<h1>@lang('materialadmin::user.new_user')</h1>
+							<h1>@lang('materialadmin::user.new_title')</h1>
 						</div>
 						<div class="action">
 

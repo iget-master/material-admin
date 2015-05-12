@@ -40,4 +40,11 @@
 		$('#save').removeAttr('disabled');
 	});
 
+	/* Initialize Tooltips */
+	 $(function () {
+		 $('[data-toggle="tooltip"]').tooltip({
+			 delay: {show: 1000, hide: 200}
+		 });
+	 });
+
 } (jQuery)

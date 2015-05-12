@@ -5,7 +5,7 @@
 @stop
 
 @section('actions')
-	<button id="filter-toogler" class="btn btn-flat">
+	<button id="filter-toogler" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang('materialadmin::admin.tooltip_filter')">
         <i class="md md-filter-list"></i>
     </button>
 	<div class="dropdown">
@@ -16,7 +16,7 @@
 		</button>
 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
 			<li>
-				<a id="do-bulk-destroy" href="#">@lang('materialadmin::user.destroy_title')</a>
+				<a id="do-bulk-destroy" href="#">@lang('materialadmin::user.delete_bulk_title')</a>
 			</li>
 		</ul>
 	</div>
@@ -63,7 +63,7 @@
 									<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
 										<li>
 											{!! Form::open(array('method'=>'DELETE', 'route' => array('user.destroy', $user->id))) !!}
-												<button type="submit" class="btn btn-dropdown-item">@lang('materialadmin::user.destroy_title')</button>
+												<button type="submit" class="btn btn-dropdown-item">@lang('materialadmin::user.delete_this_title')</button>
 											{!! Form::close() !!}
 										</li>
 									</ul>
@@ -89,7 +89,7 @@
             <button class="btn btn-floating secondary"><i class="md md-group-add"></i></button>
         </li> -->
         <li class="primary">
-            <span class="label">@lang('materialadmin::user.tooltip_create')</span>
+            <span class="label">@lang('materialadmin::user.add_title')</span>
             <a class="btn btn-floating" href="/user/create"><i class="md md-add default"></i><i class="md md-person-add hover"></i></a>
         </li>
     </ul>

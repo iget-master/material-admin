@@ -21,14 +21,14 @@
                 <div class="global">
                     <img class="brand" src="http://placehold.it/120x40">
                     <div class="actions">
-                        <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang('materialadmin::message.view')">
+                        <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat">
                             @if ($unread_count = Auth::user()->unreadMessages->count())
                                 <i class="md md-message new"></i>
                             @else
                                 <i class="md md-message"></i>
                             @endif
                         </a>
-                        <a href="{!! route('materialadmin.logout') !!}" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang('materialadmin::admin.logout')">
+                        <a href="{!! route('materialadmin.logout') !!}" class="btn btn-flat">
                             <i class="md md-exit-to-app"></i>
                         </a>
                     </div>
