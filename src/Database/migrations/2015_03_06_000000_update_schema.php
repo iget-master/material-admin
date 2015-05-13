@@ -28,8 +28,6 @@ class UpdateSchema extends Migration {
 			$table->string('color');
 			$table->string('img_url')->nullable();
 		});
-
-        DB::statement('ALTER TABLE `users` ADD FULLTEXT `search_name` (name, surname)');
 	}
 
 	/**
