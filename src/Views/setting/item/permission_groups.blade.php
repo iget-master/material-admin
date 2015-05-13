@@ -3,25 +3,27 @@
 	$permission_groups = PermissionGroup::all();
 ?>
 
-<div class="row">
+<div class="row setting-group">
 	<div class="col-md-3 title">
 		{!! trans('materialadmin::admin.permission_groups') !!}
 	</div>
 	<div class="col-md-9 content">
-		{!! trans_choice('materialadmin::admin.permission_groups_count', $permission_groups->count()) !!}
-		<a href="#" class="create">{!! trans('materialadmin::admin.create') !!}<i class="md md-add md-lg"></i></a>
-		<table>
-			<tbody>
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">
+				{!! trans_choice('materialadmin::admin.permission_groups_count', $permission_groups->count()) !!}
+				<a href="#" class="create"><i class="md md-add-circle-outline md-lg"></i></a>
+			</div>
+
+			<!-- List group -->
+			<ul class="list-group">
 				@foreach ($permission_groups as $permission_group)
-					<tr class="editable" data-id="{!! $permission_group->id !!}" data-edit="{!! route('setting.edit', ['permission_groups', $permission_group->id]) !!}" data-delete="{!! route('setting.delete', ['permission_groups', $permission_group->id]) !!}">
-						<td>{!! $permission_group->name !!}</td>
-						<td class="actions">
-							<a href="#" class="delete"><i class="md md-delete"></i></a>
-							<a href="#" class="edit"><i class="md md-edit"></i></a>
-						</td>
-					</tr>
+					<li class="list-group-item editable" data-id="{!! $permission_group->id !!}" data-edit="{!! route('setting.edit', ['permission_groups', $permission_group->id]) !!}" data-delete="{!! route('setting.delete', ['permission_groups', $permission_group->id]) !!}">
+						{!! $permission_group->name !!}
+						<a href="#" class="delete"><i class="md md-delete md-lg"></i></a>
+					</li>
 				@endforeach
-			</tbody>
-		</table>
+			</ul>
+		</div>
 	</div>
 </div>

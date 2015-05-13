@@ -1,0 +1,70 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+#chart-of-accounts {
+  .account {
+    .head {
+      margin: 5px;
+      padding: 10px 15px;
+      border: 1px solid @md-grey-300;
+      border-radius: 2px;
+      color: @md-black;
+      font-weight: @medium-font-weight;
+      background-color: @md-grey-100;
+      span {
+        font-size: 13px;
+        &.name,
+        &.code {
+          cursor: default;
+        }
+        &.type {
+          -webkit-transition: opacity 200ms ease-in-out;
+          -moz-transition: opacity 200ms ease-in-out;
+          -ms-transition: opacity 200ms ease-in-out;
+          -o-transition: opacity 200ms ease-in-out;
+          transition: opacity 200ms ease-in-out;
+
+          opacity: 0.7;
+          display: inline-block;
+          background-color: @md-blue-600;
+          color: white;
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+          font-size: 16px;
+          text-align: center;
+          margin-right: 5px;
+          font-weight: 100;
+        }
+      }
+
+      a {
+        float: right;
+        margin-left: 5px;
+        -webkit-transition: color 200ms ease-in-out;
+        -moz-transition: color 200ms ease-in-out;
+        -ms-transition: color 200ms ease-in-out;
+        -o-transition: color 200ms ease-in-out;
+        transition: color 200ms ease-in-out;
+        color: @md-grey-400;
+        &:hover {
+          color: @md-black;
+        }
+      }
+
+      &:hover {
+        background-color: @md-grey-100;
+        span.type {
+          opacity: 1;
+        }
+      }
+    }
+
+    .children {
+      padding-left: 30px;
+    }
+  }
+}

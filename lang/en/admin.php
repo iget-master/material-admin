@@ -25,5 +25,13 @@ return [
 	'logout' => 'Logout',
 	'tooltip_filter' => 'Show/Hide Filter Options',
 
+	/*
+	 * Permission Group
+	 */
+	'permission_groups_title' => 'Permission Group',
+	'permission_groups_delete_this' => 'Delete Permission Group',
+	'permission_groups_title_create' => 'Add Permission Group',
+	'permission_groups_title_edit' => 'Edit Permission Group',
+
 
 ];

@@ -1,6 +1,6 @@
 @extends((Request::ajax())?"materialadmin::layout.ajax":"materialadmin::layout.panel")
 
-<?php 
+<?php
 	$groups = \Config::get('admin.settings_groups');
 
 	$order = array();
@@ -20,14 +20,18 @@
 	array_multisort($order, SORT_DESC, $items);
 ?>
 
+@section('title')
+    @lang('materialadmin::settings.model_title')
+@stop
+
 @section('content')
     <div id="card-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-1 col-md-10 card">
+                <div class="col-md-offset-2 col-md-8 card">
                     <div class="header">
                         <div class="info">
-                            <h1>@lang('materialadmin::settings.settings')</h1>
+                            <h1>@lang('materialadmin::settings.model_title')</h1>
                         </div>
                         <div class="action">
 
@@ -35,7 +39,7 @@
                     </div>
                     <div role="tabpanel">
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
+                        <ul class="nav nav-tabs header-tab" role="tablist">
                             @foreach($groups as $index=>$group)
                                 <li @if($index == 0) class="active" @endif>
                                     <a href="#group-{!! $index !!}" data-toggle="tab">
@@ -47,9 +51,9 @@
 
                         @include('materialadmin::panel.alerts')
 
-                        <div id="settings-groups" class="tab-content body">
+                        <div id="settings-groups" class="tab-content">
                             @foreach($groups as $index=>$group)
-                                <div class="tab-pane @if($index == 0) active @endif" id="group-{!! $index !!}">
+                                <div class="tab-pane body @if($index == 0) active @endif" id="group-{!! $index !!}">
                                     @foreach($items as $item_name => $item)
                                         @if ($item['group'] == $group['name'])
                                             <div class="settings-item" data-setting-name="{!! $item_name !!}" data-create="{!! route('setting.create', [$item_name]) !!}" data-show="{!! route('setting.show', [$item_name]) !!}">
@@ -67,18 +71,6 @@
     </div>
 @stop
 
-@section('title')
-	{!! trans('materialadmin::admin.settings') !!}
-@stop
-
-@section('toolbar')
-	{{-- <a href="/user/create" class="btn btn-round primary"><i class="md md-add"></i></a>
-    {!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => array('user.multiple_destroy'))) !!}
-		<button type="submit" class="btn btn-round btn-sm btn-bulk danger"><i class="md md-delete"></i></button>
-	{!! Form::close() !!} --}}
-@stop
-
 @section('script')
 	{!! HTML::script('iget-master/material-admin/js/app/setting.js') !!}
-
 @stop
