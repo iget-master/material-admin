@@ -8,6 +8,7 @@ return [
 	*/
 
 	'home_route' => 'materialadmin.empty',
+    'brand_image_url' => 'http://placehold.it/120x40',
 
 	/*
 	|--------------------------------------------------------------------------

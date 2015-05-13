@@ -19,7 +19,7 @@
             </div>
             <div id="header-wrapper">
                 <div class="global">
-                    <img class="brand" src="http://placehold.it/120x40">
+                    <img class="brand" src="{{ config('admin.brand_image_url') }}">
                     <div class="actions">
                         <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat">
                             @if ($unread_count = Auth::user()->unreadMessages->count())
