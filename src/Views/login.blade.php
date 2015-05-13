@@ -8,31 +8,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- CSS are placed here -->
-    {!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,700,400') !!}
-    {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
-    {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
-	{!! HTML::style('iget-master/material-admin/css/admin.css') !!}
+	{!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
+	{!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
+	{!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
+	{!! HTML::style('iget-master/material-admin/css/panel.min.css') !!}
 	{!! HTML::style('css/app.css') !!}
 </head>
-<body>
+<body style="background-color: #2196f3">
 	<div class="container-fluid">
-		<div id="login-container" class="paper col-md-4 col-md-offset-4">
-				@if (Session::get('alert'))
-					<div class="alert alert-{!! Session::get('alert')["type"] !!}">
-						{!! Session::get('alert')["message"] !!}
-					</div>
-				@endif
-
+		<div class="col-md-offset-5 col-md-2" style="padding: 40px 50px; background-color: #ffffff; margin-top: 200px; border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);">
+			<h2 class="text-center">Login</h2>
+			<br>
+			@if (Session::get('alert'))
+				<div class="alert alert-{!! Session::get('alert')["type"] !!}">
+				{!! Session::get('alert')["message"] !!}
+			</div>
+			@endif
+			<div class="row">
 				{!! Form::open(array('route' => 'materialadmin.authenticate')) !!}
-					<div class="form-group">
-						{!! Form::label('email', 'Email:') !!}
-						{!! Form::text('email', null, array('class' => 'form-control')) !!}
-					</div>
-					<div class="form-group">
-						{!! Form::label('password', 'Senha:') !!}
-						{!! Form::password('password', array('class' => 'form-control')) !!}
-					</div>
-					{!! Form::button('<i class="md md-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-primary pull-right')) !!}
+				<div class="form-group">
+					{!! Form::label('email', 'Email:') !!}
+					{!! Form::text('email', null, array('class' => 'form-control')) !!}
+				</div>
+				<div class="form-group">
+					{!! Form::label('password', 'Senha:') !!}
+					{!! Form::password('password', array('class' => 'form-control')) !!}
+				</div>
+				<br>
+				{!! Form::button('<i class="md md-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-raised pull-right')) !!}
 				{!! Form::close() !!}
 			</div>
 		</div>
