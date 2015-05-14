@@ -1,5 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
+use Cache;
 use IgetMaster\MaterialAdmin\Contracts\SearchableInterface as SearchableContract;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -26,6 +27,11 @@ class SearchController extends BaseController {
             abort(404);
         }
 
+        // Use cached results if available
+        if (Cache::tags($model_alias)->has($query)) {
+            return Cache::tags($model_alias)->get($query);
+        }
+
         // If alias has relations, add it to query.
         if (array_key_exists($model_alias, $this->relations)) {
             $search = call_user_func_array("$model::with", $this->relations[$model_alias]);
@@ -50,7 +56,9 @@ class SearchController extends BaseController {
             }
         }
 
-        return response()->json($search->search($query, null, true)->take(5)->get());
+        $result = $search->search($query, null, true)->take(5)->get()->toJson();
+        Cache::tags($model_alias)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
+        return $result;
     }
 
     /**

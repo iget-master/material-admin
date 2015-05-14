@@ -121,6 +121,7 @@ return [
 	*/
 
     'search' => [
+        'cache_lifetime' => 43200,
         'aliases' => [
             'user' => 'IgetMaster\MaterialAdmin\Models\User'
         ],
