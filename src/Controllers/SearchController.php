@@ -29,7 +29,6 @@ class SearchController extends BaseController {
 
         // Use cached results if available
         if (Cache::tags($model_alias)->has($query)) {
-            var_dump('cache');
             return Cache::tags($model_alias)->get($query);
         }
 
