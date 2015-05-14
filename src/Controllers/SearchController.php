@@ -57,7 +57,7 @@ class SearchController extends BaseController {
         }
 
         $result = $search->search($query, null, true)->take(5)->get()->toJson();
-        Cache::tags($model_alias)->put($query, $result, 5);
+        Cache::tags($model_alias)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
         return $result;
     }
 
