@@ -3,7 +3,7 @@
         // Default plugin settings
         var settings = $.extend(true, {
             minLength: 1,
-            inputDelay: 50,
+            inputDelay: 0,
             highlight: true,
             template: {
                 suggestion: function(d) {
