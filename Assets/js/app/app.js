@@ -22,9 +22,9 @@
 
 		if (typeof $target.data('target') !== 'undefined') {
 			if ($target.prop('checked')) {
-				$($target.data('target')).removeClass('disabled');
+				$($target.data('target')).removeClass('disabled').find('input, select, textarea').removeAttr('disabled');
 			} else {
-				$($target.data('target')).addClass('disabled');
+				$($target.data('target')).addClass('disabled').find('input, select, textarea').attr('disabled', true);
 			}
 		}
 	});
