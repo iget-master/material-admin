@@ -8,4 +8,5 @@ return [
 	'user.create' => 'View user create form',
 	'user.destroy' => 'Destroy single user',
 	'user.multiple_destroy' => 'Destroy multiple users',
+	'message.show' => 'View Message',
 ];

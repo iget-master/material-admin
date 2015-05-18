@@ -21,3 +21,7 @@ function getFormatedDateTime($date) {
 		return '';
 	}
 }
+
+function formatMonetary($value, $precision = 2) {
+	return number_format($value, $precision, ',', '.');
+}
