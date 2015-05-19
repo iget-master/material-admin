@@ -266,7 +266,7 @@
         $('.typeahead').each(function() {
             var $field = $(this);
 
-            if ($field.prop('disabled')) {
+            if ($field.attr('disabled')) {
                 return;
             }
             
