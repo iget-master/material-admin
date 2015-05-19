@@ -102,6 +102,16 @@ legend {
   			background-color: transparent;
 		}
 	}
+    input[type="checkbox"], {
+        &[disabled] {
+            pointer-events: none;
+            opacity: 0.5;
+            color: #000;
+            +span.text {
+                color: @md-grey-300;
+            }
+        }
+    }
 	textarea {
 		border-radius: 0;
 		box-shadow: none;
