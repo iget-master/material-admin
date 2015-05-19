@@ -1,14 +1,13 @@
 @extends((Request::ajax())?"materialadmin::setting.ajax":"materialadmin::layout.panel")
 
-@section('content')
-	@include('materialadmin::panel.alerts')
-	<div class="content-wrapper">
-		@yield('form')
-	</div>
+@section('title')
+    <a href="{!! route('setting.index') !!}">@lang('materialadmin::settings.model_title')</a>
+    <i class="md md-navigate-next"></i>
+    @lang($setting['translation_key'])
 @stop
 
-@section('title')
-	{!! trans($setting['translation_key']) !!}
+@section('content')
+    @yield('form')
 @stop
 
 @section('toolbar')

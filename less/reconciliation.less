@@ -1,0 +1,66 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+.row.reconciliation {
+    .transaction {
+        height: 145px;
+        padding: 20px;
+        border: 1px solid @md-grey-200;
+        border-radius: 3px;
+        background-color: rgba(250, 250, 250, 0.5);
+        color: @md-grey-500;
+        .value {
+            float: right;
+        }
+        .form-group {
+            margin: 15px 0 0 0;
+        }
+        .description {
+            display: block;
+            margin-top: 33px;
+            color: @md-black;
+            font-weight: @medium-font-weight;
+        }
+        .account {
+            color: @md-black;
+            font-weight: @base-font-weight;
+        }
+        .form-control {
+            &:focus {
+                border-bottom-color: @md-light-green-500;
+            }
+        }
+        &.match {
+            border-color: @md-green-200;
+            background-color: rgba(232, 245, 233, 0.5);
+        }
+        &.empty {
+            padding-top: 65px;
+            text-align: center;
+        }
+        &.done {
+            opacity: 0.4;
+            border-color: @md-blue-200;
+            background-color: rgba(227, 242, 253, 0.5);
+            pointer-events: none;
+        }
+    }
+    .reconcile {
+        text-align: center;
+        padding: 58px 0 50px 0;
+        .btn-raised {
+            padding: 8px;
+            font-size: 1.05rem;
+        }
+        &.done {
+            padding: 25px 0 41px 0;
+            font-weight: @medium-font-weight;
+            i {
+                font-size: 3rem;
+                color: @md-blue-500;
+            }
+        }
+    }
+}

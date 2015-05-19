@@ -123,9 +123,23 @@
 	&.btn-raised {
 		background-color: @md-blue-500;
  		border-radius: 2px;
+        transition: all 0.3s cubic-bezier(.4,0,.2,1);
+        &:hover {
+            background-color: rgba(33, 150, 243, 0.8);
+        }
  		&.action {
 			color: @md-blue-500;
 		}
+        &.success {
+            background-color: @md-green-500;
+            &:hover {
+                background-color: rgba(76, 175, 80, 0.8);
+            }
+        }
+        &.disabled {
+            background-color: @md-grey-500;
+            pointer-events: none;
+        }
 	}
 	&.btn-floating {
 		width: 6rem;
@@ -153,7 +167,6 @@
 		letter-spacing: 0;
 		color: @md-black;
 	}
-	&.btn-raised,
 	&.btn-floating {
 		.md-shadow-100();
 		&:focus,

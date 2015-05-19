@@ -10,7 +10,6 @@
         {!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
         {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
         {!! HTML::style('iget-master/material-admin/css/panel.min.css') !!}
-        {!! HTML::style('css/app.css') !!}
     </head>
     <body>
         <div id="app">

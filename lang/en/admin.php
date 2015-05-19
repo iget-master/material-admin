@@ -19,6 +19,7 @@ return [
 	'action_create' => 'Create',
 	'action_cancel' => 'Cancel',
 	'action_close' => 'Close',
+	'action_done' => 'Done',
 
 	'now_editing' => 'Now Editing',
 	'select_default' => 'Choose an option',
