@@ -17,8 +17,9 @@
 <body style="background-color: #2196f3">
 	<div class="container-fluid">
 		<div class="col-md-offset-5 col-md-2" style="padding: 40px 50px; background-color: #ffffff; margin-top: 200px; border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);">
-			<h2 class="text-center">Login</h2>
-			<br>
+            <div class="text-center" style="margin-bottom: 25px;">
+                <img src="img/logo-120.png" alt="CDTSys"/>
+            </div>
 			@if (Session::get('alert'))
 				<div class="alert alert-{!! Session::get('alert')["type"] !!}">
 				{!! Session::get('alert')["message"] !!}
@@ -35,7 +36,9 @@
 					{!! Form::password('password', array('class' => 'form-control')) !!}
 				</div>
 				<br>
-				{!! Form::button('<i class="md md-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-raised pull-right')) !!}
+                <div class="text-center">
+                    {!! Form::button('<i class="md md-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-raised btn-block')) !!}
+                </div>
 				{!! Form::close() !!}
 			</div>
 		</div>
