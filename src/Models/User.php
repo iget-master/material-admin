@@ -107,6 +107,11 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
         return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','to_user_id')->where('read', 0);
     }
 
+    public function unreadMessagesCount()
+    {
+        return Message::where('to_user_id', $this->id)->count();
+    }
+
     public function messages()
     {
     	return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','to_user_id');

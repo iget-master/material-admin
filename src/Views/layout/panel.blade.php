@@ -21,8 +21,9 @@
                     <img class="brand" src="{{ config('admin.brand_image_url') }}">
                     <div class="actions">
                         <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat">
-                            @if ($unread_count = Auth::user()->unreadMessages->count())
-                                <i class="md md-message new"></i>
+                            @if ($unread_count = Auth::user()->unreadMessagesCount())
+                                <i class="md md-message"></i>
+                                <span class="badge">{!! Auth::user()->unreadMessagesCount() !!}</span>
                             @else
                                 <i class="md md-message"></i>
                             @endif
