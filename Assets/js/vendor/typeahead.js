@@ -265,6 +265,11 @@
     $(document).on('submit', function(event) {
         $('.typeahead').each(function() {
             var $field = $(this);
+
+            if ($field.prop('disabled')) {
+                return;
+            }
+            
             var selected = $field.data('selected-datum');
             var $fake = $('<input type="hidden" role="typeahead-fake"/>').attr('name', $field.attr('name')).insertBefore($field);
             if (typeof selected !== 'undefined') {
