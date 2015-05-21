@@ -461,10 +461,14 @@ legend .actions a:hover {
   border-bottom: 2px solid #f44336;
   box-shadow: none;
 }
+.input-group.has-error .input-group-addon {
+  color: black;
+}
 .input-group.has-error .input-group-addon.error-addon {
   padding: 0 0 0 3px;
   color: #f44336;
   font-size: 1.5rem;
+  border-bottom: 2px solid #f44336;
 }
 ::-webkit-calendar-picker-indicator {
   padding: 0 3px;
