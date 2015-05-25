@@ -27,10 +27,8 @@ class SearchController extends BaseController {
             abort(404);
         }
 
-        // Use cached results if available
-        if (Cache::tags($model_alias)->has($query)) {
-            return Cache::tags($model_alias)->get($query);
-        }
+        /** @var array $tags */
+        $tags = [$model_alias];
 
         // If alias has relations, add it to query.
         if (array_key_exists($model_alias, $this->relations)) {
@@ -47,6 +45,7 @@ class SearchController extends BaseController {
                 foreach($arguments as $argument) {
                     if ($argument + 1 >= $total_args - 2) {
                         $arg[] = func_get_arg($argument + 2);
+                        $tags[] = func_get_arg($argument + 2);
                     } else {
                         // If argument not exists, this is an invalid request for this alias.
                         abort(400);
@@ -56,8 +55,13 @@ class SearchController extends BaseController {
             }
         }
 
-        $result = $search->search($query, null, true)->take(5)->get()->toJson();
-        Cache::tags($model_alias)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
+        // Use cached results if available
+        if (Cache::tags($tags)->has($query)) {
+            return Cache::tags($model_alias)->get($query);
+        }
+
+        $result = $search->search($query, null, true)->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+        Cache::tags($tags)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
         return $result;
     }
 
@@ -71,3 +75,5 @@ class SearchController extends BaseController {
         return $searchable->naturalSearch($query)->take($limit)->get();
     }
 }
+
+
