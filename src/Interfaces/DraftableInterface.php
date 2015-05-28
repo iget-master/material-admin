@@ -10,5 +10,5 @@ interface DraftableInterface {
     /**
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function drafts();
+    static public function drafts();
 }
