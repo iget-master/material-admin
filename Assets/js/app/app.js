@@ -41,10 +41,26 @@
 	});
 
 	/* Initialize Tooltips */
-	 $(function () {
-		 $('[data-toggle="tooltip"]').tooltip({
-			 delay: {show: 1000, hide: 200}
-		 });
-	 });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({
+            delay: {show: 1000, hide: 200}
+        });
+    });
+
+    $('#drawer-wrapper .menu').css({'overflow': 'auto'});
+
+    function updateMenuHeight() {
+        var $header = $('#drawer-wrapper .header');
+        var $menu = $('#drawer-wrapper .menu');
+        var height = $(window).height();
+
+        $menu.css({'max-height': height - $header.outerHeight()});
+    }
+
+    $(window).on('resize', updateMenuHeight);
+
+    $(function () {
+        updateMenuHeight();
+    });
 
 } (jQuery)
