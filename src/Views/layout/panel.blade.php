@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    	<title>CDTSys</title>
+    	<title>CDTSys @lang('materialadmin::admin.version_number')</title>
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +10,8 @@
         {!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
         {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
         {!! HTML::style('iget-master/material-admin/css/panel.min.css') !!}
-        <link rel="icon" type="img/png" href="img/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="img/png" href="img/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="img/png" href="../img/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="img/png" href="../img/favicon-16x16.png" sizes="16x16" />
     </head>
     <body>
         <div id="app">

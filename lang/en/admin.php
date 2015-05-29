@@ -1,8 +1,9 @@
 <?php
 
 return [
-	
-	'create' => 'Create new',
+
+    'version_number' => 'v0.7.0',
+    'create' => 'Create new',
 	'settings' => 'Settings',
 	'security' => 'Security',
 	'security_help' => 'Change all security settings here.',

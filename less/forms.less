@@ -179,9 +179,13 @@ legend {
 		  box-shadow: none;
 		}
 		.input-group-addon {
-			padding: 0 0 0 3px;
-			color: @md-red-500;
-		  	font-size: 1.5rem;
+            &.error-addon {
+                padding: 0 0 0 3px;
+                color: @md-red-500;
+                font-size: 1.5rem;
+                border-bottom: 2px solid @md-red-500;
+            }
+            color: black;
 		}
 	}
 }
