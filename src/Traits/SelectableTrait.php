@@ -26,7 +26,9 @@ trait SelectableTrait {
         $items = self::all();
         $options = [""=>trans('materialadmin::admin.select_default')];
         foreach ($items as $item) {
-            $options[$item->getValueColumn()] = $item->getLabelColumn();
+            if (strlen($value = $item->getValueColumn()) && strlen($label = $item->getLabelColumn())) {
+                $options[$value] = $label;
+            }
         }
         return $options;
     }
