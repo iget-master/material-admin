@@ -49,11 +49,10 @@
                             @endforeach
                         </ul>
 
-                        @include('materialadmin::panel.alerts')
-
                         <div id="settings-groups" class="tab-content">
                             @foreach($groups as $index=>$group)
                                 <div class="tab-pane body @if($index == 0) active @endif" id="group-{!! $index !!}">
+                                    @include('materialadmin::panel.alerts')
                                     @foreach($items as $item_name => $item)
                                         @if ($item['group'] == $group['name'])
                                             <div class="settings-item" data-setting-name="{!! $item_name !!}" data-create="{!! route('setting.create', [$item_name]) !!}" data-show="{!! route('setting.show', [$item_name]) !!}">
