@@ -22,6 +22,9 @@
             },
             formatQuery: function($field) {
                 return $field.val();
+            },
+            getDatumId: function(d) {
+                return d.id;
             }
         }, options);
 
@@ -104,9 +107,11 @@
             }
             else if (keyCode == 13) // Enter key: Select current suggestion
             {
-                typeahead.field.set($field, $currentSelection.data('datum'));
-                typeahead.suggestionBox.close($field).clear($field);
-                event.preventDefault();
+                if (typeahead.suggestionBox.isOpen($field)) {
+                    typeahead.field.set($field, $currentSelection.data('datum'));
+                    typeahead.suggestionBox.close($field).clear($field);
+                    event.preventDefault();
+                }
             }
             else if (keyCode == 27) // Escape key: Close suggestion box
             {
@@ -122,7 +127,6 @@
             typeahead.suggestionBox.clear($field);
             typeahead.suggestionBox.searching($field);
             $field.removeData('selected-datum').trigger('datum-reset');
-            $field.siblings('input[name="' + $field.data('field-name') + '"]').val('');
             clearTimeout($field.data('timeout'));
             if ($field.val().trim().length >= fieldSettings.minLength)
             {
@@ -145,7 +149,6 @@
                 {
                     $field.addClass("error");
                     $field.trigger("datum-reset");
-                    $field.siblings('input[name="' + $field.data('field-name') + '"]').val('');
                 }
             }, 200);
         },
@@ -177,11 +180,11 @@
                 $field.closest('.dropdown').find('.typeahead-box').html('');
                 return this;
             },
-            open: function ($field)
-            {
-                console.log('open do field', $field);
+            isOpen: function ($field) {
+                return $field.closest('.dropdown').hasClass('open');
+            },
+            open: function ($field) {
                 $suggestionBox = $field.closest('.dropdown').find('.typeahead-box');
-                console.log('suggestion-box', $suggestionBox);
                 if ($field.is(":focus"))
                 {
                     $field.trigger('typeahead-box-open');
@@ -194,20 +197,17 @@
                 }
                 return this;
             },
-            close: function ($field)
-            {
+            close: function ($field) {
                 $field.closest('.dropdown').removeClass('open');
                 return this;
             },
-            empty: function ($field)
-            {
+            empty: function ($field) {
                 fieldSettings = $field.data('typeahead');
                 $suggestionBox = $field.closest('.dropdown').find('.typeahead-box').html('<li class="typeahead-empty"><a>' + fieldSettings.template.empty($field.val()) + '</a></li>');
                 typeahead.suggestionBox.open($field);
             },
             searching: function ($field)
             {
-                console.log($field);
                 fieldSettings = $field.data('typeahead');
                 $suggestionBox = $field.closest('.dropdown').find('.typeahead-box').html('<li class="typeahead-searching"><a>' + fieldSettings.template.searching($field.val()) + '</a></li>');
                 typeahead.suggestionBox.open($field);
@@ -229,14 +229,11 @@
         field: {
             set: function ($field, datum)
             {
-                console.log($field);
                 fieldSettings = $field.data('typeahead');
                 $field.data('selected-datum', datum)
                     .val(fieldSettings.displayKey(datum))
                     .removeClass('error');
                 $field.trigger('datum-selected');
-
-                $field.siblings('input[name="' + $field.data('field-name') + '"]').val(datum.id);
             }
         },
 
@@ -265,15 +262,18 @@
     $(document).on('submit', function(event) {
         $('.typeahead').each(function() {
             var $field = $(this);
+            fieldSettings = $field.data('typeahead');
 
             if ($field.attr('disabled')) {
                 return;
             }
             
             var selected = $field.data('selected-datum');
+            console.log(selected);
             var $fake = $('<input type="hidden" role="typeahead-fake"/>').attr('name', $field.attr('name')).insertBefore($field);
             if (typeof selected !== 'undefined') {
-                $fake.val(selected.id)
+                console.log(fieldSettings.getDatumId(selected));
+                $fake.val(fieldSettings.getDatumId(selected));
             }
             $field.removeAttr('name');
         })
