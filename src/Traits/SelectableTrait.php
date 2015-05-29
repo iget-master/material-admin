@@ -24,7 +24,6 @@ trait SelectableTrait {
      */
     static public function getSelectOptions() {
         $items = self::all();
-        dd($items);
         $options = [""=>trans('materialadmin::admin.select_default')];
         foreach ($items as $item) {
             $options[$item->id] = $item->getLabelColumn();
