@@ -25,7 +25,6 @@
 
     // Push tab changes to history
     $('ul.nav-tabs').on('click', 'a', function() {
-        console.log('abc');
         var index = $(this).data('index');
         var url = window.location.href.split('?')[0] + '?active_tab=' + index;
         history.pushState({'active_tab': index}, '', url);

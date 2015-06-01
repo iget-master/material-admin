@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc259879-ae3e-440e-b1ee-0765aacb77d4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/setting/index.blade.php" afterPath="$PROJECT_DIR$/src/Views/setting/index.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/js/app/setting.js" afterPath="$PROJECT_DIR$/Assets/js/app/setting.js" />
     </list>
     <ignored path="material-admin.iws" />
@@ -71,8 +70,8 @@
       <file leaf-file-name="setting.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/js/app/setting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8622754" vertical-offset="0" max-vertical-offset="835">
-              <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.5820359" vertical-offset="0" max-vertical-offset="835">
+              <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -500,8 +499,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/js/app/setting.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8622754" vertical-offset="0" max-vertical-offset="835">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.5820359" vertical-offset="0" max-vertical-offset="835">
+          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
           <folding />
         </state>
       </provider>
