@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc259879-ae3e-440e-b1ee-0765aacb77d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Database/migrations/2015_06_01_203942_create_settings_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Models/Setting.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Setting.php" afterPath="$PROJECT_DIR$/src/Models/Setting.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="material-admin.iws" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="Setting.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Setting.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6881188" vertical-offset="344" max-vertical-offset="1170">
-              <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.9108911" vertical-offset="362" max-vertical-offset="1260">
+              <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -189,7 +188,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="watc&#9;ACTION&#9;Debugger.Tree.AddToWatches&#10;watch&#9;ACTION&#9;XDebugger.RemoveAllWatches&#10;wat&#9;ACTION&#9;EditAndWatch" />
+    <property name="SearchEverywhereHistoryKey" value="updateorcreate&#9;null&#9;null&#10;watc&#9;ACTION&#9;Debugger.Tree.AddToWatches&#10;watch&#9;ACTION&#9;XDebugger.RemoveAllWatches&#10;wat&#9;ACTION&#9;EditAndWatch" />
     <property name="options.lastSelected" value="preferences.sourceCode.LESS" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -453,8 +452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Setting.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6881188" vertical-offset="344" max-vertical-offset="1170">
-          <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.9108911" vertical-offset="362" max-vertical-offset="1260">
+          <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
           <folding />
         </state>
       </provider>

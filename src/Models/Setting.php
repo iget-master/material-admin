@@ -46,15 +46,20 @@ class Setting extends Eloquent {
 
     /**
      * @param $key
+     * @return string
      */
-    public function get($key) {
+    static public function get($key) {
         return static::find($key)->value;
-
     }
 
-    public function set($key, $value) {
+    /**
+     * @param $key
+     * @param $value
+     */
+    static public function set($key, $value) {
         static::updateOrCreate(
-            compact($key, $value)
+            compact(key),
+            compact($value)
         );
     }
 }
