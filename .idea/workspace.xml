@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fc259879-ae3e-440e-b1ee-0765aacb77d4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Setting.php" afterPath="$PROJECT_DIR$/src/Models/Setting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="material-admin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="Setting.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Setting.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9108911" vertical-offset="362" max-vertical-offset="1260">
-              <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.9108911" vertical-offset="344" max-vertical-offset="1260">
+              <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -452,8 +451,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Setting.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9108911" vertical-offset="362" max-vertical-offset="1260">
-          <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.9108911" vertical-offset="344" max-vertical-offset="1260">
+          <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
           <folding />
         </state>
       </provider>

@@ -58,7 +58,7 @@ class Setting extends Eloquent {
      */
     static public function set($key, $value) {
         static::updateOrCreate(
-            compact(key),
+            compact($key),
             compact($value)
         );
     }
