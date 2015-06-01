@@ -1,23 +1,30 @@
 @extends((Request::ajax())?"materialadmin::layout.ajax":"materialadmin::layout.panel")
 
 <?php
-	$groups = \Config::get('admin.settings_groups');
+$groups = config()->get('admin.settings_groups');
 
-	$order = array();
-	foreach ($groups as $key => $row)
-	{
-	    $order[$key] = $row['order'];
-	}
-	array_multisort($order, SORT_DESC, $groups);
+if (Request::has('active_tab')) {
+    $activeGroupIndex = Request::get('active_tab');
+} else {
+    $activeGroupIndex = 0;
+}
 
-	$items = \Config::get('admin.settings_items');
+$order = array();
 
-	$order = array();
-	foreach ($items as $key => $row)
-	{
-	    $order[$key] = $row['order'];
-	}
-	array_multisort($order, SORT_DESC, $items);
+foreach ($groups as $key => $row)
+{
+    $order[$key] = $row['order'];
+}
+array_multisort($order, SORT_DESC, $groups);
+
+$items = config()->get('admin.settings_items');
+
+$order = array();
+foreach ($items as $key => $row)
+{
+    $order[$key] = $row['order'];
+}
+array_multisort($order, SORT_DESC, $items);
 ?>
 
 @section('title')
@@ -41,8 +48,8 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs header-tab" role="tablist">
                             @foreach($groups as $index=>$group)
-                                <li @if($index == 0) class="active" @endif>
-                                    <a href="#group-{!! $index !!}" data-toggle="tab">
+                                <li @if($index == $activeGroupIndex) class="active" @endif>
+                                    <a href="#group-{!! $index !!}" data-index="{!! $index !!}" data-toggle="tab">
                                         @lang($group['translation']['name'])
                                     </a>
                                 </li>
@@ -51,7 +58,7 @@
 
                         <div id="settings-groups" class="tab-content">
                             @foreach($groups as $index=>$group)
-                                <div class="tab-pane body @if($index == 0) active @endif" id="group-{!! $index !!}">
+                                <div class="tab-pane body @if($index == $activeGroupIndex) active @endif" id="group-{!! $index !!}">
                                     @include('materialadmin::panel.alerts')
                                     @foreach($items as $item_name => $item)
                                         @if ($item['group'] == $group['name'])
@@ -71,5 +78,5 @@
 @stop
 
 @section('script')
-	{!! HTML::script('iget-master/material-admin/js/app/setting.js') !!}
+    {!! HTML::script('iget-master/material-admin/js/app/setting.js') !!}
 @stop
