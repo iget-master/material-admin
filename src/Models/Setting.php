@@ -4,12 +4,12 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Setting extends Eloquent {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'settings';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'settings';
 
     /**
      * The primary key for the model.
@@ -32,17 +32,17 @@ class Setting extends Eloquent {
      */
     public $timestamps = false;
 
-	public $rules = [
-		'key' => 'required|max:255',
+    public $rules = [
+        'key' => 'required|max:255',
         'value' => '',
-	];
+    ];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $fillable = ['key','value'];
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $fillable = ['key','value'];
 
     /**
      * @param $key
@@ -58,8 +58,8 @@ class Setting extends Eloquent {
      */
     static public function set($key, $value) {
         static::updateOrCreate(
-            compact($key),
-            compact($value)
+            compact('key'),
+            compact('value')
         );
     }
 }
