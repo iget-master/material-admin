@@ -19,11 +19,12 @@ class SettingController extends BaseController {
 	}
 
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param string $name
+     * @return Response
+     */
 	public function create($name)
 	{
 		$settings_items = Config::get('admin.settings_items');
@@ -38,11 +39,12 @@ class SettingController extends BaseController {
 	}
 
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param string $name
+     * @return Response
+     */
 	public function store($name)
 	{
 		$settings_items = Config::get('admin.settings_items');
@@ -79,7 +81,7 @@ class SettingController extends BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $name
 	 * @return Response
 	 */
 	public function show($name)
@@ -99,12 +101,13 @@ class SettingController extends BaseController {
 	}
 
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param string $name
+     * @param  int $id
+     * @return Response
+     */
 	public function edit($name, $id)
 	{
 		$settings_items = Config::get('admin.settings_items');
@@ -127,7 +130,7 @@ class SettingController extends BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  string $id
 	 * @return Response
 	 */
 	public function update($name, $id)
@@ -164,12 +167,13 @@ class SettingController extends BaseController {
 	}
 
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param string $name
+     * @param  int $id
+     * @return Response
+     */
 	public function destroy($name, $id)
 	{
 		$settings_items = Config::get('admin.settings_items');
@@ -199,17 +203,11 @@ class SettingController extends BaseController {
 		}
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @return Response
-	 */
-	public function multiple_destroy()
-	{
-
-	}
-
-	private function fill_setting_relationships($setting, $model)
+    /**
+     * @param $setting
+     * @param $model
+     */
+    private function fill_setting_relationships($setting, $model)
 	{
 		foreach ($setting['relationships'] as $relationship) {
 			if ($relationship["relation"] == 'many-to-many') {
