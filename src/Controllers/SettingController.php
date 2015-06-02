@@ -9,15 +9,15 @@ use Illuminate\Support\MessageBag;
 class SettingController extends BaseController {
     use RelationalTrait;
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return view('materialadmin::setting.index');
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        return view('materialadmin::setting.index');
+    }
 
 
     /**
@@ -26,18 +26,18 @@ class SettingController extends BaseController {
      * @param string $name
      * @return Response
      */
-	public function create($name)
-	{
-		$settings_items = Config::get('admin.settings_items');
-		if (!array_key_exists($name, $settings_items)) {
-			App::abort(404);
-		}
+    public function create($name)
+    {
+        $settings_items = Config::get('admin.settings_items');
+        if (!array_key_exists($name, $settings_items)) {
+            App::abort(404);
+        }
 
-		$setting = $settings_items[$name];
-		$model_class = $setting['model'];
+        $setting = $settings_items[$name];
+        $model_class = $setting['model'];
 
-		return view($setting['edit'])->withSetting($setting)->withName($name)->withAction('create');
-	}
+        return view($setting['edit'])->withSetting($setting)->withName($name)->withAction('create');
+    }
 
     /**
      * Check if setting is using Request pattern or Model Rules pattern (deprecated),
@@ -48,22 +48,13 @@ class SettingController extends BaseController {
      */
     private function getRequest($setting, $model)
     {
-        $requestClass = request;
         if (array_key_exists('request', $setting)) {
             $requestClass = $setting['request'];
         } else {
-            $validator = \Validator::make(
-                \Input::all(),
-                $model->rules
-            );
-
-            if ($validator->fails())
-            {
-                return \Redirect::back()->withInput()->withErrors($validator);
-            }
+            return false;
         }
 
-        return new $requestClass();
+        return app()->make($requestClass);
     }
 
 
@@ -73,56 +64,68 @@ class SettingController extends BaseController {
      * @param string $name
      * @return Response
      */
-	public function store($name)
-	{
+    public function store($name)
+    {
         // Check if setting exist on config. If don't exists, return 404.
-		$settings_items = Config::get('admin.settings_items');
-		if (!array_key_exists($name, $settings_items)) {
-			abort(404);
-		}
+        $settings_items = Config::get('admin.settings_items');
+        if (!array_key_exists($name, $settings_items)) {
+            abort(404);
+        }
 
         // Get setting options
-		$setting = $settings_items[$name];
-		$model_class = $setting['model'];
+        $setting = $settings_items[$name];
+        $model_class = $setting['model'];
 
-		$model = new $model_class();
+        $model = new $model_class();
 
         // Get request class
         $request = $this->getRequest($setting, $model);
 
+        // If no $request defined, validate by Model Rules
+        if (!$request) {
+            $validator = \Validator::make(
+                \Input::all(),
+                $model->rules
+            );
 
-		$model->fill($request->all())->save();
+            if ($validator->fails()) {
+                return \Redirect::back()->withInput()->withErrors($validator);
+            }
+            $request = App()->make('Illuminate\Http\Request');
+        }
 
-		$this->fill_setting_relationships($setting, $model);
+        $model->fill($request->all())->save();
 
-		if (Input::has('redirect_back_to')) {
-			return redirect(Input::get('redirect_back_to'));
-		} else {
-			return \Redirect::route('setting.index');
-		}
-	}
+        $this->fill_setting_relationships($setting, $model);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $name
-	 * @return Response
-	 */
-	public function show($name)
-	{
-		$settings_items = Config::get('admin.settings_items');
-		if (!array_key_exists($name, $settings_items)) {
-			App::abort(404);
-		}
+        if (Input::has('redirect_back_to')) {
+            return redirect(Input::get('redirect_back_to'));
+        } else {
+            return \Redirect::route('setting.index');
+        }
+    }
 
-		$setting = $settings_items[$name];
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $name
+     * @return Response
+     */
+    public function show($name)
+    {
+        $settings_items = Config::get('admin.settings_items');
+        if (!array_key_exists($name, $settings_items)) {
+            App::abort(404);
+        }
 
-		if (!array_key_exists('show', $setting)) {
-			App::abort(404);
-		}
+        $setting = $settings_items[$name];
 
-		return view($setting['show'])->withSetting($setting)->withName($name);
-	}
+        if (!array_key_exists('show', $setting)) {
+            App::abort(404);
+        }
+
+        return view($setting['show'])->withSetting($setting)->withName($name);
+    }
 
 
     /**
@@ -132,63 +135,63 @@ class SettingController extends BaseController {
      * @param  int $id
      * @return Response
      */
-	public function edit($name, $id)
-	{
-		$settings_items = Config::get('admin.settings_items');
-		if (!array_key_exists($name, $settings_items)) {
-			App::abort(404);
-		}
+    public function edit($name, $id)
+    {
+        $settings_items = Config::get('admin.settings_items');
+        if (!array_key_exists($name, $settings_items)) {
+            App::abort(404);
+        }
 
-		$setting = $settings_items[$name];
-		$model_class = $setting['model'];
+        $setting = $settings_items[$name];
+        $model_class = $setting['model'];
 
-		$relationships = [];
-		foreach($setting['relationships'] as $relationship) {
-			$relationships[] = $relationship['name'];
-		}
+        $relationships = [];
+        foreach($setting['relationships'] as $relationship) {
+            $relationships[] = $relationship['name'];
+        }
 
-		$model = $model_class::with($relationships)->findOrFail($id);
-		return view($setting['edit'])->withSetting($setting)->withModel($model)->withName($name)->withAction('edit');
-	}
+        $model = $model_class::with($relationships)->findOrFail($id);
+        return view($setting['edit'])->withSetting($setting)->withModel($model)->withName($name)->withAction('edit');
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  string $id
-	 * @return Response
-	 */
-	public function update($name, $id)
-	{
-		$settings_items = Config::get('admin.settings_items');
-		if (!array_key_exists($name, $settings_items)) {
-			App::abort(404);
-		}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  string $id
+     * @return Response
+     */
+    public function update($name, $id)
+    {
+        $settings_items = Config::get('admin.settings_items');
+        if (!array_key_exists($name, $settings_items)) {
+            App::abort(404);
+        }
 
-		$setting = $settings_items[$name];
-		$model_class = $setting['model'];
+        $setting = $settings_items[$name];
+        $model_class = $setting['model'];
 
-		$model = $model_class::findOrFail($id);
+        $model = $model_class::findOrFail($id);
 
-		$validator = \Validator::make(
-			\Input::all(), 
-			$model->rules
-		);
+        $validator = \Validator::make(
+            \Input::all(),
+            $model->rules
+        );
 
-		if ($validator->fails())
-		{
-			return \Redirect::back()->withInput()->withErrors($validator);
-		}
+        if ($validator->fails())
+        {
+            return \Redirect::back()->withInput()->withErrors($validator);
+        }
 
-		$model->fill(Input::all())->save();
+        $model->fill(Input::all())->save();
 
-		$this->fill_setting_relationships($setting, $model);
+        $this->fill_setting_relationships($setting, $model);
 
-		if (Input::has('redirect_back_to')) {
-			return redirect(Input::get('redirect_back_to'));
-		} else {
-			return \Redirect::route('setting.index');
-		}
-	}
+        if (Input::has('redirect_back_to')) {
+            return redirect(Input::get('redirect_back_to'));
+        } else {
+            return \Redirect::route('setting.index');
+        }
+    }
 
 
     /**
@@ -198,48 +201,48 @@ class SettingController extends BaseController {
      * @param  int $id
      * @return Response
      */
-	public function destroy($name, $id)
-	{
-		$settings_items = Config::get('admin.settings_items');
-		if (!array_key_exists($name, $settings_items)) {
-			App::abort(404);
-		}
+    public function destroy($name, $id)
+    {
+        $settings_items = Config::get('admin.settings_items');
+        if (!array_key_exists($name, $settings_items)) {
+            App::abort(404);
+        }
 
-		$setting = $settings_items[$name];
-		$model_class = $setting['model'];
-		$messages = new MessageBag();
+        $setting = $settings_items[$name];
+        $model_class = $setting['model'];
+        $messages = new MessageBag();
 
-		try {
-			$model_class::destroy($id);
-		} catch ( \PDOException $e) {
-			if ($e->errorInfo[1] == 1451) {
-				$messages->add('danger', trans('materialadmin::error.sql_1451'));
-				return \Redirect::back()->withInput()->with('messages', $messages);
-			} else {
-				throw $e;
-			}
-		}
+        try {
+            $model_class::destroy($id);
+        } catch ( \PDOException $e) {
+            if ($e->errorInfo[1] == 1451) {
+                $messages->add('danger', trans('materialadmin::error.sql_1451'));
+                return \Redirect::back()->withInput()->with('messages', $messages);
+            } else {
+                throw $e;
+            }
+        }
 
-		if (Input::has('redirect_back')) {
-			return \Redirect::back();
-		} else {
-			return \Redirect::route('setting.index');
-		}
-	}
+        if (Input::has('redirect_back')) {
+            return \Redirect::back();
+        } else {
+            return \Redirect::route('setting.index');
+        }
+    }
 
     /**
      * @param $setting
      * @param $model
      */
     private function fill_setting_relationships($setting, $model)
-	{
-		foreach ($setting['relationships'] as $relationship) {
-			if ($relationship["relation"] == 'many-to-many') {
-				if (Input::has($relationship["name"])) {
-					$model->$relationship["name"]()->sync(Input::get($relationship["name"]));
-				}
-			}
-		}
-	}
+    {
+        foreach ($setting['relationships'] as $relationship) {
+            if ($relationship["relation"] == 'many-to-many') {
+                if (Input::has($relationship["name"])) {
+                    $model->$relationship["name"]()->sync(Input::get($relationship["name"]));
+                }
+            }
+        }
+    }
 
 }
