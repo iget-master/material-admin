@@ -96,7 +96,7 @@ class SettingController extends BaseController {
 
         $model->fill($request->all())->save();
 
-        $this->fill_setting_relationships($setting, $model);
+        $this->fill_setting_relationships($setting, $model, $request);
 
         if (Input::has('redirect_back_to')) {
             return redirect(Input::get('redirect_back_to'));
@@ -172,19 +172,25 @@ class SettingController extends BaseController {
 
         $model = $model_class::findOrFail($id);
 
-        $validator = \Validator::make(
-            \Input::all(),
-            $model->rules
-        );
+        // Get request class
+        $request = $this->getRequest($setting, $model);
 
-        if ($validator->fails())
-        {
-            return \Redirect::back()->withInput()->withErrors($validator);
+        // If no $request defined, validate by Model Rules
+        if (!$request) {
+            $validator = \Validator::make(
+                \Input::all(),
+                $model->rules
+            );
+
+            if ($validator->fails()) {
+                return \Redirect::back()->withInput()->withErrors($validator);
+            }
+            $request = App()->make('Illuminate\Http\Request');
         }
 
-        $model->fill(Input::all())->save();
+        $model->fill($request->all())->save();
 
-        $this->fill_setting_relationships($setting, $model);
+        $this->fill_setting_relationships($setting, $model, $request);
 
         if (Input::has('redirect_back_to')) {
             return redirect(Input::get('redirect_back_to'));
@@ -233,16 +239,18 @@ class SettingController extends BaseController {
     /**
      * @param $setting
      * @param $model
+     * @param \Illuminate\Http\Request $request
      */
-    private function fill_setting_relationships($setting, $model)
+    private function fill_setting_relationships($setting, $model, Request $request)
     {
         foreach ($setting['relationships'] as $relationship) {
             if ($relationship["relation"] == 'many-to-many') {
-                if (Input::has($relationship["name"])) {
-                    $model->$relationship["name"]()->sync(Input::get($relationship["name"]));
+                if ($request->has($relationship["name"])) {
+                    $model->$relationship["name"]()->sync($request->get($relationship["name"]));
                 }
+            } else if ($relationship["relation"] == 'has-many') {
+                $this->fillRelationalModel($relationship['model'], [$relationship['foreign_key'] => $model->id], null, $request);
             }
         }
     }
-
 }
