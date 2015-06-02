@@ -1,12 +1,13 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
 use \Config, \Input, \App;
+use IgetMaster\MaterialAdmin\Controllers\Traits\RelationalTrait;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
-use IgetMaster\MaterialAdmin\Models\User;
-use IgetMaster\MaterialAdmin\Models\PermissionGroup;
 
 class SettingController extends BaseController {
+    use RelationalTrait;
 
 	/**
 	 * Display a listing of the resource.
@@ -38,6 +39,33 @@ class SettingController extends BaseController {
 		return view($setting['edit'])->withSetting($setting)->withName($name)->withAction('create');
 	}
 
+    /**
+     * Check if setting is using Request pattern or Model Rules pattern (deprecated),
+     * and return the right Request object.
+     * @param $setting
+     * @param $model
+     * @return \Illuminate\Http\Request
+     */
+    private function getRequest($setting, $model)
+    {
+        $requestClass = request;
+        if (array_key_exists('request', $setting)) {
+            $requestClass = $setting['request'];
+        } else {
+            $validator = \Validator::make(
+                \Input::all(),
+                $model->rules
+            );
+
+            if ($validator->fails())
+            {
+                return \Redirect::back()->withInput()->withErrors($validator);
+            }
+        }
+
+        return new $requestClass();
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -47,27 +75,23 @@ class SettingController extends BaseController {
      */
 	public function store($name)
 	{
+        // Check if setting exist on config. If don't exists, return 404.
 		$settings_items = Config::get('admin.settings_items');
 		if (!array_key_exists($name, $settings_items)) {
-			App::abort(404);
+			abort(404);
 		}
 
+        // Get setting options
 		$setting = $settings_items[$name];
 		$model_class = $setting['model'];
 
 		$model = new $model_class();
 
-		$validator = \Validator::make(
-			\Input::all(), 
-			$model->rules
-		);
+        // Get request class
+        $request = $this->getRequest($setting, $model);
 
-		if ($validator->fails())
-		{
-			return \Redirect::back()->withInput()->withErrors($validator);
-		}
 
-		$model->fill(Input::all())->save();
+		$model->fill($request->all())->save();
 
 		$this->fill_setting_relationships($setting, $model);
 
