@@ -58,7 +58,6 @@
         </div>
     	<!-- Scripts are placed here -->
         {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-        {{--{!! HTML::script('iget-master/material-admin/js/vendor/jquery.min.js') !!}--}}
         {!! HTML::script('iget-master/material-admin/js/app/app.js') !!}
         {!! HTML::script('iget-master/material-admin/js/app/panel.js') !!}
         {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap.min.js') !!}
@@ -66,7 +65,8 @@
         {!! HTML::script('iget-master/material-admin/js/vendor/typeahead.js') !!}
         {!! HTML::script('iget-master/material-admin/js/vendor/moment.min.js') !!}
         {!! HTML::script('iget-master/material-admin/js/vendor/locales.min.js') !!}
-        {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap-datetimepicker.min.js') !!}
+        {!! HTML::script('iget-master/material-admin/js/vendor/jquery.mask.js') !!}
+        {!! HTML::script('iget-master/material-admin/js/app/masks.js') !!}
         
         @yield('script')
         @include('materialadmin::panel.modal')
