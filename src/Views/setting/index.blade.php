@@ -14,7 +14,7 @@ array_multisort($order, SORT_DESC, $groups);
 if (Request::has('active_tab')) {
     $activeGroup = Request::get('active_tab');
 } else {
-    $activeGroup = $groups[0];
+    $activeGroup = $groups[0]['name'];
 }
 
 $items = config()->get('admin.settings_items');
@@ -48,7 +48,7 @@ array_multisort($order, SORT_DESC, $items);
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs header-tab" role="tablist">
                             @foreach($groups as $index=>$group)
-                                <li @if($index == $activeGroup) class="active" @endif>
+                                <li @if($group['name'] == $activeGroup) class="active" @endif>
                                     <a href="#group-{!! $group['name'] !!}" data-group="{!! $group['name'] !!}" data-toggle="tab">
                                         @lang($group['translation']['name'])
                                     </a>
@@ -58,7 +58,7 @@ array_multisort($order, SORT_DESC, $items);
 
                         <div id="settings-groups" class="tab-content">
                             @foreach($groups as $index=>$group)
-                                <div class="tab-pane body @if($index == $activeGroup) active @endif" id="group-{!! $group['name'] !!}">
+                                <div class="tab-pane body @if($group['name'] == $activeGroup) active @endif" id="group-{!! $group['name'] !!}">
                                     @include('materialadmin::panel.alerts')
                                     @foreach($items as $item_name => $item)
                                         @if ($item['group'] == $group['name'])
