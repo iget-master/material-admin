@@ -1,7 +1,7 @@
 @extends((Request::ajax())?"materialadmin::setting.ajax":"materialadmin::layout.panel")
 
 @section('title')
-    <a href="{!! route('setting.index') !!}">@lang('materialadmin::settings.model_title')</a>
+    <a href="{!! route('setting.index', ['active_tab' => $setting['group']]) !!}">@lang('materialadmin::settings.model_title')</a>
     <i class="md md-navigate-next"></i>
     @lang($setting['translation_key'])
 @stop
