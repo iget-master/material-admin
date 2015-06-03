@@ -101,7 +101,7 @@ class SettingController extends BaseController {
         if (Input::has('redirect_back_to')) {
             return redirect(Input::get('redirect_back_to'));
         } else {
-            return \Redirect::route('setting.index');
+            return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
         }
     }
 
@@ -195,7 +195,7 @@ class SettingController extends BaseController {
         if (Input::has('redirect_back_to')) {
             return redirect(Input::get('redirect_back_to'));
         } else {
-            return \Redirect::route('setting.index');
+            return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
         }
     }
 

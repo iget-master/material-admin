@@ -28,7 +28,7 @@
                         @yield('form')
                     </div>
                     <div class="footer">
-                        <a href="@yield('redirect_back_to', route('setting.index'))" class="btn btn-flat">@if($action == 'create') @lang('materialadmin::admin.action_cancel') @else @lang('materialadmin::admin.action_discard') @endif</a>
+                        <a href="@yield('redirect_back_to', route('setting.index', ['active_tab' => $setting['group']]))" class="btn btn-flat">@if($action == 'create') @lang('materialadmin::admin.action_cancel') @else @lang('materialadmin::admin.action_discard') @endif</a>
                         <a href="#" role="submit" data-form="#model" class="btn btn-flat action">@if($action == 'create') @lang('materialadmin::admin.action_create') @else @lang('materialadmin::admin.action_save') @endif</a>
                     </div>
                 </div>

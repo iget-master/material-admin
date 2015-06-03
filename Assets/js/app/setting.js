@@ -25,16 +25,15 @@
 
     // Push tab changes to history
     $('ul.nav-tabs').on('click', 'a', function() {
-        var index = $(this).data('index');
-        var url = window.location.href.split('?')[0] + '?active_tab=' + index;
-        history.pushState({'active_tab': index}, '', url);
+        var group = $(this).data('group');
+        var url = window.location.href.split('?')[0] + '?active_tab=' + group;
+        history.pushState({'active_tab': group}, '', url);
     });
 
     $(window).on('popstate', function(event) {
         var state = event.originalEvent.state;
         if (typeof state.active_tab !== 'undefined') {
-            $('ul.nav-tabs a[data-index="' + state.active_tab + '"]').click();
-            event.preventDefault();
+            $('ul.nav-tabs a[data-group="' + state.active_tab + '"]').tab('show');
         }
     })
 } (jQuery);
