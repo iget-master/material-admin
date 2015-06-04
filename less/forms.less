@@ -5,103 +5,103 @@
 
 
 legend {
-	margin-bottom: 25px;
-	font-size: 1.8rem;
-	font-weight: @medium-font-weight;
-	border-bottom: 0;
-	.actions {
-		float: right;
-		margin-right: 25px;
-		a {
-			color: @md-grey-400;
-			&:hover {
-				color: @md-black;
-			}
-		}
-	}
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: @medium-font-weight;
+    border-bottom: 0;
+    .actions {
+        float: right;
+        margin-right: 25px;
+        a {
+            color: @md-grey-400;
+            &:hover {
+                color: @md-black;
+            }
+        }
+    }
 }
 
 .form-group {
-  	.form-control {
-	  	color: @md-black;
-	}
-	label {
-		margin-bottom: 0;
-		color: @md-grey-600;
-		font-weight: @light-font-weight;
-		&.required {
-			&:after {
-				position: absolute;
-				top: 1px;
-				margin-left: 3px;
-				content: '*';
-				color: @md-red-500;
-				font-size: 1rem;
-			}
-		}
-	}
-	input {
-		height: 28px;
-		padding: 0;
-		font-size: 1.3rem;
-		border: 0;
-		border-bottom: 1px solid @md-grey-400;
-		border-radius: 0;
-		background-color: transparent;
-		box-shadow: none;
-		transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-		&[type="date"] {
-			cursor: pointer;
-		}
-		&:focus {
-			padding-top: 1px;
-			outline: none;
-			box-shadow: none;
-			border-bottom: 2px solid @md-blue-500;
-			-webkit-animation: input-highlight 0.5s forward;
-		}
-		&[disabled] {
-			background-color: transparent;
-			color: @md-grey-500;
-		}
-		&.error {
-			padding-top: 1px;
-			border-bottom: 2px solid @md-red-500;
-		}
-		&[readonly] {
-		  	background-color: transparent;
-		}
-	}
-	select {
-		height: 28px;
-		padding: 0 18px 0 0;
-		font-size: 1.3rem;
-		border: 0;
-		border-bottom: 1px solid @md-grey-400;
-		border-radius: 0;
-		background-color: transparent;
-		background-image: url('../imgs/arrow.png');
-		background-repeat: no-repeat;
-		background-position: calc(100% - 3px) calc(100% - 50px);
-		box-shadow: none;
-		-webkit-appearance: none;
-		cursor: pointer;
-		&:focus {
-			padding-top: 1px;
-			outline: none;
-			box-shadow: none;
-			border-bottom: 2px solid @md-blue-500;
-			background-position: calc(100% - 3px) calc(100% - 45px);
+    .form-control {
+        color: @md-black;
+    }
+    label {
+        margin-bottom: 0;
+        color: @md-grey-600;
+        font-weight: @light-font-weight;
+        &.required {
+            &:after {
+                position: absolute;
+                top: 1px;
+                margin-left: 3px;
+                content: '*';
+                color: @md-red-500;
+                font-size: 1rem;
+            }
+        }
+    }
+    input {
+        height: 28px;
+        padding: 0;
+        font-size: 1.3rem;
+        border: 0;
+        border-bottom: 1px solid @md-grey-400;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        &[type="date"] {
+            cursor: pointer;
+        }
+        &:focus {
+            padding-top: 1px;
+            outline: none;
+            box-shadow: none;
+            border-bottom: 2px solid @md-blue-500;
+            -webkit-animation: input-highlight 0.5s forward;
+        }
+        &[disabled] {
+            background-color: transparent;
+            color: @md-grey-500;
+        }
+        &.error {
+            padding-top: 1px;
+            border-bottom: 2px solid @md-red-500;
+        }
+        &[readonly] {
+            background-color: transparent;
+        }
+    }
+    select {
+        height: 28px;
+        padding: 0 18px 0 0;
+        font-size: 1.3rem;
+        border: 0;
+        border-bottom: 1px solid @md-grey-400;
+        border-radius: 0;
+        background-color: transparent;
+        background-image: url('../imgs/arrow.png');
+        background-repeat: no-repeat;
+        background-position: calc(100% - 3px) calc(100% - 50px);
+        box-shadow: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        &:focus {
+            padding-top: 1px;
+            outline: none;
+            box-shadow: none;
+            border-bottom: 2px solid @md-blue-500;
+            background-position: calc(100% - 3px) calc(100% - 45px);
 
-		}
-		&[disabled] {
-			background-color: transparent;
-			color: @md-grey-500;
-		}
-		&[readonly] {
-  			background-color: transparent;
-		}
-	}
+        }
+        &[disabled] {
+            background-color: transparent;
+            color: @md-grey-500;
+        }
+        &[readonly] {
+            background-color: transparent;
+        }
+    }
     input[type="checkbox"], {
         &[disabled] {
             pointer-events: none;
@@ -112,73 +112,87 @@ legend {
             }
         }
     }
-	textarea {
-		border-radius: 0;
-		box-shadow: none;
-		background-color: transparent;
-		&:focus {
-		  	padding: 5px 11px;
-			outline: none;
-			box-shadow: none;
-			border: 2px solid @md-blue-500;
-		}
-		&[disabled] {
-			background-color: transparent;
-			color: @md-grey-500;
-		}
-		&[readonly] {
-		  	background-color: transparent;
-		}
-	}
-	&.option {
-		label {
-			display: block;
-		}
-		input[type="checkbox"],
-		input[type="radio"], {
-			display: inline-block;
-			cursor: pointer;
-		}
-		.text {
-			display: inline-block;
-			position: relative;
-			top: -7px;
-			left: 5px;
-			font-size: 1.3rem;
-		}
-	}
-  	&.show-only {
-	  	input,
-		select, {
-		  	border: none;
-		  	pointer-events: none;
-		}
-		select {
-		  background-image: none;	  
-		}
-	}
-	.static-input {
-	 	display: block;
-	  	margin-top: 13px;
-	  	cursor: default;
-	}
+    textarea {
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        &:focus {
+            padding: 5px 11px;
+            outline: none;
+            box-shadow: none;
+            border: 2px solid @md-blue-500;
+        }
+        &[disabled] {
+            background-color: transparent;
+            color: @md-grey-500;
+        }
+        &[readonly] {
+            background-color: transparent;
+        }
+    }
+    &.option {
+        label {
+            display: block;
+        }
+        input[type="checkbox"],
+        input[type="radio"], {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .text {
+            display: inline-block;
+            position: relative;
+            top: -7px;
+            left: 5px;
+            font-size: 1.3rem;
+        }
+    }
+    &.show-only {
+        input,
+        select, {
+            border: none;
+            pointer-events: none;
+        }
+        select {
+            background-image: none;
+        }
+    }
+    &.disabled {
+        label {
+            pointer-events: none;
+            color: @md-grey-200;
+        }
+        input,
+        select,
+        textarea {
+            pointer-events: none;
+            color: @md-grey-200;
+            border-bottom-color: @md-grey-200;
+            cursor: not-allowed;
+        }
+    }
+    .static-input {
+        display: block;
+        margin-top: 13px;
+        cursor: default;
+    }
 }
 
 .input-group {
-	.input-group-addon {
-		padding: 0 3px 0 0;
-		font-size: 1.3rem;
-		background-color: transparent;
-		border-radius: 0;
-		border: 0;
-	}
-	&.has-error {
-	  	.form-control {
-		  padding: 1px;
-		  border-bottom: 2px solid @md-red-500;
-		  box-shadow: none;
-		}
-		.input-group-addon {
+    .input-group-addon {
+        padding: 0 3px 0 0;
+        font-size: 1.3rem;
+        background-color: transparent;
+        border-radius: 0;
+        border: 0;
+    }
+    &.has-error {
+        .form-control {
+            padding: 1px;
+            border-bottom: 2px solid @md-red-500;
+            box-shadow: none;
+        }
+        .input-group-addon {
             &.error-addon {
                 padding: 0 0 0 3px;
                 color: @md-red-500;
@@ -186,8 +200,8 @@ legend {
                 border-bottom: 2px solid @md-red-500;
             }
             color: black;
-		}
-	}
+        }
+    }
 }
 
 ::-webkit-calendar-picker-indicator { padding: 0 3px; }
