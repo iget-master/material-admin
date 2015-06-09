@@ -126,7 +126,7 @@
 									&.multiple {
 										.btn {
 											display: inline-block;
-											padding: 0.7rem 0.5rem;
+											padding: 2.7rem 0.5rem 0.7rem 0.5rem;
 										}
 									}
 								}
@@ -183,6 +183,33 @@
 				&:not(:first-child) {
 					margin-left: 10px;
 				}
+			}
+		}
+	}
+}
+
+#files-list {
+	margin-top: 50px;
+	.progress {
+		border-radius: 0px;
+		background-color: @md-grey-100;
+		box-shadow: none;
+		.progress-bar {
+			background-color: @md-blue-500;
+			font-size: 1.1rem;
+		}
+	}
+	.action {
+		text-align: right;
+		vertical-align: middle;
+		.btn {
+		  padding: 0 1.2rem;
+		  font-size: 1.6rem;
+		  color: @md-grey-500;
+		  background-color: transparent;
+		  transition: all cubic-bezier(.4,0,.2,1) .15s;
+			&:hover {
+			  color: @md-black;
 			}
 		}
 	}
