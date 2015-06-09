@@ -5,6 +5,8 @@
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- CSS are placed here -->
         {!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
         {!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
@@ -58,6 +60,7 @@
         </div>
     	<!-- Scripts are placed here -->
         {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
+        {!! HTML::script('js/app/fileupload.js') !!}
         {!! HTML::script('iget-master/material-admin/js/app/app.js') !!}
         {!! HTML::script('iget-master/material-admin/js/app/panel.js') !!}
         {!! HTML::script('iget-master/material-admin/js/vendor/bootstrap.min.js') !!}

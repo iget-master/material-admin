@@ -63,4 +63,14 @@
         updateMenuHeight();
     });
 
+    // Configure jQuery Ajax to always send CSRF Token as request header.
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // Instantiates the file uploader method
+    $('#file').fileuploader();
+
 } (jQuery)
