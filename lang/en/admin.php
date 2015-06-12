@@ -10,7 +10,7 @@ return [
 	'permission_groups' => 'Permission Groups',
 	'permission_groups_count' => 'There is one permission group registered:|There is :count permission groups registered:',
 	'permission_group_name' => 'Name:',
-	'permission_group_roles' => 'Group Roles:',
+	'permission_group_roles' => 'Group Roles',
 	
 	'loading' => 'Loading...',
 	
