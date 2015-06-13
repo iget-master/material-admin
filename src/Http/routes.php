@@ -8,7 +8,7 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('/', ['as'=>'materialadmin.empty', function() { return View::make('materialadmin::empty'); }]);
+	Route::get('/', ['as'=>'materialadmin.empty', 'uses' => 'HomeController@index']);
 
 	/*
 	|-------------------------------
