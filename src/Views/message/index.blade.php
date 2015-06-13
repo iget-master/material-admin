@@ -28,7 +28,7 @@
 						<div class="message {!! ($message->read)?'read':'unread' !!}" data-id="{!! $message->id !!}" data-href="{!! route('message.show', $message->id) !!}">
 							<div class="from">
 								@if(is_null($message->sender))
-									<img class="img-circle" src="https://placehold.it/40x40">
+									<img class="img-circle" src="/img/logo-round-40.png">
 								@else
 									<div class="img-placeholder {!! $message->sender->color !!}">
 									<?php
