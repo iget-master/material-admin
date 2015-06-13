@@ -28,7 +28,7 @@
                             <div class="col-md-4">
                                 <div class="form-group show-only">
                                     {!! Form::label('from_user', trans('materialadmin::message.from_user')) !!}
-                                    {!! Form::text('from_user', $message->sender->name, ['class'=>'form-control']) !!}
+                                    {!! Form::text('from_user', ($message->sender) ? $message->sender->name : trans('materialadmin::message.system_message'), ['class'=>'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-md-8">
