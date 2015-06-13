@@ -214,3 +214,29 @@
 		}
 	}
 }
+
+.comments-list {
+	.comment {
+		margin: 15px 0;
+		.details {
+			margin: 0 0 5px 0;
+			font-size: 1.1rem;
+			.sender {
+				cursor: default;
+			}
+			.time {
+				float: right;
+				margin-right: 4px;
+				cursor: default;
+			}
+		}
+		.content {
+			margin-bottom: 30px;
+			word-break: break-all;
+			cursor: default;
+		}
+	}
+	&:first-of-type {
+		margin-top: 0;
+	}
+}
