@@ -14,7 +14,7 @@
                 <div class="col-md-offset-2 col-md-8 card">
                     <div class="header">
                         <div class="info">
-                            <h1>{!! $message->subject !!}</h1>
+                            <h1>{!! strip_tags($message->subject) !!}</h1>
                         </div>
                         <div class="action">
                             {!! Form::open(array('method'=>'DELETE', 'route' => array('message.destroy', $message->id))) !!}
@@ -34,7 +34,7 @@
                             <div class="col-md-8">
                                 <div class="form-group show-only">
                                     {!! Form::label('subject', trans('materialadmin::message.subject')) !!}
-                                    {!! Form::text('subject', $message->subject, ['class'=>'form-control']) !!}
+                                    {!! Form::text('subject', strip_tags($message->subject), ['class'=>'form-control']) !!}
                                 </div>
                             </div>
                         </div>
