@@ -30,9 +30,9 @@ class Draft extends Eloquent {
      */
     public function getColumn($key)
     {
-        if ($column = $this->columns->where('column', $key)) {
-            return $column->first()->value;
-        }
+        $draftColumn = $this->columns()->where('column', $key)->first();
+
+        return ($draftColumn) ? $draftColumn->value : null;
     }
 
     /**
@@ -48,5 +48,18 @@ class Draft extends Eloquent {
         }
 
         return $model;
+    }
+
+    /**
+     * Dynamically retrieve attributes on the model.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        $value = $this->getAttribute($key);
+
+        return (is_null($value)) ? $this->getColumn($key) : $value;
     }
 }
