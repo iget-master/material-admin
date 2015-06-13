@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- CSS are placed here -->
-	{!! HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
+	{!! HTML::style('//fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
 	{!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
 	{!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
 	{!! HTML::style('iget-master/material-admin/css/panel.min.css') !!}
