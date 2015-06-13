@@ -109,7 +109,7 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
 
     public function unreadMessagesCount()
     {
-        return Message::where('to_user_id', $this->id)->count();
+        return Message::where('to_user_id', $this->id)->where('read', 0)->count();
     }
 
     public function messages()
