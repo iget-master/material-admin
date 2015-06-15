@@ -23,9 +23,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <legend>
-                    {!! Form::label('name', trans('materialadmin::admin.permission_group_roles')) !!}
-                </legend>
+                <legend>{!! Form::label('name', trans('materialadmin::admin.permission_group_roles')) !!}</legend>
             </div>
             <?php
                 $currentRoleTitle = "";
@@ -34,13 +32,13 @@
             @foreach($roles as $title)
                 <?php
                     if($count == 0){
-                        echo "<div class='col-md-12'>";
+                        echo "<div class='col-md-12'><div class='row'>";
                     }
                     $roleTitle = explode(".", $title->name);
                     if($roleTitle[0] != $currentRoleTitle){
                         $currentRoleTitle = $roleTitle[0];
-                        echo "<div class='col-md-4'>
-                        <label>".trans('materialadmin::roles.permission_group_'.$currentRoleTitle.'_title')."</label>";
+                        echo "<div class='col-md-4 roles-list'>
+                        <h3>".trans('materialadmin::roles.permission_group_'.$currentRoleTitle.'_title')."</h3>";
                         $pass = true;
                         $count++;
                     } else{
@@ -53,29 +51,33 @@
                             $currentRole = explode(".",$role->name);
                         ?>
                         @if($currentRole[0] == $currentRoleTitle)
-                        <div class="checkbox">
-                            <label>
-                                <?php
-                                    $checked = false;
-                                    if (isset($model)) {
-                                        $checked = $model->roles->contains('id', $role->id)?'checked':null;
-                                    }
-                                ?>
-                                <input type="checkbox" name="roles[]" value="{!! $role->id !!}" {!! $checked !!} >
-                                {!! trans('materialadmin::roles.' . $role->name) !!}
-                            </label>
-                        </div>
+                            <div class="checkbox">
+                                <label>
+                                    <?php
+                                        $checked = false;
+                                        if (isset($model)) {
+                                            $checked = $model->roles->contains('id', $role->id)?'checked':null;
+                                        }
+                                    ?>
+                                    <input type="checkbox" name="roles[]" value="{!! $role->id !!}" {!! $checked !!} >
+                                    {!! trans('materialadmin::roles.' . $role->name) !!}
+                                </label>
+                            </div>
                         @endif
                     @endforeach
                     </div>
                 @endif
 
                     @if(($count%3 == 0) && ($pass == true))
+                            </div>
                         </div>
                         <div class='col-md-12'>
+                            <div class='row'>
                     @endif
             @endforeach
+            </div>
         </div>
 	{!! Form::close() !!}
+    </div>
 @stop
 
