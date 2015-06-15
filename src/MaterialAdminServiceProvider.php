@@ -20,8 +20,11 @@ class MaterialAdminServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-    	require_once __DIR__.'/Http/routes.php';
-    	require_once __DIR__.'/Http/filters.php';
+        // Load routes if app is not caching routes.
+        if (!$this->app->routesAreCached()) {
+            require __DIR__.'/Http/routes.php';
+        }
+
     	require_once __DIR__.'/helpers.php';
 
     	// Publish migrations
