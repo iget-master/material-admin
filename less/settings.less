@@ -17,17 +17,22 @@
         }
     }
     .list-group {
-        .list-group-item.editable {
-            cursor: pointer;
-            color: @md-black;
-            &:hover {
-                background-color: @md-grey-50;
-            }
-            a {
-                float: right;
-                color: @md-grey-400;
+        .list-group-item {
+            &.editable {
+                cursor: pointer;
+                color: @md-black;
+                &.delete-only {
+                    cursor: default;
+                }
                 &:hover {
-                    color: @md-black;
+                    background-color: @md-grey-50;
+                }
+                a {
+                    float: right;
+                    color: @md-grey-400;
+                    &:hover {
+                        color: @md-black;
+                    }
                 }
             }
         }
