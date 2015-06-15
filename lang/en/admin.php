@@ -8,7 +8,7 @@ return [
 	'security_help' => 'Change all security settings here.',
 	
 	'permission_groups' => 'Permission Groups',
-	'permission_groups_count' => 'There is one permission group registered:|There is :count permission groups registered:',
+	'permission_groups_count' => '{0} There are no permission groups registered|{1}There is one permission group registered|[2,Inf]There are :count permission groups registered',
 	'permission_group_name' => 'Name:',
 	'permission_group_roles' => 'Group Roles',
 	
