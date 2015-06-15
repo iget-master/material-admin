@@ -20,5 +20,4 @@ return [
     'setting.show' => 'View Setting',
     'setting.store' => 'Store Setting',
     'setting.update' => 'Update Setting',
-    'permission_group_solicitation_title' => 'Client Request',
 ];
