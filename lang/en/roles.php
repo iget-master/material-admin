@@ -21,12 +21,4 @@ return [
     'setting.store' => 'Store Setting',
     'setting.update' => 'Update Setting',
     'permission_group_solicitation_title' => 'Client Request',
-    'solicitation.update' => 'Update Client Request',
-    'solicitation.create' => 'Create Client Request',
-    'solicitation.destroy' => 'Destroy Client Request',
-    'solicitation.index' => 'List Client Request',
-    'solicitation.edit' => 'Edit Client Request',
-    'solicitation.store' => 'Store Client Request',
-    'solicitation.update' => 'Update Client Request',
-    'solicitation.changeUsers' => 'Change Client Request Responsibles',
 ];
