@@ -39,10 +39,10 @@ class UpdateSchema extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-            $table->dropIndex('search_name');
 			$table->dropForeign('users_permission_group_id_foreign');
-			$table->dropColumn('surname');
-			$table->dropColumn('permission_group_id');
+            $table->dropColumn('permission_group_id');
+            
+            $table->dropColumn('surname');
 			$table->dropColumn('dob');
 			$table->dropColumn('language');
 			$table->dropColumn('color');
