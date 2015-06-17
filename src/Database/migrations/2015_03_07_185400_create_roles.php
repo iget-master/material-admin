@@ -33,7 +33,7 @@ class CreateRoles extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('permission_group_roles');
+		Schema::drop('permission_group_role');
 		Schema::drop('roles');
 	}
 
