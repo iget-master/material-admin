@@ -15,10 +15,6 @@
     <legend>@lang('materialadmin::user.email')</legend>
     @include('materialadmin::filter.text', ['filter'=>'email'])
 </div>
-<div class="filter-group">
-    <legend>@lang('materialadmin::user.dob')</legend>
-    @include('materialadmin::filter.date', ['filter'=>'dob'])
-</div>
 
 <div class="filter-group text-center">
     <button class="btn btn-raised ">@lang('materialadmin::filter.filter')</button>
