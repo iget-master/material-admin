@@ -14,7 +14,6 @@ class UserFilterRequest extends FilterRequest {
         'name' => 'string',
         'email' => 'string',
         'id' => 'logical',
-        'dob' => 'date',
         'permission_group_id'=> 'logical'
     ];
 
