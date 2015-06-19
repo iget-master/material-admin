@@ -130,10 +130,6 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
         return StringFilter::contains('email', $value)->filter($query);
     }
 
-    public function filterDob($query, $start = null, $end = null) {
-        return DateFilter::between('dob', $start, $end)->filter($query);
-    }
-
     public function filterId($query, $operator, $value) {
         return $query->where('id', $operator, $value);
     }
