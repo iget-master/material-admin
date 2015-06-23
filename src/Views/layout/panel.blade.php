@@ -58,6 +58,11 @@
                 </div>
             </div>
         </div>
+        @if(Request::has('debug'))
+            <div id="debug" style="width: 100%; position: absolute; bottom: 0; text-align: center; font-size: 10px; background: white; opacity: 0.7;">
+                Executed in {!! round(microtime(true) - LARAVEL_START, 3) !!} ms
+            </div>
+        @endif
     	<!-- Scripts are placed here -->
         {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
         {!! HTML::script('js/app/fileupload.js') !!}
