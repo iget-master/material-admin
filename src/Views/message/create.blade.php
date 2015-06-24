@@ -66,8 +66,8 @@
 @stop
 
 @section('script')
-    {!! HTML::script('js/app/message.js') !!}
-    {!! HTML::script('js/errors.js') !!}
+    {!! HTML::script(versionedScriptUrl('js/app/message.js')) !!}
+    {!! HTML::script(versionedScriptUrl('js/errors.js')) !!}
 
     @if ($errors->any())
         <script>

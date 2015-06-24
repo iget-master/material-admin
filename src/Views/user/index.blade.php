@@ -96,5 +96,5 @@
 @stop
 
 @section('script')
-	{!! HTML::script('iget-master/material-admin/js/app/users.js') !!}
+	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/users.js')) !!}
 @stop

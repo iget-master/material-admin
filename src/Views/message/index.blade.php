@@ -83,5 +83,5 @@
 @stop
 
 @section('script')
-    {!! HTML::script('iget-master/material-admin/js/app/message.js') !!}
+    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/message.js')) !!}
 @stop

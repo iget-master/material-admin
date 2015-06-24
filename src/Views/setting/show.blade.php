@@ -20,5 +20,5 @@
 @stop
 
 @section('script')
-	{!! HTML::script('iget-master/material-admin/js/app/setting.js') !!}
+	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
 @stop

@@ -64,5 +64,5 @@
 @stop
 
 @section('script')
-    {!! HTML::script('js/app/message.js') !!}
+    {!! HTML::script(versionedScriptUrl('js/app/message.js')) !!}
 @stop

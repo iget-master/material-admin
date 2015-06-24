@@ -38,8 +38,8 @@
 @stop
 
 @section('script')
-	{!! HTML::script('iget-master/material-admin/js/app/setting.js') !!}
-	{!! HTML::script('iget-master/material-admin/js/app/errors.js') !!}
+	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
+	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/errors.js')) !!}
 
     @if ($errors->any())
         <script>
