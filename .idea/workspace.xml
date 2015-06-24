@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc259879-ae3e-440e-b1ee-0765aacb77d4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/message/create.blade.php" afterPath="$PROJECT_DIR$/src/Views/message/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/user/create.blade.php" afterPath="$PROJECT_DIR$/src/Views/user/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/setting/edit.blade.php" afterPath="$PROJECT_DIR$/src/Views/setting/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/user/edit.blade.php" afterPath="$PROJECT_DIR$/src/Views/user/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/layout/error.blade.php" afterPath="$PROJECT_DIR$/src/Views/layout/error.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helpers.php" afterPath="$PROJECT_DIR$/src/helpers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/message/index.blade.php" afterPath="$PROJECT_DIR$/src/Views/message/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/setting/index.blade.php" afterPath="$PROJECT_DIR$/src/Views/setting/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/user/index.blade.php" afterPath="$PROJECT_DIR$/src/Views/user/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/login.blade.php" afterPath="$PROJECT_DIR$/src/Views/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/layout/panel.blade.php" afterPath="$PROJECT_DIR$/src/Views/layout/panel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/message/show.blade.php" afterPath="$PROJECT_DIR$/src/Views/message/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/setting/show.blade.php" afterPath="$PROJECT_DIR$/src/Views/setting/show.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="material-admin.iws" />
@@ -41,81 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Views/message/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.296296" vertical-offset="1144" max-vertical-offset="1656">
-              <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Views/message/show.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.11111" vertical-offset="537" max-vertical-offset="1332">
-              <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helpers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/helpers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.0" vertical-offset="0" max-vertical-offset="756">
-              <caret line="33" column="27" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="panel.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Views/layout/panel.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4009901" vertical-offset="0" max-vertical-offset="1674">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Views/login.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.925926" vertical-offset="218" max-vertical-offset="1026">
-              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Views/message/create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.777778" vertical-offset="951" max-vertical-offset="1476">
-              <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="error.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Views/layout/error.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.444445" vertical-offset="177" max-vertical-offset="702">
-              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MaterialAdminServiceProvider.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MaterialAdminServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="1404">
-              <caret line="33" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state vertical-scroll-proportion="-16.0" vertical-offset="558" max-vertical-offset="1404">
+              <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helpers.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/helpers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.77970296" vertical-offset="0" max-vertical-offset="808">
+              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -143,13 +70,13 @@
         <option value="$PROJECT_DIR$/src/Views/setting/edit.blade.php" />
         <option value="$PROJECT_DIR$/less/forms.less" />
         <option value="$PROJECT_DIR$/src/MaterialAdminServiceProvider.php" />
-        <option value="$PROJECT_DIR$/src/helpers.php" />
         <option value="$PROJECT_DIR$/src/Views/layout/panel.blade.php" />
         <option value="$PROJECT_DIR$/src/Views/layout/error.blade.php" />
         <option value="$PROJECT_DIR$/src/Views/login.blade.php" />
         <option value="$PROJECT_DIR$/src/Views/message/create.blade.php" />
         <option value="$PROJECT_DIR$/src/Views/message/index.blade.php" />
         <option value="$PROJECT_DIR$/src/Views/message/show.blade.php" />
+        <option value="$PROJECT_DIR$/src/helpers.php" />
       </list>
     </option>
   </component>
@@ -382,14 +309,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Views/message/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1656">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MaterialAdminServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="1404">
@@ -679,14 +598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MaterialAdminServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="1404">
-          <caret line="33" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/layout/ajax.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22277227" vertical-offset="0" max-vertical-offset="808">
@@ -695,58 +606,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers.php">
+    <entry file="file://$PROJECT_DIR$/src/Views/message/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.0" vertical-offset="0" max-vertical-offset="756">
-          <caret line="33" column="27" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/layout/error.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.444445" vertical-offset="177" max-vertical-offset="702">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/message/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.777778" vertical-offset="951" max-vertical-offset="1476">
-          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.13962264" vertical-offset="537" max-vertical-offset="1332">
+          <caret line="36" column="100" selection-start-line="36" selection-start-column="100" selection-end-line="36" selection-end-column="100" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/message/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.296296" vertical-offset="1144" max-vertical-offset="1656">
+        <state vertical-scroll-proportion="0.84150946" vertical-offset="861" max-vertical-offset="1656">
           <caret line="85" column="8" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/message/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.11111" vertical-offset="537" max-vertical-offset="1332">
-          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.925926" vertical-offset="218" max-vertical-offset="1026">
-          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/layout/panel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4009901" vertical-offset="0" max-vertical-offset="1674">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.60148513" vertical-offset="108" max-vertical-offset="1674">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/empty.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="835">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79950494" vertical-offset="218" max-vertical-offset="1026">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/message/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71039605" vertical-offset="668" max-vertical-offset="1476">
+          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/layout/error.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66831684" vertical-offset="0" max-vertical-offset="808">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MaterialAdminServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.0" vertical-offset="558" max-vertical-offset="1404">
+          <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77970296" vertical-offset="0" max-vertical-offset="808">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
           <folding />
         </state>
       </provider>

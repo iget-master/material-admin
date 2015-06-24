@@ -33,5 +33,5 @@ function formatMonetary($value, $precision = 2) {
  */
 function versionedScriptUrl($url) {
     $version = str_replace('.', '', config('admin.app_version'));
-    return $url . "?v=${version}";
+    return $url . "?${version}";
 }
