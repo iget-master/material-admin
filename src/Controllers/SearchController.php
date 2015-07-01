@@ -38,8 +38,8 @@ class SearchController extends BaseController {
         }
 
         // Use cached results if available
-        if (Cache::tags($tags)->has($query)) {
-            return Cache::tags($model_alias)->get($query);
+        if (!config()->get('app.debug') && Cache::tags($tags)->has($query)) {
+            return Cache::tags($tags)->get($query);
         }
 
         if (method_exists($search, 'elasticSearch')) {
@@ -65,7 +65,6 @@ class SearchController extends BaseController {
 
             $result = $search->search($query, null, true)->orderBy('relevance', 'desc')->take(5)->get()->toJson();
         }
-
 
         Cache::tags($tags)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
         return $result;
