@@ -3,8 +3,8 @@
 // MIT License
 // Release Date: 06/04/2015
 
-.card .setting-group .panel-default {
-    >.panel-heading {
+.card .panel-default {
+    .panel-heading {
         padding: 10px 15px;
         color: @md-black;
         font-weight: @medium-font-weight;
@@ -13,6 +13,99 @@
             color: @md-grey-400;
             &:hover {
                 color: @md-black;
+            }
+        }
+        .controls {
+            float: right;
+            a {
+                float: none;
+                i {
+                    font-size: 1.3em;
+                    line-height: .5em;
+                    vertical-align: -35%;
+                    margin-right: 5px;
+                }
+                &:last-of-type {
+                    i {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+    .panel-body {
+        padding: 10px 15px;
+        color: @md-black;
+        .quotation-item {
+            padding: 5px 7.5px;
+            margin-bottom: 10px;
+            color: @md-black;
+            border-radius: 2px;
+            cursor: pointer;
+            a {
+                float: right;
+                color: rgba(255,255,255,0.7);
+                &:hover {
+                    color: rgba(255,255,255,1);
+                }
+            }
+            .resource {
+                display: inline;
+                float: left;
+                font-size: 1.5rem;
+                width: 15%;
+                text-align: center;
+                i {
+                    display: block;
+                    font-size: 1.9rem
+                }
+            }
+            .details {
+                display: inline;
+                float: left;
+                width: 80%;
+                .name, .fare {
+                    display: block;
+                }
+                .quantity, .cost, .markup, .price, .margin {
+                    margin-right: 15px;
+                }
+            }
+            .action {
+                display: inline;
+                float: right;
+                width: 5%;
+                text-align: center;
+                font-size: 1.65rem;
+                i {
+                    margin-top: 16px
+                }
+            }
+            i:first-of-type {
+                margin-right: 5px;
+            }
+            &.hotel {
+                background-color: @md-teal-200;
+                border: 1px solid @md-teal-400;
+                color: @md-teal-900;
+            }
+            &.service {
+                background-color: @md-blue-grey-200;
+                border: 1px solid @md-blue-grey-400;
+                color: @md-blue-grey-900;
+            }
+            &.car {
+                background-color: @md-amber-200;
+                border: 1px solid @md-amber-400;
+                color: @md-amber-900;
+            }
+            &.product {
+                background-color: @md-blue-200;
+                border: 1px solid @md-blue-400;
+                color: @md-blue-900;
+            }
+            &:last-of-type {
+                margin-bottom: 0;
             }
         }
     }
