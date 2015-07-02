@@ -1,0 +1,85 @@
+// Material Admin v1.0
+// Developed by iGet Digital - www.iget.com.br
+// MIT License
+// Release Date: 06/04/2015
+
+.modal-body {
+	.relational-wrapper	{
+	  	margin: 0 -15px;
+		.relational {
+		  	margin-bottom: 0;
+			> tbody {
+				> tr {
+					> td {
+						padding: 0;
+						border: 0;
+					  	.row {
+						  	margin-left: 0;
+						  	margin-right: 0;
+						}
+						.action {
+							text-align: right;
+							vertical-align: middle;
+							.btn {
+							  padding-top: 20px;
+							  font-size: 1.6rem;
+							  color: @md-grey-500;
+							  background-color: transparent;
+							  transition: all cubic-bezier(.4,0,.2,1) .15s;
+								&:hover {
+								  color: @md-black;
+								}
+							}
+							&.multiple {
+								.btn {
+									display: inline-block;
+									padding: 2.7rem 0.5rem 0.7rem 0.5rem;
+								}
+							}
+						}
+					}
+					&:not(:first-of-type) {
+						> td {
+							.row {
+								> [class*="col-"] {
+									  > .form-group {
+										  > label {
+											  display: none;
+										  }
+									}
+
+									&.action {
+										.btn {
+										  	padding-top: 3px;
+										}
+									}
+								}
+							}
+						}
+
+					}
+				  	&.room {
+					  	.new-row {
+						  	[role="room-name"] {
+							  	display: none;
+							  	margin: 0;
+							}
+						  	.btn {
+							  	margin: 15px 0 50px 0;
+							}
+						  	&.empty {
+							  	[role="room-name"] {
+								  	display: block;
+								  	margin: 10px;
+								}
+								.btn {
+								  	margin: 10px 0 30px 0;
+								}
+							}
+						}
+					}
+			  	}
+		  	}
+		}
+	}
+}
