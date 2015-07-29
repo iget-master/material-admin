@@ -11,8 +11,8 @@
 	{!! HTML::style('//fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
 	{!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
 	{!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
-	{!! HTML::style('iget-master/material-admin/css/panel.min.css') !!}
-	{!! HTML::style('css/app.css') !!}
+	{!! HTML::style(versionedScriptUrl('iget-master/material-admin/css/panel.min.css')) !!}
+	{!! HTML::style(versionedScriptUrl('css/app.css')) !!}
 </head>
 <body style="background-color: #2196f3">
 	<div class="container-fluid">
@@ -45,7 +45,7 @@
 	</div>
 
 	<!-- Scripts are placed here -->
-    {!! HTML::script(versionedScriptUrl('//code.jquery.com/jquery-2.1.1.min.js')) !!}
+    {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
     {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/bootstrap.min.js')) !!}
 </body>
 </html>
