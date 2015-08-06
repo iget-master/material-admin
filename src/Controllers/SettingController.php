@@ -150,8 +150,13 @@ class SettingController extends BaseController {
             $relationships[] = $relationship['name'];
         }
 
+        $disableDestroy = false;
+        if (array_key_exists('disable_destroy', $setting)) {
+            $disableDestroy = $setting['disable_destroy'];
+        }
+
         $model = $model_class::with($relationships)->findOrFail($id);
-        return view($setting['edit'])->withSetting($setting)->withModel($model)->withName($name)->withAction('edit');
+        return view($setting['edit'])->with(compact('disableDestroy', 'setting', 'model', 'name'))->withAction('edit');
     }
 
     /**

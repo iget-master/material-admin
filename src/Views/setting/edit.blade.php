@@ -16,9 +16,9 @@
                             <h1>@lang($setting['translation_key'] . '_' . $action)</h1>
                         </div>
                         <div class="action">
-                            @if ($action == 'edit')
+                            @if (!$disableDestroy && $action == 'edit')
                                 {!! Form::open(array('method'=>'DELETE', 'route'=>['setting.update', $name, $model->id])) !!}
-                                    <button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="md md-delete"></i></button>
+                                <button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="md md-delete"></i></button>
                                 {!! Form::close() !!}
                             @endif
                         </div>
@@ -38,8 +38,8 @@
 @stop
 
 @section('script')
-	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
-	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/errors.js')) !!}
+    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
+    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/errors.js')) !!}
 
     @if ($errors->any())
         <script>
