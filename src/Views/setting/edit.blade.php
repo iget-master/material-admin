@@ -14,6 +14,7 @@
                     <div class="header">
                         <div class="info">
                             <h1>@lang($setting['translation_key'] . '_' . $action)</h1>
+                            <h4>@yield('subtitle')</h4>
                         </div>
                         <div class="action">
                             @if ($action == 'edit' && !$disableDestroy )
