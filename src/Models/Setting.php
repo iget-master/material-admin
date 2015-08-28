@@ -46,7 +46,7 @@ class Setting extends Eloquent {
 
     /**
      * @param $key
-     * @return string
+     * @return string|null
      */
     static public function get($key) {
         $setting = static::find($key);
