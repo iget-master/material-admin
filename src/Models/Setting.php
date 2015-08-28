@@ -49,7 +49,8 @@ class Setting extends Eloquent {
      * @return string
      */
     static public function get($key) {
-        return static::find($key)->value;
+        $setting = static::find($key);
+        return $setting ? $setting->value : null;
     }
 
     /**
