@@ -25,19 +25,7 @@
                         </div>
                     </div>
 
-                    <div role="tabpanel">
-                        {{-- Nav Tabs --}}
-                        <ul class="nav nav-tabs header-tab" role="tablist">
-                            @yield('nav')
-                        </ul>
-
-                        @include('materialadmin::panel.alerts')
-
-                        {{-- Tab Panes--}}
-                        <div class="tab-content">
-                            @yield('panes')
-                        </div>
-                    </div>
+                    @yield('tabpanel')
 
                     <div class="footer">
                         <a href="@yield('redirect_back_to', route('setting.index', ['active_tab' => $setting['group']]))" class="btn btn-flat">@if($action == 'create') @lang('materialadmin::admin.action_cancel') @else @lang('materialadmin::admin.action_discard') @endif</a>
