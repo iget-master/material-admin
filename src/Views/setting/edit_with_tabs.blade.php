@@ -19,15 +19,26 @@
                         <div class="action">
                             @if ($action == 'edit' && !$disableDestroy )
                                 {!! Form::open(array('method'=>'DELETE', 'route'=>['setting.update', $name, $model->id])) !!}
-                                <button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="md md-delete"></i></button>
+                                    <button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="md md-delete"></i></button>
                                 {!! Form::close() !!}
                             @endif
                         </div>
                     </div>
-                    @include('materialadmin::panel.alerts')
-                    <div class="body">
-                        @yield('form')
+
+                    <div role="tabpanel">
+                        {{-- Nav Tabs --}}
+                        <ul class="nav nav-tabs header-tab" role="tablist">
+                            @yield('nav')
+                        </ul>
+
+                        @include('materialadmin::panel.alerts')
+
+                        {{-- Tab Panes--}}
+                        <div class="tab-content">
+                            @yield('panes')
+                        </div>
                     </div>
+
                     <div class="footer">
                         <a href="@yield('redirect_back_to', route('setting.index', ['active_tab' => $setting['group']]))" class="btn btn-flat">@if($action == 'create') @lang('materialadmin::admin.action_cancel') @else @lang('materialadmin::admin.action_discard') @endif</a>
                         <a href="#" role="submit" data-form="#model" class="btn btn-flat action">@if($action == 'create') @lang('materialadmin::admin.action_create') @else @lang('materialadmin::admin.action_save') @endif</a>
@@ -39,8 +50,8 @@
 @stop
 
 @section('script')
-    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
-    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/errors.js')) !!}
+	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
+	{!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/errors.js')) !!}
 
     @if ($errors->any())
         <script>

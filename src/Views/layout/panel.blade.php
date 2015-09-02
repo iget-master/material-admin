@@ -11,7 +11,7 @@
         {!! HTML::style('//fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
         {!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
         {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
-        {!! HTML::style('iget-master/material-admin/css/panel.min.css') !!}
+        {!! HTML::style(versionedScriptUrl('iget-master/material-admin/css/panel.min.css')) !!}
         <link rel="icon" type="img/png" href="/img/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="img/png" href="/img/favicon-16x16.png" sizes="16x16" />
     </head>
@@ -64,7 +64,7 @@
             </div>
         @endif
     	<!-- Scripts are placed here -->
-        {!! HTML::script(versionedScriptUrl('//code.jquery.com/jquery-2.1.1.min.js')) !!}
+        {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
         {!! HTML::script(versionedScriptUrl('js/app/fileupload.js')) !!}
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/app.js')) !!}
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/panel.js')) !!}
@@ -77,7 +77,7 @@
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/masks.js')) !!}
         
         @yield('script')
-        @include('materialadmin::panel.modal')
+
         <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
