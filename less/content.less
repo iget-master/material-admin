@@ -74,6 +74,11 @@
 		}
 		.body {
 			padding: 50px 25px 25px 25px;
+			#files-list {
+				&.row {
+					margin-bottom: 0;
+				}
+			}
 			.row {
 				margin-bottom: 25px;
 				&.disabled {
@@ -192,7 +197,14 @@
 }
 
 #files-list {
-	margin-top: 50px;
+	& > div {
+		&:not(.reference-line) {
+			margin-top: 20px;
+		}
+		&:last-of-type {
+			margin-bottom: 40px;
+		}
+	}
 	.progress {
 		border-radius: 0px;
 		background-color: @md-grey-100;

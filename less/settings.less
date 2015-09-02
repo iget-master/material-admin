@@ -9,6 +9,10 @@
         color: @md-black;
         font-weight: @medium-font-weight;
         a {
+            &.title {
+                padding: 0;
+                float: none;
+            }
             float: right;
             color: @md-grey-400;
             &:hover {
@@ -57,7 +61,7 @@
                 text-align: center;
                 i {
                     display: block;
-                    font-size: 1.9rem
+                    font-size: 1.9rem;
                 }
             }
             .details {
@@ -67,7 +71,7 @@
                 .name, .fare {
                     display: block;
                 }
-                .quantity, .cost, .markup, .price, .margin {
+                .quantity, .cost, .markup, .price, .margin, .options {
                     margin-right: 15px;
                 }
             }
@@ -78,11 +82,8 @@
                 text-align: center;
                 font-size: 1.65rem;
                 i {
-                    margin-top: 16px
+                    margin: 5px 5px 0 0;
                 }
-            }
-            i:first-of-type {
-                margin-right: 5px;
             }
             &.hotel {
                 background-color: @md-teal-200;
