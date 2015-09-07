@@ -1438,22 +1438,24 @@ legend .actions a:hover {
 .card .panel-default .panel-body .quotation-item:last-of-type {
   margin-bottom: 0;
 }
-.card .panel-default .list-group .list-group-item.editable {
-  cursor: pointer;
+.card .panel-default .list-group .list-group-item {
   color: #000000;
 }
-.card .panel-default .list-group .list-group-item.editable.delete-only {
-  cursor: default;
-}
-.card .panel-default .list-group .list-group-item.editable:hover {
-  background-color: #fafafa;
-}
-.card .panel-default .list-group .list-group-item.editable a {
+.card .panel-default .list-group .list-group-item a {
   float: right;
   color: #bdbdbd;
 }
-.card .panel-default .list-group .list-group-item.editable a:hover {
+.card .panel-default .list-group .list-group-item a:hover {
   color: #000000;
+}
+.card .panel-default .list-group .list-group-item.delete-only {
+  cursor: default;
+}
+.card .panel-default .list-group .list-group-item.editable {
+  cursor: pointer;
+}
+.card .panel-default .list-group .list-group-item.editable:hover {
+  background-color: #fafafa;
 }
 #chart-of-accounts .account .head {
   margin: 5px;
