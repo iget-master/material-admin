@@ -80,6 +80,9 @@ strong {
 .text-danger {
   color: #f44336;
 }
+small {
+  font-size: 90%;
+}
 .filter-group {
   padding: 10px 10px;
 }
@@ -894,6 +897,9 @@ legend .actions a:hover {
 #card-wrapper .card .body {
   padding: 50px 25px 25px 25px;
 }
+#card-wrapper .card .body #files-list.row {
+  margin-bottom: 0;
+}
 #card-wrapper .card .body .row {
   margin-bottom: 25px;
 }
@@ -979,8 +985,11 @@ legend .actions a:hover {
 #card-wrapper .card .footer .btn:not(:first-child) {
   margin-left: 10px;
 }
-#files-list {
-  margin-top: 50px;
+#files-list > div:not(.reference-line) {
+  margin-top: 20px;
+}
+#files-list > div:last-of-type {
+  margin-bottom: 40px;
 }
 #files-list .progress {
   border-radius: 0px;
@@ -1263,6 +1272,10 @@ legend .actions a:hover {
 .card .panel-default {
   border-color: #eeeeee;
 }
+.card .panel-default .panel-heading a.title {
+  padding: 0;
+  float: none;
+}
 .card .panel-default > .panel-heading {
   position: relative;
   padding: 0;
@@ -1308,6 +1321,10 @@ legend .actions a:hover {
 .card .panel-default .panel-heading a {
   float: right;
   color: #bdbdbd;
+}
+.card .panel-default .panel-heading a.title {
+  padding: 0;
+  float: none;
 }
 .card .panel-default .panel-heading a:hover {
   color: #000000;
@@ -1369,25 +1386,19 @@ legend .actions a:hover {
 .card .panel-default .panel-body .quotation-item .details .cost,
 .card .panel-default .panel-body .quotation-item .details .markup,
 .card .panel-default .panel-body .quotation-item .details .price,
-.card .panel-default .panel-body .quotation-item .details .margin {
+.card .panel-default .panel-body .quotation-item .details .margin,
+.card .panel-default .panel-body .quotation-item .details .options {
   margin-right: 15px;
 }
-.card .panel-default .panel-body .quotation-item .cudepinto {
+.card .panel-default .panel-body .quotation-item .action {
   display: inline;
   float: right;
   width: 5%;
   text-align: center;
   font-size: 1.65rem;
 }
-.card .panel-default .panel-body .quotation-item .cudepinto i {
-  margin-right: 5px;
-  margin-top: 5px;
-}
-.card .panel-default .panel-body .quotation-item .cudepinto i:only-child {
-  margin-top: 16px;
-}
-.card .panel-default .panel-body .quotation-item i:first-of-type {
-  margin-right: 5px;
+.card .panel-default .panel-body .quotation-item .action i {
+  margin: 5px 5px 0 0;
 }
 .card .panel-default .panel-body .quotation-item.hotel {
   background-color: #80cbc4;
@@ -1594,4 +1605,17 @@ legend .actions a:hover {
 }
 .modal-body .relational-wrapper .relational > tbody > tr.room .new-row.empty .btn {
   margin: 10px 0 30px 0;
+}
+@media (min-width: 768px) {
+  .modal-sm {
+    width: 500px !important;
+  }
+}
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
 }

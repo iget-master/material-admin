@@ -67,12 +67,24 @@
             .details {
                 display: inline;
                 float: left;
+                position: relative;
                 width: 80%;
-                .name, .fare {
+                .name {
+                    display: inline-block;
+                }
+                .fare {
                     display: block;
                 }
-                .quantity, .cost, .markup, .price, .margin, .options {
+                .quantity, .cost, .markup, .price, .margin, .options, .reservation, .reserved-at, .confirmed-by  {
                     margin-right: 15px;
+                }
+                span.label {
+                    position: absolute;
+                    top: 4px;
+                    right: 0;
+                }
+                .reservation-details, .observation {
+                    margin-top: 10px;
                 }
             }
             .action {
