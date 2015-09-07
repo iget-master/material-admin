@@ -124,21 +124,25 @@
     }
     .list-group {
         .list-group-item {
+            color: @md-black;
+
+            a {
+                float: right;
+                color: @md-grey-400;
+                &:hover {
+                    color: @md-black;
+                }
+            }
+
+            &.delete-only {
+                cursor: default;
+            }
+
             &.editable {
                 cursor: pointer;
-                color: @md-black;
-                &.delete-only {
-                    cursor: default;
-                }
+
                 &:hover {
                     background-color: @md-grey-50;
-                }
-                a {
-                    float: right;
-                    color: @md-grey-400;
-                    &:hover {
-                        color: @md-black;
-                    }
                 }
             }
         }
