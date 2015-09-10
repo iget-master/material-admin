@@ -35,7 +35,7 @@
 	});
 
     /* Enable Save Button When Form is Edited*/
-    $('.save-button', '.enable-save').on('click', function() {
+    $('.save-button,.enable-save').on('click', function() {
         $('#save').removeAttr('disabled');
     });
 
