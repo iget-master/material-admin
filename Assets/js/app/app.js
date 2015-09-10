@@ -29,11 +29,15 @@
 		}
 	});
 
-
 	/* Enable Save Button When Form is Edited*/
 	$('form').on('input change', function() {
 		$('#save').removeAttr('disabled');
 	});
+
+    /* Enable Save Button When Form is Edited*/
+    $('.save-button', '.enable-save').on('click', function() {
+        $('#save').removeAttr('disabled');
+    });
 
 	/* Enable Save Button When relational Table is Updated */
 	$('.relational').on('updated', function() {
