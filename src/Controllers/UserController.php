@@ -91,13 +91,13 @@ class UserController extends RestController {
 		);
 
 		if (\Input::has('img_url')){
-			$fileLocation = "\storage\uploads\users_image";
+			$fileLocation = base_path()."/storage/uploads/users_image/";
 			if(!File::exists($fileLocation)){
 				File::makeDirectory($fileLocation);
 			}
 			$fileName = "user_".$user->id.".".\Input::file('img_url')->getMimeType();
 			if(\Input::file('img_url')->move($fileLocation, $fileName)){
-				$user->img_url = $fileLocation. "\" .$fileName;
+				$user->img_url = $fileLocation.$fileName;
 				$user->save();
 			}
 		}
