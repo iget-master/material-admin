@@ -21,7 +21,7 @@
 					</div>
 					<div class="body">
 						@include('materialadmin::panel.alerts')
-						{!! Form::open(array('route' => 'user.store', 'id' => 'user')) !!}
+						{!! Form::open(array('route' => 'user.store', 'id' => 'user', 'files'=>true)) !!}
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
@@ -55,10 +55,18 @@
 										{!! Form::select('language', IgetMaster\MaterialAdmin\Helper::getLanguagesSelectOptions(), null, array('class' => 'form-control')) !!}
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-5">
 									<div class="form-group">
 										{!! Form::label('email', trans('materialadmin::user.email'), array('class' => 'required')) !!}
 										{!! Form::text('email', null, array('class' => 'form-control')) !!}
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										{!! Form::label('img_url', trans('materialadmin::user.img_url')) !!}
+										{!! Form::file('img_url', ['class' => 'form-control']) !!}
 									</div>
 								</div>
 							</div>

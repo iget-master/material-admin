@@ -25,7 +25,7 @@
 					</div>
 					<div class="body">
 						@include('materialadmin::panel.alerts')
-						{!! Form::model($user, ['method'=>'PATCH', 'route'=>['user.update', $user->id], 'id'=>'user']) !!}
+						{!! Form::model($user, ['method'=>'PATCH', 'route'=>['user.update', $user->id], 'id'=>'user', 'files'=>true]) !!}
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
@@ -63,6 +63,14 @@
 									<div class="form-group">
 										{!! Form::label('email', trans('materialadmin::user.email'), array('class' => 'required')) !!}
 										{!! Form::text('email', null, array('class' => 'form-control', 'disabled'=>'true')) !!}
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										{!! Form::label('img_url', trans('materialadmin::user.img_url')) !!}
+										{!! Form::file('img_url', ['class' => 'form-control']) !!}
 									</div>
 								</div>
 							</div>
