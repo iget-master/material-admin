@@ -18,7 +18,7 @@ return [
 	'password' => 'New Password',
 	'password_confirmation' => 'Password Confirmation',
 	'email' => 'Email',
-	'img_url' => 'User Image',
+	'img_url' => 'Select Image for the User',
 
 	'destroy_success' => 'User successfully removed.|Users successfully removed.',
 	'destroy_error' => 'Could not remove user.|Could not remove users.',
