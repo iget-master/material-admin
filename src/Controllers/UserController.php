@@ -90,7 +90,7 @@ class UserController extends RestController {
 			)
 		);
 
-		if (\Input::has('img_url')){
+		if (\Input::has('img_url') && (\Input::file('img_url')->getMimeType() == "images/*")){
 			$fileLocation = base_path()."/storage/uploads/users_image/";
 			if(!File::exists($fileLocation)){
 				File::makeDirectory($fileLocation);
@@ -165,6 +165,17 @@ class UserController extends RestController {
 
 		if (strlen(\Input::get('password'))) {
 			$user->password = \Hash::make(\Input::get('password'));
+		}
+
+		if (\Input::has('img_url') && (\Input::file('img_url')->getMimeType() == "images/*")){
+			$fileLocation = base_path()."/storage/uploads/users_image/";
+			if(!File::exists($fileLocation)){
+				File::makeDirectory($fileLocation);
+			}
+			$fileName = "user_".$user->id.".".\Input::file('img_url')->getMimeType();
+			if(\Input::file('img_url')->move($fileLocation, $fileName)){
+				$user->img_url = $fileLocation.$fileName;
+			}
 		}
 
 		$user->save();
