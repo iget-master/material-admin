@@ -70,7 +70,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										{!! Form::label('img_url', trans('materialadmin::user.img_url')) !!}
-										{!! Form::file('img_url', ['class' => 'form-control']) !!}
+										{!! Form::file('img_url') !!}
 									</div>
 								</div>
 							</div>
