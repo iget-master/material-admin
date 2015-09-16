@@ -288,4 +288,10 @@ class UserController extends RestController {
 
 		return \Redirect::route('user.index')->with('messages', $messages);
 	}
+
+	public function getUserImage($id)
+	{
+		$image = User::findOrFail($id)->img_url;
+		return response()->download($image);
+	}
 }

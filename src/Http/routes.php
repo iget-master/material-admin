@@ -46,6 +46,13 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
     Route::get('/search/{model}/{query}/{scope0?}/{scope1?}/{scope2?}/{scope3?}/{scope4?}', ['as' => 'search', 'uses' => 'SearchController@search']);
 
+    /*
+    |-------------------
+    | Get Image Engine
+    |-------------------
+    */
+    Route::get('/user/{id}/photo', ['uses' => 'UserController@getUserImage']);
+
 });
 
 Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'guest'], function()
