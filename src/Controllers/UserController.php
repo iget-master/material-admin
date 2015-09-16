@@ -175,10 +175,11 @@ class UserController extends RestController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
+	 * Upload image of user
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param file  $image
+	 * @param model $user
+	 * @param bool $saveAtTheEnd
 	 */
 	private function uploadImage($image, $user, $saveAtTheEnd)
 	{
@@ -246,7 +247,7 @@ class UserController extends RestController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
+	 * get the image of the user from Storage
 	 *
 	 * @param  int  $id
 	 * @return Response
