@@ -4,7 +4,7 @@
         @if(is_null(Auth::user()->img_url))
             <img class="img-circle" src="https://placehold.it/60x60" alt="{!! Auth::user()->name !!}">
         @else
-			<img class="img-circle" src="{{!! Auth::user()->img_url !!}}" alt="{!! Auth::user()->name !!}">
+			<img class="img-circle" src="{!! Auth::user()->img_url !!}" alt="{!! Auth::user()->name !!}">
         @endif
 		</div>
 		<div class="user-info">
