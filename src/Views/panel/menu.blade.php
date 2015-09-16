@@ -1,7 +1,11 @@
 <div class="drawer">
 	<div class="header">
 		<div class="user-info">
-			<img class="img-circle" src="https://placehold.it/60x60" alt="{!! Auth::user()->name!!}">
+        @if(is_null(Auth::user()->img_url))
+            <img class="img-circle" src="https://placehold.it/60x60" alt="{!! Auth::user()->name !!}">
+        @else
+			<img class="img-circle" src="{{!! Auth::user()->img_url !!}}" alt="{!! Auth::user()->name !!}">
+        @endif
 		</div>
 		<div class="user-info">
 			<span>{!! Auth::user()->name !!}</span>
