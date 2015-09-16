@@ -73,6 +73,13 @@
 										{!! Form::file('img_url') !!}
 									</div>
 								</div>
+								@if(!is_null($user->img_url))
+								<div class="col-md-6">
+									<div class="form-group">
+										<img class="img-circle" align="center" src="/user/{!! $user->id !!}/photo" alt="{!! $user->name !!}">
+									</div>
+								</div>
+								@endif
 							</div>
 							<div class="row enable">
 								<div class="col-md-12">
