@@ -93,7 +93,7 @@ class UserController extends RestController {
 
 		//upload of user image
 		if (\Input::hasfile('img_url')){
-			Self::uploadImage(\Input::file('img_url'), true);
+			Self::uploadImage(\Input::file('img_url'), $user, true);
 		}
 
 		return \Redirect::route('user.index');
@@ -164,7 +164,7 @@ class UserController extends RestController {
 
 		//upload of user image
 		if (\Input::hasfile('img_url')){
-			Self::uploadImage(\Input::file('img_url'), false);
+			Self::uploadImage(\Input::file('img_url'), $user, false);
 		}
 
 		$user->save();
@@ -180,7 +180,7 @@ class UserController extends RestController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	private function uploadImage($image, $saveAtTheEnd)
+	private function uploadImage($image, $user, $saveAtTheEnd)
 	{
 		$fileLocation = base_path()."/storage/uploads/users_image/";
 		if(!\File::exists($fileLocation)){
@@ -191,10 +191,10 @@ class UserController extends RestController {
 		$imageData = getimagesize($image);
 
 		if($image->getMimeType() == "image/jpeg"){
-			$image = imagecreatefromjpeg($image->getRealPath());
+			$imageToEdit = imagecreatefromjpeg($image->getRealPath());
 			$val = 100;
 		} else {
-			$image = imagecreatefrompng($image->getRealPath());
+			$imageToEdit = imagecreatefrompng($image->getRealPath());
 			$val = null;
 		}
 
@@ -215,7 +215,7 @@ class UserController extends RestController {
 		$thumb_im_resize = imagecreatetruecolor( $new_width, $new_height );
 
 		// copy and resize old image into new image 
-		imagecopyresized( $thumb_im_resize, $image, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
+		imagecopyresized( $thumb_im_resize, $imageToEdit, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
 
 		// crop the resized image
 		$to_crop_array = array('x' =>$marginLeft, 'y' => $marginTop, 'width' => 120, 'height'=> 120);
