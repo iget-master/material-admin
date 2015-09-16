@@ -92,66 +92,8 @@ class UserController extends RestController {
 		);
 
 		//upload of user image
-		if (\Input::file('img_url')){
-			$fileLocation = base_path()."/storage/uploads/users_image/";
-			if(!\File::exists($fileLocation)){
-				\File::makeDirectory($fileLocation);
-			}
-			$fileName = "user_".$user->id;
-			$fileExtension = \Input::file('img_url')->getClientOriginalExtension();
-			$imageData = getimagesize(\Input::file('img_url'));
-
-			if(\Input::file('img_url')->getMimeType() == "image/jpeg"){
-				$image = imagecreatefromjpeg(\Input::file('img_url')->getRealPath());
-				$val = 100;
-			} else {
-				$image = imagecreatefrompng(\Input::file('img_url')->getRealPath());
-				$val = null;
-			}
-
-        	// calculate thumbnail size
-			if($imageData[0] >= $imageData[1]){
-        		$new_width = ($imageData[0] * 120) / $imageData[1];
-        		$new_height = 120;
-        		$marginTop = 0;
-        		$marginLeft = ($new_width - 120) / 2;
-			} else {
-        		$new_width = 120;
-        		$new_height = ($imageData[1] * 120) / $imageData[0];
-        		$marginTop = ($new_height - 120) / 2;
-        		$marginLeft = 0;
-			}
-
-			// create a new temporary image
-			$thumb_im_resize = imagecreatetruecolor( $new_width, $new_height );
-
-			// copy and resize old image into new image
-			imagecopyresized( $thumb_im_resize, $image, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
-
-			// crop the resized image
-			$to_crop_array = array('x' =>$marginLeft, 'y' => $marginTop, 'width' => 120, 'height'=> 120);
-			$thumb_im_crop = imagecrop($thumb_im_resize, $to_crop_array);
-
-			if($val == 100){//jpeg
-				imagejpeg($thumb_im_crop, \Input::file('img_url')->getRealPath(), $val, 100);
-			} else {
-				imagepng($thumb_im_crop, \Input::file('img_url')->getRealPath(), $val, 100);
-			}
-
-			$fileVerify = $fileLocation.$fileName;
-
-			if($val == null && \File::exists($fileVerify.".jpg")){
-				\File::delete($fileVerify.".jpg");
-			} else if($val == null && \File::exists($fileVerify.".jpeg")){
-				\File::delete($fileVerify.".jpeg");
-			} else if($val == 100 && \File::exists($fileVerify.".png")) {
-				\File::delete($fileVerify.".png");
-			}
-
-			if(\Input::file('img_url')->move($fileLocation, $fileName.".".$fileExtension)){
-				$user->img_url = $fileLocation.$fileName.".".$fileExtension;
-				$user->save();
-			}
+		if (\Input::hasfile('img_url')){
+			Self::uploadImage(\Input::file('img_url'), true);
 		}
 
 		return \Redirect::route('user.index');
@@ -221,65 +163,8 @@ class UserController extends RestController {
 		}
 
 		//upload of user image
-		if (\Input::file('img_url')){
-			$fileLocation = base_path()."/storage/uploads/users_image/";
-			if(!\File::exists($fileLocation)){
-				\File::makeDirectory($fileLocation);
-			}
-			$fileName = "user_".$user->id;
-			$fileExtension = \Input::file('img_url')->getClientOriginalExtension();
-			$imageData = getimagesize(\Input::file('img_url'));
-
-			if(\Input::file('img_url')->getMimeType() == "image/jpeg"){
-				$image = imagecreatefromjpeg(\Input::file('img_url')->getRealPath());
-				$val = 100;
-			} else {
-				$image = imagecreatefrompng(\Input::file('img_url')->getRealPath());
-				$val = null;
-			}
-
-        	// calculate thumbnail size
-			if($imageData[0] >= $imageData[1]){
-        		$new_width = ($imageData[0] * 120) / $imageData[1];
-        		$new_height = 120;
-        		$marginTop = 0;
-        		$marginLeft = ($new_width - 120) / 2;
-			} else {
-        		$new_width = 120;
-        		$new_height = ($imageData[1] * 120) / $imageData[0];
-        		$marginTop = ($new_height - 120) / 2;
-        		$marginLeft = 0;
-			}
-
-			// create a new temporary image
-			$thumb_im_resize = imagecreatetruecolor( $new_width, $new_height );
-
-			// copy and resize old image into new image 
-			imagecopyresized( $thumb_im_resize, $image, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
-
-			// crop the resized image
-			$to_crop_array = array('x' =>$marginLeft, 'y' => $marginTop, 'width' => 120, 'height'=> 120);
-			$thumb_im_crop = imagecrop($thumb_im_resize, $to_crop_array);
-
-			if($val == 100){//jpeg
-				imagejpeg($thumb_im_crop, \Input::file('img_url')->getRealPath(), $val, 100);
-			} else {
-				imagepng($thumb_im_crop, \Input::file('img_url')->getRealPath(), $val, 100);
-			}
-
-			$fileVerify = $fileLocation.$fileName;
-
-			if($val == null && \File::exists($fileVerify.".jpg")){
-				\File::delete($fileVerify.".jpg");
-			} else if($val == null && \File::exists($fileVerify.".jpeg")){
-				\File::delete($fileVerify.".jpeg");
-			} else if($val == 100 && \File::exists($fileVerify.".png")) {
-				\File::delete($fileVerify.".png");
-			}
-
-			if(\Input::file('img_url')->move($fileLocation, $fileName.".".$fileExtension)){
-				$user->img_url = $fileLocation.$fileName.".".$fileExtension;
-			}
+		if (\Input::hasfile('img_url')){
+			Self::uploadImage(\Input::file('img_url'), false);
 		}
 
 		$user->save();
@@ -289,9 +174,86 @@ class UserController extends RestController {
 		return \Redirect::route('user.index')->with('messages', $messages);
 	}
 
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	private function uploadImage($image, $saveAtTheEnd)
+	{
+		$fileLocation = base_path()."/storage/uploads/users_image/";
+		if(!\File::exists($fileLocation)){
+			\File::makeDirectory($fileLocation);
+		}
+		$fileName = "user_".$user->id;
+		$fileExtension = $image->getClientOriginalExtension();
+		$imageData = getimagesize($image);
+
+		if($image->getMimeType() == "image/jpeg"){
+			$image = imagecreatefromjpeg($image->getRealPath());
+			$val = 100;
+		} else {
+			$image = imagecreatefrompng($image->getRealPath());
+			$val = null;
+		}
+
+    	// calculate thumbnail size
+		if($imageData[0] >= $imageData[1]){
+    		$new_width = ($imageData[0] * 120) / $imageData[1];
+    		$new_height = 120;
+    		$marginTop = 0;
+    		$marginLeft = ($new_width - 120) / 2;
+		} else {
+    		$new_width = 120;
+    		$new_height = ($imageData[1] * 120) / $imageData[0];
+    		$marginTop = ($new_height - 120) / 2;
+    		$marginLeft = 0;
+		}
+
+		// create a new temporary image
+		$thumb_im_resize = imagecreatetruecolor( $new_width, $new_height );
+
+		// copy and resize old image into new image 
+		imagecopyresized( $thumb_im_resize, $image, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
+
+		// crop the resized image
+		$to_crop_array = array('x' =>$marginLeft, 'y' => $marginTop, 'width' => 120, 'height'=> 120);
+		$thumb_im_crop = imagecrop($thumb_im_resize, $to_crop_array);
+
+		if($val == 100){//jpeg
+			imagejpeg($thumb_im_crop, $image->getRealPath(), $val, 100);
+		} else {
+			imagepng($thumb_im_crop, $image->getRealPath(), $val, 100);
+		}
+
+		$fileVerify = $fileLocation.$fileName;
+
+		if($val == null && \File::exists($fileVerify.".jpg")){
+			\File::delete($fileVerify.".jpg");
+		} else if($val == null && \File::exists($fileVerify.".jpeg")){
+			\File::delete($fileVerify.".jpeg");
+		} else if($val == 100 && \File::exists($fileVerify.".png")) {
+			\File::delete($fileVerify.".png");
+		}
+
+		if($image->move($fileLocation, $fileName.".".$fileExtension)){
+			$user->img_url = $fileLocation.$fileName.".".$fileExtension;
+		}
+		if($saveAtTheEnd){
+			$user->save();
+		}
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
 	public function getUserImage($id)
 	{
 		$image = User::findOrFail($id)->img_url;
-		return response()->download($image);
+		return response()->download($image, null,['Chache-Control' => 'no-cache', 'Pragma' => 'no-cache'], 'inline');
 	}
 }
