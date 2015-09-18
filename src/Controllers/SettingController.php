@@ -94,6 +94,16 @@ class SettingController extends BaseController {
             $request = App()->make('Illuminate\Http\Request');
         }
 
+        // Check if current setting has checkboxes and set each field as zero
+        // if not present on request (if not checked)
+        if (array_key_exists('checkboxes', $setting) && is_array($setting['checkboxes'])) {
+            foreach ($setting['checkboxes'] as $field_name) {
+                if (!$request->has($field_name)) {
+                    $model->$field_name = 0;
+                }
+            }
+        }
+
         $model->fill($request->all())->save();
 
         $this->fill_setting_relationships($setting, $model, $request);
@@ -191,6 +201,16 @@ class SettingController extends BaseController {
                 return \Redirect::back()->withInput()->withErrors($validator);
             }
             $request = App()->make('Illuminate\Http\Request');
+        }
+
+        // Check if current setting has checkboxes and set each field as zero
+        // if not present on request (if not checked)
+        if (array_key_exists('checkboxes', $setting) && is_array($setting['checkboxes'])) {
+            foreach ($setting['checkboxes'] as $field_name) {
+                if (!$request->has($field_name)) {
+                    $model->$field_name = 0;
+                }
+            }
         }
 
         $model->fill($request->all())->save();
