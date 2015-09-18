@@ -18,9 +18,7 @@
                         </div>
                         <div class="action">
                             @if ($action == 'edit' && !$disableDestroy )
-                                {!! Form::open(array('method'=>'DELETE', 'route'=>['setting.update', $name, $model->id])) !!}
-                                <button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="md md-delete"></i></button>
-                                {!! Form::close() !!}
+                                <a href="{!! route('setting.delete', [$name, $model->id]) !!}" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="md md-delete"></i></a>
                             @endif
                         </div>
                     </div>
