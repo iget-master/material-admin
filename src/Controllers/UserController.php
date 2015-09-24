@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
 use IgetMaster\MaterialAdmin\Models\User;
 use IgetMaster\MaterialAdmin\Models\PermissionGroup;
+use Illuminate\Http\Request;
 
 class UserController extends RestController {
 	/**
@@ -132,6 +133,7 @@ class UserController extends RestController {
 	 */
 	public function update($id)
 	{
+		// dd(\Input::all());
 		$user = User::findOrFail($id);
 
 		$validator = \Validator::make(
@@ -143,7 +145,7 @@ class UserController extends RestController {
 				'permission_group_id' => 'required|integer',
 				'dob' => 'date',
 				'language' => 'required',
-				'img_url' => 'image|max:2000',
+				/*'img_url' => 'image|max:2000',*/
 			)
 		);
 
@@ -164,7 +166,7 @@ class UserController extends RestController {
 
 		//upload of user image
 		if (\Input::hasfile('img_url')){
-			Self::uploadImage(\Input::file('img_url'), $user, false);
+			Self::saveImage(\Input::get('image'), $user, false);
 		}
 
 		$user->save();
@@ -181,66 +183,21 @@ class UserController extends RestController {
 	 * @param model $user
 	 * @param bool $saveAtTheEnd
 	 */
-	private function uploadImage($image, $user, $saveAtTheEnd)
+	private function saveImage($image, $user, $saveAtTheEnd)
 	{
-		$fileLocation = base_path()."/storage/uploads/users_image/";
-		if(!\File::exists($fileLocation)){
-			\File::makeDirectory($fileLocation);
-		}
-		$fileName = "user_".$user->id;
-		$fileExtension = $image->getClientOriginalExtension();
-		$imageData = getimagesize($image);
-
-		if($image->getMimeType() == "image/jpeg"){
-			$imageToEdit = imagecreatefromjpeg($image->getRealPath());
-			$val = 100;
-		} else {
-			$imageToEdit = imagecreatefrompng($image->getRealPath());
-			$val = null;
+		$fileLocation = base_path("storage/uploads/");
+		$ext = substr($image, 10);
+		$userTempImage = $fileLocation.$image;
+		$newUserImage = "storage/uploads/user_".$user->id.$ext;
+		$oldUserImage = $user->img_url;
+		if(\File::exists($oldUserImage)){
+			\File::delete($oldUserImage);
 		}
 
-    	// calculate thumbnail size
-		if($imageData[0] >= $imageData[1]){
-    		$new_width = ($imageData[0] * 120) / $imageData[1];
-    		$new_height = 120;
-    		$marginTop = 0;
-    		$marginLeft = ($new_width - 120) / 2;
-		} else {
-    		$new_width = 120;
-    		$new_height = ($imageData[1] * 120) / $imageData[0];
-    		$marginTop = ($new_height - 120) / 2;
-    		$marginLeft = 0;
-		}
+		\File::move($userTempImage, base_path($newUserImage));
 
-		// create a new temporary image
-		$thumb_im_resize = imagecreatetruecolor( $new_width, $new_height );
+		$user->img_url = $newUserImage;
 
-		// copy and resize old image into new image 
-		imagecopyresized( $thumb_im_resize, $imageToEdit, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
-
-		// crop the resized image
-		$to_crop_array = array('x' =>$marginLeft, 'y' => $marginTop, 'width' => 120, 'height'=> 120);
-		$thumb_im_crop = imagecrop($thumb_im_resize, $to_crop_array);
-
-		if($val == 100){//jpeg
-			imagejpeg($thumb_im_crop, $image->getRealPath(), $val, 100);
-		} else {
-			imagepng($thumb_im_crop, $image->getRealPath(), $val, 100);
-		}
-
-		$fileVerify = $fileLocation.$fileName;
-
-		if($val == null && \File::exists($fileVerify.".jpg")){
-			\File::delete($fileVerify.".jpg");
-		} else if($val == null && \File::exists($fileVerify.".jpeg")){
-			\File::delete($fileVerify.".jpeg");
-		} else if($val == 100 && \File::exists($fileVerify.".png")) {
-			\File::delete($fileVerify.".png");
-		}
-
-		if($image->move($fileLocation, $fileName.".".$fileExtension)){
-			$user->img_url = $fileLocation.$fileName.".".$fileExtension;
-		}
 		if($saveAtTheEnd){
 			$user->save();
 		}
@@ -255,6 +212,102 @@ class UserController extends RestController {
 	public function getUserImage($id)
 	{
 		$image = User::findOrFail($id)->img_url;
+		return response()->download(base_path($image), null,['Chache-Control' => 'no-cache', 'Pragma' => 'no-cache'], 'inline');
+	}
+
+	/**
+	 * get the temp_image of the user from Storage
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function getUserTempImage($fileName)
+	{
+		$image = base_path("storage/uploads/".$fileName);
 		return response()->download($image, null,['Chache-Control' => 'no-cache', 'Pragma' => 'no-cache'], 'inline');
+	}
+
+	/**
+	 * get and save the temp_image of the user
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function upTempImage()
+	{
+
+		/* VALIDAR */
+
+		$temp = "";
+		if(\Input::has("temp")){
+			$temp = \Input::get("temp");
+		}
+		if(\Input::hasfile('file')){
+			$image = \Input::file('file');
+			$fileLocation = base_path("storage/uploads/");
+			if(!\File::exists($fileLocation)){
+				\File::makeDirectory($fileLocation);
+			}
+			if($temp != ""){
+				\File::delete($fileLocation.$temp);
+			}
+			do{
+				$fileName = "user_".rand(10000, 99999);
+				$fileExtension = $image->getClientOriginalExtension();
+			} while(\File::exists($fileLocation.$fileName.$fileExtension));
+			$imageData = getimagesize($image);
+			$mimeType = $image->getMimeType();
+
+			if($mimeType == "image/jpeg"){
+				$imageToEdit = imagecreatefromjpeg($image->getRealPath());
+				$val = 100;
+			} else {
+				$imageToEdit = imagecreatefrompng($image->getRealPath());
+				$val = null;
+			}
+
+	    	// calculate thumbnail size
+			if($imageData[0] >= $imageData[1]){
+	    		$new_width = ($imageData[0] * 120) / $imageData[1];
+	    		$new_height = 120;
+	    		$marginTop = 0;
+	    		$marginLeft = ($new_width - 120) / 2;
+			} else {
+	    		$new_width = 120;
+	    		$new_height = ($imageData[1] * 120) / $imageData[0];
+	    		$marginTop = ($new_height - 120) / 2;
+	    		$marginLeft = 0;
+			}
+
+			// create a new temporary image
+			$thumb_im_resize = imagecreatetruecolor( $new_width, $new_height );
+
+			// copy and resize old image into new image 
+			imagecopyresized( $thumb_im_resize, $imageToEdit, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
+
+			// crop the resized image
+			$to_crop_array = array('x' =>$marginLeft, 'y' => $marginTop, 'width' => 120, 'height'=> 120);
+			$thumb_im_crop = imagecrop($thumb_im_resize, $to_crop_array);
+
+			if($val == 100){//jpeg
+				imagejpeg($thumb_im_crop, $image->getRealPath(), $val, 100);
+			} else {
+				imagepng($thumb_im_crop, $image->getRealPath(), $val, 100);
+			}
+
+			$fileVerify = $fileLocation.$fileName;
+
+			if($val == null && \File::exists($fileVerify.".jpg")){
+				\File::delete($fileVerify.".jpg");
+			} else if($val == null && \File::exists($fileVerify.".jpeg")){
+				\File::delete($fileVerify.".jpeg");
+			} else if($val == 100 && \File::exists($fileVerify.".png")) {
+				\File::delete($fileVerify.".png");
+			}
+
+			if($image->move($fileLocation, $fileName.".".$fileExtension)){
+				return $fileName.".".$fileExtension;
+			}
+		}
 	}
 }
