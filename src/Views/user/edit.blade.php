@@ -12,8 +12,10 @@
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8 card">
 					<div class="header">
-						<div class="col-md-2" style="position:relative; padding-left:0px;">
-							<div style="position:absolute; margin:5%; opacity:0.9; width:25%; top:0px; right:0px; cursor:pointer; color:#fff; font-size:18px" class="text-right"><i id="change_image" class="fa fa-pencil"></i></div>
+						<div class="col-md-2" id="image_content" style="min-height:120px; position:relative; padding-left:0px;">
+							<div style="position:absolute; margin:5%; opacity:0.9; width:25%; top:0px; right:0px; cursor:pointer; color:#fff; font-size:18px" class="text-right">
+								<i id="change_image" class="fa fa-pencil"></i>
+							</div>
 							<img alt="{!! $user->name !!}" class="img-circle hide" id="user_image">
 						</div>
 						<div class="col-md-10">
@@ -139,11 +141,13 @@
 
 	angular.module("editView", []);
 	angular.module("editView").controller("editViewController", function($scope, $http){
-		// Pega o id do usuario
+		// Pega o id do usuario e a imagem
 		var userId = <?php echo $user->id; ?>;
 
-		// Insere a src na imagem do formulario
-		$("#user_image").attr("src", "/user/"+userId+"/photo");
+		// Insere a src na imagem do formulario se houver imagem cadastrada
+		@if($user->img_url)
+			$("#user_image").attr("src", "/user/"+userId+"/photo");
+		@endif
 
 		// Define o nome de arquivo temporario para null
 		var tempName = "";
@@ -174,18 +178,27 @@
 				},
 				transformRequest: angular.identity
 			}).success(function(response){
-				// Define o nome temporario
-				tempName = response;
-				// Altera a src da imagem para exibir o arquivo temporario
-				$("#user_image").attr("src", "/user/"+tempName+"/temp").addClass('hide');
-				// Altera o value do input=hidden da imagem para o arquivo temporario
-				$("#image").attr("value", tempName);
+				if(response != 'false'){
+					// Define o nome temporario
+					tempName = response;
+					// Altera a src da imagem para exibir o arquivo temporario
+					$("#user_image").attr("src", "/user/"+tempName+"/temp").addClass('hide');
+					// Altera o value do input=hidden da imagem para o arquivo temporario
+					$("#image").attr("value", tempName);
+				}
 			});
 		});
 
 		// Clica no input=file quando a houver um click na imagem
 		$("#change_image").on("click", function(){
 			$("#img_url").click();
+		});
+
+		// Altera estilo do icone ṕara editar image de usuario
+		$("#image_content").on('mouseover', function(){
+			$("#change_image").css({"text-shadow": "0px 0px 5px #009", "font-size": "20px"});
+		}).on('mouseleave', function(){
+			$("#change_image").css({"text-shadow": "0px 0px 1px #666", "font-size": "18px"});
 		});
 	});
 	</script>
