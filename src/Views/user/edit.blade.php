@@ -12,8 +12,8 @@
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8 card">
 					<div class="header">
-						<div class="col-md-2" id="image_content" style="min-height:120px; position:relative; padding-left:0px;">
-							<div style="position:absolute; margin:5%; opacity:0.9; width:25%; top:0px; right:0px; cursor:pointer; color:#fff; font-size:18px" class="text-right">
+						<div class="col-md-2" id="image_content">
+							<div class="text-right">
 								<i id="change_image" class="fa fa-pencil"></i>
 							</div>
 							<img alt="{!! $user->name !!}" class="img-circle hide" id="user_image">
