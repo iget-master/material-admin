@@ -14,7 +14,7 @@
 					<div class="header">
 						<div class="col-md-2" id="image_content">
 							<div class="text-right">
-								<i id="change_image" class="fa fa-pencil"></i>
+								<i id="change_image" class="fa fa-pencil edit-default"></i>
 							</div>
 							<img alt="{!! $user->name !!}" class="img-circle hide" id="user_image">
 						</div>
