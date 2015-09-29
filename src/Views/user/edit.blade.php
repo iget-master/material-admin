@@ -196,9 +196,9 @@
 
 		// Altera estilo do icone ṕara editar image de usuario
 		$("#image_content").on('mouseover', function(){
-			$("#change_image").addClass("edit-active");
+			$("#change_image").removeClass("edit-default").addClass("edit-active");
 		}).on('mouseleave', function(){
-			$("#change_image").addClass("edit-default");
+			$("#change_image").removeClass("edit-active").addClass("edit-default");
 		});
 	});
 	</script>
