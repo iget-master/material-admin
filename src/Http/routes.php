@@ -46,6 +46,15 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
     Route::get('/search/{model}/{query}/{scope0?}/{scope1?}/{scope2?}/{scope3?}/{scope4?}', ['as' => 'search', 'uses' => 'SearchController@search']);
 
+    /*
+    |-------------------
+    | Get/Post Image Engine
+    |-------------------
+    */
+    Route::get('/user/{id}/photo', ['uses' => 'UserController@getUserImage']);
+    Route::get('/user/{fileName}/temp', ['uses' => 'UserController@getUserTempImage']);
+    Route::post('/user/photo/temp', ['uses' => 'UserController@upTempImage']);
+
 });
 
 Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'guest'], function()
