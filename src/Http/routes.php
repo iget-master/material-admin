@@ -48,10 +48,12 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
     /*
     |-------------------
-    | Get Image Engine
+    | Get/Post Image Engine
     |-------------------
     */
     Route::get('/user/{id}/photo', ['uses' => 'UserController@getUserImage']);
+    Route::get('/user/{fileName}/temp', ['uses' => 'UserController@getUserTempImage']);
+    Route::post('/user/photo/temp', ['uses' => 'UserController@upTempImage']);
 
 });
 

@@ -71,6 +71,28 @@
 				  	display: inline-block;
 				}
 			}
+		  	#image_content {
+				min-height: 120px;
+				position: relative;
+				padding-left: 0;
+				div {
+					position: absolute;
+					margin: 5%;
+					width: 25%;
+					top: 0;
+					right: 0;
+					cursor: pointer;
+					color: @md-white;
+					opacity: 0.8;
+					.edit-active {
+						opacity: 1;
+					}
+					.edit-default {
+				 		opacity: 0.8;
+					}
+				}
+			}
+
 		}
 		.body {
 			padding: 50px 25px 25px 25px;
