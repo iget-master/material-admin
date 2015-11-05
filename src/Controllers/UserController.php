@@ -36,7 +36,7 @@ class UserController extends RestController {
 	 */
 	public function index(UserFilterRequest $request)
 	{
-		$users = User::with('permission_group')->filter($request->filters())->get();;
+		$users = User::with('permission_group')->filter($request->filters())->get();
 
         return view('materialadmin::user.index')->withUsers($users);
 	}
@@ -70,6 +70,7 @@ class UserController extends RestController {
 				'permission_group_id' => 'required|integer',
 				'dob' => 'date',
 				'language' => 'required',
+				'img_url' => 'image|mimes:jpg,jpeg,png|max:5000'
 			)
 		);
 
@@ -144,6 +145,7 @@ class UserController extends RestController {
 				'permission_group_id' => 'required|integer',
 				'dob' => 'date',
 				'language' => 'required'
+				'img_url' => 'image|mimes:jpg,jpeg,png|max:5000'
 			)
 		);
 

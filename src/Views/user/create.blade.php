@@ -12,14 +12,14 @@
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8 card">
 					<div class="header">
-						<div class="col-md-2" id="image_content" style="min-height:120px; position:relative; padding-left:0px;">
-							<div style="position:absolute; margin:5%; opacity:0.9; width:25%; top:0px; right:0px; cursor:pointer; color:#fff; font-size:18px;" class="text-right">
-								<i id="change_image" class="fa fa-pencil" style="text-shadow:0px 0px 1px #666"></i>
+						<div class="col-md-2" id="image_content">
+							<div>
+								<i id="change_image" class="fa fa-pencil edit-default"></i>
 							</div>
 							@if (Request::old('image'))
 								<img class="img-circle hide" id="user_image" src="/user/{!! Request::old('image') !!}/temp">	
 							@else
-								<img class="img-circle hide" id="user_image">	
+								<img class="img-circle" id="user_image" src="/img/user-image.jpg">	
 							@endif
 							
 						</div>
@@ -76,7 +76,7 @@
 								<div class="col-md-6 hidden">
 									<div class="form-group">
 										{!! Form::label('img_url', trans('materialadmin::user.img_url')) !!}
-										{!! Form::file('img_url', ['id' => 'img_url']) !!}
+										{!! Form::file('img_url', ['id' => 'img_url', 'accept' => 'image/*']) !!}
 									</div>
 								</div>
 								{!! Form::hidden('image', NULL, ['id' => 'image']) !!}
@@ -170,9 +170,9 @@
 
 		// Altera estilo do icone ṕara editar image de usuario
 		$("#image_content").on('mouseover', function(){
-			$("#change_image").addClass("edit-active");
+			$("#change_image").removeClass("edit-default").addClass("edit-active");
 		}).on('mouseleave', function(){
-			$("#change_image").addClass("edit-default");
+			$("#change_image").removeClass("edit-active").addClass("edit-default");
 		});
 	});
 	</script>

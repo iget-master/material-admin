@@ -13,7 +13,7 @@
 				<div class="col-md-offset-2 col-md-8 card">
 					<div class="header">
 						<div class="col-md-2" id="image_content">
-							<div class="text-right">
+							<div>
 								<i id="change_image" class="fa fa-pencil edit-default"></i>
 							</div>
 							<img alt="{!! $user->name !!}" class="img-circle hide" id="user_image">
@@ -78,7 +78,7 @@
 								<div class="col-md-6 hidden">
 									<div class="form-group">
 										{!! Form::label('img_url', trans('materialadmin::user.img_url')) !!}
-										{!! Form::file('img_url', ['id' => 'img_url']) !!}
+										{!! Form::file('img_url', ['id' => 'img_url', 'accept'=>'image/*']) !!}
 									</div>
 								</div>
 								{!! Form::hidden('image', NULL, ['id' => 'image']) !!}
@@ -147,6 +147,8 @@
 		// Insere a src na imagem do formulario se houver imagem cadastrada
 		@if($user->img_url)
 			$("#user_image").attr("src", "/user/"+userId+"/photo");
+		@else
+			$("#user_image").attr("src", "/img/user-image.jpg");
 		@endif
 
 		// Define o nome de arquivo temporario para null
