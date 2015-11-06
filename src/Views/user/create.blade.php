@@ -19,7 +19,7 @@
 							@if (Request::old('image'))
 								<img class="img-circle hide" id="user_image" src="/user/{!! Request::old('image') !!}/temp">	
 							@else
-								<img class="img-circle" id="user_image" src="/img/user-image.jpg">	
+								<img class="img-circle" id="user_image" src="/iget-master/material-admin/imgs/user-image.jpg">	
 							@endif
 							
 						</div>
