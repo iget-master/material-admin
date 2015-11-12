@@ -19,6 +19,7 @@ return [
 	'password_confirmation' => 'Password Confirmation',
 	'email' => 'Email',
 	'img_url' => 'Select Image for the User',
+	'invalid_image' => 'This file is not supported!',
 
 	'destroy_success' => 'User successfully removed.|Users successfully removed.',
 	'destroy_error' => 'Could not remove user.|Could not remove users.',
