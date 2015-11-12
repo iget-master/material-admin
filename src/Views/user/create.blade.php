@@ -122,6 +122,9 @@
 	$("#user_image").on('load', function(e) {
 		$(e.target).removeClass('hide');
 	});
+	
+	// Mensagem de erro do upload de imagens
+	var error_message = "{!! trans('user.invalid_image') !!}";
 
 	// Regex para validar e-mail
 	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -267,7 +270,7 @@
 					statusImage = true;
 				});
 			} else {
-				window.alert("Erro!");
+				window.alert(error_message);
 			}
 		});
 
