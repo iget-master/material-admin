@@ -141,7 +141,7 @@
 	});
 	
 	// Mensagem de erro do upload de imagens
-	var error_message = "{!! trans('user.invalid_image') !!}";
+	var error_message = "{!! trans('materialadmin::user.invalid_image') !!}";
 	
 	// Regex para validar e-mail
 	var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
