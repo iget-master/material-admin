@@ -231,7 +231,7 @@
 		// Executa quando for selecionado alguma imagem no input=file
 		$("#image").on('change', function(){
 			// Pega a imagem selecionada
-			var f = document.getElementById('img_url').files[0];
+			var f = document.getElementById('image').files[0];
 			
 			// Se nenhum arquivo foi escolhido, sai da função.	
 			if(typeof f == 'undefined') {
