@@ -98,7 +98,7 @@
 										{!! Form::label('password', trans('materialadmin::user.password'), array('class' => 'required')) !!}
 										{!! Form::password('password', array('class' => 'form-control', 'ng-model' => 'user.password', 'ng-change' => 'checkPasswords(user)')) !!}
 										@if ($errors->has('password'))
-											{!! $errors->firs#user_imaget('password') !!}
+											{!! $errors->first('password') !!}
 										@endif
 									</div>
 								</div>
