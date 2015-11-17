@@ -36,7 +36,7 @@ class UserController extends RestController {
 	 */
 	public function index(UserFilterRequest $request)
 	{
-		$users = User::with('permission_group')->filter($request->filters())->get();;
+		$users = User::with('permission_group')->filter($request->filters())->get();
 
         return view('materialadmin::user.index')->withUsers($users);
 	}
@@ -69,14 +69,13 @@ class UserController extends RestController {
 				'password' => 'required|confirmed|min:6',
 				'permission_group_id' => 'required|integer',
 				'dob' => 'date',
-				'language' => 'required',
+				'language' => 'required'
 			)
 		);
 
 
 		if ($validator->fails())
 		{
-			// dd();
 			return \Redirect::back()->withInput()->withErrors($validator);
 		}
 
@@ -93,8 +92,8 @@ class UserController extends RestController {
 		);
 
 		//upload of user image
-		if (\Input::hasfile('img_url')){
-			Self::saveImage(\Input::get('image'), $user, true);
+		if (\Input::has('img_url')){
+			Self::saveImage(\Input::get('img_url'), $user, true);
 		}
 
 		return \Redirect::route('user.index');
@@ -163,8 +162,8 @@ class UserController extends RestController {
 		}
 
 		//upload of user image
-		if (\Input::hasfile('img_url')){
-			Self::saveImage(\Input::get('image'), $user, false);
+		if (\Input::has('img_url')){
+			Self::saveImage(\Input::get('img_url'), $user, false);
 		}
 
 		$user->save();
