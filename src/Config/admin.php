@@ -29,15 +29,15 @@ return [
 		'basic_group' => [
 			'home' => [
 				'route' => 'materialadmin.empty',
-				'icon' => 'md md-home'
+				'icon' => 'zmdi zmdi-home'
 			],
 			'users' => [
 				'route' => 'user.index',
-				'icon' => 'md md-people'
+				'icon' => 'zmdi zmdi-accounts'
 			],
 			'settings' => [
 				'route' => 'setting.index',
-				'icon' => 'md md-settings'
+				'icon' => 'zmdi zmdi-settings'
 			]
 		],
 	],

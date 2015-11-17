@@ -37,7 +37,7 @@
 				</div>
 				<br>
                 <div class="text-center">
-                    {!! Form::button('<i class="md md-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-raised btn-block')) !!}
+                    {!! Form::button('<i class="zmdi zmdi-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-raised btn-block')) !!}
                 </div>
 				{!! Form::close() !!}
 			</div>

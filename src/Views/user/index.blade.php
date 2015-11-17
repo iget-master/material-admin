@@ -6,13 +6,13 @@
 
 @section('actions')
 	<button id="filter-toogler" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang('materialadmin::admin.tooltip_filter')">
-        <i class="md md-filter-list"></i>
+        <i class="zmdi zmdi-filter-list"></i>
     </button>
 	<div class="dropdown">
         {!! Form::open(array('id'=>'bulk-destroy', 'method'=>'DELETE', 'route' => array('user.destroy'))) !!}
         {!! Form::close() !!}
 		<button id="bulk-actions-toggle" class="btn btn-flat dropdown-toggle" data-toggle="dropdown">
-			<i class="md md-more-vert"></i>
+			<i class="zmdi zmdi-more-vert"></i>
 		</button>
 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
 			<li>
@@ -59,7 +59,7 @@
 							<td>{!! $user->email !!}</td>
 							<td class="actions">
 								<div class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="md md-more-vert"></i></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
 									<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
 										<li>
 											{!! Form::open(array('method'=>'DELETE', 'route' => array('user.destroy', $user->id))) !!}
@@ -80,17 +80,9 @@
 
 @section('floating')
    <ul class="btn-action-group">
-<!--         <li>
-            <span class="label">Convidar Usuários</span>
-            <button class="btn btn-floating secondary"><i class="md md-email"></i></button>
-        </li>
-        <li>
-            <span class="label">Adicionar Múltiplos Usuários</span>
-            <button class="btn btn-floating secondary"><i class="md md-group-add"></i></button>
-        </li> -->
         <li class="primary">
             <span class="label">@lang('materialadmin::user.add_title')</span>
-            <a class="btn btn-floating" href="/user/create"><i class="md md-add default"></i><i class="md md-person-add hover"></i></a>
+            <a class="btn btn-floating" href="/user/create"><i class="zmdi zmdi-plus default"></i><i class="zmdi zmdi-account-add hover"></i></a>
         </li>
     </ul>
 @stop

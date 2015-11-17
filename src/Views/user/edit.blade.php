@@ -2,7 +2,7 @@
 
 @section('title')
 	<a href="/user" class="">@lang('materialadmin::user.title')</a>
-	<i class="md md-navigate-next"></i>
+	<i class="zmdi zmdi-chevron-right"></i>
 	@lang('materialadmin::user.edit_title')
 @stop
 
@@ -26,7 +26,7 @@
 							</div>
 							<div class="action">
 								{!! Form::open(array('method'=>'DELETE', 'route' => array('user.destroy', $user->id))) !!}
-									<button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang('materialadmin::user.delete_this_title')"><i class="md md-delete"></i></button>
+									<button type="submit" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang('materialadmin::user.delete_this_title')"><i class="zmdi zmdi-delete"></i></button>
 								{!! Form::close() !!}
 							</div>
 						</div>

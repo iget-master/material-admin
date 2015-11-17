@@ -2,7 +2,7 @@
 
 @section('title')
     <a href="{!! route('setting.index', ['active_tab' => $setting['group']]) !!}">@lang('materialadmin::settings.model_title')</a>
-    <i class="md md-navigate-next"></i>
+    <i class="zmdi zmdi-chevron-right"></i>
     @lang($setting['translation_key'])
 @stop
 
@@ -18,7 +18,7 @@
                         </div>
                         <div class="action">
                             @if ($action == 'edit' && !$disableDestroy )
-                                <a href="{!! route('setting.delete', [$name, $model->id]) !!}" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="md md-delete"></i></a>
+                                <a href="{!! route('setting.delete', [$name, $model->id]) !!}" class="btn btn-flat" data-toggle="tooltip" data-placement="bottom" title="@lang($setting['delete_this'])"><i class="zmdi zmdi-delete"></i></a>
                             @endif
                         </div>
                     </div>

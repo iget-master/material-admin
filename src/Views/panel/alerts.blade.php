@@ -9,7 +9,7 @@
 	@foreach(Session::get('messages')->getMessages() as $type=>$messages)
 		@foreach($messages as $message)
 			<div class="alert alert-{!!$type!!}">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="md md-close"></i></button>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="zmdi zmdi-close"></i></button>
 				{!!$message!!}
 			</div>
 		@endforeach

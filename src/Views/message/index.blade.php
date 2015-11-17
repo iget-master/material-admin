@@ -49,16 +49,16 @@
 							<div class="actions">
 								{!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.destroy', $message->id])) !!}
                                     <button class="btn btn-flat">
-                                        <i class="md md-delete"></i>
+                                        <i class="zmdi zmdi-delete"></i>
                                     </button>
 								{!! Form::close() !!}
                                 @if ($message->read)
                                     <a href="{!! route('message.markunread', $message->id) !!}" class="btn btn-flat">
-                                        <i class="md md-markunread"></i>
+                                        <i class="zmdi zmdi-email"></i>
                                     </a>
                                 @else
                                     <a href="{!! route('message.markread', $message->id) !!}" class="btn btn-flat">
-                                        <i class="md md-drafts"></i>
+                                        <i class="zmdi zmdi-email-open"></i>
                                     </a>
                                 @endif
 
@@ -77,7 +77,7 @@
    <ul class="btn-action-group">
         <li class="primary">
             <span class="label">Compose Message</span>
-            <a class="btn btn-floating" href="/message/create"><i class="md md-add default"></i><i class="md md-message hover"></i></a>
+            <a class="btn btn-floating" href="/message/create"><i class="zmdi zmdi-plus default"></i><i class="zmdi zmdi-comment-text hover"></i></a>
         </li>
     </ul>
 @stop

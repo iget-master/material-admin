@@ -15,7 +15,7 @@
         {
             inputWrapper: '<div class="input-group"></div>',
             inputWrapperErrorClass: 'has-error',
-            inputAddon: '<span class="input-group-addon error-addon"><i class="md md-error" data-toggle="tooltip" data-placement="auto"></i></span>',
+            inputAddon: '<span class="input-group-addon error-addon"><i class="zmdi zmdi-alert-circle" data-toggle="tooltip" data-placement="auto"></i></span>',
         },
         options);
 

@@ -29,21 +29,21 @@
                     <div class="actions">
                         <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat">
                             @if ($unread_count = Auth::user()->unreadMessagesCount())
-                                <i class="md md-message"></i>
+                                <i class="zmdi zmdi-comment-text"></i>
                                 <span class="badge">{!! Auth::user()->unreadMessagesCount() !!}</span>
                             @else
-                                <i class="md md-message"></i>
+                                <i class="zmdi zmdi-comment-text"></i>
                             @endif
                         </a>
                         <a href="{!! route('materialadmin.logout') !!}" class="btn btn-flat">
-                            <i class="md md-exit-to-app"></i>
+                            <i class="zmdi zmdi-sign-in"></i>
                         </a>
                     </div>
                 </div>
                 <div class="context">
                     <div class="menu">
                         <button role="menu-toggle" class="btn btn-flat">
-                            <i class="md md-menu"></i>
+                            <i class="zmdi zmdi-menu"></i>
                         </button>
                     </div>
                     <div class="title">

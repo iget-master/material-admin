@@ -2,7 +2,7 @@
 
 @section('title')
     <a href="/message" class="">@lang('materialadmin::message.title')</a>
-    <i class="md md-navigate-next"></i>
+    <i class="zmdi zmdi-chevron-right"></i>
     @lang('materialadmin::message.create_title')
 @stop
 

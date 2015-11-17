@@ -108,13 +108,13 @@ function ModalForm(url) {
 
 	// Table row click shortcut
 	$('#collection-wrapper').on('click', 'tbody tr', function(e) {
-		if ($(e.target).is('.row-check, [type="checkbox"], .actions, .dropdown, .md-more-vert')) {
+		if ($(e.target).is('.row-check, [type="checkbox"], .actions, .dropdown, .zmdi-more-vert')) {
 			return;
 		}
 		var $edit = $(e.currentTarget).find('[role="edit"]');
 		if ($edit.length) {
 			var href = $(e.currentTarget).find('[role="edit"]').attr('href');
-			location = href;
+			window.location = href;
 		}
 	});
 

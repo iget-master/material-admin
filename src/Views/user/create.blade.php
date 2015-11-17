@@ -2,7 +2,7 @@
 
 @section('title')
 	<a href="/user" class="">@lang('materialadmin::user.title')</a>
-	<i class="md md-navigate-next"></i>
+	<i class="zmdi zmdi-chevron-right"></i>
 	@lang('materialadmin::user.add_title')
 @stop
 
