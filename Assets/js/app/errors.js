@@ -43,7 +43,6 @@
     };
 
     FormErrorParser.prototype.appendInputError = function (raw_field_name, error) {
-        console.log('appending error to ', raw_field_name);
         // Convert Laravel '.' notation to '[]' notation
         raw_field_name = raw_field_name.split('.');
         var field_name = raw_field_name.shift();

@@ -269,13 +269,11 @@
             }
             
             var selected = $field.data('selected-datum');
-            console.log(selected);
             var $fake = $('<input type="hidden" role="typeahead-fake"/>').attr('name', $field.attr('name')).insertBefore($field);
             if (typeof selected !== 'undefined') {
-                console.log(fieldSettings.getDatumId(selected));
                 $fake.val(fieldSettings.getDatumId(selected));
             }
             $field.removeAttr('name');
         })
     });
-}( jQuery ))
+}( jQuery ));

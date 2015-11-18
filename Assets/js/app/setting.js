@@ -4,7 +4,6 @@
     // Bind edit and delete actions for each Setting Item <li>
     $('#settings-groups').on('click', '.editable a, li.editable, tr.editable, .delete-only a', function(e) {
         var $target = $(e.currentTarget);
-        console.log($target);
 
         if ($target.hasClass('edit') || $target.hasClass('editable')) {
             window.location.href = $target.closest('.editable').data('edit');
