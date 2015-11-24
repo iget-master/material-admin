@@ -14,7 +14,7 @@
 					<div class="header">
 						<div class="col-md-2" id="image_content">
 							<div>
-								<i class="fa fa-pencil edit-default" ng-click="changeImage()"></i>
+								<i class="zmdi zmdi-edit edit-default" ng-click="changeImage()"></i>
 							</div>
 							<img alt="{!! $user->name !!}" class="img-circle hide" id="user_image">
 						</div>
