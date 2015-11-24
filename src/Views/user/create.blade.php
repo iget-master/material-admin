@@ -14,7 +14,7 @@
 					<div class="header">
 						<div class="col-md-2" id="image_content">
 							<div>
-								<i class="fa fa-pencil edit-default" ng-click="changeImage()"></i>
+								<i class="zmdi zmdi-edit edit-default" ng-click="changeImage()"></i>
 							</div>
 							@if (Request::old('img_url'))
 								<img class="img-circle hide" id="user_image" src="/user/{!! Request::old('image') !!}/temp">	
