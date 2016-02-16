@@ -24,7 +24,7 @@
                 @include('materialadmin::panel.menu')            
             </div>
             <div id="header-wrapper">
-                <div class="global">
+                <div class="global" @if(app()->environment('local')) style="background-color: #FF5555" @endif>
                     <img class="brand" src="{{ config('admin.brand_image_url') }}">
                     <div class="actions">
                         <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat">
