@@ -74,7 +74,7 @@
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/bootstrap.min.js')) !!}
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/bloodhound.js')) !!}
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/typeahead.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/moment.min.js')) !!}
+        {!! HTML::script(versionedScriptUrl('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js')) !!}
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/locales.min.js')) !!}
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/jquery.mask.js')) !!}
         {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/masks.js')) !!}
