@@ -19,7 +19,7 @@
     $settingGroups.on('click', '.settings-item a.create', function(e) {
         var $currentTarget = $(e.currentTarget);
 
-        if ($currentTarget.attr('href') !== '#') {
+        if ($currentTarget.attr('href') == '#') {
             window.location.href = $currentTarget.closest('.settings-item').data('create');
         }
     });
