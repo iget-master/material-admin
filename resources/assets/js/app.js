@@ -1,5 +1,3 @@
-'use strict';
-
 +function ($) {
 	'use strict';
 
@@ -63,8 +61,11 @@
 
     $(window).on('resize', updateMenuHeight);
 
+	// Document ready event handler
     $(function () {
         updateMenuHeight();
+		// Instantiates the file uploader method
+		$('#file').fileuploader();
     });
 
     // Configure jQuery Ajax to always send CSRF Token as request header.
@@ -74,7 +75,4 @@
         }
     });
 
-    // Instantiates the file uploader method
-    $('#file').fileuploader();
-
-} (jQuery)
+} (jQuery);

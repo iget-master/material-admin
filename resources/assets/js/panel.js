@@ -1,5 +1,3 @@
-'use strict';
-
 function ModalForm(url) {
 	$("#form-modal").addClass('loading');
 	$("#form-modal .modal-loading").show();

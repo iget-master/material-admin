@@ -54,7 +54,7 @@ if (! function_exists('versionedFileUrl')) {
         }
 
         if (isset($manifest[$file])) {
-            return 'iget-master/material-admin/build/'.$manifest[$file];
+            return '/iget-master/material-admin/build/'.$manifest[$file];
         }
 
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");

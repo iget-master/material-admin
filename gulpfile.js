@@ -18,7 +18,8 @@ elixir(function(mix) {
         'vendor/moment/moment.js',
         'vendor/moment/locale-pt-br.js',
         'vendor/typeahead.js',
-        'vendor/sweetalert.min.js'
+        'vendor/sweetalert.min.js',
+        'vendor/fileupload.js'
     ], 'Assets/js/vendor/compiled.min.js');
 });
 
@@ -30,11 +31,10 @@ elixir(function(mix) {
         'message.js',
         'panel.js',
         'setting.js',
-        'users.js',
-        'fileupload.js'
+        'users.js'
     ], 'Assets/js/app/compiled.min.js');
 });
 
 elixir(function(mix) {
-    mix.version(['Assets/js/app/compiled.min.js', 'Assets/js/vendor/compiled.min.js'])
+    mix.version(['Assets/js/vendor/compiled.min.js', 'Assets/js/app/compiled.min.js'])
 });

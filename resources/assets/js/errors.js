@@ -1,14 +1,9 @@
-/**
- * Created by Elias Soares on 07/04/2015.
- */
-
 +function ($) {
     'use strict';
 
     /**
      * jQuery.fn.formErrorParser
      */
-
     $.fn.formErrorParser = function ( options, errors ) {
         // Options extends default options
         options = $.extend(true,
