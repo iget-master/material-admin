@@ -2,6 +2,10 @@
     'use strict';
 
     var $settingGroups = $('#settings-groups');
+    
+    if (!$settingGroups.length) {
+        return;
+    }
 
     // Bind edit and delete actions for each Setting Item <li>
     $settingGroups.on('click', '.editable a, li.editable, tr.editable, .delete-only a', function(e) {

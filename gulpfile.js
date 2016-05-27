@@ -31,10 +31,15 @@ elixir(function(mix) {
         'message.js',
         'panel.js',
         'setting.js',
-        'users.js'
+        'alert.js'
     ], 'Assets/js/app/compiled.min.js');
 });
 
 elixir(function(mix) {
-    mix.version(['Assets/js/vendor/compiled.min.js', 'Assets/js/app/compiled.min.js'])
+    mix.version([
+        'Assets/js/vendor/compiled.min.js',
+        'Assets/js/app/compiled.min.js',
+        'Assets/css/vendor/sweetalert.min.css',
+        'Assets/css/panel.min.css',
+    ])
 });

@@ -11,8 +11,9 @@
         {!! HTML::style('//fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
         {!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
         {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
-        {!! HTML::style(versionedScriptUrl('iget-master/material-admin/css/panel.min.css')) !!}
-        
+        {!! HTML::style(versionedFileUrl('css/vendor/sweetalert.min.css')) !!}
+        {!! HTML::style(versionedFileUrl('css/panel.min.css')) !!}
+
         @yield('style')
 
         <link rel="icon" type="img/png" href="/img/favicon-32x32.png" sizes="32x32" />
