@@ -67,9 +67,9 @@
             </div>
         @endif
     	<!-- Scripts are placed here -->
-        <script type="text/javascript" href="//code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" href="{!! versionedFileUrl('js/app/compiled.min.js') !!}"></script>
-        <script type="text/javascript" href="{!! versionedFileUrl('js/vendor/compiled.min.js') !!}"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{!! versionedFileUrl('js/app/compiled.min.js') !!}"></script>
+        <script type="text/javascript" src="{!! versionedFileUrl('js/vendor/compiled.min.js') !!}"></script>
 
         @yield('script')
 
