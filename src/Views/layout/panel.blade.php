@@ -67,18 +67,10 @@
             </div>
         @endif
     	<!-- Scripts are placed here -->
-        {!! HTML::script('//code.jquery.com/jquery-2.1.1.min.js') !!}
-        {!! HTML::script(versionedScriptUrl('js/app/fileupload.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/app.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/panel.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/bootstrap.min.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/bloodhound.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/typeahead.js')) !!}
-        {!! HTML::script(versionedScriptUrl('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/locales.min.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/vendor/jquery.mask.js')) !!}
-        {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/masks.js')) !!}
-        
+        <script type="text/javascript" href="//code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" href="{!! versionedFileUrl('js/app/compiled.min.js') !!}"></script>
+        <script type="text/javascript" href="{!! versionedFileUrl('js/vendor/compiled.min.js') !!}"></script>
+
         @yield('script')
 
         <script>
