@@ -1,12 +1,15 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
-use \Config, \Input, \App;
+use \Config;
+use \Input;
+use \App;
 use IgetMaster\MaterialAdmin\Controllers\Traits\RelationalTrait;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
 
-class SettingController extends BaseController {
+class SettingController extends BaseController
+{
     use RelationalTrait;
 
     /**
@@ -156,7 +159,7 @@ class SettingController extends BaseController {
         $model_class = $setting['model'];
 
         $relationships = [];
-        foreach($setting['relationships'] as $relationship) {
+        foreach ($setting['relationships'] as $relationship) {
             $relationships[] = $relationship['name'];
         }
 
@@ -245,7 +248,7 @@ class SettingController extends BaseController {
 
         try {
             $model_class::destroy($id);
-        } catch ( \PDOException $e) {
+        } catch (\PDOException $e) {
             if ($e->errorInfo[1] == 1451) {
                 $messages->add('danger', trans('materialadmin::error.sql_1451'));
                 return \Redirect::back()->withInput()->with('messages', $messages);

@@ -1,7 +1,7 @@
 @extends('materialadmin::setting.edit')
 
 <?php
-	$roles = IgetMaster\MaterialAdmin\Models\Role::all();
+    $roles = IgetMaster\MaterialAdmin\Models\Role::all();
 ?>
 
 @section('form')
@@ -31,33 +31,33 @@
             ?>
             @foreach($roles as $title)
                 <?php
-                    if($count == 0){
-                        echo "<div class='col-md-12'><div class='row'>";
-                    }
+                if ($count == 0) {
+                    echo "<div class='col-md-12'><div class='row'>";
+                }
                     $roleTitle = explode(".", $title->name);
-                    if($roleTitle[0] != $currentRoleTitle){
-                        $currentRoleTitle = $roleTitle[0];
-                        echo "<div class='col-md-4 roles-list'>
+                if ($roleTitle[0] != $currentRoleTitle) {
+                    $currentRoleTitle = $roleTitle[0];
+                    echo "<div class='col-md-4 roles-list'>
                         <h3>".trans('materialadmin::roles.permission_group_'.$currentRoleTitle.'_title')."</h3>";
-                        $pass = true;
-                        $count++;
-                    } else{
-                        $pass = false;
-                    }
+                    $pass = true;
+                    $count++;
+                } else {
+                    $pass = false;
+                }
                 ?>
                 @if($pass)
                     @foreach($roles as $role)
                         <?php
-                            $currentRole = explode(".",$role->name);
+                            $currentRole = explode(".", $role->name);
                         ?>
                         @if($currentRole[0] == $currentRoleTitle)
                             <div class="checkbox">
                                 <label>
                                     <?php
                                         $checked = false;
-                                        if (isset($model)) {
-                                            $checked = $model->roles->contains('id', $role->id)?'checked':null;
-                                        }
+                                    if (isset($model)) {
+                                        $checked = $model->roles->contains('id', $role->id)?'checked':null;
+                                    }
                                     ?>
                                     <input type="checkbox" name="roles[]" value="{!! $role->id !!}" {!! $checked !!} >
                                     {!! trans('materialadmin::roles.' . $role->name) !!}

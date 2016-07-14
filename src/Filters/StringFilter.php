@@ -4,7 +4,8 @@ namespace IgetMaster\MaterialAdmin\Filters;
 use Exception;
 use IgetMaster\MaterialAdmin\Interfaces\FilterInterface;
 
-class StringFilter implements FilterInterface{
+class StringFilter implements FilterInterface
+{
     protected $field;
     protected $condition;
     protected $value;
@@ -16,19 +17,23 @@ class StringFilter implements FilterInterface{
         $this->value = $value;
     }
 
-    static public function contains($field, $value) {
+    public static function contains($field, $value)
+    {
         return new static($field, 'contains', $value);
     }
 
-    static public function starts($field, $value) {
+    public static function starts($field, $value)
+    {
         return new static($field, 'starts', $value);
     }
 
-    static public function ends($field, $value) {
+    public static function ends($field, $value)
+    {
         return new static($field, 'ends', $value);
     }
 
-    static public function exact($field, $value) {
+    public static function exact($field, $value)
+    {
         return new static($field, 'exact', $value);
     }
 
@@ -39,7 +44,7 @@ class StringFilter implements FilterInterface{
     public function filter($query)
     {
         $value = $this->value;
-        switch($this->condition) {
+        switch ($this->condition) {
             case 'contains':
                 $value = "%${value}%";
                 break;

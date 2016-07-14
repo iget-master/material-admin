@@ -3,22 +3,24 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
-trait RelationalTrait {
+trait RelationalTrait
+{
 
-    public function fillRelationalModel($class, $external_fields, $replace_new_ids, Request $request) {
+    public function fillRelationalModel($class, $external_fields, $replace_new_ids, Request $request)
+    {
         $new_ids = [];
         if ($request->has($class)) {
             $request_items = $request->input($class);
             $class = "App\\Models\\${class}";
-            foreach($request_items as $index=>$item) {
+            foreach ($request_items as $index => $item) {
                 $new = true;
                 if ($index !== 'new') {
                     $item = [$index=>$item];
                     $new = false;
                 }
-                foreach($item as $id=>$data) {
+                foreach ($item as $id => $data) {
                     if (isset($replace_new_ids) && is_array($replace_new_ids)) {
-                        foreach ($replace_new_ids as $field_name=>$replace_ids) {
+                        foreach ($replace_new_ids as $field_name => $replace_ids) {
                             if (array_key_exists($data[$field_name], $replace_ids)) {
                                 $data[$field_name] = $replace_ids[$data[$field_name]];
                             }

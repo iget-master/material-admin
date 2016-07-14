@@ -3,7 +3,8 @@ namespace IgetMaster\MaterialAdmin\Traits;
 
 use IgetMaster\MaterialAdmin\Interfaces\FilterInterface;
 
-trait FiltrableTrait {
+trait FiltrableTrait
+{
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -12,7 +13,7 @@ trait FiltrableTrait {
      */
     public function scopeFilter($query, $filters)
     {
-        foreach ($filters as $index=>$filter) {
+        foreach ($filters as $index => $filter) {
             if ($filter instanceof FilterInterface) {
                 $query = $filter->filter($query);
             } else {

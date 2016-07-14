@@ -11,10 +11,10 @@ use IgetMaster\MaterialAdmin\Interfaces\FiltrableInterface;
 use IgetMaster\MaterialAdmin\Traits\FiltrableTrait;
 use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 
+class User extends Eloquent implements FiltrableInterface, AuthenticatableContract
+{
 
-class User extends Eloquent implements FiltrableInterface, AuthenticatableContract {
-
-	use Authenticatable, SelectableTrait, FiltrableTrait, SearchableTrait;
+    use Authenticatable, SelectableTrait, FiltrableTrait, SearchableTrait;
 
     /**
      * Searchable rules.
@@ -28,26 +28,26 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
         ]
     ];
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = [
-	    'password',
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
         'remember_token'
     ];
 
-	protected $fillable = [
-	    'name',
+    protected $fillable = [
+        'name',
         'surname',
         'dob',
         'email',
@@ -59,41 +59,43 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
     /**
      * @return string
      */
-    public function getLabelColumn() {
+    public function getLabelColumn()
+    {
         return $this->name . " " . $this->surname;
     }
 
-	/**
-	 * Model relationships definitions
-	 */
+    /**
+     * Model relationships definitions
+     */
 
-	public function permission_group() {
-		return $this->belongsTo('IgetMaster\MaterialAdmin\Models\PermissionGroup');
-	}
+    public function permission_group()
+    {
+        return $this->belongsTo('IgetMaster\MaterialAdmin\Models\PermissionGroup');
+    }
 
-	/**
-	 * Model mutators definitions
-	 */
-	protected $dates = ['dob'];
+    /**
+     * Model mutators definitions
+     */
+    protected $dates = ['dob'];
 
     public function hasRole($role)
     {
-    	$count = $this->permission_group->roles->filter(function($item) use ($role) {
-    		return $item->name == $role;
-    	})->count();
+        $count = $this->permission_group->roles->filter(function ($item) use ($role) {
+            return $item->name == $role;
+        })->count();
 
-    	if ($count) {
-    		return true;
-    	} else {
-    		return false;
-    	}
+        if ($count) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getLanguageLabel()
     {
         $availableLanguages = \Config::get('admin.languages');
 
-        if(array_key_exists($this->language, $availableLanguages) ) {
+        if (array_key_exists($this->language, $availableLanguages)) {
 
             return $availableLanguages[$this->language];
 
@@ -115,7 +117,7 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
 
     public function unreadMessages()
     {
-        return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','to_user_id')->where('read', 0);
+        return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message', 'to_user_id')->where('read', 0);
     }
 
     public function unreadMessagesCount()
@@ -125,27 +127,31 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
 
     public function messages()
     {
-    	return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','to_user_id');
+        return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message', 'to_user_id');
     }
 
     public function sentMessages()
     {
-    	return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message','from_user_id');
+        return $this->hasMany('IgetMaster\MaterialAdmin\Models\Message', 'from_user_id');
     }
 
-    public function filterName($query, $value) {
+    public function filterName($query, $value)
+    {
         return StringFilter::contains(\DB::raw("CONCAT(name, ' ', surname)"), $value)->filter($query);
     }
 
-    public function filterEmail($query, $value) {
+    public function filterEmail($query, $value)
+    {
         return StringFilter::contains('email', $value)->filter($query);
     }
 
-    public function filterId($query, $operator, $value) {
+    public function filterId($query, $operator, $value)
+    {
         return $query->where('id', $operator, $value);
     }
 
-    public function filterPermissionGroupId($query, $operator, $value) {
+    public function filterPermissionGroupId($query, $operator, $value)
+    {
         return $query->where('permission_group_id', $operator, $value);
     }
 }

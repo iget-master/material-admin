@@ -1,7 +1,8 @@
 <?php
 namespace IgetMaster\MaterialAdmin\Interfaces;
 
-interface DraftableInterface {
+interface DraftableInterface
+{
     /**
      * @return \App\Models\Draft
      */
@@ -10,5 +11,5 @@ interface DraftableInterface {
     /**
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    static public function drafts();
+    public static function drafts();
 }

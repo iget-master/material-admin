@@ -4,7 +4,8 @@ namespace IgetMaster\MaterialAdmin\Filters;
 use Exception;
 use IgetMaster\MaterialAdmin\Interfaces\FilterInterface;
 
-class DateFilter implements FilterInterface {
+class DateFilter implements FilterInterface
+{
     protected $field;
     protected $operator;
     protected $start;
@@ -31,7 +32,7 @@ class DateFilter implements FilterInterface {
      * @param bool $inclusive
      * @return static
      */
-    static public function between($field, $start = null, $end = null, $inclusive = true)
+    public static function between($field, $start = null, $end = null, $inclusive = true)
     {
         return new static($field, $start, $end, $inclusive);
     }
@@ -42,7 +43,7 @@ class DateFilter implements FilterInterface {
      * @param bool $inclusive
      * @return static
      */
-    static public function before($field, $end = null, $inclusive = true)
+    public static function before($field, $end = null, $inclusive = true)
     {
         return new static($field, null, $end, $inclusive);
     }
@@ -53,7 +54,7 @@ class DateFilter implements FilterInterface {
      * @param bool $inclusive
      * @return static
      */
-    static public function after($field, $start = null, $inclusive = true)
+    public static function after($field, $start = null, $inclusive = true)
     {
         return new static($field, $start, null, $inclusive);
     }

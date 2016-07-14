@@ -1,7 +1,8 @@
 <?php
 namespace IgetMaster\MaterialAdmin\Interfaces;
 
-interface FilterInterface {
+interface FilterInterface
+{
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder

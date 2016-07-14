@@ -1,6 +1,7 @@
 <?php
-	use IgetMaster\MaterialAdmin\Models\PermissionGroup;
-	$permission_groups = PermissionGroup::all();
+    use IgetMaster\MaterialAdmin\Models\PermissionGroup;
+
+    $permission_groups = PermissionGroup::all();
 ?>
 
 <div class="row setting-group">

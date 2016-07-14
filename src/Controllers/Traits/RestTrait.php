@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 
-trait RestTrait {
+trait RestTrait
+{
 
     /**
      * The model class name used by the controller.

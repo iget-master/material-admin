@@ -8,8 +8,8 @@
 
 namespace IgetMaster\MaterialAdmin\Http\Requests;
 
-
-class UserFilterRequest extends FilterRequest {
+class UserFilterRequest extends FilterRequest
+{
     protected $filters = [
         'name' => 'string',
         'email' => 'string',

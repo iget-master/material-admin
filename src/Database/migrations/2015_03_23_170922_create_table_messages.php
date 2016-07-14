@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableMessages extends Migration {
+class CreateTableMessages extends Migration
+{
 
     /**
      * Run the migrations.
@@ -12,7 +13,7 @@ class CreateTableMessages extends Migration {
      */
     public function up()
     {
-        Schema::create('messages', function($table){
+        Schema::create('messages', function ($table) {
             $table->increments('id');
             $table->integer('to_user_id')->unsigned();
             $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
@@ -34,5 +35,4 @@ class CreateTableMessages extends Migration {
     {
         Schema::drop('messages');
     }
-
 }

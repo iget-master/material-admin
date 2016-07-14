@@ -3,13 +3,14 @@
 use Closure;
 use Illuminate\Contracts\Routing\Middleware;
 
-class GuestMiddleware implements Middleware {
+class GuestMiddleware implements Middleware
+{
 
     public function handle($request, Closure $next)
     {
-    	if (\Auth::check()) {
-    		return redirect()->route(\Config::get('admin.home_route'));
-    	}
+        if (\Auth::check()) {
+            return redirect()->route(\Config::get('admin.home_route'));
+        }
 
         return $next($request);
     }

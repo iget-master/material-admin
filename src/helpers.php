@@ -2,7 +2,8 @@
 
 use Carbon\Carbon;
 
-function getFormatedDate($date, $raw = false) {
+function getFormatedDate($date, $raw = false)
+{
     if ($date instanceof Carbon) {
         if ($raw) {
             return $date->toDateString();
@@ -14,7 +15,8 @@ function getFormatedDate($date, $raw = false) {
     }
 }
 
-function getFormatedDateTime($date) {
+function getFormatedDateTime($date)
+{
     if ($date instanceof Carbon) {
         return $date->format('d/m/Y G:i:s');
     } else {
@@ -22,7 +24,8 @@ function getFormatedDateTime($date) {
     }
 }
 
-function formatMonetary($value, $precision = 2) {
+function formatMonetary($value, $precision = 2)
+{
     return number_format($value, $precision, ',', '.');
 }
 
@@ -31,7 +34,8 @@ function formatMonetary($value, $precision = 2) {
  * @param string $url
  * @return string
  */
-function versionedScriptUrl($url) {
+function versionedScriptUrl($url)
+{
     $version = str_replace('.', '', config('admin.app_version'));
     return $url . "?${version}";
 }

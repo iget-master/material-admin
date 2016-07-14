@@ -2,20 +2,22 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Role extends Eloquent {
+class Role extends Eloquent
+{
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'roles';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'roles';
 
-	public $timestamps = false;
+    public $timestamps = false;
 
-	public function groups() {
-		return $this->belongsToMany('IgetMaster\MaterialAdmin\Models\PermissionGroup');
-	}
+    public function groups()
+    {
+        return $this->belongsToMany('IgetMaster\MaterialAdmin\Models\PermissionGroup');
+    }
 
-	protected $fillable = array('name');
+    protected $fillable = array('name');
 }

@@ -1,12 +1,14 @@
 <?php
 namespace IgetMaster\MaterialAdmin\Traits;
 
-trait SelectableTrait {
+trait SelectableTrait
+{
     /**
      * Defines the column used by the select option as label
      * @return string
      */
-    public function getLabelColumn() {
+    public function getLabelColumn()
+    {
         return $this->name;
     }
 
@@ -14,7 +16,8 @@ trait SelectableTrait {
      * Defines the column used by the select option as value
      * @return string
      */
-    public function getValueColumn() {
+    public function getValueColumn()
+    {
         return $this->id;
     }
 
@@ -22,7 +25,8 @@ trait SelectableTrait {
      * Return an array with all model items as options.
      * @return array
      */
-    static public function getSelectOptions() {
+    static public function getSelectOptions()
+    {
         $items = self::all();
         $options = [""=>trans('materialadmin::admin.select_default')];
         foreach ($items as $item) {

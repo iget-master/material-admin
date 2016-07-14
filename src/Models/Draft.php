@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Draft extends Eloquent {
+class Draft extends Eloquent
+{
     /**
      * The database table used by the model.
      *
@@ -20,7 +21,8 @@ class Draft extends Eloquent {
 
     public $rules = [''];
 
-    public function columns() {
+    public function columns()
+    {
         return $this->hasMany('IgetMaster\MaterialAdmin\Models\DraftColumn');
     }
 

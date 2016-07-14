@@ -1,11 +1,12 @@
-<?php 
+<?php
 
 namespace IgetMaster\MaterialAdmin\Models;
 
 use \Cache;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Setting extends Eloquent {
+class Setting extends Eloquent
+{
 
     /**
      * The database table used by the model.
@@ -54,9 +55,9 @@ class Setting extends Eloquent {
      * @param $key
      * @return string|null
      */
-    static public function get($key)
+    public static function get($key)
     {
-        return Cache::rememberForever("setting_{$key}", function() use ($key) {
+        return Cache::rememberForever("setting_{$key}", function () use ($key) {
             $setting = static::find($key);
             return $setting ? $setting->value : null;
         });
@@ -66,7 +67,7 @@ class Setting extends Eloquent {
      * @param $key
      * @param $value
      */
-    static public function set($key, $value)
+    public static function set($key, $value)
     {
         static::updateOrCreate(
             compact('key'),
@@ -79,7 +80,7 @@ class Setting extends Eloquent {
     /**
      * @param $key
      */
-    static public function forget($key)
+    public static function forget($key)
     {
         static::destroy($key);
         Cache::forget("setting_{$key}");

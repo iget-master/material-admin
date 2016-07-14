@@ -4,7 +4,8 @@ namespace IgetMaster\MaterialAdmin\Filters;
 use Exception;
 use IgetMaster\MaterialAdmin\Interfaces\FilterInterface;
 
-class LogicalFilter implements FilterInterface{
+class LogicalFilter implements FilterInterface
+{
     protected $field;
     protected $operator;
     protected $value;
@@ -22,7 +23,7 @@ class LogicalFilter implements FilterInterface{
      * @param mixed $value
      * @return static
      */
-    static public function compare($field, $operator, $value)
+    public static function compare($field, $operator, $value)
     {
         return new static($field, $operator, $value);
     }

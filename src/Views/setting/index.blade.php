@@ -5,8 +5,7 @@ $groups = config()->get('admin.settings_groups');
 
 $order = array();
 
-foreach ($groups as $key => $row)
-{
+foreach ($groups as $key => $row) {
     $order[$key] = $row['order'];
 }
 array_multisort($order, SORT_DESC, $groups);
@@ -20,8 +19,7 @@ if (Request::has('active_tab')) {
 $items = config()->get('admin.settings_items');
 
 $order = array();
-foreach ($items as $key => $row)
-{
+foreach ($items as $key => $row) {
     $order[$key] = $row['order'];
 }
 array_multisort($order, SORT_DESC, $items);

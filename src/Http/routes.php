@@ -1,42 +1,42 @@
 <?php
 
-Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'auth'], function()
-{
-	/*
+Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'auth'], function () {
+
+    /*
 	|--------------------------------------------------------------------------
 	| Package Routes
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('/', ['as'=>'materialadmin.empty', 'uses' => 'HomeController@index']);
+    Route::get('/', ['as'=>'materialadmin.empty', 'uses' => 'HomeController@index']);
 
-	/*
+    /*
 	|-------------------------------
 	| Authentication related routes
 	|-------------------------------
 	*/
 
-	Route::get('/logout', ['as' => 'materialadmin.logout', 'uses' => 'SessionController@destroy']);
+    Route::get('/logout', ['as' => 'materialadmin.logout', 'uses' => 'SessionController@destroy']);
 
-	/*
+    /*
 	|---------------------
 	| User related routes
 	|---------------------
 	*/
 
-	Route::resource('user', "UserController",  ['except' => ['show']]);
+    Route::resource('user', "UserController", ['except' => ['show']]);
 
-	Route::resource('message', "MessageController", ['except' => ['edit', 'update']]);
+    Route::resource('message', "MessageController", ['except' => ['edit', 'update']]);
     Route::get('/message/{id}/mark/read', ['as' => 'message.markread', 'uses' => 'MessageController@markAsRead']);
     Route::get('/message/{id}/mark/unread', ['as' => 'message.markunread', 'uses' => 'MessageController@markAsUnread']);
 
-	Route::get('/setting', ['as' => 'setting.index', 'uses' => 'SettingController@index']);
-	Route::get('/setting/{setting}', ['as' => 'setting.show', 'uses' => 'SettingController@show']);
-	Route::get('/setting/{setting}/edit/{id}', ['as' => 'setting.edit', 'uses' => 'SettingController@edit']);
-	Route::get('/setting/{setting}/delete/{id}', ['as' => 'setting.delete', 'uses' => 'SettingController@destroy']);
-	Route::get('/setting/{setting}/create', ['as' => 'setting.create', 'uses' => 'SettingController@create']);
-	Route::patch('/setting/{setting}/update/{id}', ['as' => 'setting.update', 'uses' => 'SettingController@update']);
-	Route::post('/setting/{setting}/store', ['as' => 'setting.store', 'uses' => 'SettingController@store']);
+    Route::get('/setting', ['as' => 'setting.index', 'uses' => 'SettingController@index']);
+    Route::get('/setting/{setting}', ['as' => 'setting.show', 'uses' => 'SettingController@show']);
+    Route::get('/setting/{setting}/edit/{id}', ['as' => 'setting.edit', 'uses' => 'SettingController@edit']);
+    Route::get('/setting/{setting}/delete/{id}', ['as' => 'setting.delete', 'uses' => 'SettingController@destroy']);
+    Route::get('/setting/{setting}/create', ['as' => 'setting.create', 'uses' => 'SettingController@create']);
+    Route::patch('/setting/{setting}/update/{id}', ['as' => 'setting.update', 'uses' => 'SettingController@update']);
+    Route::post('/setting/{setting}/store', ['as' => 'setting.store', 'uses' => 'SettingController@store']);
 
     /*
 	|---------------
@@ -57,8 +57,8 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
 });
 
-Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'guest'], function()
-{
-	Route::get('/login', ['as' => 'materialadmin.login', 'uses' => 'SessionController@create']);
-	Route::post('/login', ['as' => 'materialadmin.authenticate', 'uses' => 'SessionController@store']);
+Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'guest'], function () {
+
+    Route::get('/login', ['as' => 'materialadmin.login', 'uses' => 'SessionController@create']);
+    Route::post('/login', ['as' => 'materialadmin.authenticate', 'uses' => 'SessionController@store']);
 });

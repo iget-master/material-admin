@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2016 IGET Serviços em comunicação digital LTDA - All rights Reserved
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited
+  ~ Proprietary and confidential
+  -->
+
+<ruleset name="PHP_CodeSniffer">
+    <description>The coding standard for PHP_CodeSniffer itself.</description>
+
+    <file>src/.</file>
+
+    <!--<arg name="report" value="summary"/>-->
+    <arg value="np"/>
+
+    <rule ref="PSR2"/>
+    <rule ref="PSR1.Methods.CamelCapsMethodName">
+        <!-- Avoid error being found on Model relationship declaration -->
+        <exclude-pattern>*/Models/*</exclude-pattern>
+    </rule>
+</ruleset>

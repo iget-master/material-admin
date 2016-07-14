@@ -10,11 +10,14 @@
 			<div class="row">
 				<div class="col-md-12">
 				@include('materialadmin::panel.alerts')
-				<?php $grouped_messages = $messages->groupBy(function($a, $b) { return getFormatedDate($a->created_at); }); ?>
+				<?php $grouped_messages = $messages->groupBy(function ($a, $b) {
+    return getFormatedDate($a->created_at);
+
+}); ?>
 				@foreach ($grouped_messages as $date => $messages)
-					<?php 
-						$diff = $messages[0]->created_at->startOfDay()->diffInDays();
-					?>
+					<?php
+                        $diff = $messages[0]->created_at->startOfDay()->diffInDays();
+                    ?>
 					<div class="date">
 					@if($diff == 0)
 						<h5>@lang('materialadmin::message.today')</h5>
@@ -32,9 +35,9 @@
 								@else
 									<div class="img-placeholder {!! $message->sender->color !!}">
 									<?php
-										$letter = substr($message->sender->name, 0, 1);
-										echo $letter;
-									?>
+                                        $letter = substr($message->sender->name, 0, 1);
+                                        echo $letter;
+                                    ?>
 									</div>
 								@endif
 								@if(is_null($message->from_user_id))
