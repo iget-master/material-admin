@@ -10,7 +10,13 @@ class StringFilter implements FilterInterface
     protected $condition;
     protected $value;
 
-    function __construct($field, $condition, $value)
+    /**
+     * StringFilter constructor.
+     * @param $field
+     * @param $condition
+     * @param $value
+     */
+    public function __construct($field, $condition, $value)
     {
         $this->field = $field;
         $this->condition = $condition;
@@ -53,6 +59,7 @@ class StringFilter implements FilterInterface
                 break;
             case 'ends':
                 $value = "%" . $value;
+                break;
             case 'exact':
                 break;
             default:

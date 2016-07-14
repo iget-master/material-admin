@@ -10,7 +10,13 @@ class LogicalFilter implements FilterInterface
     protected $operator;
     protected $value;
 
-    function __construct($field, $operator, $value)
+    /**
+     * LogicalFilter constructor.
+     * @param $field
+     * @param $operator
+     * @param $value
+     */
+    public function __construct($field, $operator, $value)
     {
         $this->field = $field;
         $this->operator = $operator;

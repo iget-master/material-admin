@@ -13,11 +13,13 @@ class DateFilter implements FilterInterface
     protected $inclusive;
 
     /**
+     * DateFilter constructor.
      * @param $field
-     * @param $start
-     * @param $end
+     * @param null $start
+     * @param null $end
+     * @param bool $inclusive
      */
-    function __construct($field, $start = null, $end = null, $inclusive = true)
+    public function __construct($field, $start = null, $end = null, $inclusive = true)
     {
         $this->field = $field;
         $this->start = $start;

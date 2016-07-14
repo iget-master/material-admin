@@ -10,6 +10,8 @@
 
     <file>src/.</file>
 
+    <exclude-pattern>src/Database/*</exclude-pattern>
+
     <!--<arg name="report" value="summary"/>-->
     <arg value="np"/>
 

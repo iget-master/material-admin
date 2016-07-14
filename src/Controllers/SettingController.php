@@ -109,7 +109,7 @@ class SettingController extends BaseController
 
         $model->fill($request->all())->save();
 
-        $this->fill_setting_relationships($setting, $model, $request);
+        $this->fillSettingRelationships($setting, $model, $request);
 
         if (Input::has('redirect_back_to')) {
             return redirect(Input::get('redirect_back_to'));
@@ -218,7 +218,7 @@ class SettingController extends BaseController
 
         $model->fill($request->all())->save();
 
-        $this->fill_setting_relationships($setting, $model, $request);
+        $this->fillSettingRelationships($setting, $model, $request);
 
         if (Input::has('redirect_back_to')) {
             return redirect(Input::get('redirect_back_to'));
@@ -269,7 +269,7 @@ class SettingController extends BaseController
      * @param $model
      * @param \Illuminate\Http\Request $request
      */
-    private function fill_setting_relationships($setting, $model, Request $request)
+    private function fillSettingRelationships($setting, $model, Request $request)
     {
         foreach ($setting['relationships'] as $relationship) {
             if ($relationship["relation"] == 'many-to-many') {
