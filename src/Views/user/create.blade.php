@@ -31,7 +31,9 @@
 					</div>
 					<div class="body">
 						@include('materialadmin::panel.alerts')
+						{!! Form::file('image', ['id' => 'image', 'accept'=>'image/*', 'class'=>'hide']) !!}
 						{!! Form::open(array('route' => 'user.store', 'id' => 'user', 'files'=>true)) !!}
+							{!! Form::hidden('img_url', NULL, ['id' => 'img_url']) !!}
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
@@ -71,15 +73,6 @@
 										{!! Form::text('email', null, array('class' => 'form-control', 'ng-model' => 'user.email', 'ng-change' => 'checkEmail(user)')) !!}
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6 hidden">
-									<div class="form-group">
-										{!! Form::label('image', trans('materialadmin::user.img_url')) !!}
-										{!! Form::file('image', ['id' => 'image', 'accept' => 'image/*']) !!}
-									</div>
-								</div>
-								{!! Form::hidden('img_url', NULL, ['id' => 'img_url']) !!}
 							</div>
 							<div class="row">
 								<div class="col-md-3">
@@ -255,14 +248,14 @@
 				}
 
 				// Via ajax envia o FormData
-				$http.post("/user/photo/temp", fm, {
+				$http.post("/user/photo", fm, {
 					headers: {
 						'Content-type': undefined
 					},
 					transformRequest: angular.identity
 				}).success(function(response){
 					// Altera a src da imagem para exibir o arquivo temporario
-					$("#user_image").attr("src", "/user/"+response+"/temp").addClass('hide');
+					$("#user_image").attr("src", "/user/photo/" + filename).addClass('hide');
 					// Altera o value do input=hidden da imagem para o arquivo temporario
 					$("#img_url").attr("value", response);
 				});

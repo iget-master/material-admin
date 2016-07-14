@@ -41,9 +41,20 @@ class User extends Eloquent implements FiltrableInterface, AuthenticatableContra
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
+	protected $hidden = [
+	    'password',
+        'remember_token'
+    ];
 
-	protected $fillable = array('name', 'surname', 'dob', 'email', 'password', 'permission_group_id', 'language');
+	protected $fillable = [
+	    'name',
+        'surname',
+        'dob',
+        'email',
+        'permission_group_id',
+        'language',
+        'img_url'
+    ];
 
     /**
      * @return string

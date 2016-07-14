@@ -1,6 +1,8 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
 use IgetMaster\MaterialAdmin\Http\Requests\UserFilterRequest;
+use IgetMaster\MaterialAdmin\Http\Requests\UserImageRequest;
+use IgetMaster\MaterialAdmin\Http\Requests\UserRequest;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
 use IgetMaster\MaterialAdmin\Models\User;
@@ -13,7 +15,7 @@ class UserController extends RestController {
 	 *
 	 * @var string
 	 */
-	public $model = "IgetMaster\MaterialAdmin\Models\User";
+	public $model = User::class;
 
 	/**
 	 * The resource name used in routes
@@ -29,11 +31,12 @@ class UserController extends RestController {
 	 */
 	public $translation_namespace = "materialadmin::user";
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
+    /**
+     * Display a listing of the resource.
+     *
+     * @param UserFilterRequest $request
+     * @return Response
+     */
 	public function index(UserFilterRequest $request)
 	{
 		$users = User::with('permission_group')->filter($request->filters())->get();
@@ -124,46 +127,21 @@ class UserController extends RestController {
 
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \IgetMaster\MaterialAdmin\Http\Requests\UserRequest $request
+     * @param  int $id
+     * @return Response
+     */
+	public function update(UserRequest $request, $id)
 	{
 		$user = User::findOrFail($id);
 
-		$validator = \Validator::make(
-			\Input::all(), 
-			Array(
-				'name' => 'required',
-				'surname' => 'required',
-				'password' => 'confirmed|min:6',
-				'permission_group_id' => 'required|integer',
-				'dob' => 'date',
-				'language' => 'required'
-			)
-		);
+        $user->fill($request->all());
 
-		if ($validator->fails())
-		{
-			return \Redirect::back()->withInput()->withErrors($validator);
-		}
-
-		$user->name = \Input::get('name');
-		$user->surname = \Input::get('surname');
-		$user->permission_group_id = \Input::get('permission_group_id');
-		$user->dob = \Input::get('dob');
-		$user->language = \Input::get('language');
-
-		if (strlen(\Input::get('password'))) {
-			$user->password = \Hash::make(\Input::get('password'));
-		}
-
-		//upload of user image
-		if (\Input::has('img_url')){
-			Self::saveImage(\Input::get('img_url'), $user, false);
+		if ($request->has('password')) {
+			$user->password = bcrypt($request->get('password'));
 		}
 
 		$user->save();
@@ -174,33 +152,6 @@ class UserController extends RestController {
 	}
 
 	/**
-	 * Upload image of user
-	 *
-	 * @param file  $image
-	 * @param model $user
-	 * @param bool $saveAtTheEnd
-	 */
-	private function saveImage($image, $user, $saveAtTheEnd)
-	{
-		$fileLocation = base_path("storage/uploads/");
-		$ext = substr($image, 10);
-		$userTempImage = $fileLocation.$image;
-		$newUserImage = "storage/uploads/user_".$user->id.$ext;
-		$oldUserImage = $user->img_url;
-		if(\File::exists($oldUserImage)){
-			\File::delete($oldUserImage);
-		}
-
-		\File::move($userTempImage, base_path($newUserImage));
-
-		$user->img_url = $newUserImage;
-
-		if($saveAtTheEnd){
-			$user->save();
-		}
-	}
-
-	/**
 	 * get the image of the user from Storage
 	 *
 	 * @param  int  $id
@@ -208,116 +159,98 @@ class UserController extends RestController {
 	 */
 	public function getUserImage($id)
 	{
-		$image = User::findOrFail($id)->img_url;
-		return response()->download(base_path($image), null,['Chache-Control' => 'no-cache', 'Pragma' => 'no-cache'], 'inline');
+	    $user = User::findOrFail($id);
+		$image = storage_path('uploads/user/' . $user->img_url);
+
+        if ($user->img_url && file_exists($image)) {
+            return response()->download($image, null,['Cache-Control' => 'no-cache', 'Pragma' => 'no-cache'], 'inline');
+        } else {
+            return redirect("/iget-master/material-admin/imgs/user-image.jpg");
+        }
 	}
 
-	/**
-	 * get the temp_image of the user from Storage
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function getUserTempImage($fileName)
+    /**
+     * Return a user temporary uploaded image
+     *
+     * @param $filename
+     * @return Response
+     */
+	public function getTemporaryImage($filename)
 	{
-		$image = base_path("storage/uploads/".$fileName);
-		return response()->download($image, null,['Chache-Control' => 'no-cache', 'Pragma' => 'no-cache'], 'inline');
+		return response()->download(
+            base_path("storage/uploads/user/".$filename),
+            null,
+            [
+                'Chache-Control' => 'no-cache',
+                'Pragma' => 'no-cache'
+            ],
+            'inline'
+        );
 	}
 
-	/**
-	 * get and save the temp_image of the user
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function upTempImage()
+    /**
+     * Receive uploaded image to create the temporary user thumbnail
+     *
+     * @param \IgetMaster\MaterialAdmin\Http\Requests\UserImageRequest $request
+     * @return Response
+     */
+	public function uploadUserImage(UserImageRequest $request)
 	{
-		$temp = "";
-		if(\Input::has("temp")){
-			$temp = \Input::get("temp");
-		}
-		if(\Input::hasfile('file')){
+        $uploadedImage = $request->file;
+        $fileExtension = $uploadedImage->getClientOriginalExtension();
 
-			$image = \Input::file('file');
+        // Create upload directory if necessary.
+        $uploadDirectoryPath = base_path("storage/uploads/user/");
+        if(!\File::exists($uploadDirectoryPath)) {
+            \File::makeDirectory($uploadDirectoryPath);
+        }
 
-			/* VALIDAÇÃO */
-			$validator = \Validator::make(
-				\Input::all(), 
-				Array(
-					'file' => 'image|max:2000',
-				)
-			);
+        do {
+            $filename = str_random() . ".${fileExtension}";
+        } while (file_exists($uploadDirectoryPath . $filename));
 
-			if ($validator->fails())
-			{
-				return \Redirect::back()->withInput()->withErrors($validator);
-			}
-			/* VALIDAÇÃO */
+        $imageData = getimagesize($uploadedImage);
+        $mimeType = $uploadedImage->getMimeType();
 
-			$fileLocation = base_path("storage/uploads/");
-			if(!\File::exists($fileLocation)){
-				\File::makeDirectory($fileLocation);
-			}
-			if($temp != ""){
-				\File::delete($fileLocation.$temp);
-			}
-			do{
-				$fileName = "user_".rand(10000, 99999);
-				$fileExtension = $image->getClientOriginalExtension();
-			} while(\File::exists($fileLocation.$fileName.$fileExtension));
-			$imageData = getimagesize($image);
-			$mimeType = $image->getMimeType();
+        if($mimeType == "image/jpeg"){
+            $image = imagecreatefromjpeg($uploadedImage->getRealPath());
+        } else {
+            $image = imagecreatefrompng($uploadedImage->getRealPath());
+        }
 
-			if($mimeType == "image/jpeg"){
-				$imageToEdit = imagecreatefromjpeg($image->getRealPath());
-				$val = 100;
-			} else {
-				$imageToEdit = imagecreatefrompng($image->getRealPath());
-				$val = null;
-			}
+        // Calculate thumbnail size
+        if($imageData[0] >= $imageData[1]){
+            $new_width = ($imageData[0] * 120) / $imageData[1];
+            $new_height = 120;
+            $marginTop = 0;
+            $marginLeft = ($new_width - 120) / 2;
+        } else {
+            $new_width = 120;
+            $new_height = ($imageData[1] * 120) / $imageData[0];
+            $marginTop = ($new_height - 120) / 2;
+            $marginLeft = 0;
+        }
 
-	    	// calculate thumbnail size
-			if($imageData[0] >= $imageData[1]){
-	    		$new_width = ($imageData[0] * 120) / $imageData[1];
-	    		$new_height = 120;
-	    		$marginTop = 0;
-	    		$marginLeft = ($new_width - 120) / 2;
-			} else {
-	    		$new_width = 120;
-	    		$new_height = ($imageData[1] * 120) / $imageData[0];
-	    		$marginTop = ($new_height - 120) / 2;
-	    		$marginLeft = 0;
-			}
+        // Create a new temporary image
+        $thumbnail = imagecreatetruecolor( $new_width, $new_height );
 
-			// create a new temporary image
-			$thumb_im_resize = imagecreatetruecolor( $new_width, $new_height );
+        // copy and resize old image into new image
+        imagecopyresized( $thumbnail, $image, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
 
-			// copy and resize old image into new image 
-			imagecopyresized( $thumb_im_resize, $imageToEdit, 0, 0, 0, 0, $new_width, $new_height, $imageData[0], $imageData[1]);
+        // crop the resized image
+        $thumbnail = imagecrop($thumbnail, [
+            'x' =>$marginLeft,
+            'y' => $marginTop,
+            'width' => 120,
+            'height'=> 120
+        ]);
 
-			// crop the resized image
-			$to_crop_array = array('x' =>$marginLeft, 'y' => $marginTop, 'width' => 120, 'height'=> 120);
-			$thumb_im_crop = imagecrop($thumb_im_resize, $to_crop_array);
+        if($mimeType == "image/jpeg") {
+            imagejpeg($thumbnail, $uploadDirectoryPath . $filename, 100);
+        } else {
+            imagepng($thumbnail, $uploadDirectoryPath . $filename);
+        }
 
-			if($val == 100){//jpeg
-				imagejpeg($thumb_im_crop, $image->getRealPath(), $val, 100);
-			} else {
-				imagepng($thumb_im_crop, $image->getRealPath(), $val, 100);
-			}
-
-			$fileVerify = $fileLocation.$fileName;
-
-			if($val == null && \File::exists($fileVerify.".jpg")){
-				\File::delete($fileVerify.".jpg");
-			} else if($val == null && \File::exists($fileVerify.".jpeg")){
-				\File::delete($fileVerify.".jpeg");
-			} else if($val == 100 && \File::exists($fileVerify.".png")) {
-				\File::delete($fileVerify.".png");
-			}
-
-			if($image->move($fileLocation, $fileName.".".$fileExtension)){
-				return $fileName.".".$fileExtension;
-			}
-		}
+        return response()->json(compact('filename'));
 	}
 }

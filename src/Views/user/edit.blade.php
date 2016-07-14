@@ -33,7 +33,9 @@
 					</div>
 					<div class="body">
 						@include('materialadmin::panel.alerts')
+						{!! Form::file('image', ['id' => 'image', 'accept'=>'image/*', 'class'=>'hide']) !!}
 						{!! Form::open(['method'=>'PATCH', 'route'=>['user.update', $user->id], 'id'=>'user', 'files'=>true]) !!}
+							{!! Form::hidden('img_url', NULL, ['id' => 'img_url']) !!}
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
@@ -74,15 +76,6 @@
 										{!! Form::text('email', null, array('class' => 'form-control', 'disabled'=>'true', 'ng-model' => 'user.email')) !!}
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6 hidden">
-									<div class="form-group">
-										{!! Form::label('image', trans('materialadmin::user.img_url')) !!}
-										{!! Form::file('image', ['id' => 'image', 'accept'=>'image/*']) !!}
-									</div>
-								</div>
-								{!! Form::hidden('img_url', NULL, ['id' => 'img_url']) !!}
 							</div>
 							<div class="row enable">
 								<div class="col-md-12">
@@ -250,20 +243,17 @@
 				}
 
 				// Via ajax envia o FormData
-				$http.post("/user/photo/temp", fm, {
+				$http.post("/user/photo", fm, {
 					headers: {
 						'Content-type': undefined
 					},
 					transformRequest: angular.identity
 				}).success(function(response){
-					if(response != 'false'){
-						// Define o nome temporario
-						tempName = response;
-						// Altera a src da imagem para exibir o arquivo temporario
-						$("#user_image").attr("src", "/user/"+tempName+"/temp").addClass('hide');
-						// Altera o value do input=hidden da imagem para o arquivo temporario
-						$("#img_url").attr("value", tempName);
-					}
+					var filename = response.filename;
+					// Altera a src da imagem para exibir o arquivo temporario
+					$("#user_image").attr("src", "/user/photo/" + filename).addClass('hide');
+					// Altera o value do input=hidden da imagem para o arquivo temporario
+					$("#img_url").attr("value", filename);
 				});
 			} else {
 				window.alert(error_message);

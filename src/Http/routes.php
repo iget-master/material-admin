@@ -51,9 +51,9 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
     | Get/Post Image Engine
     |-------------------
     */
-    Route::get('/user/{id}/photo', ['uses' => 'UserController@getUserImage']);
-    Route::get('/user/{fileName}/temp', ['uses' => 'UserController@getUserTempImage']);
-    Route::post('/user/photo/temp', ['uses' => 'UserController@upTempImage']);
+    Route::get('/user/{id}/photo', ['as'=>'user.getImage', 'uses' => 'UserController@getUserImage']);
+    Route::get('/user/photo/{filename}', ['as'=>'user.getTemporaryImage', 'uses' => 'UserController@getTemporaryImage']);
+    Route::post('/user/photo', ['as'=>'user.uploadImage', 'uses' => 'UserController@uploadUserImage']);
 
 });
 
