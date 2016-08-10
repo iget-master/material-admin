@@ -193,17 +193,23 @@ legend {
         }
     }
     &.has-error {
+        textarea.form-control {
+            border: none;
+            border-bottom: 2px solid @md-red-500;
+        }
+
         .form-control {
             padding: 1px;
             border-bottom: 2px solid @md-red-500;
             box-shadow: none;
         }
+
         .input-group-addon {
+            border-bottom: 2px solid @md-red-500;
             &.error-addon {
                 padding: 0 0 0 3px;
                 color: @md-red-500;
                 font-size: 1.5rem;
-                border-bottom: 2px solid @md-red-500;
             }
             color: black;
         }
