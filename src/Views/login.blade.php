@@ -15,8 +15,8 @@
 	{!! HTML::style(versionedFileUrl('css/panel.min.css')) !!}
 </head>
 <body style="background-color: #2196f3">
-	<div class="container-fluid">
-		<div class="col-md-offset-5 col-md-2" style="padding: 40px 50px; background-color: #ffffff; margin-top: 200px; border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);">
+	<div class="container-fluid" id="login-wrapper">
+		<div id="login-card">
             <div class="text-center" style="margin-bottom: 25px;">
                 <img src="img/logo-120.png" alt="CDTSys"/>
             </div>

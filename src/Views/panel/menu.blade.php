@@ -7,9 +7,9 @@
 			<img class="img-circle" src="/user/{!! Auth::id() !!}/photo" alt="{!! Auth::user()->name !!}">
         @endif
 		</div>
-		<div class="user-info">
-			<span>{!! Auth::user()->name !!}</span>
-			<span>{!! Auth::user()->email !!}</span>
+		<div class="user-info details">
+			<span class="name">{!! Auth::user()->name !!}</span>
+			<span class="email">{!! Auth::user()->email !!}</span>
 		</div>
 	</div>
 	<div class="menu">
