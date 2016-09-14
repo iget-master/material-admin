@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'auth'], function () {
+Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'web'], function () {
 
     /*
 	|--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
 });
 
-Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => 'guest'], function () {
+Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => ['web', 'guest']], function () {
 
     Route::get('/login', ['as' => 'materialadmin.login', 'uses' => 'SessionController@create']);
     Route::post('/login', ['as' => 'materialadmin.authenticate', 'uses' => 'SessionController@store']);
