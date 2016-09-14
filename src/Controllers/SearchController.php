@@ -2,6 +2,7 @@
 
 use Cache;
 use IgetMaster\MaterialAdmin\Contracts\SearchableInterface as SearchableContract;
+use IgetMaster\MaterialAdmin\Models\Contracts\PublicSearchable;
 use Illuminate\Routing\Controller as BaseController;
 
 class SearchController extends BaseController
@@ -38,6 +39,11 @@ class SearchController extends BaseController
             $search = call_user_func_array("$model::with", $this->relations[$model_alias]);
         } else {
             $search = new $model;
+        }
+
+        // Deny access to non public searchable models
+        if (!array_key_exists(PublicSearchable::class, class_implements($model)) && !auth()->check()) {
+            return abort(401);
         }
 
         // Use cached results if available

@@ -39,14 +39,6 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
     Route::post('/setting/{setting}/store', ['as' => 'setting.store', 'uses' => 'SettingController@store']);
 
     /*
-	|---------------
-	| Search Engine
-	|---------------
-	*/
-
-    Route::get('/search/{model}/{query}/{scope0?}/{scope1?}/{scope2?}/{scope3?}/{scope4?}', ['as' => 'search', 'uses' => 'SearchController@search']);
-
-    /*
     |-------------------
     | Get/Post Image Engine
     |-------------------
@@ -61,4 +53,14 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
     Route::get('/login', ['as' => 'materialadmin.login', 'uses' => 'SessionController@create']);
     Route::post('/login', ['as' => 'materialadmin.authenticate', 'uses' => 'SessionController@store']);
+});
+
+/*
+|---------------
+| Search Engine
+|---------------
+*/
+
+Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers'], function () {
+    Route::get('/search/{model}/{query}/{scope0?}/{scope1?}/{scope2?}/{scope3?}/{scope4?}', ['as' => 'search', 'uses' => 'SearchController@search']);
 });
