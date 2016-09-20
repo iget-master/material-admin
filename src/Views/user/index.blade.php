@@ -9,7 +9,7 @@
         <i class="zmdi zmdi-filter-list"></i>
     </button>
 	<div class="dropdown">
-        {!! Form::open(array('id'=>'bulk-destroy', 'method'=>'DELETE', 'route' => array('user.destroy'))) !!}
+        {!! Form::open(array('id'=>'bulk-destroy', 'method'=>'DELETE', 'route' => ['user.destroy', 'bulk'])) !!}
         {!! Form::close() !!}
 		<button id="bulk-actions-toggle" class="btn btn-flat dropdown-toggle" data-toggle="dropdown">
 			<i class="zmdi zmdi-more-vert"></i>
