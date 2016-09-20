@@ -76,5 +76,4 @@ array_multisort($order, SORT_DESC, $items);
 @stop
 
 @section('script')
-    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
 @stop

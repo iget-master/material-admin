@@ -37,9 +37,6 @@
 @stop
 
 @section('script')
-    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/setting.js')) !!}
-    {!! HTML::script(versionedScriptUrl('iget-master/material-admin/js/app/errors.js')) !!}
-
     @if ($errors->any())
         <script>
             $('form#model').formErrorParser({}, {!! $errors->toJson(); !!});
