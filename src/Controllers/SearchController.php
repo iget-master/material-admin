@@ -42,7 +42,7 @@ class SearchController extends BaseController
         }
 
         // Deny access to non public searchable models
-        if (!array_key_exists(PublicSearchable::class, class_implements($model)) && !auth()->check()) {
+        if (!array_key_exists(PublicSearchable::class, class_implements($model)) || !auth()->check()) {
             return abort(401);
         }
 
