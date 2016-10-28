@@ -20,7 +20,7 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
     /*
 	|---------------------
-	| User related routes
+	| User related routescheck
 	|---------------------
 	*/
 
@@ -61,6 +61,6 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 |---------------
 */
 
-Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware'=>'cors'], function () {
+Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware'=>['public-api','cors']], function () {
     Route::get('/search/{model}/{query}/{scope0?}/{scope1?}/{scope2?}/{scope3?}/{scope4?}', ['as' => 'search', 'uses' => 'SearchController@search']);
 });
