@@ -274,7 +274,8 @@ class SettingController extends BaseController
         foreach ($setting['relationships'] as $relationship) {
             if ($relationship["relation"] == 'many-to-many') {
                 if ($request->has($relationship["name"])) {
-                    $model->$relationship["name"]()->sync($request->get($relationship["name"]));
+                    $relationshipName = $relationship["name"];
+                    $model->$relationshipName()->sync($request->get($relationship["name"]));
                 }
             } else if ($relationship["relation"] == 'has-many') {
                 $this->fillRelationalModel($relationship['model'], [$relationship['foreign_key'] => $model->id], null, $request);
