@@ -42,6 +42,18 @@
 		$('#save').removeAttr('disabled');
 	});
 
+	/* Enable Save Button on CKEDITOR change */
+	$(function() {
+		if (typeof CKEDITOR !== 'undefined') {
+			var instances = Object.keys(CKEDITOR.instances);
+			instances.forEach(function(instanceName) {
+				CKEDITOR.instances[instanceName].on('change', function(event) {
+					$('#save').removeAttr('disabled');
+				});
+			});
+		}
+	});
+
 	/* Initialize Tooltips */
     $(function () {
         $('[data-toggle="tooltip"]').tooltip({
