@@ -12,31 +12,31 @@ class SearchController extends BaseController
 
     public function __construct()
     {
-        $this->aliases = \Config::get('admin.search.aliases');
-        $this->scopes = \Config::get('admin.search.scopes');
-        $this->relations = \Config::get('admin.search.relations');
+        $this->aliases = \Config::get('search.aliases');
     }
 
     /**
-     * @param $model
+     * @param $alias
      * @param $query
      * @return Array
+     * @throws \Exception
      */
-    public function search($model_alias, $query)
+    public function search($alias, $query)
     {
         // Check if this alias have an model associated, if not, abort 404.
-        if (array_key_exists($model_alias, $this->aliases)) {
-            $model = $this->aliases[$model_alias];
+        if (array_key_exists($alias, $this->aliases)) {
+            $settings = $this->aliases[$alias];
+            $model = $settings['model'];
         } else {
-            abort(404);
+            return abort(404);
         }
 
         /** @var array $tags */
         $tags = func_get_args();
 
         // If alias has relations, add it to query.
-        if (array_key_exists($model_alias, $this->relations)) {
-            $search = call_user_func_array("$model::with", $this->relations[$model_alias]);
+        if (array_key_exists('with', $settings) && is_array($settings['with'])) {
+            $search = call_user_func_array("$model::with", $settings['with']);
         } else {
             $search = new $model;
         }
@@ -55,20 +55,38 @@ class SearchController extends BaseController
             $result = call_user_func_array([$search, 'elasticSearch'], array_slice(func_get_args(), 1));
         } else {
             // If alias has scopes, add it to query.
-            if (array_key_exists($model_alias, $this->scopes)) {
-                foreach ($this->scopes[$model_alias] as $scope => $arguments) {
-                    $total_args = func_num_args();
-                    $arg = [];
-                    foreach ($arguments as $argument) {
-                        if ($argument + 1 >= $total_args - 2) {
-                            $arg[] = func_get_arg($argument + 2);
-                            $tags[] = func_get_arg($argument + 2);
-                        } else {
-                            // If argument not exists, this is an invalid request for this alias.
-                            abort(400);
+            if (array_key_exists('scopes', $settings) && is_array($settings['scopes'])) {
+                foreach ($settings['scopes'] as $scope) {
+                    $search = call_user_func_array([$search, $scope], []);
+                }
+            }
+
+            // If alias has filters, parse it
+            if (array_key_exists('filters', $settings) && is_array($settings['filters'])) {
+                $arguments = func_get_args();
+                array_splice($arguments, 0, 2);
+
+                foreach ($settings['filters'] as $filter => $options) {
+                    $filterFound = false;
+                    $filterValue = null;
+                    foreach ($arguments as $index => $argument) {
+                        if ($argument == $filter) {
+                            $filterFound = true;
+                            if (array_key_exists($index + 1, $arguments)) {
+                                $filterValue = $arguments[$index + 1];
+                            } else {
+                                throw new \Exception("Missing filter {$filter} argument");
+                            }
                         }
                     }
-                    $search = call_user_func_array([$search, $scope], $arg);
+
+                    if ($filterFound) {
+                        $search = call_user_func_array([$search, $filter], [$filterValue]);
+                    } else {
+                        if ($options['required']) {
+                            abort(422);
+                        }
+                    }
                 }
             }
 
@@ -76,6 +94,7 @@ class SearchController extends BaseController
         }
 
         Cache::tags($tags)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
+
         return $result;
     }
 
