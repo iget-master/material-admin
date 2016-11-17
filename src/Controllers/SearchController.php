@@ -35,7 +35,7 @@ class SearchController extends BaseController
         $tags = func_get_args();
 
         // If alias has relations, add it to query.
-        if (array_key_exists('with', $settings) && is_array($settings['with'])) {
+        if (array_key_exists('with', $settings) && is_array($settings['with']) && count($settings['with'])) {
             $search = call_user_func_array("$model::with", $settings['with']);
         } else {
             $search = new $model;
