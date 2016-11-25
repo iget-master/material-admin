@@ -27,7 +27,7 @@ class AuthMiddleware
             // Check if user is guest
             if (!\Auth::user()->hasRole($route)) {
                 // Show Permission denied
-                return view('materialadmin::error.403');
+                return response()->view('materialadmin::error.403');
             }
         }
 
