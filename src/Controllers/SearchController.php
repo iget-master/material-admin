@@ -90,7 +90,7 @@ class SearchController extends BaseController
                 }
             }
 
-            $result = $search->search($query, null, true)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+            $result = $search->search($query, 0, true)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
         }
 
         Cache::tags($tags)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
