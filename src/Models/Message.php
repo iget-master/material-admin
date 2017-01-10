@@ -18,17 +18,17 @@ class Message extends Eloquent
 
     public function toUser()
     {
-        return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'to_user_id');
+        return $this->belongsTo(User::class, 'to_user_id')->withTrashed();
     }
 
     public function fromUser()
     {
-        return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'from_user_id');
+        return $this->belongsTo(User::class, 'from_user_id')->withTrashed();
     }
 
     public function sender()
     {
-        return $this->belongsTo('IgetMaster\MaterialAdmin\Models\User', 'from_user_id');
+        return $this->belongsTo(User::class, 'from_user_id')->withTrashed();
     }
 
     public static function getUsers()
