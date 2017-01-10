@@ -20,11 +20,14 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
     /*
 	|---------------------
-	| User related routescheck
+	| User related routes
 	|---------------------
 	*/
 
     Route::resource('user', "UserController", ['except' => ['show']]);
+    Route::get('/user/password/{id?}', ['as' => 'user.edit_password', 'uses' => 'UserController@editPassword']);
+    Route::patch('/user/password/{id?}', ['as' => 'user.update_password', 'uses' => 'UserController@updatePassword']);
+
 
     Route::resource('message', "MessageController", ['except' => ['edit', 'update']]);
     Route::get('/message/{id}/mark/read', ['as' => 'message.markread', 'uses' => 'MessageController@markAsRead']);

@@ -4,6 +4,8 @@ return [
 	'title' => 'Users',
 	'edit_title' => 'Edit User',
 	'add_title' => 'Add User',
+	'password_title' => 'Password',
+    'update_password_title' => 'Update password',
 	'delete_title' => 'Delete User',
 	'delete_this_title' => 'Delete This User',
 	'delete_bulk_title' => 'Delete Selected Users',

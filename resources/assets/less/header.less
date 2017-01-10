@@ -20,7 +20,7 @@
 		.actions {
 			float: right;
 			padding: 9px 10px;
-			.btn {
+			> .btn, > .dropdown > .btn {
 				font-size: 2rem;
 				color: @md-grey-500;
 				background-color: transparent;
@@ -36,6 +36,19 @@
 				background-color: @md-red-500;
                 font-weight: @bold-font-weight;
                 font-size: 1rem;
+			}
+			.dropdown {
+				display: inline-block;
+
+				li {
+					a {
+						display: flex;
+						i {
+							font-size: 18px;
+							margin-right: 10px;
+						}
+					}
+				}
 			}
 		}
 	}

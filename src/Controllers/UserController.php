@@ -2,6 +2,7 @@
 
 use IgetMaster\MaterialAdmin\Http\Requests\UserFilterRequest;
 use IgetMaster\MaterialAdmin\Http\Requests\UserImageRequest;
+use IgetMaster\MaterialAdmin\Http\Requests\UserPasswordRequest;
 use IgetMaster\MaterialAdmin\Http\Requests\UserRequest;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
@@ -36,7 +37,7 @@ class UserController extends RestController
      * Display a listing of the resource.
      *
      * @param UserFilterRequest $request
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index(UserFilterRequest $request)
     {
@@ -49,7 +50,7 @@ class UserController extends RestController
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -60,7 +61,7 @@ class UserController extends RestController
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function store()
     {
@@ -106,7 +107,7 @@ class UserController extends RestController
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -117,14 +118,52 @@ class UserController extends RestController
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $user = User::with('permission_group')->findOrFail($id);
         $response = \View::make('materialadmin::user.edit')->with('user', $user)->with('permission_groups', PermissionGroup::getSelectOptions());
         return $response;
+    }
 
+    /**
+     * Show the form for editing user password.
+     * If user id is omitted, edit current authenticated user.
+     *
+     * @param null|integer $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editPassword($id = null)
+    {
+        if (is_null($id)) {
+            $user = auth()->user();
+        } else {
+            $user = User::findOrFail($id);
+        }
+
+        return view('materialadmin::user.password')->with('user', $user);
+    }
+
+    /**
+     * @param UserPasswordRequest $request
+     * @param null|integer $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePassword(UserPasswordRequest $request, $id = null)
+    {
+        if (is_null($id)) {
+            $user = auth()->user();
+        } else {
+            $user = User::findOrFail($id);
+        }
+
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        $messages = with(new MessageBag())->add('success', 'Password updated successfully.');
+
+        return \Redirect::back()->with('messages', $messages);
     }
 
     /**
@@ -132,7 +171,7 @@ class UserController extends RestController
      *
      * @param \IgetMaster\MaterialAdmin\Http\Requests\UserRequest $request
      * @param  int $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function update(UserRequest $request, $id)
     {
