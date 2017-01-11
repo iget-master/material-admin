@@ -110,12 +110,12 @@
             'extension': ' .' + this.fileExtention,
         });
 
+        $row.find('.action [role="copy"]').hide();
         $row.find('.action [role="download"]').attr('href', data.download_link);
         $row.find('.action [role="preview"]').attr('href', data.download_link);
 
         self.fileRowElement.remove();
-        
-    }
+    };
 
     fileHandler.prototype.errorHandler = function (data) {
         // @todo: Handle Errors and show feedback
