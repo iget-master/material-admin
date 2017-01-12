@@ -25,6 +25,7 @@ elixir(function(mix) {
 
 elixir(function(mix) {
     mix.scripts([
+        'session.js',
         'app.js',
         'errors.js',
         'masks.js',

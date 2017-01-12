@@ -26,6 +26,7 @@ return [
 	'logout' => 'Logout',
     'update_password' => 'Change password',
 	'tooltip_filter' => 'Show/Hide Filter Options',
+    'session_expired' => 'You session has expired, please login to continue.',
 	
 	/*
 	 * Permission Group

@@ -15,7 +15,7 @@ function ModalForm(url) {
 	'use strict';
 
 	// Close Alerts
-	$(".alert").fadeTo(6000, 500).slideUp(500, function(){
+	$(".alert:not(.permanent)").fadeTo(6000, 500).slideUp(500, function(){
 		$(".alert").alert('close');
 	});
 

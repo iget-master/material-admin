@@ -22,7 +22,7 @@
     <body>
         <div id="app">
             <div id="drawer-wrapper">
-                @include('materialadmin::panel.menu')            
+                @include('materialadmin::panel.menu')
             </div>
             <div id="header-wrapper">
                 <div class="global" @if(app()->environment('local')) style="background-color: #FF5555" @endif>
@@ -85,12 +85,21 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
         <script type="text/javascript" src="{!! versionedFileUrl('js/vendor/compiled.min.js') !!}"></script>
         <script type="text/javascript" src="{!! versionedFileUrl('js/app/compiled.min.js') !!}"></script>
-
+        @include('materialadmin::panel.modal.session')
         @yield('script')
 
         <script>
+            {{-- See session.js --}}
+            var SessionLifetime = "{!! config('session.lifetime') !!}";
+            var LoginUrl = "{!! route('materialadmin.login', ['expired' => true]) !!}";
+            var LogoutUrl = "{!! route('materialadmin.logout') !!}";
+        </script>
+
+        <script>
             $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
+                $('[data-toggle="tooltip"]').tooltip({
+                    delay: { "show": 100, "hide": 100 }
+                })
             })
         </script>
     </body>

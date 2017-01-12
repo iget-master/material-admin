@@ -58,6 +58,10 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
     Route::post('/login', ['as' => 'materialadmin.authenticate', 'uses' => 'SessionController@store']);
 });
 
+Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => ['web']], function () {
+    Route::get('/auth/check', ['as' => 'materialadmin.check', 'uses' => 'SessionController@check']);
+});
+
 /*
 |---------------
 | Search Engine

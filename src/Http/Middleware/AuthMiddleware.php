@@ -1,5 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Http\Middleware;
 
+use Carbon\Carbon;
 use Closure;
 
 class AuthMiddleware
@@ -31,6 +32,11 @@ class AuthMiddleware
             }
         }
 
-        return $next($request);
+        /** @var \Symfony\Component\HttpFoundation\Response $response */
+        $response = $next($request);
+
+        $response->headers->add(['Session-Timeout' => Carbon::now()->addMinutes(config('session.lifetime'))->toIso8601String()]);
+
+        return $response;
     }
 }

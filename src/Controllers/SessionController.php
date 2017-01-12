@@ -11,7 +11,24 @@ class SessionController extends BaseController
      */
     public function create()
     {
+        if (\Request::has('expired')) {
+            \Session::put('alert', [
+                'type' => 'danger',
+                'message' => trans('materialadmin::admin.session_expired')
+            ]);
+        }
+
         return \View::make('materialadmin::login');
+    }
+
+    /**
+     * Check if current session is valid
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function check()
+    {
+        return response()->json(auth()->check());
     }
 
 

@@ -21,25 +21,27 @@
                 <img src="img/logo-120.png" alt="CDTSys"/>
             </div>
 			@if (Session::get('alert'))
-				<div class="alert alert-{!! Session::get('alert')["type"] !!}">
+				<div class="alert permanent alert-{!! Session::get('alert')["type"] !!}">
 				{!! Session::get('alert')["message"] !!}
 			</div>
 			@endif
 			<div class="row">
-				{!! Form::open(array('route' => 'materialadmin.authenticate')) !!}
-				<div class="form-group">
-					{!! Form::label('email', 'Email:') !!}
-					{!! Form::text('email', null, array('class' => 'form-control')) !!}
+				<div class="col-md-12">
+					{!! Form::open(array('route' => 'materialadmin.authenticate')) !!}
+					<div class="form-group">
+						{!! Form::label('email', 'Email:') !!}
+						{!! Form::text('email', null, array('class' => 'form-control')) !!}
+					</div>
+					<div class="form-group">
+						{!! Form::label('password', 'Senha:') !!}
+						{!! Form::password('password', array('class' => 'form-control')) !!}
+					</div>
+					<br>
+					<div class="text-center">
+						{!! Form::button('<i class="zmdi zmdi-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-raised btn-block')) !!}
+					</div>
+					{!! Form::close() !!}
 				</div>
-				<div class="form-group">
-					{!! Form::label('password', 'Senha:') !!}
-					{!! Form::password('password', array('class' => 'form-control')) !!}
-				</div>
-				<br>
-                <div class="text-center">
-                    {!! Form::button('<i class="zmdi zmdi-check"></i> Entrar', array('type'=>'submit', 'class' => 'btn btn-raised btn-block')) !!}
-                </div>
-				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
