@@ -32,13 +32,12 @@
 							<div class="from">
 								@if(is_null($message->sender))
 									<img class="img-circle" src="/img/logo-round-40.png">
-								@else
+								@elseif(is_null(Auth::user()->img_url))
 									<div class="img-placeholder {!! $message->sender->color !!}">
-									<?php
-                                        $letter = substr($message->sender->name, 0, 1);
-                                        echo $letter;
-                                    ?>
+									{!! strtoupper(substr($message->sender->name, 0, 1)) !!}
 									</div>
+								@else
+									<img class="img-circle" style="width: 40px;" src="{!! route('user.getImage', ['id' => $message->sender->id]) !!}">
 								@endif
 								@if(is_null($message->from_user_id))
 									<span class="sender">@lang('materialadmin::message.system_message')</span>
