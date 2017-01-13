@@ -17,9 +17,12 @@ return [
 	'action_discard' => 'Discard Changes',
 	'action_save' => 'Save Changes',
 	'action_create' => 'Create',
+	'action_send' => 'Send',
 	'action_cancel' => 'Cancel',
+	'action_back' => 'Cancel',
 	'action_close' => 'Close',
 	'action_done' => 'Done',
+    'action_back' => "Back",
 	
 	'now_editing' => 'Now Editing',
 	'select_default' => 'Choose an option',
@@ -35,6 +38,4 @@ return [
 	'permission_groups_delete_this' => 'Delete Permission Group',
 	'permission_groups_title_create' => 'Add Permission Group',
 	'permission_groups_title_edit' => 'Edit Permission Group',
-
-
 ];

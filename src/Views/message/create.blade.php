@@ -56,8 +56,8 @@
                         {!! Form::close() !!}
                     </div>
                     <div class="footer">
-                        <a href="/message" class="btn btn-flat">@lang('materialadmin::admin.action_cancel')</a>
-                        <a id="save" role="submit" data-form="#new-message" class="btn btn-flat action" disabled>@lang('materialadmin::admin.action_create')</a>
+                        <a href="/message" class="btn btn-flat">@lang('materialadmin::admin.action_back')</a>
+                        <a id="save" role="submit" data-form="#new-message" class="btn btn-flat action" disabled>@lang('materialadmin::admin.action_send')</a>
                     </div>
                 </div>
             </div>
