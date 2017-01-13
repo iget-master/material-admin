@@ -106,13 +106,21 @@ function ModalForm(url) {
 
 	// Table row click shortcut
 	$('#collection-wrapper').on('click', 'tbody tr', function(e) {
-		if ($(e.target).is('.row-check, [type="checkbox"], .actions, .dropdown, .zmdi-more-vert')) {
+		if ($(e.target).is('.row-check, [type="checkbox"], .actions, .dropdown, .dropdown-toggle, .zmdi-more-vert')) {
 			return;
 		}
 		var $edit = $(e.currentTarget).find('[role="edit"]');
 		if ($edit.length) {
-			var href = $(e.currentTarget).find('[role="edit"]').attr('href');
-			window.location = href;
+            var href = $(e.currentTarget).find('[role="edit"]').attr('href');
+
+			if (e.shiftKey) {
+				window.open(href, '_blank', 'toolbar=yes, location=yes, status=yes, menubar=yes, scrollbars=yes');
+			} else if (e.ctrlKey) {
+                window.open(href, '_blank');
+			} else {
+                window.location = href;
+			}
+
 		}
 	});
 
