@@ -1,15 +1,23 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Draft extends Eloquent
 {
+    use SoftDeletes;
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'drafts';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
     public $timestamps = true;
 
     /**
@@ -17,10 +25,30 @@ class Draft extends Eloquent
      *
      * @var array
      */
-    protected $fillable = array('draftable_type');
+    protected $fillable = [
+        'draftable_type'
+    ];
 
-    public $rules = [''];
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'reconstructed'
+    ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getReconstructedAttribute()
+    {
+        return $this->reconstructModel();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function columns()
     {
         return $this->hasMany('IgetMaster\MaterialAdmin\Models\DraftColumn');
@@ -44,10 +72,18 @@ class Draft extends Eloquent
     public function reconstructModel()
     {
         $model = new $this->draftable_type;
+
+        if (method_exists($model, 'reconstructModel')) {
+            return $model->reconstructModel($this);
+        }
         foreach ($this->columns as $column) {
             $attribute = $column->column;
             $model->$attribute = $column->value;
         }
+
+        $model->deleted_at = $this->deleted_at;
+        $model->updated_at = $this->updated_at;
+        $model->created_at = $this->created_at;
 
         return $model;
     }
