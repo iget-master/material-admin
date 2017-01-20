@@ -3,6 +3,11 @@
 return [
 	'user.index' => 'List users',
 	'user.edit' => 'View user edit form',
+	'user.edit_password' => 'Change own password',
+	'user.update_password' => 'Save change own password',
+	'user.getImage' => 'View user image',
+	'user.getTemporaryImage' => 'View user temporary image',
+	'user.uploadImage' => 'Upload image',
 	'user.store' => 'Store new user',
 	'user.update' => 'Update user',
 	'user.create' => 'View user create form',
@@ -20,4 +25,6 @@ return [
     'setting.show' => 'View Setting',
     'setting.store' => 'Store Setting',
     'setting.update' => 'Update Setting',
+    'materialadmin.empty' => 'Dashboard',
+    'materialadmin.logout' => 'Logout',
 ];

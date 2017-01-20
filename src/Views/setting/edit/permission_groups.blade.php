@@ -1,20 +1,37 @@
-@extends('materialadmin::setting.edit')
+@extends('materialadmin::setting.edit', ['size'=>'lg'])
 
 <?php
-    $roles = IgetMaster\MaterialAdmin\Models\Role::all();
+    use IgetMaster\MaterialAdmin\Models\Role;
+
+    $routeGroups = [];
+
+    foreach (Role::get() as $route)
+    {
+        $routeName = $route->name;
+        $group = explode('.', $routeName)[0];
+
+        $routeGroups[$group][] = $route;
+    }
+
+    uasort($routeGroups, function($a, $b) {
+        $countA = count($a);
+        $countB = count($b);
+
+        return $countB - $countA;
+    })
 ?>
 
 @section('form')
 	@if (isset($model))
 	{!! Form::model($model, ['method'=>'PATCH', 'route'=>['setting.update', 'permission_groups', $model->id], 'id'=>'model']) !!}
 	@else
-	{!! Form::open(array('route' => ['setting.store', 'permission_groups'], 'id' => 'model')) !!}
+	{!! Form::open(['route' => ['setting.store', 'permission_groups'], 'id' => 'model']) !!}
 	@endif
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('name', trans('materialadmin::admin.permission_group_name')) !!}
-                    {!! Form::text('name', null, array('class' => 'form-control')) !!}
+                    {!! Form::label('name', trans('materialadmin::admin.permission_group_name'), ['class' => 'required']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
                     @if ($errors->has('name'))
                         {!! $errors->first('name') !!}
                     @endif
@@ -24,60 +41,31 @@
         <div class="row">
             <div class="col-md-12">
                 <legend>{!! Form::label('name', trans('materialadmin::admin.permission_group_roles')) !!}</legend>
-            </div>
-            <?php
-                $currentRoleTitle = "";
-                $count = 0;
-            ?>
-            @foreach($roles as $title)
-                <?php
-                if ($count == 0) {
-                    echo "<div class='col-md-12'><div class='row'>";
-                }
-                    $roleTitle = explode(".", $title->name);
-                if ($roleTitle[0] != $currentRoleTitle) {
-                    $currentRoleTitle = $roleTitle[0];
-                    echo "<div class='col-md-4 roles-list'>
-                        <h3>".trans('materialadmin::roles.permission_group_'.$currentRoleTitle.'_title')."</h3>";
-                    $pass = true;
-                    $count++;
-                } else {
-                    $pass = false;
-                }
-                ?>
-                @if($pass)
-                    @foreach($roles as $role)
-                        <?php
-                            $currentRole = explode(".", $role->name);
-                        ?>
-                        @if($currentRole[0] == $currentRoleTitle)
-                            <div class="checkbox">
-                                <label>
-                                    <?php
-                                        $checked = false;
-                                    if (isset($model)) {
-                                        $checked = $model->roles->contains('id', $role->id)?'checked':null;
-                                    }
-                                    ?>
-                                    <input type="checkbox" name="roles[]" value="{!! $role->id !!}" {!! $checked !!} >
-                                    {!! trans('materialadmin::roles.' . $role->name) !!}
-                                </label>
+                <div class="row">
+                    <?php
+                    $count = 0;
+                    $colSize = 2;
+                    ?>
+                    @foreach($routeGroups as $group => $routes)
+                        <div class="col-md-{!! $colSize !!} roles-list">
+                            <h3>@lang("materialadmin::roles.role_group_${group}_title")</h3>
+                            @foreach($routes as $route)
+                                <div class="checkbox">
+                                    <label for="">
+                                        {!! \Form::checkbox('roles[]', $route->id, $checked = isset($model) && $model->roles->contains('name', $route->name)) !!}
+                                        {!! trans('materialadmin::roles.' . $route->name) !!}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        @if (++$count % (12 / $colSize) == 0)
                             </div>
+                            <div class="row">
                         @endif
                     @endforeach
-                    </div>
-                @endif
-
-                    @if(($count%3 == 0) && ($pass == true))
-                            </div>
-                        </div>
-                        <div class='col-md-12'>
-                            <div class='row'>
-                    @endif
-            @endforeach
+                </div>
             </div>
         </div>
 	{!! Form::close() !!}
-    </div>
 @stop
 

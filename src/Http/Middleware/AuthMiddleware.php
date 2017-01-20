@@ -16,25 +16,20 @@ class AuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $route = $request->route()->getName();
-
+        /**
+         * If user isn't authenticated, redirect it to the login page
+         */
         if (\Auth::guest()) {
-            // Redirect to login page
             return redirect()->guest('login');
-        }
-
-        // If route name is at admin.roles config array
-        if (in_array($route, \Config::get('admin.roles'))) {
-            // Check if user is guest
-            if (!\Auth::user()->hasRole($route)) {
-                // Show Permission denied
-                return response()->view('materialadmin::error.403');
-            }
         }
 
         /** @var \Symfony\Component\HttpFoundation\Response $response */
         $response = $next($request);
 
+        /**
+         * Add Session-Timeout header to allow front-end
+         * identifying when the session is about to expire.
+         */
         $response->headers->add(['Session-Timeout' => Carbon::now()->addMinutes(config('session.lifetime'))->toIso8601String()]);
 
         return $response;

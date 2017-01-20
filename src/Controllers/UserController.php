@@ -70,7 +70,7 @@ class UserController extends RestController
             array(
                 'name' => 'required',
                 'surname' => 'required',
-                'email' => 'required|email|unique:users',
+                'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
                 'password' => 'required|confirmed|min:6',
                 'permission_group_id' => 'required|integer',
                 'dob' => 'date',
@@ -89,7 +89,7 @@ class UserController extends RestController
                 'surname' => \Input::get('surname'),
                 'email' => \Input::get('email'),
                 'permission_group_id' => \Input::get('permission_group_id'),
-                'password' => \Hash::make(\Input::get('password')),
+                'password' => bcrypt(\Input::get('password')),
                 'dob' => \Input::get('dob'),
                 'language' => \Input::get('language'),
             )

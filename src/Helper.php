@@ -4,17 +4,14 @@ class Helper
 {
     public static function checkRoutePermission($route)
     {
-        // if (array_key_exists($route, \Config::get('admin.route_permission'))) {
-        // 	$route_permission = \Config::get('admin.route_permission')[$route];
-        // } else {
-        // 	$route_permission = \Config::get('admin.default_permission');
-        // }
-
-        // if (\Auth::check()) {
-        // 	return (\Auth::user()->level >= $route_permission);
-        // } else {
-        // 	return ($route_permission == 0);
-        // }
+        // If route name is at admin.roles config array
+        if (in_array($route, \Config::get('admin.roles'))) {
+            // Check if user is guest
+            if (!\Auth::user()->hasRole($route)) {
+                // Show Permission denied
+                return false;
+            }
+        }
 
         return true;
     }

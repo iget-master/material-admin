@@ -10,7 +10,12 @@
     <div id="card-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-2 col-md-8 card">
+                @if ($size == 'lg')
+                    <div class="col-md-12 card">
+                @else
+                    <div class="col-md-offset-2 col-md-8 card">
+                @endif
+
                     <div class="header">
                         <div class="info">
                             <h1>@lang($setting['translation_key'] . '_' . $action)</h1>
