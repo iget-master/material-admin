@@ -35,7 +35,7 @@
 			overflow-y: auto;
 			transition: all cubic-bezier(.4,0,.2,1) .15s;
 			table {
-				margin-bottom: 0;
+				margin-bottom: 115px;
 				thead {
 					th {
 						padding: 20px;
@@ -57,6 +57,11 @@
 						&:hover {
 							td {
 								background-color: @md-grey-200;
+							}
+						}
+						&:last-child {
+							td {
+								border-bottom: 1px solid rgb(221,221,221);
 							}
 						}
 						td {
