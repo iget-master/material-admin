@@ -10,7 +10,7 @@
     <div id="card-wrapper">
         <div class="container">
             <div class="row">
-                @if ($size == 'lg')
+                @if (isset($size) && $size == 'lg')
                     <div class="col-md-12 card">
                 @else
                     <div class="col-md-offset-2 col-md-8 card">
