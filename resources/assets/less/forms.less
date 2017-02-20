@@ -39,6 +39,16 @@ legend {
                 font-size: 1rem;
             }
         }
+
+        // Use when ::after is not supported, eg: inside table rows
+        span.required {
+            position: relative;
+            top: -2px;
+            margin-left: 3px;
+            content: '*';
+            color: @md-red-500;
+            font-size: 1rem;
+        }
     }
     input {
         height: 28px;
