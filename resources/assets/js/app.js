@@ -29,17 +29,17 @@
 
 	/* Enable Save Button When Form is Edited*/
 	$('form').on('input change', function() {
-		$('#save').removeAttr('disabled');
+		$('#save, #save-keep').removeAttr('disabled');
 	});
 
     /* Enable Save Button When Form is Edited*/
     $('.save-button,.enable-save').on('click', function() {
-        $('#save').removeAttr('disabled');
+        $('#save, #save-keep').removeAttr('disabled');
     });
 
 	/* Enable Save Button When relational Table is Updated */
 	$('.relational').on('updated', function() {
-		$('#save').removeAttr('disabled');
+		$('#save, #save-keep').removeAttr('disabled');
 	});
 
 	/* Enable Save Button on CKEDITOR change */
@@ -48,7 +48,7 @@
 			var instances = Object.keys(CKEDITOR.instances);
 			instances.forEach(function(instanceName) {
 				CKEDITOR.instances[instanceName].on('change', function(event) {
-					$('#save').removeAttr('disabled');
+					$('#save, #save-keep').removeAttr('disabled');
 				});
 			});
 		}

@@ -58,8 +58,13 @@ function ModalForm(url) {
 
 	// Form submit button
 	$(document).on('click', '[role="submit"]', function(e) {
-		var form = $($(e.currentTarget).data('form'));
-		form.submit();
+		var $currentTarget = $(e.currentTarget);
+		var $form = $($currentTarget.data('form'));
+
+		if ($currentTarget.data('keep')) {
+			$form.append('<input type="hidden" name="keepOnPage" value="true">');
+		}
+		$form.submit();
 	});
 
    	/*
