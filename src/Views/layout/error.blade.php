@@ -8,15 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     {{-- CSS are placed here --}}
-    {!! HTML::style('//fonts.googleapis.com/css?family=Roboto:300,700,400') !!}
-    {!! HTML::style('iget-master/material-admin/css/bootstrap.css') !!}
-    {!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
+
+	{!! HTML::style('//fonts.googleapis.com/css?family=Roboto:300,400,500,700') !!}
+	{!! HTML::style('iget-master/material-admin/css/bootstrap.min.css') !!}
+	{!! HTML::style('iget-master/material-admin/css/material-design-iconic-font.min.css') !!}
 	{!! HTML::style('iget-master/material-admin/css/admin.css') !!}
 	{!! HTML::style('css/app.css') !!}
 </head>
 <body>
 	<div class="container-fluid">
-		<div id="error-container" class="paper col-md-4 col-md-offset-4">
+		<div id="error-container" class="paper col-xs-4 col-xs-offset-4">
 			<div class="header">
 				<h1>@yield('title')</h1>
 			</div>

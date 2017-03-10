@@ -21,7 +21,7 @@ class PermissionMiddleware
          * show a `403 - Unauthorized` error.
          */
         if (!\Auth::user() || !\Auth::user()->hasRole($request->route()->getName())) {
-            return response()->view('materialadmin::error.403');
+            return response()->view('materialadmin::error.403', [], 403);
         }
 
         return $next($request);
