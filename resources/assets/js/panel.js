@@ -145,10 +145,21 @@ function ModalForm(url) {
     });
 
     $("#do-bulk-destroy").on('click', function(event) {
-        var $form = $('#bulk-destroy');
-        if ($form.find('input[name="remove_ids[]"]').length) {
-            $form.submit();
-        }
+        swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this items!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+            function(){
+                var $form = $('#bulk-destroy');
+                if ($form.find('input[name="remove_ids[]"]').length) {
+                    $form.submit();
+                }
+            });
         event.preventDefault();
     });
-} (jQuery)
+} (jQuery);
