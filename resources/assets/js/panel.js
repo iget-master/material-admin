@@ -130,13 +130,19 @@ function ModalForm(url) {
 	});
 
 	$("#collection-wrapper table.index-table").on('selection-change', function(event) {
-        var $form = $('#bulk-destroy');
-        $form.find('input[name="remove_ids[]"]').remove();
+        var $forms = $('#bulk-destroy, form.bulk-action');
 
-        $("#collection-wrapper table.index-table tbody").find('input[type="checkbox"]:checked').each(function() {
-            $form.append('<input type="hidden" name="remove_ids[]" value="' + $(this).closest('tr').data('id') + '">');
-        });
-    })
+        $forms.each(function(index, form) {
+        	var $form = $(form);
+            var fieldName = $form.data('field') || 'remove_ids';
+            $form.find('input[name="' + fieldName + '[]"]').remove();
+
+            $("#collection-wrapper table.index-table tbody").find('input[type="checkbox"]:checked').each(function() {
+                $form.append('<input type="hidden" name="' + fieldName + '[]" value="' + $(this).closest('tr').data('id') + '">');
+            });
+		});
+
+    });
 
     $("#do-bulk-destroy").on('click', function(event) {
         var $form = $('#bulk-destroy');
