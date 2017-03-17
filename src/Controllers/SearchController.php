@@ -4,6 +4,7 @@ use Cache;
 use IgetMaster\MaterialAdmin\Contracts\SearchableInterface as SearchableContract;
 use IgetMaster\MaterialAdmin\Models\Contracts\PublicSearchable;
 use Illuminate\Routing\Controller as BaseController;
+use Sofa\Eloquence\Eloquence;
 
 class SearchController extends BaseController
 {
@@ -90,7 +91,13 @@ class SearchController extends BaseController
                 }
             }
 
-            $result = $search->search($query, 1, true)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+            $uses = class_uses($model);
+
+            if (array_key_exists(Eloquence::class, $uses)) {
+                $result = $search->search($query)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+            } else {
+                $result = $search->search($query, 1, true)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+            }
         }
 
         Cache::tags($tags)->put($query, $result, config()->get('admin.search.cache_lifetime', 5));
