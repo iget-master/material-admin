@@ -180,5 +180,6 @@ function ModalForm(url) {
             });
 
     	event.preventDefault();
+    	event.stopPropagation();
 	});
 } (jQuery);
