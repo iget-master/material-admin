@@ -49,8 +49,8 @@
 								<span class="subject">{!! $message->subject !!}</span> - <span class="text">{!! $message->message !!}</span>
 							</div>
 							<div class="actions">
-								{!! Form::open(array('method'=>'DELETE', 'id'=>'delete_items', 'route' => ['message.destroy', $message->id])) !!}
-                                    <button class="btn btn-flat">
+								{!! Form::open(['method'=>'DELETE', 'route' => ['message.destroy', $message->id]]) !!}
+                                    <button type="submit" class="btn btn-flat delete-index-item">
                                         <i class="zmdi zmdi-delete"></i>
                                     </button>
 								{!! Form::close() !!}
