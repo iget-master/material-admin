@@ -33,7 +33,7 @@ array_multisort($order, SORT_DESC, $items);
     <div id="card-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-2 col-md-8 card">
+                <div class="col-md-offset-1 col-md-10 card">
                     <div class="header">
                         <div class="info">
                             <h1>@lang('materialadmin::settings.model_title')</h1>
