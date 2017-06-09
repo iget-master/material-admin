@@ -39,6 +39,15 @@ class Draft extends Eloquent
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'columns'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function getReconstructedAttribute()
