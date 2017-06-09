@@ -69,7 +69,7 @@ class Draft extends Eloquent
      */
     public function getColumn($key)
     {
-        $draftColumn = $this->columns()->where('column', $key)->first();
+        $draftColumn = $this->columns->where('column', $key)->first();
 
         return ($draftColumn) ? $draftColumn->value : null;
     }
