@@ -13,7 +13,7 @@
                           'application/msword',
                           'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                           'application/vnd.ms-excel',
-                          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             ],
             allowedEXT: ['gif', 'jpeg', 'jpg', 'png', 'pdf', 'doc', 'docx', 'xls', 'xlsx'],
             fileContainer: "#files-list",
@@ -21,7 +21,7 @@
         };
 
         // Overrides custom options with received options
-        var options = $.extend(true, defaultOptions, options);
+        options = $.extend(true, defaultOptions, options);
 
         // Initializate the element
         this.each(function() {
@@ -35,23 +35,25 @@
                     var input = this;
                     // Instantiates a new fileHandler for each file selected
                     $.each($(this).prop('files'), function(index, file) {
-                        new fileHandler(file, $(input).data('options'));
+                        new fileHandler(file, $(input).data('options'), $(input));
                     });
                 });
             }
         }); 
-    }
+    };
 
-    var fileHandler = function(file, options) {
+    var fileHandler = function(file, options, input) {
+        var filenamePieces = file.name.split('.');
         this.file = file;
-        this.fileName = file.name.split('.').shift();
-        this.fileExtention = file.name.split('.').pop().toLowerCase();
+        this.fileExtention = filenamePieces.pop().toLowerCase();
+        this.fileName = filenamePieces.join('.');
         this.options = options;
+        this.input = input;
 
         this.table = $(options.fileTable).data('table');
         
         // Check if file extention and MIME type are among those allowed in the options
-        if (($.inArray(this.fileExtention, this.options.allowedEXT) == -1) || ($.inArray(this.file.type, this.options.allowedMIME) == -1)) {
+        if (($.inArray(this.fileExtention, this.options.allowedEXT) === -1) || ($.inArray(this.file.type, this.options.allowedMIME) === -1)) {
             throw 'The file extention or MIME type are not allowed';
         } else {
             this.fileRowElement = $('#files-list .reference-line.hide').clone(true).removeClass('reference-line hide');
@@ -60,7 +62,7 @@
             // Start upload
             this.uploadFile();
         }
-    }
+    };
 
     fileHandler.prototype.uploadFile = function() {
         var self = this;
@@ -82,19 +84,18 @@
                             return xhr;
                         },
                     success: self.successHandler.bind(self),
-                    error: self.errorHandler.bind(self),
+                    error: self.errorHandler.bind(self)
                 });
 
         self.fileRowElement.find('.action a').on('click', function() {
-            if (xhr && xhr.readyState != 4) {
+            if (xhr && xhr.readyState !== 4) {
                 xhr.abort();
                 self.fileRowElement.remove();
-            };
+            }
         });
-    }
+    };
 
     fileHandler.prototype.progressHandler = function(e) {
-        var self = this;
         if (e.lengthComputable) {
             var percent = Math.round((e.loaded / e.total) * 100);
             this.fileRowElement.find('.progress').addClass('loading').find('.progress-bar').attr('aria-valuenow', percent).width(percent + "%");
@@ -107,7 +108,7 @@
 
         var $row = this.table.createRowElement(false, data.resource_file_id, {
             'filename': this.fileName,
-            'extension': ' .' + this.fileExtention,
+            'extension': ' .' + this.fileExtention
         });
 
         $row.find('.action [role="copy"]').hide();
@@ -115,10 +116,13 @@
         $row.find('.action [role="preview"]').attr('href', data.download_link);
 
         self.fileRowElement.remove();
+        self.input.val('');
     };
 
     fileHandler.prototype.errorHandler = function (data) {
-        // @todo: Handle Errors and show feedback
+        swal("Upload failed", data.responseJSON.file.join(' '), "error");
+        this.fileRowElement.remove();
+        this.input.val('');
     }
 
 }( jQuery ));
