@@ -74,37 +74,63 @@
     .panel-default {
         border-color: @md-grey-200;
         .panel-heading {
-            a.title {
-                padding: 0;
-                float: none;
-            }
-        }
-        &>.panel-heading {
-            position: relative;
-            padding: 0;
-            .title {
-                display: block;
-                padding: 10px 15px;
-                color: @md-black;
-                font-weight: @medium-font-weight;
-                &:hover {
-                    color: @md-black;
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            min-height: 41px;
+
+            > * {
+                &:not(.title) {
+                    flex-shrink: 1;
+                    padding: 5px;
+                    margin-left: 2px;
+
+                    > i {
+                        font-size: 1.8rem;
+                    }
+
+                    color: @md-grey-500;
+                    &:hover {
+                        color: @md-grey-900;
+                    }
                 }
-            }
-            [role="remove"] {
-                position: absolute;
-                top: 7.5px;
-                right: 10px;
-                i {
-                    font-size: 1.8rem;
-                    color: @md-grey-400;
-                }
-                &:hover {
-                    i {
-                        color: @md-black;
+
+                &.title {
+                    flex-grow: 1;
+                    color: black;
+                    font-weight: bold;
+
+                    &:hover {
+                        color: black;
                     }
                 }
             }
+
+            //position: relative;
+            //padding: 0;
+            //.title {
+            //    display: block;
+            //    padding: 10px 15px;
+            //    color: @md-black;
+            //    font-weight: @medium-font-weight;
+            //    &:hover {
+            //        color: @md-black;
+            //    }
+            //}
+            //[role="remove"] {
+            //    position: absolute;
+            //    top: 7.5px;
+            //    right: 10px;
+            //    i {
+            //        font-size: 1.8rem;
+            //        color: @md-grey-400;
+            //    }
+            //    &:hover {
+            //        i {
+            //            color: @md-black;
+            //        }
+            //    }
+            //}
         }
     }
 }
