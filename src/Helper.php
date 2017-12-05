@@ -16,8 +16,17 @@ class Helper
         return true;
     }
 
+    /**
+     * Get options for Language Select
+     * @return array
+     */
     public static function getLanguagesSelectOptions()
     {
-        return \Config::get('admin.languages');
+        return array_merge(
+            [
+                "" => trans('materialadmin::admin.select_default')
+            ],
+            config('admin.languages')
+        );
     }
 }
