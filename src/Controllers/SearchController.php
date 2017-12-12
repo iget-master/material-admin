@@ -4,6 +4,7 @@ use Cache;
 use IgetMaster\MaterialAdmin\Contracts\SearchableInterface as SearchableContract;
 use IgetMaster\MaterialAdmin\Models\Contracts\PublicSearchable;
 use Illuminate\Routing\Controller as BaseController;
+use ScoutElastic\Searchable;
 use Sofa\Eloquence\Eloquence;
 
 class SearchController extends BaseController
@@ -37,10 +38,12 @@ class SearchController extends BaseController
 
         // If alias has relations, add it to query.
         if (array_key_exists('with', $settings) && is_array($settings['with']) && count($settings['with'])) {
-            $search = call_user_func_array("$model::with", $settings['with']);
+            $with = $settings['with'];
         } else {
-            $search = new $model;
+            $with = [];
         }
+
+        $search = new $model;
 
         // Deny access to non public searchable models
         if (!array_key_exists(PublicSearchable::class, class_implements($model)) && !auth()->check()) {
@@ -88,10 +91,18 @@ class SearchController extends BaseController
 
             $uses = class_uses($model);
 
-            if (array_key_exists(Eloquence::class, $uses)) {
-                $result = $search->search($query)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+            if (array_key_exists(Searchable::class, $uses)) {
+                $result = $search->search($query)->take(5)->get()->load($with)->toJson();
             } else {
-                $result = $search->search($query, 1, true)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+                if (count($with)) {
+                    $query = $query->with($with);
+                }
+
+                if (array_key_exists(Eloquence::class, $uses)) {
+                    $result = $search->search($query)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+                } else {
+                    $result = $search->search($query, 1, true)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+                }
             }
         }
 
