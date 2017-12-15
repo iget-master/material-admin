@@ -95,7 +95,7 @@ class SearchController extends BaseController
                 $result = $search->search($query)->take(5)->get()->load($with)->toJson();
             } else {
                 if (count($with)) {
-                    $query = $query->with($with);
+                    $search = $search->with($with);
                 }
 
                 if (array_key_exists(Eloquence::class, $uses)) {
