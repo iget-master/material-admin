@@ -1,6 +1,7 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
@@ -15,7 +16,7 @@ use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 class User extends Eloquent implements FiltrableInterface, AuthenticatableContract
 {
 
-    use Authenticatable, SelectableTrait, FiltrableTrait, SearchableTrait, SoftDeletes;
+    use Authenticatable, SelectableTrait, FiltrableTrait, SearchableTrait, SoftDeletes, HasApiTokens;
 
     /**
      * Searchable rules.
