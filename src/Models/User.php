@@ -3,20 +3,16 @@
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Passport\HasApiTokens;
 use Nicolaslopezj\Searchable\SearchableTrait;
-use Carbon\Carbon;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\Model as Eloquent;
-use IgetMaster\MaterialAdmin\Filters\DateFilter;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use IgetMaster\MaterialAdmin\Filters\StringFilter;
 use IgetMaster\MaterialAdmin\Interfaces\FiltrableInterface;
 use IgetMaster\MaterialAdmin\Traits\FiltrableTrait;
 use IgetMaster\MaterialAdmin\Traits\SelectableTrait;
 
-class User extends Eloquent implements FiltrableInterface, AuthenticatableContract
+class User extends Authenticatable implements FiltrableInterface
 {
 
-    use Authenticatable, SelectableTrait, FiltrableTrait, SearchableTrait, SoftDeletes, HasApiTokens;
+    use SelectableTrait, FiltrableTrait, SearchableTrait, SoftDeletes, HasApiTokens;
 
     /**
      * Searchable rules.
