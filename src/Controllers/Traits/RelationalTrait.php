@@ -9,7 +9,7 @@ trait RelationalTrait
     public function fillRelationalModel($class, $external_fields, $replace_new_ids, Request $request)
     {
         $new_ids = [];
-        if ($request->has($class)) {
+        if ($request->filled($class)) {
             $request_items = $request->input($class);
             $class = "App\\Models\\${class}";
             foreach ($request_items as $index => $item) {

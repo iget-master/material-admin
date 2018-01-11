@@ -101,7 +101,7 @@ class SettingController extends BaseController
         // if not present on request (if not checked)
         if (array_key_exists('checkboxes', $setting) && is_array($setting['checkboxes'])) {
             foreach ($setting['checkboxes'] as $field_name) {
-                if (!$request->has($field_name)) {
+                if (!$request->filled($field_name)) {
                     $model->$field_name = 0;
                 }
             }
@@ -210,7 +210,7 @@ class SettingController extends BaseController
         // if not present on request (if not checked)
         if (array_key_exists('checkboxes', $setting) && is_array($setting['checkboxes'])) {
             foreach ($setting['checkboxes'] as $field_name) {
-                if (!$request->has($field_name)) {
+                if (!$request->filled($field_name)) {
                     $model->$field_name = 0;
                 }
             }
@@ -273,7 +273,7 @@ class SettingController extends BaseController
     {
         foreach ($setting['relationships'] as $relationship) {
             if ($relationship["relation"] == 'many-to-many') {
-                if ($request->has($relationship["name"])) {
+                if ($request->filled($relationship["name"])) {
                     $relationshipName = $relationship["name"];
                     $model->$relationshipName()->sync($request->get($relationship["name"]));
                 }

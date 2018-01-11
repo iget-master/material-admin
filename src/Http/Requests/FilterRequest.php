@@ -26,11 +26,11 @@ abstract class FilterRequest extends FormRequest
             $hasSomething = false;
             $parameters = [];
             foreach ($filterExpects as $index => $input) {
-                if ($this->has($input)) {
+                if ($this->filled($input)) {
                     $hasSomething = true;
                 }
 
-                if ($this->has($input) && strlen($this->get($input))) {
+                if ($this->filled($input) && strlen($this->get($input))) {
                     $parameters[$index] = $this->get($input);
                 } else {
                     $hasExpected = false;

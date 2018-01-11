@@ -179,7 +179,7 @@ class UserController extends RestController
 
         $user->fill($request->all());
 
-        if ($request->has('password')) {
+        if ($request->filled('password')) {
             $user->password = bcrypt($request->get('password'));
         }
 
