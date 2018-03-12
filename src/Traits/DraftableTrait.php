@@ -15,7 +15,9 @@ trait DraftableTrait
         $draft = Draft::create(['draftable_type'=>get_class($this)]);
 
         foreach ($this->getAttributes() as $column => $value) {
-            DraftColumn::create(['draft_id'=>$draft->id, 'column'=>$column, 'value'=>$value]);
+            if ($value) {
+                DraftColumn::create(['draft_id'=>$draft->id, 'column'=>$column, 'value'=>$value]);
+            }
         }
 
         return $draft;
