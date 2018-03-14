@@ -26,8 +26,14 @@ class Draft extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'draftable_type'
     ];
+
+    /**
+     * Indicates if all mass assignment is enabled.
+     *
+     * @var bool
+     */
+    protected static $unguarded = true;
 
     /**
      * The accessors to append to the model's array form.
@@ -37,6 +43,58 @@ class Draft extends Eloquent
     protected $appends = [
         'reconstructed'
     ];
+
+    /**
+     * The attributes that really exists on Draft model
+     *
+     * @var array
+     */
+    protected $realAttributes = [
+        'id',
+        'draftable_type',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
+     * The pending columns that should be saved
+     *
+     * @var array
+     */
+    public $columnsToSave = [];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+//        'columns'
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function (Draft $model) {
+            $model->columnsToSave = array_except($model->getAttributes(), $model->realAttributes);
+            $model->setRawAttributes(array_only($model->getAttributes(), $model->realAttributes));
+        });
+
+        static::saved(function (Draft $model) {
+            foreach ($model->columnsToSave as $column=>$value) {
+                if ($value) {
+                    $model->columns()->updateOrCreate(compact('column'), compact('value'));
+                } else {
+                    $model->columns()->where('column', $column)->delete();
+                }
+
+            }
+            
+            $model->load('columns');
+        });
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Model
@@ -51,7 +109,7 @@ class Draft extends Eloquent
      */
     public function columns()
     {
-        return $this->hasMany('IgetMaster\MaterialAdmin\Models\DraftColumn');
+        return $this->hasMany(\IgetMaster\MaterialAdmin\Models\DraftColumn::class);
     }
 
     /**
@@ -94,9 +152,9 @@ class Draft extends Eloquent
      * @param  string  $key
      * @return mixed
      */
-    public function __get($key)
+    public function getAttribute($key)
     {
-        $value = $this->getAttribute($key);
+        $value = parent::getAttribute($key);
 
         return (is_null($value)) ? $this->getColumn($key) : $value;
     }
