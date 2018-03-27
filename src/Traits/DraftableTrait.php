@@ -4,6 +4,7 @@ namespace IgetMaster\MaterialAdmin\Traits;
 
 use IgetMaster\MaterialAdmin\Models\Draft;
 use IgetMaster\MaterialAdmin\Models\DraftColumn;
+use Illuminate\Database\Eloquent\Collection;
 
 trait DraftableTrait
 {
@@ -20,7 +21,7 @@ trait DraftableTrait
             }
         }
 
-        return $draft;
+        return $draft->fresh();
     }
 
     /**
