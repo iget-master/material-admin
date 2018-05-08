@@ -44,11 +44,16 @@ class SearchController extends BaseController
         }
 
         $search = new $model;
+        $primaryKey = $search->getKeyName();
+
+        $uses = class_uses($model);
 
         // Deny access to non public searchable models
         if (!array_key_exists(PublicSearchable::class, class_implements($model)) && !auth()->check()) {
             return abort(401);
         }
+
+        $scopesToApply = [];
 
         if (method_exists($search, 'elasticSearch')) {
             $result = call_user_func_array([$search, 'elasticSearch'], array_slice(func_get_args(), 1));
@@ -80,7 +85,11 @@ class SearchController extends BaseController
                     }
 
                     if ($filterFound) {
-                        $search = call_user_func_array([$search, $filter], [$filterValue]);
+                        if (array_key_exists(Searchable::class, $uses)) {
+                            $scopesToApply[camel_case($filter)] = [$filterValue];
+                        } else {
+                            $search = call_user_func_array([$search, camel_case($filter)], [$filterValue]);
+                        }
                     } else {
                         if ($options['required']) {
                             abort(422);
@@ -89,10 +98,20 @@ class SearchController extends BaseController
                 }
             }
 
-            $uses = class_uses($model);
-
             if (array_key_exists(Searchable::class, $uses)) {
-                $result = $search->search($query)->take(5)->get()->load($with)->toJson();
+                if (count($scopesToApply)) {
+                    $ids = $search->search($query)->take(5)->get()->pluck($primaryKey);
+                    $search = new $model;
+                    $search = $search->with($with)->whereIn($primaryKey, $ids);
+
+                    foreach($scopesToApply as $scope=>$parameters) {
+                        $search = call_user_func_array([$search, $scope], $parameters);
+                    }
+
+                    $result = $search->get()->toJson();
+                } else {
+                    $result = $search->search($query)->take(5)->get()->load($with)->toJson();
+                }
             } else {
                 if (count($with)) {
                     $search = $search->with($with);
