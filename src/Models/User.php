@@ -51,7 +51,8 @@ class User extends Authenticatable implements FiltrableInterface
         'email',
         'permission_group_id',
         'language',
-        'img_url'
+        'img_url',
+        'email_signature',
     ];
 
     /**
