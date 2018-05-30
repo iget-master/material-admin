@@ -13,15 +13,10 @@ trait DraftableTrait
      */
     public function draft()
     {
-        $draft = Draft::create(['draftable_type'=>get_class($this)]);
-
-        foreach ($this->getAttributes() as $column => $value) {
-            if ($value) {
-                DraftColumn::create(['draft_id'=>$draft->id, 'column'=>$column, 'value'=>$value]);
-            }
-        }
-
-        return $draft->fresh();
+        return Draft::create([
+            'draftable_type' => get_class($this),
+            'columns' => $this->getAttributes(),
+        ]);
     }
 
     /**

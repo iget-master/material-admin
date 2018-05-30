@@ -55,14 +55,8 @@ class Draft extends Eloquent
         'created_at',
         'updated_at',
         'deleted_at',
+        'columns',
     ];
-
-    /**
-     * The pending columns that should be saved
-     *
-     * @var array
-     */
-    public $columnsToSave = [];
 
     /**
      * The relations to eager load on every query.
@@ -70,7 +64,16 @@ class Draft extends Eloquent
      * @var array
      */
     protected $with = [
-//        'columns'
+
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'columns' => 'array'
     ];
 
     protected static function boot()
@@ -78,21 +81,15 @@ class Draft extends Eloquent
         parent::boot();
 
         static::saving(function (Draft $model) {
-            $model->columnsToSave = array_except($model->getAttributes(), $model->realAttributes);
+            $model->columns = array_merge(
+                $model->columns ?? [],
+                array_except(
+                    $model->getAttributes(),
+                    $model->realAttributes
+                )
+            );
+
             $model->setRawAttributes(array_only($model->getAttributes(), $model->realAttributes));
-        });
-
-        static::saved(function (Draft $model) {
-            foreach ($model->columnsToSave as $column=>$value) {
-                if ($value) {
-                    $model->columns()->updateOrCreate(compact('column'), compact('value'));
-                } else {
-                    $model->columns()->where('column', $column)->delete();
-                }
-
-            }
-            
-            $model->load('columns');
         });
     }
 
@@ -105,22 +102,12 @@ class Draft extends Eloquent
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function columns()
-    {
-        return $this->hasMany(\IgetMaster\MaterialAdmin\Models\DraftColumn::class);
-    }
-
-    /**
      * @param string $key
      * @return mixed
      */
     public function getColumn($key)
     {
-        $draftColumn = $this->columns->where('column', $key)->first();
-
-        return ($draftColumn) ? $draftColumn->value : null;
+        return $this->columns[$key] ?? null;
     }
 
     /**
@@ -134,9 +121,9 @@ class Draft extends Eloquent
         if (method_exists($model, 'reconstructModel')) {
             return $model->reconstructModel($this);
         }
-        foreach ($this->columns as $column) {
-            $attribute = $column->column;
-            $model->$attribute = $column->value;
+
+        foreach ($this->columns as $column => $value) {
+            $model->$column = $value;
         }
 
         $model->deleted_at = $this->deleted_at;
