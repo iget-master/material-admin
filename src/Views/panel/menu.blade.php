@@ -21,7 +21,7 @@
             @foreach ($items as $label=>$attributes)
                 @if (IgetMaster\MaterialAdmin\Helper::checkRoutePermission($attributes['route']))
                     <li>
-                        <a href="{!! route($attributes['route'], array_key_exists('parameters', $attributes) ? $attributes['parameters'] : null); !!}">
+                        <a href="{!! route($attributes['route'], array_key_exists('parameters', $attributes) ? $attributes['parameters'] : null); !!}" target="{{ $attributes['target'] ?? '_self'}}">
                             <i class="{!! $attributes['icon'] !!}"></i>
                             <span>
                                 @lang('materialadmin::menu.' . $label)
