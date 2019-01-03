@@ -28,7 +28,11 @@
                 <div class="global" @if(app()->environment('local')) style="background-color: #FF5555" @endif>
                     <img class="brand" src="{{ config('admin.brand_image_url') }}">
                     <div class="actions">
-                        <p>@yield('motd')</p>
+                        @if (\IgetMaster\MaterialAdmin\Services\MotdService::getMotd())
+                            <p class="motd">
+                                {!! \IgetMaster\MaterialAdmin\Services\MotdService::getMotd() !!}
+                            </p>
+                        @endif
                         <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat">
                             @if ($unread_count = Auth::user()->unreadMessagesCount())
                                 <i class="zmdi zmdi-comment-text"></i>
