@@ -39,11 +39,6 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a href="{!! route('user.edit_password') !!}">
-                                        <i class="zmdi zmdi-key"></i> <span>@lang('materialadmin::admin.update_password')</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="{!! route('materialadmin.logout') !!}">
                                         <i class="zmdi zmdi-sign-in"></i> <span>@lang('materialadmin::admin.logout')</span>
                                     </a>
