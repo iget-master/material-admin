@@ -33,14 +33,6 @@
                                 {!! \IgetMaster\MaterialAdmin\Services\MotdService::getMotd() !!}
                             </p>
                         @endif
-                        <a href="{!! route('message.index') !!}" id="user-messages" class="btn btn-flat">
-                            @if ($unread_count = Auth::user()->unreadMessagesCount())
-                                <i class="zmdi zmdi-comment-text"></i>
-                                <span class="badge">{!! Auth::user()->unreadMessagesCount() !!}</span>
-                            @else
-                                <i class="zmdi zmdi-comment-text"></i>
-                            @endif
-                        </a>
                         <div class="dropdown">
                             <button class="btn btn-flat dropdown-toggle" data-toggle="dropdown">
                                 <i class="zmdi zmdi-more-vert"></i>

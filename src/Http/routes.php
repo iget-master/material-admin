@@ -16,37 +16,9 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
     */
 
     Route::get('/', ['as'=>'materialadmin.empty', 'uses' => 'HomeController@index']);
-
-    /*
-    |-----------------------
-    | Get/Post Image Engine
-    |-----------------------
-    */
-    Route::get('/user/{id}/photo', ['as'=>'user.getImage', 'uses' => 'UserController@getUserImage']);
-    Route::get('/user/photo/{filename}', ['as'=>'user.getTemporaryImage', 'uses' => 'UserController@getTemporaryImage']);
-
-    /*
-    |----------------------
-    | Message system routes
-    |----------------------
-    */
-    Route::resource('message', "MessageController", ['except' => ['edit', 'update']]);
-    Route::get('/message/{id}/mark/read', ['as' => 'message.markread', 'uses' => 'MessageController@markAsRead']);
-    Route::get('/message/{id}/mark/unread', ['as' => 'message.markunread', 'uses' => 'MessageController@markAsUnread']);
 });
 
 Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => ['web', 'auth', 'permission']], function () {
-    /*
-	|---------------------
-	| User related routes
-	|---------------------
-	*/
-
-    Route::resource('user', "UserController", ['except' => ['show']]);
-    Route::get('/user/password/{id?}', ['as' => 'user.edit_password', 'uses' => 'UserController@editPassword']);
-    Route::patch('/user/password/{id?}', ['as' => 'user.update_password', 'uses' => 'UserController@updatePassword']);
-
-
     Route::get('/setting', ['as' => 'setting.index', 'uses' => 'SettingController@index']);
     Route::get('/setting/{setting}', ['as' => 'setting.show', 'uses' => 'SettingController@show']);
     Route::get('/setting/{setting}/edit/{id}', ['as' => 'setting.edit', 'uses' => 'SettingController@edit']);
@@ -54,9 +26,6 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
     Route::get('/setting/{setting}/create', ['as' => 'setting.create', 'uses' => 'SettingController@create']);
     Route::patch('/setting/{setting}/update/{id}', ['as' => 'setting.update', 'uses' => 'SettingController@update']);
     Route::post('/setting/{setting}/store', ['as' => 'setting.store', 'uses' => 'SettingController@store']);
-
-    Route::post('/user/photo', ['as'=>'user.uploadImage', 'uses' => 'UserController@uploadUserImage']);
-
 });
 
 Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => ['web', 'guest']], function () {
