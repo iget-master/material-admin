@@ -1,7 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin;
 
 use Illuminate\Support\ServiceProvider;
-use IgetMaster\MaterialAdmin\Models\User;
 use IgetMaster\MaterialAdmin\Models\Observers\UserObserver;
 
 class MaterialAdminServiceProvider extends ServiceProvider
@@ -45,8 +44,6 @@ class MaterialAdminServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/Views', 'materialadmin');
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'materialadmin');
-
-        User::observe(new UserObserver);
     }
 
     /**
