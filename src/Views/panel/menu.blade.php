@@ -15,9 +15,18 @@
             </h4>
             <ul>
             @foreach ($items as $label=>$attributes)
-                @if (IgetMaster\MaterialAdmin\Helper::checkRoutePermission($attributes['route']))
+                @if ((!array_key_exists('route', $attributes)) || IgetMaster\MaterialAdmin\Helper::checkRoutePermission($attributes['route']))
                     <li>
-                        <a href="{!! route($attributes['route'], array_key_exists('parameters', $attributes) ? $attributes['parameters'] : null); !!}" target="{{ $attributes['target'] ?? '_self'}}">
+                        <?php
+                            if (array_key_exists('route', $attributes)) {
+                                $url = route($attributes['route'], array_key_exists('parameters', $attributes) ? $attributes['parameters'] : null);
+                            } else if (array_key_exists('url', $attributes)) {
+                                $url = $attributes['url'];
+                            } else {
+                                $url = "#";
+                            }
+                        ?>
+                        <a href="{!! $url !!}" target="{{ $attributes['target'] ?? '_self'}}">
                             <i class="{!! $attributes['icon'] !!}"></i>
                             <span>
                                 @lang('materialadmin::menu.' . $label)
