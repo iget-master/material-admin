@@ -31,14 +31,10 @@
 						<div class="message {!! ($message->read)?'read':'unread' !!}" data-id="{!! $message->id !!}" data-href="{!! route('message.show', $message->id) !!}">
 							<div class="from">
 								@if(is_null($message->sender))
-									<img class="img-circle" src="/img/logo-round-40.png">
-								@elseif(is_null(Auth::user()->img_url))
-									<div class="img-placeholder {!! $message->sender->color !!}">
-									{!! strtoupper(substr($message->sender->name, 0, 1)) !!}
-									</div>
-								@else
-									<img class="img-circle" style="width: 40px;" src="{!! route('user.getImage', ['id' => $message->sender->id]) !!}">
-								@endif
+								<img class="img-circle" src="/img/logo-round-40.png">
+								<div class="img-placeholder {!! $message->sender->color !!}">
+								{!! strtoupper(substr($message->sender->name, 0, 1)) !!}
+								</div>
 								@if(is_null($message->from_user_id))
 									<span class="sender">@lang('materialadmin::message.system_message')</span>
 								@else

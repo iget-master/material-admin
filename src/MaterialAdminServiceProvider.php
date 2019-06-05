@@ -1,7 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin;
 
 use Illuminate\Support\ServiceProvider;
-use IgetMaster\MaterialAdmin\Models\Observers\UserObserver;
 
 class MaterialAdminServiceProvider extends ServiceProvider
 {
