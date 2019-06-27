@@ -31,10 +31,6 @@ return [
                 'route' => 'materialadmin.empty',
                 'icon' => 'zmdi zmdi-home'
             ],
-            'users' => [
-                'route' => 'user.index',
-                'icon' => 'zmdi zmdi-accounts'
-            ],
             'settings' => [
                 'route' => 'setting.index',
                 'icon' => 'zmdi zmdi-settings'
@@ -103,11 +99,11 @@ return [
             'order'                 => 0,
             'item'              => 'materialadmin::setting.item.permission_groups',
             'edit'              => 'materialadmin::setting.edit.permission_groups',
-            'model'                 => 'IgetMaster\MaterialAdmin\Models\PermissionGroup',
+            'model'                 => 'Iget\Base\Models\PermissionGroup',
             'relationships'     => [
                 [
                     "name" => "roles",
-                    "model" => "IgetMaster\MaterialAdmin\Models\Role",
+                    "model" => "Iget\Base\Models\Role",
                     "relation" => "many-to-many",
                 ]
             ]
@@ -123,7 +119,7 @@ return [
     'search' => [
         'cache_lifetime' => 43200,
         'aliases' => [
-            'user' => 'IgetMaster\MaterialAdmin\Models\User'
+            'user' => 'Iget\Base\Models\User'
         ],
         'relations' => [
             'user' => [

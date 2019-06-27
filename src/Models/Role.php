@@ -1,5 +1,6 @@
 <?php namespace IgetMaster\MaterialAdmin\Models;
 
+use Iget\Base\Models\PermissionGroup;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Role extends Eloquent
@@ -16,7 +17,7 @@ class Role extends Eloquent
 
     public function groups()
     {
-        return $this->belongsToMany('IgetMaster\MaterialAdmin\Models\PermissionGroup');
+        return $this->belongsToMany(PermissionGroup::class);
     }
 
     protected $fillable = array('name');

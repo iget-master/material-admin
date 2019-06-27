@@ -5,7 +5,7 @@
 </div>
 <div class="filter-group">
     <legend>@lang('materialadmin::user.permission_group')</legend>
-    @include('materialadmin::filter.foreign', ['filter'=>'permission_group_id', 'options'=>IgetMaster\MaterialAdmin\Models\PermissionGroup::getSelectOptions()])
+    @include('materialadmin::filter.foreign', ['filter'=>'permission_group_id', 'options'=>Iget\Base\Models\PermissionGroup::getSelectOptions()])
 </div>
 <div class="filter-group">
     <legend>@lang('materialadmin::user.name')</legend>
