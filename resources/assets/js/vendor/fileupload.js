@@ -108,7 +108,7 @@
 
         var $row = this.table.createRowElement(false, data.resource_file_id, {
             'filename': this.fileName,
-            'extension': ' .' + this.fileExtention
+            'extension': this.fileExtention
         });
 
         $row.find('.action [role="copy"]').hide();
