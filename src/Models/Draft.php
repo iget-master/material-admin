@@ -112,10 +112,14 @@ class Draft extends Eloquent
 
     /**
      * Reconstruct original model from Draft
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function reconstructModel()
     {
+        if (!$this->draftable_type) {
+            return null;
+        }
+
         $model = new $this->draftable_type;
 
         if (method_exists($model, 'reconstructModel')) {
