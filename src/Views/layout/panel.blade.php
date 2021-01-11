@@ -74,7 +74,7 @@
             </div>
         @endif
     	<!-- Scripts are placed here -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+	    <script type="text/javascript" src="iget-master/material-admin/js/vendor/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="{!! versionedFileUrl('js/vendor/compiled.min.js') !!}"></script>
         <script type="text/javascript" src="{!! versionedFileUrl('js/app/compiled.min.js') !!}"></script>
         @include('materialadmin::panel.modal.session')
