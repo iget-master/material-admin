@@ -21,6 +21,10 @@ elixir(function(mix) {
         'vendor/sweetalert.min.js',
         'vendor/fileupload.js'
     ], 'Assets/js/vendor/compiled.min.js');
+
+    mix.scripts([
+        'vendor/jquery-2.2.4.min.js',
+    ], 'Assets/js/vendor/jquery-2.2.4.min.js');
 });
 
 elixir(function(mix) {
@@ -39,6 +43,7 @@ elixir(function(mix) {
 elixir(function(mix) {
     mix.version([
         'Assets/js/vendor/compiled.min.js',
+        'Assets/js/vendor/jquery-2.2.4.min.js',
         'Assets/js/app/compiled.min.js',
         'Assets/css/vendor/sweetalert.min.css',
         'Assets/css/panel.min.css',
