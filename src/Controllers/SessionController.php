@@ -39,7 +39,7 @@ class SessionController extends BaseController
      */
     public function store()
     {
-        if (\Auth::attempt(\Input::only('email', 'password'))) {
+        if (\Auth::attempt(\Request::only('email', 'password'))) {
             return \Redirect::intended(route(\Config::get('admin.home_route')))->with('alert', array('type'=>'success', 'message'=>'Seja bem vindo.'));
         }
 

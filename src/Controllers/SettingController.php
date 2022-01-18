@@ -1,7 +1,7 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
 use \Config;
-use \Input;
+use \Request;
 use \App;
 use IgetMaster\MaterialAdmin\Controllers\Traits\RelationalTrait;
 use Illuminate\Http\Request;
@@ -65,7 +65,7 @@ class SettingController extends BaseController
      * Store a newly created resource in storage.
      *
      * @param string $name
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store($name)
     {
@@ -87,7 +87,7 @@ class SettingController extends BaseController
         // If no $request defined, validate by Model Rules
         if (!$request) {
             $validator = \Validator::make(
-                \Input::all(),
+                \Request::all(),
                 $model->rules
             );
 
@@ -111,8 +111,8 @@ class SettingController extends BaseController
 
         $this->fillSettingRelationships($setting, $model, $request);
 
-        if (Input::has('redirect_back_to')) {
-            return redirect(Input::get('redirect_back_to'));
+        if (Request::has('redirect_back_to')) {
+            return redirect(\Request::input('redirect_back_to'));
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
         }
@@ -176,7 +176,7 @@ class SettingController extends BaseController
      * Update the specified resource in storage.
      *
      * @param  string $id
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update($name, $id)
     {
@@ -196,7 +196,7 @@ class SettingController extends BaseController
         // If no $request defined, validate by Model Rules
         if (!$request) {
             $validator = \Validator::make(
-                \Input::all(),
+                \Request::all(),
                 $model->rules
             );
 
@@ -220,8 +220,8 @@ class SettingController extends BaseController
 
         $this->fillSettingRelationships($setting, $model, $request);
 
-        if (Input::has('redirect_back_to')) {
-            return redirect(Input::get('redirect_back_to'));
+        if (Request::has('redirect_back_to')) {
+            return redirect(\Request::get('redirect_back_to'));
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
         }
@@ -233,7 +233,7 @@ class SettingController extends BaseController
      *
      * @param string $name
      * @param  int $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($name, $id)
     {
@@ -257,7 +257,7 @@ class SettingController extends BaseController
             }
         }
 
-        if (Input::has('redirect_back')) {
+        if (Request::has('redirect_back')) {
             return \Redirect::back();
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);

@@ -8,9 +8,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": ">=5.0.0",
-        "laravelcollective/html": "~5.0",
+        "illuminate/support": "^6.0",
+        "laravelcollective/html": "^6.0",
         "nicolaslopezj/searchable": "1.*"
     },
     "autoload": {

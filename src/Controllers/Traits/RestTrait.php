@@ -49,8 +49,8 @@ trait RestTrait
         $messages = new MessageBag();
         $class = $this->model;
 
-        if (\Input::has('remove_ids')) {
-            $id = \Input::get('remove_ids');
+        if (\Request::has('remove_ids')) {
+            $id = \Request::get('remove_ids');
             $count = count($id);
         }
 

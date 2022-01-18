@@ -86,9 +86,9 @@ class SearchController extends BaseController
 
                     if ($filterFound) {
                         if (array_key_exists(Searchable::class, $uses)) {
-                            $scopesToApply[camel_case($filter)] = [$filterValue];
+                            $scopesToApply[\Illuminate\Support\Str::camel($filter)] = [$filterValue];
                         } else {
-                            $search = call_user_func_array([$search, camel_case($filter)], [$filterValue]);
+                            $search = call_user_func_array([$search, \Illuminate\Support\Str::camel($filter)], [$filterValue]);
                         }
                     } else {
                         if ($options['required']) {

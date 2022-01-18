@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Arr;
 
 class Draft extends Eloquent
 {
@@ -83,13 +84,13 @@ class Draft extends Eloquent
         static::saving(function (Draft $model) {
             $model->columns = array_merge(
                 $model->columns ?? [],
-                array_except(
+                Arr::Except(
                     $model->getAttributes(),
                     $model->realAttributes
                 )
             );
 
-            $model->setRawAttributes(array_only($model->getAttributes(), $model->realAttributes));
+            $model->setRawAttributes(Arr::only($model->getAttributes(), $model->realAttributes));
         });
     }
 
