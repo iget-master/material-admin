@@ -1,10 +1,9 @@
 <?php namespace IgetMaster\MaterialAdmin\Controllers;
 
 use \Config;
-use \Request;
 use \App;
 use IgetMaster\MaterialAdmin\Controllers\Traits\RelationalTrait;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\MessageBag;
 
@@ -111,7 +110,7 @@ class SettingController extends BaseController
 
         $this->fillSettingRelationships($setting, $model, $request);
 
-        if (Request::has('redirect_back_to')) {
+        if (HttpRequest::has('redirect_back_to')) {
             return redirect(\Request::input('redirect_back_to'));
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
@@ -220,7 +219,7 @@ class SettingController extends BaseController
 
         $this->fillSettingRelationships($setting, $model, $request);
 
-        if (Request::has('redirect_back_to')) {
+        if (HttpRequest::has('redirect_back_to')) {
             return redirect(\Request::get('redirect_back_to'));
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
@@ -257,7 +256,7 @@ class SettingController extends BaseController
             }
         }
 
-        if (Request::has('redirect_back')) {
+        if (HttpRequest::has('redirect_back')) {
             return \Redirect::back();
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
@@ -269,7 +268,7 @@ class SettingController extends BaseController
      * @param $model
      * @param \Illuminate\Http\Request $request
      */
-    private function fillSettingRelationships($setting, $model, Request $request)
+    private function fillSettingRelationships($setting, $model, HttpRequest $request)
     {
         foreach ($setting['relationships'] as $relationship) {
             if ($relationship["relation"] == 'many-to-many') {
