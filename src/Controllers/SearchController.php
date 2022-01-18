@@ -4,7 +4,7 @@ use Cache;
 use IgetMaster\MaterialAdmin\Contracts\SearchableInterface as SearchableContract;
 use IgetMaster\MaterialAdmin\Models\Contracts\PublicSearchable;
 use Illuminate\Routing\Controller as BaseController;
-use ScoutElastic\Searchable;
+//use ScoutElastic\Searchable;
 use Sofa\Eloquence\Eloquence;
 
 class SearchController extends BaseController
