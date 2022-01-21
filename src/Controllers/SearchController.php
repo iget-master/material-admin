@@ -4,7 +4,7 @@ use Cache;
 use IgetMaster\MaterialAdmin\Contracts\SearchableInterface as SearchableContract;
 use IgetMaster\MaterialAdmin\Models\Contracts\PublicSearchable;
 use Illuminate\Routing\Controller as BaseController;
-//use ScoutElastic\Searchable;
+use ElasticScoutDriverPlus\Searchable;
 use Sofa\Eloquence\Eloquence;
 
 class SearchController extends BaseController
@@ -120,7 +120,7 @@ class SearchController extends BaseController
                 if (array_key_exists(Eloquence::class, $uses)) {
                     $result = $search->search($query)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
                 } else {
-                    $result = $search->search($query, 1, true)->distinct()->orderBy('relevance', 'desc')->take(5)->get()->toJson();
+                    $result = $search->search($query, 1, true)->distinct()->take(5)->get()->toJson();
                 }
             }
         }
