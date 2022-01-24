@@ -110,7 +110,7 @@ class SettingController extends BaseController
 
         $this->fillSettingRelationships($setting, $model, $request);
 
-        if (HttpRequest::has('redirect_back_to')) {
+        if ($request->has('redirect_back_to')) {
             return redirect(\Request::input('redirect_back_to'));
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
@@ -219,7 +219,7 @@ class SettingController extends BaseController
 
         $this->fillSettingRelationships($setting, $model, $request);
 
-        if (HttpRequest::has('redirect_back_to')) {
+        if ($request->has('redirect_back_to')) {
             return redirect(\Request::get('redirect_back_to'));
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
@@ -256,7 +256,7 @@ class SettingController extends BaseController
             }
         }
 
-        if (HttpRequest::has('redirect_back')) {
+        if (\Request::has('redirect_back')) {
             return \Redirect::back();
         } else {
             return \Redirect::route('setting.index', ['active_tab' => $setting['group']]);
