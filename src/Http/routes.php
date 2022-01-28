@@ -2,14 +2,6 @@
 
 Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => ['web', 'auth']], function () {
     /*
-    |-------------------------------
-    | Authentication related routes
-    |-------------------------------
-    */
-
-    Route::get('/logout', ['as' => 'materialadmin.logout', 'uses' => 'SessionController@destroy']);
-
-    /*
     |--------------------------------------------------------------------------
     | Package Routes
     |--------------------------------------------------------------------------
@@ -30,11 +22,11 @@ Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware
 
 Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => ['web', 'guest']], function () {
 
-    Route::get('/login', ['as' => 'materialadmin.login', 'uses' => 'SessionController@create']);
-    Route::post('/login', ['as' => 'materialadmin.authenticate', 'uses' => 'SessionController@store']);
+    Route::get('/login', ['as' => 'materialadmin.login', 'uses' => 'SessionController@login']);
 });
 
 Route::group(['namespace' => 'IgetMaster\MaterialAdmin\Controllers', 'middleware' => ['web']], function () {
+    Route::get('/logout', ['as' => 'materialadmin.logout', 'uses' => 'SessionController@destroy']);
     Route::get('/auth/check', ['as' => 'materialadmin.check', 'uses' => 'SessionController@check']);
 });
 

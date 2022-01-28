@@ -6,19 +6,10 @@ class SessionController extends BaseController
 {
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Response
      */
-    public function create()
+    public function login()
     {
-        if (\Request::has('expired')) {
-            \Session::put('alert', [
-                'type' => 'danger',
-                'message' => trans('materialadmin::admin.session_expired')
-            ]);
-        }
-
-        return \View::make('materialadmin::login');
+        return redirect(env('WEBAPP_URL') . '/login?legacy=true');
     }
 
     /**
@@ -31,31 +22,15 @@ class SessionController extends BaseController
         return response()->json(auth()->check());
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        if (\Auth::attempt(\Request::only('email', 'password'))) {
-            return \Redirect::intended(route(\Config::get('admin.home_route')))->with('alert', array('type'=>'success', 'message'=>'Seja bem vindo.'));
-        }
-
-        return \Redirect::back()->withInput()->with('alert', array('type'=>'danger', 'message'=>'Usuário e/ou senha incorretos.'));
-    }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy()
     {
         \Auth::logout();
 
-        return \Redirect::route('materialadmin.login');
+        return redirect(env('WEBAPP_URL') . '/logout');
     }
 }

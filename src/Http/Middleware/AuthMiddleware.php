@@ -20,7 +20,7 @@ class AuthMiddleware
          * If user isn't authenticated, redirect it to the login page
          */
         if (\Auth::guest()) {
-            return redirect()->guest('login');
+            return redirect()->guest(env('WEBAPP_URL') . '/login?legacy=true');
         }
 
         /** @var \Symfony\Component\HttpFoundation\Response $response */
